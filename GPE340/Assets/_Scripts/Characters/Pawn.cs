@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour
 {
-    public Animator anim;
+    [HideInInspector] public Animator anim; // The animator that controls this character
 
     // Start is called before the first frame update
     void Start()
     {
-        if (anim == null)
-        {
-            anim = GetComponent<Animator>();
-        }
+        /* Component reference assignemnts */
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Pass the values on the "controller" from the input manager into the animator
-        anim.SetFloat("Horizontal", Input.GetAxis("Horizontal") );
+        // Pass values from the input controller into the animator to generate movement
+        anim.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
         anim.SetFloat("Vertical", Input.GetAxis("Vertical"));
     }
 }
