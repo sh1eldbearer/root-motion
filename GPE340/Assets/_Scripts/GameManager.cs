@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(RaycastingMouse))]
 public class GameManager : MonoBehaviour
 {
-    public static GameManager theGM;
+    public static GameManager gm;
 
     [Header("Game Components")]
     public RaycastingMouse mouse;
@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         // Singleton pattern
-        if (theGM == null)
+        if (gm == null)
         {
-            theGM = this;
+            gm = this;
             DontDestroyOnLoad(this.gameObject);
         }
         else

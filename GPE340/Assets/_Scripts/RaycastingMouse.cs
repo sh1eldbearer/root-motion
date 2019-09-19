@@ -21,9 +21,9 @@ public class RaycastingMouse : MonoBehaviour
     void Awake()
     {
         // Singleton pattern
-        if (GameManager.theGM.mouse == null)
+        if (GameManager.gm.mouse == null)
         {
-            GameManager.theGM.mouse = this;
+            GameManager.gm.mouse = this;
         }
         else
         {
@@ -49,7 +49,7 @@ public class RaycastingMouse : MonoBehaviour
 
     IEnumerator GetMouseWorldPosition()
     {
-        while (GameManager.theGM.gameIsRunning)
+        while (GameManager.gm.gameIsRunning)
         {
             MouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             yield return null;
@@ -58,7 +58,7 @@ public class RaycastingMouse : MonoBehaviour
 
     IEnumerator GetMouseRay()
     {
-        while (GameManager.theGM.gameIsRunning)
+        while (GameManager.gm.gameIsRunning)
         {
             MouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             yield return null;

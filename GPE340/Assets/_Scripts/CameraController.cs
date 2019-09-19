@@ -17,14 +17,26 @@ public class CameraController : MonoBehaviour
         thisTf = this.transform;
         followTf = followTarget.transform;
         initalOffset = thisTf.position - followTf.position;
+        StartCoroutine(UpdateCameraPosition());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (followTarget != null)
+    }
+
+    private IEnumerator UpdateCameraPosition()
+    {
+        while (GameManager.gm.gameIsRunning)
         {
-            thisTf.position = Vector3.MoveTowards(thisTf.position, followTf.position + initalOffset, followSpeed * Time.deltaTime);
+            // As long as the camera has a target to follow, updates the camera's position 
+            if (followTarget != null)
+            {
+                thisTf.position = Vector3.MoveTowards(thisTf.position, followTf.position + initalOffset,
+                    followSpeed * Time.deltaTime);
+            }
+
+            yield return null;
         }
     }
 }
