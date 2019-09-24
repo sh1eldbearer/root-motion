@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController :  Pawn
 {
     [Space]
-    public Camera pawnCamera;
+    [SerializeField, Range(0.01f, 2f)] private float rotationDeadZoneSize = 0.05f;
 
     // Start is called before the first frame update
     public override void Start()
@@ -18,8 +18,6 @@ public class PlayerController :  Pawn
     {
         Move();
         HandleRotation(pawnCamera);
-
-        base.Update();
     }
 
     public override Vector3 Move()
@@ -32,6 +30,20 @@ public class PlayerController :  Pawn
 
         // Find local version of the worldMoveVector (relative to the object's transform)
         Vector3 localMoveVector = transform.InverseTransformDirection(worldMoveVector);
+
+        // Set sprinting or walking booleans if any of the inputs are pressed
+        if (Input.GetAxis("Sprint") > 0f)
+        {
+            SetRunWalkBools(true, false);
+        }
+        else if (Input.GetAxis("Crouch") > 0f)
+        {
+            SetRunWalkBools(false, true);
+        }
+        else
+        {
+            SetRunWalkBools(false, false);
+        }
 
         // Pass values from the input controller into the animator to generate movement
         anim.SetFloat("Horizontal", localMoveVector.x * moveSpeed);
@@ -58,11 +70,16 @@ public class PlayerController :  Pawn
                 // TODO: Dead zone when mouse is under player's feet
                 Vector3 collisionPoint = mouseRay.GetPoint(intersectDistance);
 
+                //if (Vector3.Distance(collisionPoint, tf.position) <= rotationDeadZoneSize)
+                //{
+                //    return Vector3.negativeInfinity;
+                //}
+
                 // Get rotation needed to look at that point
-                //Quaternion targetRotation = Quaternion.LookRotation(collisionPoint - tf.position, tf.up);
-                //tf.rotation = Quaternion.RotateTowards(tf.rotation, targetRotation, turnSpeed * Time.deltaTime) ;
-                Vector3 lookVector = (collisionPoint - tf.position).normalized;
-                tf.LookAt(collisionPoint + lookVector);
+                Quaternion targetRotation = Quaternion.LookRotation(collisionPoint - tf.position, tf.up);
+                tf.rotation = Quaternion.RotateTowards(tf.rotation, targetRotation, turnSpeed * Time.deltaTime) ;
+                // Vector3 lookVector = (collisionPoint - tf.position).normalized * rotationDeadZoneSize;
+                // tf.LookAt(collisionPoint + lookVector);
                 return collisionPoint;
             }
             else

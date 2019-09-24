@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject followTarget;
-    public float followSpeed = 3.5f;
-    public Vector3 initalOffset;
+    /* Public Properties */
+    [Tooltip("The object this ")] public GameObject followTarget;
+    [Tooltip("")] public float followSpeed = 3.5f;
 
-    private Transform thisTf;
-    private Transform followTf;
-    private Pawn followPawn;
+    /* Private Properties */
+    private Vector3 initalOffset;
+    private Transform thisTf; // The Transform component of this camera object
+    private Transform followTf; // The Transform component of the follow target object
+    private Pawn followPawn; // The Pawn component of the follow target object
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,12 @@ public class CameraController : MonoBehaviour
 
         if (followTarget != null)
         {
+            // If that assigned Pawn is a player, assigns this camera as the pawn's camera
+            if (followPawn.GetType() == typeof(PlayerController))
+            {
+                ((PlayerController) followPawn).pawnCamera = this.GetComponent<Camera>();
+            }
+
             // Stores the camera's original position relative to its target
             initalOffset = thisTf.position - followTf.position;
             // Sets the camera's follow speed to match the move speed of its follow target
@@ -44,7 +52,7 @@ public class CameraController : MonoBehaviour
         {
             // As long as the camera has a target to follow, updates the camera's position 
             thisTf.position = Vector3.MoveTowards(thisTf.position, followTf.position + initalOffset,
-                followSpeed * Time.deltaTime);
+                followSpeed);
         }
     }
 }
