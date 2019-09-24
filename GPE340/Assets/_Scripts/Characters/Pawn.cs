@@ -30,44 +30,12 @@ public class Pawn : MonoBehaviour
     public virtual Vector3 Move()
     {
         // TODO: Replace with base functionality once AI controllers are set up
-        return Vector3.zero;
+        return Vector3.negativeInfinity;
     }
 
     public virtual Vector3 HandleRotation(Camera pawnCamera = null)
     {
-        // Create a plane object for the plane the player is standing on
-        Plane groundPlane = new Plane(Vector3.up, tf.position);
-        
-        // Create a ray from camera through the mouse position in the direction the camera is facing
-        if (pawnCamera != null)
-        {
-            // Uses the mouse position to rotate the pawn
-            Ray mouseRay = pawnCamera.ScreenPointToRay(Input.mousePosition);
-
-            // Raycast
-            float intersectDistance;
-            if (groundPlane.Raycast(mouseRay, out intersectDistance))
-            {
-                // TODO: Dead zone when mouse is under player's feet
-                Vector3 collisionPoint = mouseRay.GetPoint(intersectDistance);
-
-                // Get rotation needed to look at that point
-                //Quaternion targetRotation = Quaternion.LookRotation(collisionPoint - tf.position, tf.up);
-                //tf.rotation = Quaternion.RotateTowards(tf.rotation, targetRotation, turnSpeed * Time.deltaTime) ;
-                Vector3 lookVector = (collisionPoint - tf.position).normalized; 
-                tf.LookAt(collisionPoint + lookVector);
-                return collisionPoint;
-            }
-            else
-            {
-                Debug.LogError("Camera is not looking at plane");
-                return Vector3.negativeInfinity;
-            }
-        }
-        else
-        {
-            // TODO: For AI movement (not yet implemented)
-            return Vector3.negativeInfinity;
-        }
+        // TODO: Replace with base functionality once AI controllers are set up
+        return Vector3.negativeInfinity;
     }
 }
