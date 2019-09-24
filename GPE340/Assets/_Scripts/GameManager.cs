@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(RaycastingMouse))]
 public class GameManager : MonoBehaviour
 {
     public static GameManager gm;
 
-    [Header("Game Components")]
-    public RaycastingMouse mouse;
-
+    [Header("Current Game State")]
     public bool gameIsRunning;
+
+    //[Header("Game Components")]
 
 
     void Awake()
@@ -36,10 +35,10 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // TODO: Expand functionality to make this setting change between game scenes and non-game scenes
         if (scene.name == "MainGame")
         {
             gameIsRunning = true;
-            mouse.StartCoroutines();
         }
         else
         {
