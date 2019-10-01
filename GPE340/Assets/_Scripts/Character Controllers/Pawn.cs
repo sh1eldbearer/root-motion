@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 
-public class Pawn : MonoBehaviour
+public abstract class Pawn : MonoBehaviour
 {
     /* Public Properties */
     [Tooltip("The movement speed of this pawn")] public float moveSpeed = 3.5f;
