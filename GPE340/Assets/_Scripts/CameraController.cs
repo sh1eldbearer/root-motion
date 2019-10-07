@@ -3,17 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class CameraController : MonoBehaviour
 {
+
     /* Public Properties */
-    [Tooltip("The object this ")] public GameObject followTarget;
-    [Tooltip("")] public float followSpeed = 3.5f;
+    [Tooltip("The object this camera should follow.")] public GameObject followTarget;
+    [Tooltip("The move speed of the camera.")] public float followSpeed = 3.5f;
+    [Range(MIN_OFFSET_HEIGHT_SETTING, MAX_OFFSET_HEIGHT_SETTING)] public int offsetHeightAdjust = 0;
+    [Range(0f, 2f)] public float offsetHeightFactor = 0.5f;
 
     /* Private Properties */
     private Vector3 initalOffset;
     private Transform thisTf; // The Transform component of this camera object
     private Transform followTf; // The Transform component of the follow target object
     private Pawn followPawn; // The Pawn component of the follow target object
+
+    private const int MIN_OFFSET_HEIGHT_SETTING = 0;
+    private const int MAX_OFFSET_HEIGHT_SETTING = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -50,9 +58,24 @@ public class CameraController : MonoBehaviour
     {
         if (GameManager.gm.gameIsRunning && followTarget != null)
         {
+            Vector3 heightAdjust = new Vector3(0f, offsetHeightAdjust * offsetHeightFactor, 0f);
             // As long as the camera has a target to follow, updates the camera's position 
-            thisTf.position = Vector3.MoveTowards(thisTf.position, followTf.position + initalOffset,
+            thisTf.position = Vector3.MoveTowards(thisTf.position, followTf.position + initalOffset + heightAdjust,
                 followSpeed);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.mouseScrollDelta.y > 0f)
+        {
+            offsetHeightAdjust =
+                Mathf.Clamp(offsetHeightAdjust - 1, MIN_OFFSET_HEIGHT_SETTING, MAX_OFFSET_HEIGHT_SETTING);
+        }
+        else if (Input.mouseScrollDelta.y < 0f)
+        {
+            offsetHeightAdjust =
+                Mathf.Clamp(offsetHeightAdjust + 1, MIN_OFFSET_HEIGHT_SETTING, MAX_OFFSET_HEIGHT_SETTING);
         }
     }
 }
