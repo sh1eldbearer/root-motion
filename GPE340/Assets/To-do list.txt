@@ -1,0 +1,7 @@
+- Implement main menu
+- Implement character skin selection
+- Implement multi-camera functionality
+
+
+Make variables private (serialize or use getter/setters if you need them to be accessible!)
+- Make "Public variables" sections "inspector variables" or "accessible variables"

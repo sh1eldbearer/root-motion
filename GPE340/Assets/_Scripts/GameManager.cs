@@ -1,16 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager gm;
+    /* Static Properties */
+    public static GameManager gm; // Singleton instance for the GameManager
+    public static CameraController cam; // Instance for the currently active camera
+    public static SkinManager skinMgr;
+    public static MenuManager menuMgr; // Holds a reference to the current scene's menu manager
 
+    /* Inspector Properties */
     [Header("Current Game State")]
-    public bool gameIsRunning;
+    [SerializeField] private bool isGameRunning;
+    [SerializeField] private Camera currentActiveCamera;
 
-    //[Header("Game Components")]
+    /* Public Properties */
+    public bool IsGameRunning
+    {
+        get { return isGameRunning; }
+    }
+
+//[Header("Game Components")]
 
 
     void Awake()
@@ -25,6 +35,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        skinMgr = this.gameObject.GetComponent<SkinManager>();
     }
 
     // Start is called before the first frame update
@@ -38,11 +50,11 @@ public class GameManager : MonoBehaviour
         // TODO: Expand functionality to make this setting change between game scenes and non-game scenes
         if (scene.name == "MainGame")
         {
-            gameIsRunning = true;
+            isGameRunning = true;
         }
         else
         {
-            gameIsRunning = false;
+            isGameRunning = false;
         }
     }
 
@@ -50,5 +62,17 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PauseGame()
+    {
+        isGameRunning = false;
+        Time.timeScale = 0;
+    }
+
+    public void UnpauseGame()
+    {
+        isGameRunning = true;
+        Time.timeScale = 1;
     }
 }
