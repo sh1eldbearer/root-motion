@@ -23,16 +23,4 @@ public abstract class MenuManager : MonoBehaviour
     {
         
     }
-
-    /// <summary>
-    /// Quits the game.
-    /// </summary>
-    public void QuitGame()
-    {
-#if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
-    }
 }
