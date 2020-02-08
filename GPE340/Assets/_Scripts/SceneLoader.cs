@@ -5,24 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    [Tooltip("The name of the game's menu scene"), 
-        SerializeField] private string menuSceneName = "Menu";
-    [Tooltip("The name of the game's main scene"), 
-        SerializeField] public string mainGameSceneName = "MainGame";
-    
     /// <summary>
-    /// 
+    /// Loads a scene based on the scene's name.
     /// </summary>
-    public void LoadMenuScene()
+    /// <param name="sceneName">The name of the scene to be loaded.</param>
+    public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(menuSceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     /// <summary>
-    /// Loads the main game scene, based on the scene name set in the inspector
+    /// Loads a scene based on the scene's number in the build order.
     /// </summary>
-    public void LoadMainGameScene()
+    /// <param name="sceneName">The build order number of the scene to be loaded.</param>
+    public void LoadScene(int sceneId)
     {
-        SceneManager.LoadScene(mainGameSceneName);
+        SceneManager.LoadScene(sceneId);
     }
 }
