@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StandColliderAdjuster : StateMachineBehaviour
 {
-    [SerializeField] public float colliderStandHeight = 2f;
+    [SerializeField] private float colliderStandHeight = 2f;
+    [SerializeField] private float speedAdjustRate = 5f;
     private CapsuleCollider thisCollider;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -16,7 +17,7 @@ public class StandColliderAdjuster : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        thisCollider.height = Mathf.Lerp(thisCollider.height, colliderStandHeight, Time.deltaTime);
+        thisCollider.height = Mathf.Lerp(thisCollider.height, colliderStandHeight, Time.deltaTime * speedAdjustRate);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

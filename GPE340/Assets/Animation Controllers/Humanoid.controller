@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderCrouchHeight: 1
+  speedAdjustRate: 5
 --- !u!1101 &-4428114497909813263
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -814,6 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderStandHeight: 2
+  speedAdjustRate: 5
 --- !u!206 &2899040057241452150
 BlendTree:
   m_ObjectHideFlags: 1
