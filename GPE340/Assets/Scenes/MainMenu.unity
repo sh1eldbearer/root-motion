@@ -198,7 +198,6 @@ GameObject:
   - component: {fileID: 81076389}
   - component: {fileID: 81076388}
   - component: {fileID: 81076387}
-  - component: {fileID: 81076386}
   - component: {fileID: 81076390}
   m_Layer: 5
   m_Name: Exit
@@ -227,20 +226,6 @@ RectTransform:
   m_AnchoredPosition: {x: 260, y: -390}
   m_SizeDelta: {x: 420, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &81076386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81076384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcce428829c44af44952322accbb4a36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuSceneName: Menu
-  mainGameSceneName: MainGame
 --- !u!114 &81076387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +344,8 @@ GameObject:
   - component: {fileID: 84883754}
   - component: {fileID: 84883753}
   - component: {fileID: 84883752}
+  - component: {fileID: 84883756}
+  - component: {fileID: 84883755}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -429,8 +416,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadMainGameScene
+      - m_Target: {fileID: 84883755}
+        m_MethodName: TogglePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -480,6 +467,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84883750}
   m_CullTransparentMesh: 0
+--- !u!114 &84883755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84883750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defe69be041643c4a87c3f7235e38903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelToEnable: {fileID: 1302907511}
+  panelToDisable: {fileID: 2092877518}
+--- !u!114 &84883756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84883750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcce428829c44af44952322accbb4a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &129734517
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +967,8 @@ GameObject:
   - component: {fileID: 1139965483}
   - component: {fileID: 1139965482}
   - component: {fileID: 1139965481}
+  - component: {fileID: 1139965485}
+  - component: {fileID: 1139965484}
   m_Layer: 5
   m_Name: Start Game
   m_TagString: Untagged
@@ -1024,15 +1039,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadMainGameScene
+      - m_Target: {fileID: 1139965484}
+        m_MethodName: TogglePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainGame
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -1075,6 +1090,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139965479}
   m_CullTransparentMesh: 0
+--- !u!114 &1139965484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139965479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defe69be041643c4a87c3f7235e38903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelToEnable: {fileID: 2092877518}
+  panelToDisable: {fileID: 1302907511}
+--- !u!114 &1139965485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139965479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcce428829c44af44952322accbb4a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1160438642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1302907512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,7 +1611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2092877519
 RectTransform:
   m_ObjectHideFlags: 0
