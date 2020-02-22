@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -22,7 +21,6 @@ public class PlayerController :  AgentController
 
     public override Vector3 Move()
     {
-
         // Get the world vector that we want to move
         Vector3 worldMoveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         // Normalize it to allow controllers and keyboards to function the same
@@ -46,8 +44,8 @@ public class PlayerController :  AgentController
         }
 
         // Pass values from the input controller into the animator to generate movement
-        anim.SetFloat("Horizontal", localMoveVector.x * moveSpeed);
-        anim.SetFloat("Vertical", localMoveVector.z * moveSpeed);
+        _agentAnim.SetFloat("Horizontal", localMoveVector.x * _moveSpeed);
+        _agentAnim.SetFloat("Vertical", localMoveVector.z * _moveSpeed);
 
         return localMoveVector;
     }
@@ -55,7 +53,7 @@ public class PlayerController :  AgentController
     public override Vector3 HandleRotation(Camera activeCamera = null)
     {
         // Create a plane object for the plane the player is standing on
-        Plane groundPlane = new Plane(Vector3.up, tf.position);
+        Plane groundPlane = new Plane(Vector3.up, _agentTf.position);
 
         // Create a ray from camera through the mouse position in the direction the camera is facing
         if (activeCamera != null)
@@ -71,8 +69,8 @@ public class PlayerController :  AgentController
                 Vector3 collisionPoint = mouseRay.GetPoint(intersectDistance);
 
                 // Get the rotation needed for the player to look at that point
-                Quaternion targetRotation = Quaternion.LookRotation(collisionPoint - tf.position, tf.up);
-                tf.rotation = Quaternion.RotateTowards(tf.rotation, targetRotation, turnSpeed * Time.deltaTime);
+                Quaternion targetRotation = Quaternion.LookRotation(collisionPoint - _agentTf.position, _agentTf.up);
+                _agentTf.rotation = Quaternion.RotateTowards(_agentTf.rotation, targetRotation, _turnSpeed * Time.deltaTime);
                 return collisionPoint;
             }
             else

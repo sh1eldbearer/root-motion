@@ -10,7 +10,7 @@ public abstract class CameraController : MonoBehaviour
         
     }
 
-    public virtual void FixedUpdate()
+    public virtual void LateUpdate()
     {
 
     }

@@ -1,31 +1,36 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    /* Static Properties */
+    /* Static Members */
     public static GameManager gm; // Singleton instance for the GameManager
-    public static CameraController cam; // Instance for the currently active camera
-    public static SkinManager skinMgr;
-    public static MenuManager menuMgr; // Holds a reference to the current scene's menu manager
 
-    /* Inspector Properties */
+    /* Private Properties */
     [Header("Current Game State")]
-    [SerializeField] private bool isGameRunning;
-    [SerializeField] private Camera currentActiveCamera;
+    [SerializeField] private bool _isGameRunning;
+    [SerializeField, Range(0, 4)] private int _totalPlayerCount = 1;
+    [SerializeField] private Camera _currentActiveCamera;
 
     /* Public Properties */
     public bool IsGameRunning
     {
-        get { return isGameRunning; }
+        get { return _isGameRunning; }
     }
 
-//[Header("Game Components")]
+    public int TotalPlayerCount
+    {
+        get { return _totalPlayerCount; }
+    }
 
+    //[Header("Game Components")]
 
     void Awake()
     {
-        // Singleton pattern
+        // GameManager exists as a singleton object
         if (gm == null)
         {
             gm = this;
@@ -35,14 +40,20 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        skinMgr = this.gameObject.GetComponent<SkinManager>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // Marks the game as running when I run the main game scene directly from the editor
+#if UNITY_EDITOR
+        if (SceneManager.GetActiveScene().name == "MainGame")
+        {
+            UnpauseGame();
+        }
+#endif
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -50,11 +61,11 @@ public class GameManager : MonoBehaviour
         // TODO: Expand functionality to make this setting change between game scenes and non-game scenes
         if (scene.name == "MainGame")
         {
-            isGameRunning = true;
+            _isGameRunning = true;
         }
         else
         {
-            isGameRunning = false;
+            _isGameRunning = false;
         }
     }
 
@@ -66,13 +77,13 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        isGameRunning = false;
+        _isGameRunning = false;
         Time.timeScale = 0;
     }
 
     public void UnpauseGame()
     {
-        isGameRunning = true;
+        _isGameRunning = true;
         Time.timeScale = 1;
     }
 }

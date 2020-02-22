@@ -7,26 +7,41 @@ using UnityEngine;
 public abstract class AgentController : MonoBehaviour
 {
     /* Public Properties */
-    [Tooltip("The movement speed of this pawn")] public float moveSpeed = 3.5f;
-    [Tooltip("The turning speed of this pawn")] public float turnSpeed = 60f;
 
-    [Space, Tooltip("The camera that will be following this pawn's movements")]public Camera pawnCamera;
+    /// <summary>
+    /// The movement speed of this pawn.
+    /// </summary>
+    public float moveSpeed
+    {
+        get { return _moveSpeed; }
+    }
 
-    /* Protected Properties */
+    /// <summary>
+    /// The turn speed of this pawn.
+    /// </summary>
+    public float turnSpeed
+    {
+        get { return _turnSpeed; }
+    }
+
+    /* Protected
+     Properties */
+    [Tooltip("The movement speed of this pawn")] protected float _moveSpeed = 3.5f;
+    [Tooltip("The turning speed of this pawn")] protected float _turnSpeed = 60f;
+
     [Header("Component References")]
-    [SerializeField, Tooltip("This object's Transform component")] protected Transform tf;
-    [SerializeField, Tooltip("This object's Animator component")] protected Animator anim;
-    [SerializeField, Tooltip("The agent's collider")] protected Collider collider;
+    [Tooltip("This object's Transform component")] protected Transform _agentTf;
+    [Tooltip("This object's Animator component")] protected Animator _agentAnim;
 
-    /* Private Properties*/ 
+    /* Private Properties*/
+    [Space, Tooltip("The camera that will be following this pawn's movements")] public Camera pawnCamera;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         /* Component reference assignments */
-        tf = this.GetComponent<Transform>();
-        anim = this.GetComponent<Animator>();
-        collider = this.GetComponent<Collider>();
+        _agentTf = this.GetComponent<Transform>();
+        _agentAnim = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -85,16 +100,16 @@ public abstract class AgentController : MonoBehaviour
         switch (locoState)
         {
             case LocomotionState.Walking:
-                anim.SetBool("isSprinting", false);
-                anim.SetBool("isCrouching", false);
+                _agentAnim.SetBool("isSprinting", false);
+                _agentAnim.SetBool("isCrouching", false);
                 break;
             case LocomotionState.Crouching:
-                anim.SetBool("isSprinting", false);
-                anim.SetBool("isCrouching", true);
+                _agentAnim.SetBool("isSprinting", false);
+                _agentAnim.SetBool("isCrouching", true);
                 break;
             case LocomotionState.Sprinting:
-                anim.SetBool("isSprinting", true);
-                anim.SetBool("isCrouching", false);
+                _agentAnim.SetBool("isSprinting", true);
+                _agentAnim.SetBool("isCrouching", false);
                 break;
         }
     }
