@@ -14,7 +14,7 @@ public class ReadOnlyAttribute : PropertyAttribute
 }
 
 // Defines custom property drawer
-#if UNITY_EDITOR || UNITY_EDITOR_64
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
 public class ReadOnlyDrawer : PropertyDrawer
 {
