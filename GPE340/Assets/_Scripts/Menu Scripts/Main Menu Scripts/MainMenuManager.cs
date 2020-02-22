@@ -8,6 +8,7 @@ public class MainMenuManager : MenuManager
 {
     public static MainMenuManager mainMenuMgr;
 
+    #region Private Properties
     [Header("Panel Objects")]
     [Tooltip("The GameObject containing the panel for the main menu's new game menu."),
         SerializeField] private GameObject _newGameMenu;
@@ -39,6 +40,7 @@ public class MainMenuManager : MenuManager
     [SerializeField] private GameObject _p4JoinLabel;
     [SerializeField] private GameObject _p4ColorPicker;
     [SerializeField] private GameObject _p4ReadyLabel;
+#endregion
 
     #region Public Properties
     public PlayerObjectGroupData P1ObjectGroup
@@ -110,7 +112,7 @@ public class MainMenuManager : MenuManager
         get { return _p4ReadyLabel; }
     }
     
-    #endregion
+#endregion
 
     public void Awake()
     {

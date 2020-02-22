@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private GameObject _selectorBox; // The selector box associated with this color swatch
-                                     // (Automatically assigns itself at runtime from RegisterSelectorBox)1444
+                                     // (Automatically assigns itself at runtime from RegisterColorSelectorBox)1444
     private PlayerObjectGroupData _objGroupData;
     private Image _image;
     private bool _selectable = true;
@@ -28,27 +28,26 @@ public class SelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnt
         _objGroupData = this.transform.GetComponentInParent<PlayerObjectGroupData>();
         _image = this.gameObject.GetComponent<Image>();
 
-        _image.color = SkinManager.skinMgr.GetRGBColor(_objGroupData.colorPickers.IndexOf(this.gameObject));
+        _image.color = SkinManager.skinMgr.GetRGBColor(_objGroupData.colorSelectors.IndexOf(this));
     }
 
     public void OnPointerClick(PointerEventData pointerData)
     {
-        // TODO: Implement selection script
-        int index = _objGroupData.colorPickers.IndexOf(this.gameObject) + 1;
+        int index = _objGroupData.colorSelectors.IndexOf(this) + 1;
 
         if (IsSelected)
         {
             _selected = false;
             SkinManager.skinMgr.skinColors[index].SetSelected(false);
             EnableSameRowSelectors();
-            EnableSameColorSelectors(_objGroupData.colorPickers.IndexOf((this.gameObject)));
+            EnableSameColorSelectors(_objGroupData.colorSelectors.IndexOf((this)));
         }
         else
         {
             _selected = true;
             SkinManager.skinMgr.skinColors[index].SetSelected(true);
             DisableSameRowSelectors();
-            DisableSameColorSelectors(_objGroupData.colorPickers.IndexOf(this.gameObject));
+            DisableSameColorSelectors(_objGroupData.colorSelectors.IndexOf(this));
         }
     }
 
@@ -83,79 +82,75 @@ public class SelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnt
     private void EnableSelector()
     {
         _selectable = true;
-        _image.color = SkinManager.skinMgr.skinColors[_objGroupData.colorPickers.IndexOf(this.gameObject) + 1].color;
+        _image.color = SkinManager.skinMgr.skinColors[_objGroupData.colorSelectors.IndexOf(this) + 1].color;
         _selectorBox.SetActive(false);
     }
 
     private void DisableSameColorSelectors(int selectorIndex)
     {
-        int playerNumber = this.gameObject.GetComponentInParent<PlayerObjectGroupData>().PlayerNumber;
-        SelectorBehavior otherSelector;
+        int playerNumber = _objGroupData.PlayerNumber;
+        ColorSelectorBehavior otherColorSelector;
         if (playerNumber != 1)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P1ObjectGroup.colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
-            otherSelector.DisableSelector();
+            otherColorSelector = MainMenuManager.mainMenuMgr.P1ObjectGroup.colorSelectors[selectorIndex];
+            otherColorSelector.DisableSelector();
         }
 
         if (playerNumber != 2)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P2ObjectGroup.colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
-            otherSelector.DisableSelector();
+            otherColorSelector = MainMenuManager.mainMenuMgr.P2ObjectGroup.colorSelectors[selectorIndex];
+            otherColorSelector.DisableSelector();
         }
 
         if (playerNumber != 3)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P3ObjectGroup.colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
-            otherSelector.DisableSelector();
+            otherColorSelector = MainMenuManager.mainMenuMgr.P3ObjectGroup.colorSelectors[selectorIndex];
+            otherColorSelector.DisableSelector();
         }
 
         if (playerNumber != 4)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P4ObjectGroup.colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
-            otherSelector.DisableSelector();
+            otherColorSelector = MainMenuManager.mainMenuMgr.P4ObjectGroup.colorSelectors[selectorIndex];
+            otherColorSelector.DisableSelector();
         }
     }
 
     private void EnableSameColorSelectors(int selectorIndex)
     {
-        int playerNumber = this.gameObject.GetComponentInParent<PlayerObjectGroupData>().PlayerNumber;
-        SelectorBehavior otherSelector;
+        int playerNumber = _objGroupData.PlayerNumber;
+        ColorSelectorBehavior otherColorSelector;
         if (playerNumber != 1)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P1ColorPicker.GetComponentInParent<PlayerObjectGroupData>()
-                .colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
-            otherSelector.EnableSelector();
+            otherColorSelector = MainMenuManager.mainMenuMgr.P1ObjectGroup.colorSelectors[selectorIndex];
+            otherColorSelector.EnableSelector();
         }
 
         if (playerNumber != 2)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P2ColorPicker.GetComponentInParent<PlayerObjectGroupData>()
-                .colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
-            otherSelector.EnableSelector();
+            otherColorSelector = MainMenuManager.mainMenuMgr.P2ObjectGroup.colorSelectors[selectorIndex];
+            otherColorSelector.EnableSelector();
         }
 
         if (playerNumber != 3)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P3ColorPicker.GetComponentInParent<PlayerObjectGroupData>()
-                .colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
-            otherSelector.EnableSelector();
+            otherColorSelector = MainMenuManager.mainMenuMgr.P3ObjectGroup.colorSelectors[selectorIndex];
+            otherColorSelector.EnableSelector();
         }
 
         if (playerNumber != 4)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P4ColorPicker.GetComponentInParent<PlayerObjectGroupData>()
-                .colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
-            otherSelector.EnableSelector();
+            otherColorSelector = MainMenuManager.mainMenuMgr.P4ObjectGroup.colorSelectors[selectorIndex];
+            otherColorSelector.EnableSelector();
         }
     }
 
     private void DisableSameRowSelectors()
     {
-        foreach (GameObject picker in _objGroupData.colorPickers )
+        foreach (ColorSelectorBehavior picker in _objGroupData.colorSelectors )
         {
             if (picker != this.gameObject)
             {
-                picker.GetComponent<SelectorBehavior>().DisableSelector();
+                picker.DisableSelector();
             }
         }
     }
@@ -164,17 +159,17 @@ public class SelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnt
     {
         List<PlayerObjectGroupData> otherRowObjData = GetOtherRowObjGroups(_objGroupData);
 
-        foreach (GameObject picker in _objGroupData.colorPickers)
+        foreach (ColorSelectorBehavior picker in _objGroupData.colorSelectors)
         {
             if (picker != this.gameObject)
             {
-                int thisIndex = _objGroupData.colorPickers.IndexOf(picker);
+                int thisIndex = _objGroupData.colorSelectors.IndexOf(picker);
 
-                if (!otherRowObjData[0].colorPickers[thisIndex].GetComponent<SelectorBehavior>().IsSelected &&
-                    !otherRowObjData[1].colorPickers[thisIndex].GetComponent<SelectorBehavior>().IsSelected &&
-                    !otherRowObjData[2].colorPickers[thisIndex].GetComponent<SelectorBehavior>().IsSelected)
+                if (!otherRowObjData[0].colorSelectors[thisIndex].IsSelected &&
+                    !otherRowObjData[1].colorSelectors[thisIndex].IsSelected &&
+                    !otherRowObjData[2].colorSelectors[thisIndex].IsSelected)
                 {
-                    picker.GetComponent<SelectorBehavior>().EnableSelector();
+                    picker.EnableSelector();
                 }
             }
         }

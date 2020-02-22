@@ -30,8 +30,10 @@ public class RegisterNewGameMenuElement : MonoBehaviour
 #endif
                 break;
             default:
-                // Registers this game object in the appropriate variable in the MainMenuManager
+                // Registers this game object in the appropriate variable in the MainMenuManager and disables itself
                 MainMenuManager.mainMenuMgr.RegisterUIElement(this.gameObject, _pickerData.PlayerNumber, _uiElementType);
+                // TODO: Reenable this line once game initialization is properly set up
+                //this.gameObject.SetActive(false);
                 break;
         }
     }

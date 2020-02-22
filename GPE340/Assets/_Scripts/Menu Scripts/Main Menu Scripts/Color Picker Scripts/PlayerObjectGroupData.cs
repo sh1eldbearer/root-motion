@@ -34,7 +34,7 @@ public class PlayerObjectGroupData : MonoBehaviour
 
     [Tooltip("The color selectors that are children of this color picker. " +
              "(REMINDER: A picker's index in this list is 1 less than its index in the ColorNames enum)")]
-    public List<GameObject> colorPickers;
+    public List<ColorSelectorBehavior> colorSelectors;
 
     public void Awake()
     {
@@ -46,7 +46,7 @@ public class PlayerObjectGroupData : MonoBehaviour
         }
 
         // Yells at me if I didn't assign all of the color selectors, but only in the editor
-        if (colorPickers.Count < 8)
+        if (colorSelectors.Count < 8)
         {
             Debug.Log($"You didn't assign all of the color selectors for color picker {this.gameObject.name}.");
         }
