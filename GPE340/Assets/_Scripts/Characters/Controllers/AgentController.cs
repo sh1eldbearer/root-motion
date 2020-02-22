@@ -28,7 +28,6 @@ public abstract class AgentController : MonoBehaviour
         SerializeField] private Transform _agentTransform;
     [Tooltip("This agent's Animator component."),
         SerializeField] private Animator _agentAnimator;
-
     [Space, Tooltip("The camera that will be following this agent's movements."),
         SerializeField] private CameraController _agentCamera;
     #endregion
