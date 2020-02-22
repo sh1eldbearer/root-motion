@@ -51,6 +51,6 @@ public abstract class CameraController : MonoBehaviour
     /// <returns>Null.</returns>
     public virtual IEnumerator AdjustCameraZoom()
     {
-
+        yield return null;
     }
 }
