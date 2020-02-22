@@ -21,6 +21,7 @@ public class MainMenuManager : MenuManager
     [SerializeField] private PlayerObjectGroupData _p3ObjectGroup;
     [SerializeField] private PlayerObjectGroupData _p4ObjectGroup;
 
+    // These individual values are stored so that they can be enabled/disabled easily
     [Header("Player 1 Objects")]
     [SerializeField] private GameObject _p1JoinLabel;
     [SerializeField] private GameObject _p1ColorPicker;
@@ -40,82 +41,42 @@ public class MainMenuManager : MenuManager
     [SerializeField] private GameObject _p4JoinLabel;
     [SerializeField] private GameObject _p4ColorPicker;
     [SerializeField] private GameObject _p4ReadyLabel;
-#endregion
+    #endregion
 
     #region Public Properties
+    /// <summary>
+    /// The Player 1 object group (for mass enabling/disabling of said objects)
+    /// </summary>
     public PlayerObjectGroupData P1ObjectGroup
     {
         get { return _p1ObjectGroup; }
     }
+    /// <summary>
+    /// The Player 2 object group (for mass enabling/disabling of said objects)
+    /// </summary>
     public PlayerObjectGroupData P2ObjectGroup
     {
         get { return _p2ObjectGroup; }
     }
+    /// <summary>
+    /// The Player 3 object group (for mass enabling/disabling of said objects)
+    /// </summary>
     public PlayerObjectGroupData P3ObjectGroup
     {
         get { return _p3ObjectGroup; }
     }
+    /// <summary>
+    /// The Player 4 object group (for mass enabling/disabling of said objects)
+    /// </summary>
     public PlayerObjectGroupData P4ObjectGroup
     {
         get { return _p4ObjectGroup; }
     }
-
-    public GameObject P1JoinLabel
-    {
-        get { return _p1JoinLabel; }
-    }
-    public GameObject P1ColorPicker
-    {
-        get { return _p1ColorPicker; }
-    }
-    public GameObject P1ReadyLabel
-    {
-        get { return _p1ReadyLabel; }
-    }
-
-    public GameObject P2JoinLabel
-    {
-        get { return _p2JoinLabel; }
-    }
-    public GameObject P2ColorPicker
-    {
-        get { return _p2ColorPicker; }
-    }
-    public GameObject P2ReadyLabel
-    {
-        get { return _p2ReadyLabel; }
-    }
-
-    public GameObject P3JoinLabel
-    {
-        get { return _p3JoinLabel; }
-    }
-    public GameObject P3ColorPicker
-    {
-        get { return _p3ColorPicker; }
-    }
-    public GameObject P3ReadyLabel
-    {
-        get { return _p3ReadyLabel; }
-    }
-
-    public GameObject P4JoinLabel
-    {
-        get { return _p4JoinLabel; }
-    }
-    public GameObject P4ColorPicker
-    {
-        get { return _p4ColorPicker; }
-    }
-    public GameObject P4ReadyLabel
-    {
-        get { return _p4ReadyLabel; }
-    }
-    
-#endregion
+    #endregion
 
     public void Awake()
     {
+        // Singleton patten for this game object
         if (mainMenuMgr == null)
         {
             mainMenuMgr = this;
@@ -179,7 +140,7 @@ public class MainMenuManager : MenuManager
     /// <summary>
     /// Registers an object group with this MainMenuManager.
     /// </summary>
-    /// <param name="objGroupData">The UI element to be registered.</param>
+    /// <param name="objGroupData">The PlayerObjectGroupData component of the UI element to be registered.</param>
     /// <param name="playerNumber">The player number (determined by the PlayerNumber enumerator).</param>
     private void RegisterObjectGroup(PlayerObjectGroupData objGroupData, int playerNumber)
     {
