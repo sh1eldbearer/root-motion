@@ -8,7 +8,7 @@ using UnityEngine;
 public abstract class AgentController : MonoBehaviour
 {
     /// <summary>
-    /// Defines which set of animations the agent should use to move.
+    /// Designates which set of animations the agent should use to move.
     /// </summary>
     protected enum LocomotionState
     {
