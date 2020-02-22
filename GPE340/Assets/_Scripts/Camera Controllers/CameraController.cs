@@ -4,20 +4,53 @@ using UnityEngine;
 
 public abstract class CameraController : MonoBehaviour
 {
+    #region Private Properties
+    [SerializeField] private Camera _thisCamera;
+    [SerializeField] private Transform _cameraTransform; // The Transform component of this camera controller
+    #endregion
+
+    #region Public Properties
+    /// <summary>
+    /// The Camera component of this camera controller.
+    /// </summary>
+    public Camera ThisCamera
+    {
+        get { return _thisCamera; }
+        protected set { _thisCamera = value; }
+    }
+    /// <summary>
+    /// The Transform component of this camera controller.
+    /// </summary>
+    public Transform CameraTransform
+    {
+        get { return _cameraTransform; }
+        protected set { _cameraTransform = value; }
+    }
+
+    #endregion
     // Start is called before the first frame update
     public virtual void Start()
     {
-        // Not sure if this is needed or not, keeping it here until I definitively decide
+        /* Component reference assignments */
+        _thisCamera = this.gameObject.GetComponent<Camera>();
+        _cameraTransform = this.transform;
     }
 
-    // Update is called once per frame
-    public virtual void Update()
+    /// <summary>
+    /// Updates the camera position.
+    /// </summary>
+    /// <returns>Null.</returns>
+    public virtual IEnumerator UpdateCameraPosition()
     {
-        // Not sure if this is needed or not, keeping it here until I definitively decide
+        yield return null;
     }
 
-    public virtual void LateUpdate()
+    /// <summary>
+    /// Adjusts the current zoom setting of the camera.
+    /// </summary>
+    /// <returns>Null.</returns>
+    public virtual IEnumerator AdjustCameraZoom()
     {
-        // Not sure if this is needed or not, keeping it here until I definitively decide
+
     }
 }

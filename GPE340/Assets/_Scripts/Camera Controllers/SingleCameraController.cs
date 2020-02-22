@@ -24,9 +24,7 @@ public class SingleCameraController : CameraController
 #pragma warning disable 0649
     [Header("Game Components")]
     [Tooltip("The object this camera should follow."),
-     SerializeField]
-    private GameObject _followTarget;
-    [SerializeField] private Transform _cameraTf; // The Transform component of this camera object
+        SerializeField] private GameObject _followTarget;
     [SerializeField] private Transform _followTf; // The Transform component of the follow target object
     [SerializeField] private AgentController _followPawn; // The Pawn component of the follow target object
 #pragma warning restore 0649
@@ -35,8 +33,8 @@ public class SingleCameraController : CameraController
     // Start is called before the first frame update
     public override void Start()
     {
+        base.Start();
         /* Component reference assignments */
-        _cameraTf = this.transform;
         _followTf = _followTarget.transform;
         _followPawn = _followTarget.GetComponent<AgentController>();
 
@@ -45,15 +43,15 @@ public class SingleCameraController : CameraController
             // If that assigned Pawn is a player, assigns this camera as the pawn's camera
             if (_followPawn.GetType() == typeof(PlayerController))
             {
-                ((PlayerController) _followPawn).pawnCamera = this.GetComponent<Camera>();
+                ((PlayerController) _followPawn).AssignCamera(this.GetComponent<Camera>());
             }
 
             // Stores the camera's original position relative to its target
-            _initialOffset = _cameraTf.position - _followTf.position;
+            _initialOffset = CameraTransform.position - _followTf.position;
             // Stores the camera's initial height offset
             SetHeightOffset();
             // Sets the camera's follow speed to match the move speed of its follow target
-            _followSpeed = _followPawn.moveSpeed;
+            _followSpeed = _followPawn.MoveSpeed;
         }
         else
         {
@@ -63,37 +61,41 @@ public class SingleCameraController : CameraController
 #endif
         }
 
-        StartCoroutine(CameraFunctions());
+        StartCoroutine(AdjustCameraZoom());
     }
 
-    public override void LateUpdate()
-    {
-        if (GameManager.gm.IsGameRunning && _followTarget != null)
-        {
-            // As long as the camera has a target to follow, updates the camera's position 
-            _cameraTf.position = Vector3.MoveTowards(_cameraTf.position, _followTf.position + _initialOffset + _heightOffset,
-                _followSpeed);
-        }
-    }
-
-    // Update is called once per frame
-    public override void Update()
-    {
-    }
-
-    private IEnumerator CameraFunctions()
+    /// <summary>
+    /// Adjusts the current zoom setting of the camera
+    /// </summary>
+    /// <returns>Null.</returns>
+    private IEnumerator AdjustCameraZoom()
     {
         while (true)
         {
             if (GameManager.gm.IsGameRunning)
             {
-                // Changes the camera's zoom setting (must be in Update; FixedUpdate can skip over input changes causing unresponsiveness
                 ChangeZoomSetting(Input.GetAxis("Mouse ScrollWheel"));
             }
 
             yield return null;
         }
 
+    }
+
+    /// <summary>
+    /// Updates the camera position relative to the camera's follow target.
+    /// </summary>
+    /// <returns>Null.</returns>
+    public override IEnumerator UpdateCameraPosition()
+    {
+        if (GameManager.gm.IsGameRunning && _followTarget != null)
+        {
+            // As long as the camera has a target to follow, updates the camera's position 
+            CameraTransform.position = Vector3.MoveTowards(CameraTransform.position, _followTf.position + _initialOffset + _heightOffset,
+                _followSpeed);
+        }
+
+        yield return null;
     }
 
     /// <summary>
