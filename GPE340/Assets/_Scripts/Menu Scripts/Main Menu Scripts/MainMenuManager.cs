@@ -15,10 +15,10 @@ public class MainMenuManager : MenuManager
         SerializeField] private GameObject _optionsMenu;
 
     [Header("Player Object Groups")]
-    [SerializeField] private GameObject _p1ObjectGroup;
-    [SerializeField] private GameObject _p2ObjectGroup;
-    [SerializeField] private GameObject _p3ObjectGroup;
-    [SerializeField] private GameObject _p4ObjectGroup;
+    [SerializeField] private PlayerObjectGroupData _p1ObjectGroup;
+    [SerializeField] private PlayerObjectGroupData _p2ObjectGroup;
+    [SerializeField] private PlayerObjectGroupData _p3ObjectGroup;
+    [SerializeField] private PlayerObjectGroupData _p4ObjectGroup;
 
     [Header("Player 1 Objects")]
     [SerializeField] private GameObject _p1JoinLabel;
@@ -41,19 +41,19 @@ public class MainMenuManager : MenuManager
     [SerializeField] private GameObject _p4ReadyLabel;
 
     #region Public Properties
-    public GameObject P1ObjectGroup
+    public PlayerObjectGroupData P1ObjectGroup
     {
         get { return _p1ObjectGroup; }
     }
-    public GameObject P2ObjectGroup
+    public PlayerObjectGroupData P2ObjectGroup
     {
         get { return _p2ObjectGroup; }
     }
-    public GameObject P3ObjectGroup
+    public PlayerObjectGroupData P3ObjectGroup
     {
         get { return _p3ObjectGroup; }
     }
-    public GameObject P4ObjectGroup
+    public PlayerObjectGroupData P4ObjectGroup
     {
         get { return _p4ObjectGroup; }
     }
@@ -160,7 +160,7 @@ public class MainMenuManager : MenuManager
         switch (elementType)
         {
             case NewGameUIElementType.ObjectGroup:
-                RegisterObjectGroup(uiElement, playerNumber);
+                RegisterObjectGroup(uiElement.GetComponent<PlayerObjectGroupData>(), playerNumber);
                 break;
             case NewGameUIElementType.JoinLabel:
                 RegisterJoinLabel(uiElement, playerNumber);
@@ -177,23 +177,23 @@ public class MainMenuManager : MenuManager
     /// <summary>
     /// Registers an object group with this MainMenuManager.
     /// </summary>
-    /// <param name="uiElement">The UI element to be registered.</param>
+    /// <param name="objGroupData">The UI element to be registered.</param>
     /// <param name="playerNumber">The player number (determined by the PlayerNumber enumerator).</param>
-    private void RegisterObjectGroup(GameObject uiElement, int playerNumber)
+    private void RegisterObjectGroup(PlayerObjectGroupData objGroupData, int playerNumber)
     {
         switch (playerNumber)
         {
             case 1:
-                _p1ObjectGroup = uiElement;
+                _p1ObjectGroup = objGroupData;
                 break;
             case 2:
-                _p2ObjectGroup = uiElement;
+                _p2ObjectGroup = objGroupData;
                 break;
             case 3:
-                _p3ObjectGroup = uiElement;
+                _p3ObjectGroup = objGroupData;
                 break;
             case 4:
-                _p4ObjectGroup = uiElement;
+                _p4ObjectGroup = objGroupData;
                 break;
         }
     }

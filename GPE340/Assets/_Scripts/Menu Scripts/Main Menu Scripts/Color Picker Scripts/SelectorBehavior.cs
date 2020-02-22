@@ -93,29 +93,25 @@ public class SelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnt
         SelectorBehavior otherSelector;
         if (playerNumber != 1)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P1ColorPicker.GetComponentInParent<PlayerObjectGroupData>()
-                .colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
+            otherSelector = MainMenuManager.mainMenuMgr.P1ObjectGroup.colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
             otherSelector.DisableSelector();
         }
 
         if (playerNumber != 2)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P2ColorPicker.GetComponentInParent<PlayerObjectGroupData>()
-                .colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
+            otherSelector = MainMenuManager.mainMenuMgr.P2ObjectGroup.colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
             otherSelector.DisableSelector();
         }
 
         if (playerNumber != 3)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P3ColorPicker.GetComponentInParent<PlayerObjectGroupData>()
-                .colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
+            otherSelector = MainMenuManager.mainMenuMgr.P3ObjectGroup.colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
             otherSelector.DisableSelector();
         }
 
         if (playerNumber != 4)
         {
-            otherSelector = MainMenuManager.mainMenuMgr.P4ColorPicker.GetComponentInParent<PlayerObjectGroupData>()
-                .colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
+            otherSelector = MainMenuManager.mainMenuMgr.P4ObjectGroup.colorPickers[selectorIndex].GetComponent<SelectorBehavior>();
             otherSelector.DisableSelector();
         }
     }
@@ -166,7 +162,7 @@ public class SelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnt
 
     private void EnableSameRowSelectors()
     {
-        List<PlayerObjectGroupData> otherRowObjData = GetOtherRowObjGroups(_objGroupData.gameObject);
+        List<PlayerObjectGroupData> otherRowObjData = GetOtherRowObjGroups(_objGroupData);
 
         foreach (GameObject picker in _objGroupData.colorPickers)
         {
@@ -184,33 +180,33 @@ public class SelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnt
         }
     }
 
-    private List<PlayerObjectGroupData> GetOtherRowObjGroups(GameObject thisRowObjGroup)
+    private List<PlayerObjectGroupData> GetOtherRowObjGroups(PlayerObjectGroupData thisRowObjGroup)
     {
         List<PlayerObjectGroupData> otherRowObjGroupData = new List<PlayerObjectGroupData>();
 
         if (thisRowObjGroup == MainMenuManager.mainMenuMgr.P1ObjectGroup)
         {
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P2ObjectGroup.GetComponent<PlayerObjectGroupData>());
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P3ObjectGroup.GetComponent<PlayerObjectGroupData>());
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P4ObjectGroup.GetComponent<PlayerObjectGroupData>());
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P2ObjectGroup);
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P3ObjectGroup);
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P4ObjectGroup);
         }
         else if (thisRowObjGroup == MainMenuManager.mainMenuMgr.P2ObjectGroup)
         {
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P1ObjectGroup.GetComponent<PlayerObjectGroupData>());
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P3ObjectGroup.GetComponent<PlayerObjectGroupData>());
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P4ObjectGroup.GetComponent<PlayerObjectGroupData>());
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P1ObjectGroup);
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P3ObjectGroup);
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P4ObjectGroup);
         }
         else if (thisRowObjGroup == MainMenuManager.mainMenuMgr.P3ObjectGroup)
         {
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P1ObjectGroup.GetComponent<PlayerObjectGroupData>());
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P2ObjectGroup.GetComponent<PlayerObjectGroupData>());
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P4ObjectGroup.GetComponent<PlayerObjectGroupData>());
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P1ObjectGroup);
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P2ObjectGroup);
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P4ObjectGroup);
         }
         else if (thisRowObjGroup == MainMenuManager.mainMenuMgr.P4ObjectGroup)
         {
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P1ObjectGroup.GetComponent<PlayerObjectGroupData>());
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P2ObjectGroup.GetComponent<PlayerObjectGroupData>());
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P3ObjectGroup.GetComponent<PlayerObjectGroupData>());
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P1ObjectGroup);
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P2ObjectGroup);
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P3ObjectGroup);
         }
 
         return otherRowObjGroupData;
