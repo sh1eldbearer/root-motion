@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    /* Static Members */
     public static GameManager gm; // Singleton instance for the GameManager
 
     /* Private Properties */
@@ -25,8 +24,6 @@ public class GameManager : MonoBehaviour
     {
         get { return _totalPlayerCount; }
     }
-
-    //[Header("Game Components")]
 
     void Awake()
     {

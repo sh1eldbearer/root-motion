@@ -50,6 +50,11 @@ public class PlayerObjectGroupData : MonoBehaviour
         {
             Debug.Log($"You didn't assign all of the color selectors for color picker {this.gameObject.name}.");
         }
-#endif 
+#endif
+
+        foreach (ColorSelectorBehavior selector in colorSelectors)
+        {
+            selector.SetObjGroupData(this);
+        }
     }
 }

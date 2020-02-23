@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    private GameObject _selectorBox; // The selector box associated with this color swatch
+    [SerializeField] private GameObject _selectorBox; // The selector box associated with this color swatch
                                      // (Automatically assigns itself at runtime from RegisterColorSelectorBox)1444
-    private PlayerObjectGroupData _objGroupData;
-    private Image _image;
+    [SerializeField] private PlayerObjectGroupData _objGroupData;
+    [SerializeField] private Image _image;
     private bool _selectable = true;
     private bool _selected = false;
 
@@ -24,10 +24,6 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
 
     public void Start()
     {
-        // Component reference assignments
-        _objGroupData = this.transform.GetComponentInParent<PlayerObjectGroupData>();
-        _image = this.gameObject.GetComponent<Image>();
-
         _image.color = SkinManager.skinMgr.GetRGBColor(_objGroupData.colorSelectors.IndexOf(this));
     }
 
@@ -148,7 +144,7 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
     {
         foreach (ColorSelectorBehavior picker in _objGroupData.colorSelectors )
         {
-            if (picker != this.gameObject)
+            if (picker != this)
             {
                 picker.DisableSelector();
             }
@@ -205,5 +201,10 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
         }
 
         return otherRowObjGroupData;
+    }
+
+    public void SetObjGroupData(PlayerObjectGroupData objGroupData)
+    {
+        _objGroupData = objGroupData;
     }
 }

@@ -105,6 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c5c9bff74dd214b813654d44c9bed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectorBox: {fileID: 7220591016811745823}
+  _objGroupData: {fileID: 0}
+  _image: {fileID: 7220591017805292506}
 --- !u!1001 &7064192849958888272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -222,8 +225,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1662821899, guid: 5c9b51c046d41bd4989a0dde98faaacd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5c9b51c046d41bd4989a0dde98faaacd, type: 3}
+--- !u!1 &7220591016811745823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 449723062705172815, guid: 5c9b51c046d41bd4989a0dde98faaacd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7064192849958888272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7220591016811745808 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 449723062705172800, guid: 5c9b51c046d41bd4989a0dde98faaacd,

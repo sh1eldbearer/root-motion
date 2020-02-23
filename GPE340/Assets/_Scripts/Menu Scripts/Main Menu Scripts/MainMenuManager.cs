@@ -90,147 +90,9 @@ public class MainMenuManager : MenuManager
     public override void Start()
     {
         // TODO: Properly configure this
-        switch (GameManager.gm.TotalPlayerCount)
-        {
-            case 0:
-                break;
-            case 1:
-                ShowColorPicker(PlayerNumber.P1);
-                ShowColorPicker(PlayerNumber.P2);
-                ShowColorPicker(PlayerNumber.P3);
-                ShowColorPicker(PlayerNumber.P4);
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-            case 4:
-
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Registers a UI element with this MainMenuManager.
-    /// </summary>
-    /// <param name="uiElement">The UI element to be registered.</param>
-    /// <param name="playerNumber">The player number (determined by the PlayerNumber enumerator).</param>
-    /// <param name="elementType">The type of element being registered.</param>
-    public void RegisterUIElement(GameObject uiElement, int playerNumber, NewGameUIElementType elementType)
-    {
-        switch (elementType)
-        {
-            case NewGameUIElementType.ObjectGroup:
-                RegisterObjectGroup(uiElement.GetComponent<PlayerObjectGroupData>(), playerNumber);
-                break;
-            case NewGameUIElementType.JoinLabel:
-                RegisterJoinLabel(uiElement, playerNumber);
-                break;
-            case NewGameUIElementType.ColorPicker:
-                RegisterColorPicker(uiElement, playerNumber);
-                break;
-            case NewGameUIElementType.ReadyLabel:
-                RegisterReadyLabel(uiElement, playerNumber);
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Registers an object group with this MainMenuManager.
-    /// </summary>
-    /// <param name="objGroupData">The PlayerObjectGroupData component of the UI element to be registered.</param>
-    /// <param name="playerNumber">The player number (determined by the PlayerNumber enumerator).</param>
-    private void RegisterObjectGroup(PlayerObjectGroupData objGroupData, int playerNumber)
-    {
-        switch (playerNumber)
-        {
-            case 1:
-                _p1ObjectGroup = objGroupData;
-                break;
-            case 2:
-                _p2ObjectGroup = objGroupData;
-                break;
-            case 3:
-                _p3ObjectGroup = objGroupData;
-                break;
-            case 4:
-                _p4ObjectGroup = objGroupData;
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Registers a join label with this MainMenuManager.
-    /// </summary>
-    /// <param name="uiElement">The UI element to be registered.</param>
-    /// <param name="playerNumber">The player number (determined by the PlayerNumber enumerator).</param>
-    private void RegisterJoinLabel(GameObject uiElement, int playerNumber)
-    {
-        switch (playerNumber)
-        {
-            case 1:
-                _p1JoinLabel = uiElement;
-                break;
-            case 2:
-                _p2JoinLabel = uiElement;
-                break;
-            case 3:
-                _p3JoinLabel = uiElement;
-                break;
-            case 4:
-                _p4JoinLabel = uiElement;
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Registers a color picker with this MainMenuManager.
-    /// </summary>
-    /// <param name="uiElement">The UI element to be registered.</param>
-    /// <param name="playerNumber">The player number (determined by the PlayerNumber enumerator).</param>
-    private void RegisterColorPicker(GameObject uiElement, int playerNumber)
-    {
-        switch (playerNumber)
-        {
-            case 1:
-                _p1ColorPicker = uiElement;
-                break;
-            case 2:
-                _p2ColorPicker = uiElement;
-                break;
-            case 3:
-                _p3ColorPicker = uiElement;
-                break;
-            case 4:
-                _p4ColorPicker = uiElement;
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Registers a ready label with this MainMenuManager.
-    /// </summary>
-    /// <param name="uiElement">The UI element to be registered.</param>
-    /// <param name="playerNumber">The player number (determined by the PlayerNumber enumerator).</param>
-    private void RegisterReadyLabel(GameObject uiElement, int playerNumber)
-    {
-        switch (playerNumber)
-        {
-            case 1:
-                _p1ReadyLabel = uiElement;
-                break;
-            case 2:
-                _p2ReadyLabel = uiElement;
-                break;
-            case 3:
-                _p3ReadyLabel = uiElement;
-                break;
-            case 4:
-                _p4ReadyLabel = uiElement;
-                break;
-        }
+        
+        _newGameMenu.SetActive(false);
+        _optionsMenu.SetActive(false);
     }
 
     /// <summary>
@@ -255,9 +117,9 @@ public class MainMenuManager : MenuManager
         if (_newGameMenu.activeInHierarchy)
         {
             // Get the appropriate game objects for this operation
-            GameObject joinLabel = ReflectGameObject($"{player.ToString()}JoinLabel");
-            GameObject colorPicker = ReflectGameObject($"{player.ToString()}ColorPicker");
-            GameObject readyLabel = ReflectGameObject($"{player.ToString()}ReadyLabel");
+            GameObject joinLabel = ReflectGameObject($"_{player.ToString().ToLower()}JoinLabel");
+            GameObject colorPicker = ReflectGameObject($"_{player.ToString().ToLower()}ColorPicker");
+            GameObject readyLabel = ReflectGameObject($"_{player.ToString().ToLower()}ReadyLabel");
 
             // Show the desired UI element and hide the undesired ones
             joinLabel.SetActive(true);
@@ -277,9 +139,9 @@ public class MainMenuManager : MenuManager
         if (_newGameMenu.activeInHierarchy)
         {
             // Get the appropriate game objects for this operation
-            GameObject joinLabel = ReflectGameObject($"{player.ToString()}JoinLabel");
-            GameObject colorPicker = ReflectGameObject($"{player.ToString()}ColorPicker");
-            GameObject readyLabel = ReflectGameObject($"{player.ToString()}ReadyLabel");
+            GameObject joinLabel = ReflectGameObject($"_{player.ToString().ToLower()}JoinLabel");
+            GameObject colorPicker = ReflectGameObject($"_{player.ToString().ToLower()}ColorPicker");
+            GameObject readyLabel = ReflectGameObject($"_{player.ToString().ToLower()}ReadyLabel");
 
             // Show the desired UI element and hide the undesired ones
             joinLabel.SetActive(false);
@@ -299,9 +161,9 @@ public class MainMenuManager : MenuManager
         if (_newGameMenu.activeInHierarchy)
         {
             // Get the appropriate game objects for this operation
-            GameObject joinLabel = ReflectGameObject($"{player.ToString()}JoinLabel");
-            GameObject colorPicker = ReflectGameObject($"{player.ToString()}ColorPicker");
-            GameObject readyLabel = ReflectGameObject($"{player.ToString()}ReadyLabel");
+            GameObject joinLabel = ReflectGameObject($"_{player.ToString().ToLower()}JoinLabel");
+            GameObject colorPicker = ReflectGameObject($"_{player.ToString().ToLower()}ColorPicker");
+            GameObject readyLabel = ReflectGameObject($"_{player.ToString().ToLower()}ReadyLabel");
 
             // Show the desired UI element and hide the undesired ones
             joinLabel.SetActive(false);
