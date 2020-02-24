@@ -14,6 +14,9 @@ public class MainMenuManager : MenuManager
         SerializeField] private GameObject _newGameMenu;
     [Tooltip("The GameObject containing the panel for the main menu's options menu."), 
         SerializeField] private GameObject _optionsMenu;
+    [Tooltip("The GameObject containing the panel for the main menu's credits menu."), 
+        SerializeField] private GameObject _creditsMenu;
+
 
     [Header("Player Object Groups")]
     [SerializeField] private PlayerObjectGroupData _p1ObjectGroup;

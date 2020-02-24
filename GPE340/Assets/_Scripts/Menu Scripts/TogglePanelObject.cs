@@ -8,7 +8,7 @@ public class TogglePanelObject : MonoBehaviour
     [Tooltip("The menu panel this button should enable."), 
         SerializeField] private GameObject panelToEnable;
     [Tooltip("The menu panel this button should disable."), 
-        SerializeField] private GameObject panelToDisable;
+        SerializeField] private List<GameObject> panelsToDisable;
 
     /// <summary>
     /// Toggles the panel as visible or invisible
@@ -16,6 +16,9 @@ public class TogglePanelObject : MonoBehaviour
     public void TogglePanel()
     {
         panelToEnable.SetActive(true);
-        panelToDisable.SetActive(false);
+        foreach (GameObject panel in panelsToDisable)
+        {
+            panel.SetActive(false);
+        }
     }
 }
