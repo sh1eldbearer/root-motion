@@ -17,6 +17,8 @@ public class PlayerController :  AgentController
     public override void Start()
     {
         base.Start();
+        //AgentData.AgentAnimator.avatar = 
+
         StartCoroutine(Move());
         // TODO: When multiplayer is working, change this to point to the appropriate camera
         StartCoroutine(HandleRotation(AgentData.AgentCamera));

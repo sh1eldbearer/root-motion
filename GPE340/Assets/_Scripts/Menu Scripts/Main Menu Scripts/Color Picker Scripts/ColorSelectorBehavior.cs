@@ -34,14 +34,14 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
         if (IsSelected)
         {
             _selected = false;
-            SkinManager.skinMgr.skinColors[index].SetSelected(false);
+            SkinManager.skinMgr.SkinColors(index).SetSelected(false);
             EnableSameRowSelectors();
             EnableSameColorSelectors(_objGroupData.colorSelectors.IndexOf((this)));
         }
         else
         {
             _selected = true;
-            SkinManager.skinMgr.skinColors[index].SetSelected(true);
+            SkinManager.skinMgr.SkinColors(index).SetSelected(true);
             DisableSameRowSelectors();
             DisableSameColorSelectors(_objGroupData.colorSelectors.IndexOf(this));
         }
@@ -71,14 +71,14 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
     private void DisableSelector()
     {
         _selectable = false;
-        _image.color = SkinManager.skinMgr.skinColors[0].color;
+        _image.color = SkinManager.skinMgr.SkinColors(0).Color;
         _selectorBox.SetActive(false);
     }
 
     private void EnableSelector()
     {
         _selectable = true;
-        _image.color = SkinManager.skinMgr.skinColors[_objGroupData.colorSelectors.IndexOf(this) + 1].color;
+        _image.color = SkinManager.skinMgr.SkinColors(_objGroupData.colorSelectors.IndexOf(this) + 1).Color;
         _selectorBox.SetActive(false);
     }
 

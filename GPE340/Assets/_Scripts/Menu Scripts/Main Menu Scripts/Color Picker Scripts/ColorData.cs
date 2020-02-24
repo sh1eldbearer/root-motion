@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 public enum ColorNames
@@ -17,14 +18,70 @@ public enum ColorNames
 [Serializable]
 public struct ColorData
 {
-    [Tooltip("The name of this color.")] public ColorNames name;
-    [Tooltip("The RGB value associated with this color. (Used for UI display.)")] public UnityEngine.Color color;
-    [Tooltip("The character model to use when this color is selected by a player.")] public GameObject model;
-    [Tooltip("The avatar for this character model.")] public Avatar modelAvatar;
-    [Tooltip("Whether or not this skin color has been selected by a player.")] public bool isSelected;
+    #region Private Properties
+    [Tooltip("The name of this color."),
+     SerializeField]
+    private ColorNames _name;
+    [Tooltip("The RGB value associated with this color. (Used for UI display.)"),
+     SerializeField]
+    private Color _color;
+    [Tooltip("The character model to use when this color is selected by a player."),
+     SerializeField]
+    private GameObject _model;
+    [Tooltip("The avatar for this character model."),
+     SerializeField]
+    private Avatar _modelAvatar;
+    [Tooltip("Whether or not this skin color has been selected by a player."),
+     SerializeField]
+    private bool _isSelected;
+    #endregion
+
+    #region Public Properties
+    /// <summary>
+    /// The name of this color.
+    /// </summary>
+    public ColorNames Name
+    {
+        get { return _name; }
+    }
+
+    /// <summary>
+    /// The RGB value associated with this color. (Used for UI display.)
+    /// </summary>
+    public Color Color
+    {
+        get { return _color; }
+    }
+
+    /// <summary>
+    /// The character model to use when this color is selected by a player.
+    /// </summary>
+    public GameObject Model
+    {
+        get { return _model; }
+    }
+
+    /// <summary>
+    /// The avatar for this character model.
+    /// </summary>
+    public Avatar ModelAvatar
+    {
+        get { return _modelAvatar; }
+    }
+
+    /// <summary>
+    /// Whether or not this skin color has been selected by a player.
+    /// </summary>
+    public bool IsSelected
+    {
+        get { return _isSelected; }
+    }
+
+    #endregion
+
 
     public void SetSelected(bool isSelected)
     {
-        this.isSelected = isSelected;
+        this._isSelected = isSelected;
     }
 }

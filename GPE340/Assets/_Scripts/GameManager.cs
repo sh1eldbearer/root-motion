@@ -2,17 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager gm; // Singleton instance for the GameManager
 
-    /* Private Properties */
+    #region Private Properties
     [Header("Current Game State")]
     [SerializeField] private bool _isGameRunning;
     [SerializeField, Range(0, 4)] private int _totalPlayerCount = 1;
-    [SerializeField] private Camera _currentActiveCamera;
+    [Tooltip("The currently active camera rendering the game."), 
+        SerializeField] private Camera _currentActiveCamera;
+
+    [Header("Current Player Information")]
+    private PlayerData[] players = new PlayerData[4];
+    #endregion
 
     /* Public Properties */
     public bool IsGameRunning
@@ -46,7 +52,7 @@ public class GameManager : MonoBehaviour
 
         // Marks the game as running when I run the main game scene directly from the editor
 #if UNITY_EDITOR
-        if (SceneManager.GetActiveScene().name == "MainGame")
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             UnpauseGame();
         }
@@ -56,7 +62,7 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // TODO: Expand functionality to make this setting change between game scenes and non-game scenes
-        if (scene.name == "MainGame")
+        if (scene.buildIndex == 1)
         {
             _isGameRunning = true;
         }

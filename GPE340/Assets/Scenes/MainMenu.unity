@@ -858,12 +858,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
-      propertyPath: gameIsRunning
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1299789971, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
 --- !u!1 &294705343
 GameObject:
@@ -1668,70 +1663,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902981936}
   m_CullTransparentMesh: 0
---- !u!1 &914060667 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7286150354306523289, guid: 6fec9a87164869f47a793466bba5991d,
-    type: 3}
-  m_PrefabInstance: {fileID: 274655200}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &914060668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914060667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f093da1afdf3bb844a66ad9a94053005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinColors:
-  - name: 0
-    color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
-    model: {fileID: -927199367670048503, guid: 001aec18ed4d8cc4f91fdd0911f335e5, type: 3}
-    modelAvatar: {fileID: 9000000, guid: 001aec18ed4d8cc4f91fdd0911f335e5, type: 3}
-    isSelected: 0
-  - name: 1
-    color: {r: 1, g: 0, b: 0.882353, a: 1}
-    model: {fileID: -927199367670048503, guid: df157f5a572533b4380de26246120b5d, type: 3}
-    modelAvatar: {fileID: 9000000, guid: df157f5a572533b4380de26246120b5d, type: 3}
-    isSelected: 0
-  - name: 2
-    color: {r: 0.9686275, g: 0, b: 0, a: 1}
-    model: {fileID: -927199367670048503, guid: c872477227f05714f8d2d0878e87dfa5, type: 3}
-    modelAvatar: {fileID: 9000000, guid: c872477227f05714f8d2d0878e87dfa5, type: 3}
-    isSelected: 0
-  - name: 3
-    color: {r: 0.8470589, g: 0.5176471, b: 0, a: 1}
-    model: {fileID: -927199367670048503, guid: 5eefb6ba80eec0247a7a5f85403ffb53, type: 3}
-    modelAvatar: {fileID: 9000000, guid: 5eefb6ba80eec0247a7a5f85403ffb53, type: 3}
-    isSelected: 0
-  - name: 4
-    color: {r: 1, g: 0.78823537, b: 0, a: 1}
-    model: {fileID: -927199367670048503, guid: 74a0ec319e72e2741b0ba2d0d28b7404, type: 3}
-    modelAvatar: {fileID: 9000000, guid: 74a0ec319e72e2741b0ba2d0d28b7404, type: 3}
-    isSelected: 0
-  - name: 5
-    color: {r: 0, g: 0.69803923, b: 0.09411766, a: 1}
-    model: {fileID: -927199367670048503, guid: a798b76cece0035458931c3f121356a3, type: 3}
-    modelAvatar: {fileID: 9000000, guid: a798b76cece0035458931c3f121356a3, type: 3}
-    isSelected: 0
-  - name: 6
-    color: {r: 0, g: 1, b: 1, a: 1}
-    model: {fileID: -927199367670048503, guid: 051e9b0262d3c6246aa2b36c5b518754, type: 3}
-    modelAvatar: {fileID: 9000000, guid: 051e9b0262d3c6246aa2b36c5b518754, type: 3}
-    isSelected: 0
-  - name: 7
-    color: {r: 0, g: 0, b: 1, a: 1}
-    model: {fileID: -927199367670048503, guid: aa224226556cc2646a93e26379e737e7, type: 3}
-    modelAvatar: {fileID: 9000000, guid: aa224226556cc2646a93e26379e737e7, type: 3}
-    isSelected: 0
-  - name: 8
-    color: {r: 0.5529412, g: 0, b: 1, a: 1}
-    model: {fileID: -927199367670048503, guid: 77090f48e984c4149b90ed355f5f4c54, type: 3}
-    modelAvatar: {fileID: 9000000, guid: 77090f48e984c4149b90ed355f5f4c54, type: 3}
-    isSelected: 0
 --- !u!114 &931019723 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 862001976596880853, guid: 9674eea9a1b62874aa38072c940a29f3,
