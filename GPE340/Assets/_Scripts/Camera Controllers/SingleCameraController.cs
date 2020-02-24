@@ -107,7 +107,7 @@ public class SingleCameraController : CameraController
     /// Changes the camera's zoom setting, allowing players to zoom their camera in or out to their preference.
     /// </summary>
     /// <param name="axisValue">The value of the input axis assigned to camera zoom.</param>
-    /// <returns>Returns the current zoom setting value, or zero if the value was unchanged</returns>
+    /// <returns>Returns the current zoom setting value, or zero if the value was unchanged.</returns>
     private int ChangeZoomSetting(float axisValue)
     {
         if (axisValue == 0f)
@@ -115,12 +115,12 @@ public class SingleCameraController : CameraController
             return 0;
         }
 
-        if (axisValue > 0)
+        if (axisValue < 0)
         {
             _zoomSetting =
                 Mathf.Clamp(_zoomSetting + 1, MIN_OFFSET_HEIGHT_SETTING, MAX_OFFSET_HEIGHT_SETTING);
         }
-        else if (axisValue < 0)
+        else if (axisValue > 0)
         {
             _zoomSetting =
                     Mathf.Clamp(_zoomSetting - 1, MIN_OFFSET_HEIGHT_SETTING, MAX_OFFSET_HEIGHT_SETTING);
