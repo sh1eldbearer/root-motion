@@ -33,7 +33,7 @@ public struct ColorData
     private Avatar _modelAvatar;
     [Tooltip("Whether or not this skin color has been selected by a player."),
      SerializeField]
-    private bool _isSelected;
+    private bool _selected;
     #endregion
 
     #region Public Properties
@@ -74,14 +74,17 @@ public struct ColorData
     /// </summary>
     public bool IsSelected
     {
-        get { return _isSelected; }
+        get { return _selected; }
     }
 
     #endregion
 
-
+    /// <summary>
+    /// Sets whether or not this color has been selected by a player.
+    /// </summary>
+    /// <param name="isSelected"></param>
     public void SetSelected(bool isSelected)
     {
-        this._isSelected = isSelected;
+        this._selected = isSelected;
     }
 }

@@ -16,26 +16,9 @@ public class SkinManager : MonoBehaviour
     /// </summary>
     /// <returns>The array of ColorData objects containing information about the different skin colors available
     /// to players.</returns>
-    public ColorData[] SkinColors()
+    public ColorData[] SkinColors
     {
-        return skinColors;
-    }
-
-    /// <summary>
-    /// An array of objects containing information about the different skin colors available to players.
-    /// </summary>
-    /// <param name="index">The index of the specific element you wish to access</param>
-    /// <returns></returns>
-    public ColorData SkinColors(int index)
-    {
-        if (index >= 0 && index < skinColors.Length)
-        {
-            return skinColors[index];
-        }
-        else
-        {
-            throw new IndexOutOfRangeException();
-        }
+        get { return skinColors; }
     }
     #endregion
 
@@ -46,19 +29,6 @@ public class SkinManager : MonoBehaviour
         if (skinMgr == null)
         {
             skinMgr = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
-
-    // Start is called before the first frame update
-    public void Start()
-    {
-        if (SkinManager.skinMgr == null)
-        {
-            SkinManager.skinMgr = this;
         }
         else
         {

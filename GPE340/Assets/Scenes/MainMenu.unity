@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 2
-  colorSelectors:
+  _colorSelectors:
   - {fileID: 2016506739}
   - {fileID: 1866566979}
   - {fileID: 212831508}
@@ -1013,6 +1013,7 @@ MonoBehaviour:
   - {fileID: 995879200}
   - {fileID: 1835520453}
   - {fileID: 2111441304}
+  selectedIndex: -1
 --- !u!1 &377801075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1855,7 +1856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 4
-  colorSelectors:
+  _colorSelectors:
   - {fileID: 2060676538}
   - {fileID: 1034416532}
   - {fileID: 305357743}
@@ -1864,6 +1865,7 @@ MonoBehaviour:
   - {fileID: 120539063}
   - {fileID: 1152987368}
   - {fileID: 1721809269}
+  selectedIndex: -1
 --- !u!1 &1084967346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 1
-  colorSelectors:
+  _colorSelectors:
   - {fileID: 1180670666}
   - {fileID: 1257393664}
   - {fileID: 1633780566}
@@ -2076,6 +2078,7 @@ MonoBehaviour:
   - {fileID: 1210306188}
   - {fileID: 1736802164}
   - {fileID: 189850793}
+  selectedIndex: -1
 --- !u!1 &1111563851
 GameObject:
   m_ObjectHideFlags: 0
@@ -4386,7 +4389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 3
-  colorSelectors:
+  _colorSelectors:
   - {fileID: 564631222}
   - {fileID: 1156690098}
   - {fileID: 590366025}
@@ -4395,6 +4398,7 @@ MonoBehaviour:
   - {fileID: 1010523505}
   - {fileID: 1937106201}
   - {fileID: 129782995}
+  selectedIndex: -1
 --- !u!114 &2060676538 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2190113715690461419, guid: 9674eea9a1b62874aa38072c940a29f3,

@@ -17,24 +17,43 @@ public enum PlayerNumber
 
 public class PlayerObjectGroupData : MonoBehaviour
 {
-    /* Private Properties */
-    [Tooltip("The player number this color picker is assigned to"),
+    #region Private Properties
+    [Tooltip("The player number this color picker is assigned to."),
         SerializeField] private PlayerNumber _playerNumber;
+    [Tooltip("The color selectors that are children of this color picker. " +
+         "(REMINDER: A picker's index in this list is 1 less than its index in the ColorNames enum)"), 
+        SerializeField] private List<ColorSelectorBehavior> _colorSelectors = new List<ColorSelectorBehavior>(8);
+    [Tooltip(""),
+        SerializeField] private int _selectedIndex = -1;
+    #endregion
 
-    /* Public Properties */
-    public PlayerNumber PlayerNumberEnum // Returns the player number as an enumerator value
+
+
+    #region Public Properties
+    /// <summary>
+    /// The player number this color picker is assigned to.
+    /// </summary>
+    public PlayerNumber PlayerNumber
     {
         get { return _playerNumber; }
     }
 
-    public int PlayerNumber // Returns the player number as the enumerator's corresponding integer value
+    /// <summary>
+    /// The color selectors that are children of this color picker. (REMINDER: A picker's index in this list
+    /// is 1 less than its index in the ColorNames enum!)
+    /// </summary>
+    /// <returns>A list of the color selectors that are children of this color picker.c</returns>
+    public List<ColorSelectorBehavior> ColorSelectors
     {
-        get { return (int)(Convert.ChangeType(_playerNumber, _playerNumber.GetTypeCode())); }
+        get { return _colorSelectors; }
     }
 
-    [Tooltip("The color selectors that are children of this color picker. " +
-             "(REMINDER: A picker's index in this list is 1 less than its index in the ColorNames enum)")]
-    public List<ColorSelectorBehavior> colorSelectors;
+    public int SelectedIndex
+    {
+        get { return _selectedIndex; }
+    }
+    #endregion
+
 
     public void Awake()
     {
@@ -46,15 +65,32 @@ public class PlayerObjectGroupData : MonoBehaviour
         }
 
         // Yells at me if I didn't assign all of the color selectors, but only in the editor
-        if (colorSelectors.Count < 8)
+        if (_colorSelectors.Count < 8)
         {
             Debug.Log($"You didn't assign all of the color selectors for color picker {this.gameObject.name}.");
         }
 #endif
 
-        foreach (ColorSelectorBehavior selector in colorSelectors)
+        foreach (ColorSelectorBehavior selector in _colorSelectors)
         {
             selector.SetObjGroupData(this);
         }
+    }
+
+    public void SetSelectedIndex(int newIndex)
+    {
+        if (newIndex >= 0 || newIndex < _colorSelectors.Count)
+        {
+            _selectedIndex = newIndex;
+        }
+        else
+        {
+            throw new ArgumentOutOfRangeException($"The provided index must be between 0 and {_colorSelectors.Count - 1}.");
+        }
+    }
+
+    public void ClearSelectedIndex()
+    {
+        _selectedIndex = -1;
     }
 }
