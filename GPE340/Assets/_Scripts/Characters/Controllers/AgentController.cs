@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))] 
+[RequireComponent(typeof(Animator), typeof(AgentData))]
 public abstract class AgentController : MonoBehaviour
 {
     /// <summary>

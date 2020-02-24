@@ -3,7 +3,16 @@ using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerController :  AgentController
-{ 
+{
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="model">The character model to attach to this player agent.</param>
+    public PlayerController(GameObject model)
+    {
+        Instantiate(model, this.transform);
+    }
+
     // Start is called before the first frame update
     public override void Start()
     {

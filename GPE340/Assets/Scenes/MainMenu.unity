@@ -1463,39 +1463,48 @@ MonoBehaviour:
   skinColors:
   - name: 0
     color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
-    model: {fileID: 0}
+    model: {fileID: -927199367670048503, guid: 001aec18ed4d8cc4f91fdd0911f335e5, type: 3}
+    modelAvatar: {fileID: 9000000, guid: 001aec18ed4d8cc4f91fdd0911f335e5, type: 3}
     isSelected: 0
   - name: 1
     color: {r: 1, g: 0, b: 0.882353, a: 1}
-    model: {fileID: 0}
+    model: {fileID: -927199367670048503, guid: df157f5a572533b4380de26246120b5d, type: 3}
+    modelAvatar: {fileID: 9000000, guid: df157f5a572533b4380de26246120b5d, type: 3}
     isSelected: 0
   - name: 2
     color: {r: 0.9686275, g: 0, b: 0, a: 1}
-    model: {fileID: 0}
+    model: {fileID: -927199367670048503, guid: c872477227f05714f8d2d0878e87dfa5, type: 3}
+    modelAvatar: {fileID: 9000000, guid: c872477227f05714f8d2d0878e87dfa5, type: 3}
     isSelected: 0
   - name: 3
     color: {r: 0.8470589, g: 0.5176471, b: 0, a: 1}
-    model: {fileID: 0}
+    model: {fileID: -927199367670048503, guid: 5eefb6ba80eec0247a7a5f85403ffb53, type: 3}
+    modelAvatar: {fileID: 9000000, guid: 5eefb6ba80eec0247a7a5f85403ffb53, type: 3}
     isSelected: 0
   - name: 4
     color: {r: 1, g: 0.78823537, b: 0, a: 1}
-    model: {fileID: 0}
+    model: {fileID: -927199367670048503, guid: 74a0ec319e72e2741b0ba2d0d28b7404, type: 3}
+    modelAvatar: {fileID: 9000000, guid: 74a0ec319e72e2741b0ba2d0d28b7404, type: 3}
     isSelected: 0
   - name: 5
     color: {r: 0, g: 0.69803923, b: 0.09411766, a: 1}
-    model: {fileID: 0}
+    model: {fileID: -927199367670048503, guid: a798b76cece0035458931c3f121356a3, type: 3}
+    modelAvatar: {fileID: 9000000, guid: a798b76cece0035458931c3f121356a3, type: 3}
     isSelected: 0
   - name: 6
     color: {r: 0, g: 1, b: 1, a: 1}
-    model: {fileID: 0}
+    model: {fileID: -927199367670048503, guid: 051e9b0262d3c6246aa2b36c5b518754, type: 3}
+    modelAvatar: {fileID: 9000000, guid: 051e9b0262d3c6246aa2b36c5b518754, type: 3}
     isSelected: 0
   - name: 7
     color: {r: 0, g: 0, b: 1, a: 1}
-    model: {fileID: 0}
+    model: {fileID: -927199367670048503, guid: aa224226556cc2646a93e26379e737e7, type: 3}
+    modelAvatar: {fileID: 9000000, guid: aa224226556cc2646a93e26379e737e7, type: 3}
     isSelected: 0
   - name: 8
     color: {r: 0.5529412, g: 0, b: 1, a: 1}
-    model: {fileID: 0}
+    model: {fileID: -927199367670048503, guid: 77090f48e984c4149b90ed355f5f4c54, type: 3}
+    modelAvatar: {fileID: 9000000, guid: 77090f48e984c4149b90ed355f5f4c54, type: 3}
     isSelected: 0
 --- !u!114 &931019723 stripped
 MonoBehaviour:

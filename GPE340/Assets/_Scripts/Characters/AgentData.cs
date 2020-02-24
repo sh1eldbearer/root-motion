@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class AgentData : MonoBehaviour
 {
     [Tooltip("The movement speed of this agent."),
@@ -21,6 +20,8 @@ public class AgentData : MonoBehaviour
         SerializeField] private Animator _agentAnimator;
     [Tooltip("The camera that will be following this agent's movements."),
         SerializeField] private CameraController _agentCamera;
+
+
     #endregion
 
     #region Public Properties
@@ -77,7 +78,7 @@ public class AgentData : MonoBehaviour
         // Component reference assignments
         _controller = this.gameObject.GetComponent<AgentController>();
         _agentTransform = this.gameObject.GetComponent<Transform>();
-        _agentAnimator = this.gameObject.GetComponent<Animator>();
+        _agentAnimator = this.gameObject.GetComponentInChildren<Animator>();
     }
 
     /// <summary>

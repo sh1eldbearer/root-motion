@@ -20,6 +20,7 @@ public struct ColorData
     [Tooltip("The name of this color.")] public ColorNames name;
     [Tooltip("The RGB value associated with this color. (Used for UI display.)")] public UnityEngine.Color color;
     [Tooltip("The character model to use when this color is selected by a player.")] public GameObject model;
+    [Tooltip("The avatar for this character model.")] public Avatar modelAvatar;
     [Tooltip("Whether or not this skin color has been selected by a player.")] public bool isSelected;
 
     public void SetSelected(bool isSelected)
