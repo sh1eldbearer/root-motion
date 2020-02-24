@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class AgentData : MonoBehaviour
 {
+    [Tooltip("The movement speed of this agent."),
+     SerializeField]
+    private float _moveSpeed = 7f;
+    [Tooltip("The turning speed of this agent."),
+     SerializeField]
+    private float _turnSpeed = 720f;
+
     #region Private Properties
     [Space, Tooltip("This agent's controller."),
         SerializeField] private AgentController _controller;
@@ -11,11 +19,29 @@ public class AgentData : MonoBehaviour
         SerializeField] private Transform _agentTransform;
     [Tooltip("This agent's Animator component."),
         SerializeField] private Animator _agentAnimator;
-    [Space, Tooltip("The camera that will be following this agent's movements."),
+    [Tooltip("The camera that will be following this agent's movements."),
         SerializeField] private CameraController _agentCamera;
     #endregion
 
     #region Public Properties
+    /// <summary>
+    /// The movement speed of this agent.
+    /// </summary>
+    public float MoveSpeed
+    {
+        get { return _moveSpeed; }
+        protected set { _moveSpeed = value; }
+    }
+
+    /// <summary>
+    /// The turn speed of this agent.
+    /// </summary>
+    public float TurnSpeed
+    {
+        get { return _turnSpeed; }
+        protected set { _turnSpeed = value; }
+    }
+
     /// <summary>
     /// This agent's controller.
     /// </summary>
@@ -59,9 +85,9 @@ public class AgentData : MonoBehaviour
     /// </summary>
     /// <param name="camera">The camera that should follow this agent.</param>
     /// <returns>The camera that is assigned to follow this agent (for debugging purposes.)</returns>
-    public CameraController AssignCamera(Camera camera)
+    public CameraController AssignCameraController(CameraController camera)
     {
-        _agentCamera = camera.GetComponent<CameraController>();
+        _agentCamera = camera;
         return _agentCamera;
     }
 }

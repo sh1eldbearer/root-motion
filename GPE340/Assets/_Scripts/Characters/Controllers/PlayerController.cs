@@ -10,7 +10,7 @@ public class PlayerController :  AgentController
         base.Start();
         StartCoroutine(Move());
         // TODO: When multiplayer is working, change this to point to the appropriate camera
-        StartCoroutine(HandleRotation(AgentCamera));
+        StartCoroutine(HandleRotation(AgentData.AgentCamera));
     }
 
     /// <summary>
@@ -18,7 +18,7 @@ public class PlayerController :  AgentController
     /// </summary>
     /// <returns>The vector the player is moving toward, in local space, if the game is not paused.
     /// Returns null otherwise. </returns>
-    public IEnumerator Move()
+    public override IEnumerator Move()
     {
         while (true)
         {
@@ -47,12 +47,13 @@ public class PlayerController :  AgentController
                 }
 
                 // Pass values from the input controller into the animator to generate movement
-                AgentAnimator.SetFloat("Horizontal", localMoveVector.x * MoveSpeed);
-                AgentAnimator.SetFloat("Vertical", localMoveVector.z * MoveSpeed);
+                AgentData.AgentAnimator.SetFloat("Horizontal", localMoveVector.x * AgentData.MoveSpeed);
+                AgentData.AgentAnimator.SetFloat("Vertical", localMoveVector.z *AgentData.MoveSpeed);
 
-                StartCoroutine(AgentCamera.UpdateCameraPosition());
+                StartCoroutine(AgentData.AgentCamera.UpdateCameraPosition());
                 yield return localMoveVector;
             }
+
             yield return null;
         }
     }
@@ -71,7 +72,7 @@ public class PlayerController :  AgentController
             while (GameManager.gm.IsGameRunning)
             {
                 // Create a plane object for the plane the player is standing on
-                Plane groundPlane = new Plane(Vector3.up, AgentTransform.position);
+                Plane groundPlane = new Plane(Vector3.up, AgentData.AgentTransform.position);
 
                 // Create a ray from camera through the mouse position in the direction the camera is facing
                 if (activeCamera != null)
@@ -88,9 +89,9 @@ public class PlayerController :  AgentController
 
                         // Get the rotation needed for the player to look at that point
                         Quaternion targetRotation =
-                            Quaternion.LookRotation(collisionPoint - AgentTransform.position, AgentTransform.up);
-                        AgentTransform.rotation = Quaternion.RotateTowards(AgentTransform.rotation, targetRotation,
-                            TurnSpeed * Time.deltaTime);
+                            Quaternion.LookRotation(collisionPoint - AgentData.AgentTransform.position, AgentData.AgentTransform.up);
+                        AgentData.AgentTransform.rotation = Quaternion.RotateTowards(AgentData.AgentTransform.rotation, targetRotation,
+                            AgentData.TurnSpeed * Time.deltaTime);
                         yield return collisionPoint;
                     }
                     else
@@ -98,7 +99,10 @@ public class PlayerController :  AgentController
                         Debug.LogError("Camera is not looking at plane");
                         yield return Vector3.negativeInfinity;
                     }
+
                 }
+
+                yield return null;
             }
 
             yield return null;

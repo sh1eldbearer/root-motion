@@ -26,24 +26,28 @@ public class SingleCameraController : CameraController
     [Tooltip("The object this camera should follow."),
         SerializeField] private GameObject _followTarget;
     [SerializeField] private Transform _followTf; // The Transform component of the follow target object
-    [SerializeField] private AgentController _followPawn; // The Pawn component of the follow target object
+    [SerializeField] private AgentData _followData; // The Pawn component of the follow target object
 #pragma warning restore 0649
     #endregion
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        // Component reference assignments
+        _followTf = _followTarget.transform;
+        _followData = _followTarget.GetComponent<AgentData>();
+    }
 
     // Start is called before the first frame update
     public override void Start()
     {
-        base.Start();
-        /* Component reference assignments */
-        _followTf = _followTarget.transform;
-        _followPawn = _followTarget.GetComponent<AgentController>();
-
         if (_followTarget != null)
         {
-            // If that assigned Pawn is a player, assigns this camera as the pawn's camera
-            if (_followPawn.GetType() == typeof(PlayerController))
+            // If that assigned agent is a player, assigns this camera as the pawn's camera
+            if (_followData.Controller.GetType() == typeof(PlayerController))
             {
-                ((PlayerController) _followPawn).AssignCamera(this.GetComponent<Camera>());
+                _followData.AssignCameraController(this);
             }
 
             // Stores the camera's original position relative to its target
@@ -51,13 +55,13 @@ public class SingleCameraController : CameraController
             // Stores the camera's initial height offset
             SetHeightOffset();
             // Sets the camera's follow speed to match the move speed of its follow target
-            _followSpeed = _followPawn.MoveSpeed;
+            _followSpeed = _followData.MoveSpeed;
         }
         else
         {
             // If I forgot to set a follow target for the camera, yells at me (but only in the editor)
 #if UNITY_EDITOR
-            Debug.LogError(string.Format("You forgot to set a follow target for {0}!", this.name));
+            Debug.LogError($"You forgot to set a follow target for {this.name}!");
 #endif
         }
 
@@ -68,7 +72,7 @@ public class SingleCameraController : CameraController
     /// Adjusts the current zoom setting of the camera
     /// </summary>
     /// <returns>Null.</returns>
-    private IEnumerator AdjustCameraZoom()
+    public override IEnumerator AdjustCameraZoom()
     {
         while (true)
         {
@@ -79,7 +83,6 @@ public class SingleCameraController : CameraController
 
             yield return null;
         }
-
     }
 
     /// <summary>
@@ -93,6 +96,8 @@ public class SingleCameraController : CameraController
             // As long as the camera has a target to follow, updates the camera's position 
             CameraTransform.position = Vector3.MoveTowards(CameraTransform.position, _followTf.position + _initialOffset + _heightOffset,
                 _followSpeed);
+
+            yield return null;
         }
 
         yield return null;

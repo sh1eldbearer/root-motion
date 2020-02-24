@@ -28,12 +28,18 @@ public abstract class CameraController : MonoBehaviour
     }
 
     #endregion
-    // Start is called before the first frame update
-    public virtual void Start()
+
+    public virtual void Awake()
     {
         /* Component reference assignments */
         _thisCamera = this.gameObject.GetComponent<Camera>();
         _cameraTransform = this.transform;
+    }
+
+    // Start is called before the first frame update
+    public virtual void Start()
+    {
+
     }
 
     /// <summary>
