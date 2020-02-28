@@ -92,10 +92,10 @@ public class MainMenuManager : MenuManager
 
     public override void Start()
     {
-        // TODO: Properly configure this
-        
+        // Initialize game state by disabling all panels
         _newGameMenu.SetActive(false);
         _optionsMenu.SetActive(false);
+        _creditsMenu.SetActive(false);
     }
 
     /// <summary>
