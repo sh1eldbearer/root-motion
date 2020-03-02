@@ -3,18 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Designates which player an object is assigned to. Each player value has a corresponding integer value.
-/// </summary>
-public enum PlayerNumber
-{
-    Unassigned = 0,
-    P1 = 1,
-    P2 = 2,
-    P3 = 3,
-    P4 = 4
-}
-
 public class PlayerObjectGroupData : MonoBehaviour
 {
     #region Private Properties

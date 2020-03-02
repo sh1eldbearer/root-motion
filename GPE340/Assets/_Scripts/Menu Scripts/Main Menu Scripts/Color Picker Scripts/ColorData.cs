@@ -2,18 +2,6 @@
 using TMPro;
 using UnityEngine;
 
-public enum ColorNames
-{
-    Disabled = 0,
-    Pink = 1,
-    Red = 2,
-    Orange = 3,
-    Gold = 4,
-    Green = 5,
-    Aqua = 6,
-    Blue = 7,
-    Violet = 8
-}
 
 [Serializable]
 public struct ColorData

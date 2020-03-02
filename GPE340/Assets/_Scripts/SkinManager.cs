@@ -21,18 +21,19 @@ public class SkinManager : MonoBehaviour
         get { return skinColors; }
     }
     #endregion
-
-
+    
 
     public void Awake()
     {
+        // Singleton pattern
         if (skinMgr == null)
         {
             skinMgr = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 
