@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Current Player Information")]
     [SerializeField] private PlayerData[] _playerInfo = new PlayerData[4];
+
+    [Header("UI Settings")]
+    [Tooltip("The length of time, in seconds, the loading screen will take to fade in and out."),
+     Space, SerializeField, Range(0.1f, 2f)] private float _loadScreenFadeTime = 0.5f;
     #endregion
 
     #region Public Properties
@@ -38,6 +42,15 @@ public class GameManager : MonoBehaviour
     {
         get { return _totalPlayerCount; }
     }
+
+    /// <summary>
+    /// The length of time, in seconds, the loading screen will take to fade in and out.
+    /// </summary>
+    public float LoadScreenFadeTime
+    {
+        get { return _loadScreenFadeTime; }
+    }
+
     #endregion
 
     void Awake()

@@ -66,6 +66,13 @@ public class SceneLoader : MonoBehaviour
         }
 
         StartCoroutine(MainMenuManager.mainMenuMgr.LoadingScreen.FadeOut());
+
+        while (LoadingScreenBehavior.loadingScreen.IsFading)
+        {
+            yield return null;
+        }
+
+        UnloadLoadingScreen();
     }
     public void UnloadLoadingScreen()
     {

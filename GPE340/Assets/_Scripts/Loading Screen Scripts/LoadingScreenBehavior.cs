@@ -18,9 +18,6 @@ public class LoadingScreenBehavior : MonoBehaviour
         SerializeField] private Text _text;
     private Color _textColor;
 
-    [Tooltip("The time, in seconds, the loading screen will take to fade in and out."),
-         Space, SerializeField, Range(0.1f, 2f)]
-    private float _fadeTime = 1f;
     [Tooltip("Denotes if the loading screen is fading in or out."),
         SerializeField] private bool _isFading = true;
 
@@ -61,10 +58,10 @@ public class LoadingScreenBehavior : MonoBehaviour
         _text.enabled = true;
         _isFading = true;
 
-        while (timer <= _fadeTime)
+        while (timer <= GameManager.gm.LoadScreenFadeTime)
         {
-            _background.color = new Color(_bgColor.r, _bgColor.b, _bgColor.g, timer / _fadeTime);
-            _text.color = new Color(_textColor.r, _textColor.b, _textColor.g, timer / _fadeTime);
+            _background.color = new Color(_bgColor.r, _bgColor.b, _bgColor.g, timer / GameManager.gm.LoadScreenFadeTime);
+            _text.color = new Color(_textColor.r, _textColor.b, _textColor.g, timer / GameManager.gm.LoadScreenFadeTime);
             timer += Time.deltaTime;
             yield return null;
         }
@@ -75,18 +72,17 @@ public class LoadingScreenBehavior : MonoBehaviour
 
     public IEnumerator FadeOut()
     {
-        float timer = _fadeTime;
+        float timer = GameManager.gm.LoadScreenFadeTime;
         _isFading = true;
 
         while (timer >= 0f)
         {
-            _background.color = new Color(_bgColor.r, _bgColor.b, _bgColor.g, timer / _fadeTime);
-            _text.color = new Color(_textColor.r, _textColor.b, _textColor.g, timer / _fadeTime);
+            _background.color = new Color(_bgColor.r, _bgColor.b, _bgColor.g, timer / GameManager.gm.LoadScreenFadeTime);
+            _text.color = new Color(_textColor.r, _textColor.b, _textColor.g, timer / GameManager.gm.LoadScreenFadeTime);
             timer -= Time.deltaTime;
             yield return null;
         }
 
         _isFading = false;
-        SceneLoader.sceneLoader.UnloadLoadingScreen();
     }
 }
