@@ -16,7 +16,6 @@ public class SceneLoader : MonoBehaviour
         SerializeField] private int _gameSceneIndex = 1;
     [Tooltip("The build order index of the loading screen scene."),
         SerializeField] private int _loadingScreenIndex = 2;
-
 #pragma warning restore CS0649
     #endregion
 
@@ -44,7 +43,6 @@ public class SceneLoader : MonoBehaviour
     {
         get { return _loadingScreenIndex; }
     }
-
     #endregion
 
     private void Awake()
@@ -62,36 +60,41 @@ public class SceneLoader : MonoBehaviour
     }
 
     /// <summary>
-    /// Performs all necessary
+    /// Performs all necessary operations to transition from the main menu, to the loading screen, to the
+    /// main game scene.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Null.</returns>
     public IEnumerator LoadGameScene()
     {
+        // Loads the loading screen scene additively, and waits for the loading screen UI to finish fading in before proceeding
         SceneManager.LoadScene(_loadingScreenIndex, LoadSceneMode.Additive);
-
-        while (LoadingScreenBehavior.loadingScreen == null || LoadingScreenBehavior.loadingScreen.IsFading)
+        while (LoadingScreenFader.loadScreenFader == null || LoadingScreenFader.loadScreenFader.IsFading)
         {
             yield return null;
         }
 
-        AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(_gameSceneIndex, LoadSceneMode.Additive);
+        // Unloads the main menu scene
+        SceneManager.UnloadSceneAsync(_mainMenuSceneIndex);
 
+        // Loads the main game scene additively, and waits for the scene to finish loading before proceeding
+        AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(_gameSceneIndex, LoadSceneMode.Additive);
         while (!sceneLoad.isDone)
         {
             yield return null;
         }
-
-
+        
+        // Waits a single frame, then sets the main game scene as the active scene to make its lighting the dominant scene lighting
         yield return 0;
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(_gameSceneIndex));
 
-        StartCoroutine(LoadingScreenBehavior.loadingScreen.FadeOut());
-
-        while (LoadingScreenBehavior.loadingScreen.IsFading)
+        // Starts fading the loading screen UI out, and waits for it to finish before proceeding
+        StartCoroutine(LoadingScreenFader.loadScreenFader.FadeOut());
+        while (LoadingScreenFader.loadScreenFader.IsFading)
         {
             yield return null;
         }
 
+        // Unloads the loading screen scene
         SceneManager.UnloadSceneAsync(_loadingScreenIndex);
     }
 }

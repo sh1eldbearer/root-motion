@@ -5,28 +5,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LoadingScreenBehavior : MonoBehaviour
+public class LoadingScreenFader : MonoBehaviour
 {
-    public static LoadingScreenBehavior loadingScreen;
+    public static LoadingScreenFader loadScreenFader;
 
     #region Private Properties
 #pragma warning disable CS0649
-    [Tooltip(""),
+    [Tooltip("The background image for the loading screen. Needed to access the Color component of " +
+             "the image."),
         SerializeField] private Image _background;
     private Color _bgColor;
-    [Tooltip(""),
+    [Tooltip("The text object for the loading screen. Needed to access the Color component of " +
+             "the text."),
         SerializeField] private Text _text;
     private Color _textColor;
 
-    [Tooltip("Denotes if the loading screen is fading in or out."),
-        SerializeField] private bool _isFading = true;
-
+    [Tooltip("Denotes if the loading screen is fading in or out. Can be read to tell scene loading" +
+             "coroutines to wait before proceeding to their next step."),
+        Space, SerializeField] private bool _isFading = true;
 #pragma warning restore CS0649
     #endregion
 
     #region Public Properties
     /// <summary>
-    /// Denotes if the loading screen is fading in or out.
+    /// Denotes if the loading screen is fading in or out. Can be read to tell scene loading coroutines
+    /// to wait before proceeding to their next step.
     /// </summary>
     public bool IsFading
     {
@@ -36,28 +39,37 @@ public class LoadingScreenBehavior : MonoBehaviour
 
     void Awake()
     {
-        loadingScreen = this;
+        // Assigns this script as a globally accessible object
+        loadScreenFader = this;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        // Gets the color components of the UI elements so the alpha can be adjusted
         _bgColor = _background.color;
         _textColor = _text.color;
-        //_background.enabled = false;
-        //_text.enabled = false;
 
         StartCoroutine(FadeIn());
     }
 
+    void OnDestroy()
+    {
+        loadScreenFader = null;
+    }
+
+    /// <summary>
+    /// Increases the alpha the UI elements of the loading screen until they obscure the view of the
+    /// canvas.
+    /// </summary>
+    /// <returns>Null.</returns>
     public IEnumerator FadeIn()
     {
         float timer = 0;
 
-        _background.enabled = true;
-        _text.enabled = true;
         _isFading = true;
 
+        // Slowly fades the UI's alphas from 0 up to 100 (fully invisible to fully opaque)
         while (timer <= GameManager.gm.LoadScreenFadeTime)
         {
             _background.color = new Color(_bgColor.r, _bgColor.b, _bgColor.g, timer / GameManager.gm.LoadScreenFadeTime);
@@ -67,14 +79,20 @@ public class LoadingScreenBehavior : MonoBehaviour
         }
 
         _isFading = false;
-        SceneManager.UnloadSceneAsync(SceneLoader.sceneLoader.MainMenuSceneIndex);
     }
 
+    /// <summary>
+    /// Decreases the alpha the UI elements of the loading screen until they are hidden from view in the
+    /// canvas.
+    /// </summary>
+    /// <returns>Null.</returns>
     public IEnumerator FadeOut()
     {
         float timer = GameManager.gm.LoadScreenFadeTime;
+
         _isFading = true;
 
+        // Slowly fades the UI's alphas from 100 down to 0 (fully opaque to fully invisible)
         while (timer >= 0f)
         {
             _background.color = new Color(_bgColor.r, _bgColor.b, _bgColor.g, timer / GameManager.gm.LoadScreenFadeTime);
