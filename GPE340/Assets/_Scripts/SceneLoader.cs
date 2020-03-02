@@ -17,11 +17,33 @@ public class SceneLoader : MonoBehaviour
     [Tooltip("The build order index of the loading screen scene."),
         SerializeField] private int _loadingScreenIndex = 2;
 
-    private Coroutine fadeOut;
 #pragma warning restore CS0649
     #endregion
 
     #region Public Properties
+    /// <summary>
+    /// The build order index of the main menu scene.
+    /// </summary>
+    public int MainMenuSceneIndex
+    {
+        get { return _mainMenuSceneIndex; }
+    }
+
+    /// <summary>
+    /// The build order index of the main game scene.
+    /// </summary>
+    public int GameSceneIndex
+    {
+        get { return _gameSceneIndex; }
+    }
+
+    /// <summary>
+    /// The build order index of the loading screen scene.
+    /// </summary>
+    public int LoadingScreenIndex
+    {
+        get { return _loadingScreenIndex; }
+    }
 
     #endregion
 
@@ -39,16 +61,10 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public void LoadMainMenuScene()
-    {
-        SceneManager.LoadScene(_mainMenuSceneIndex);
-    }
-
-    public void UnloadMainMenu()
-    {
-        SceneManager.UnloadSceneAsync(_mainMenuSceneIndex);
-    }
-
+    /// <summary>
+    /// Performs all necessary
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator LoadGameScene()
     {
         SceneManager.LoadScene(_loadingScreenIndex, LoadSceneMode.Additive);
@@ -65,17 +81,17 @@ public class SceneLoader : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(MainMenuManager.mainMenuMgr.LoadingScreen.FadeOut());
+
+        yield return 0;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(_gameSceneIndex));
+
+        StartCoroutine(LoadingScreenBehavior.loadingScreen.FadeOut());
 
         while (LoadingScreenBehavior.loadingScreen.IsFading)
         {
             yield return null;
         }
 
-        UnloadLoadingScreen();
-    }
-    public void UnloadLoadingScreen()
-    {
         SceneManager.UnloadSceneAsync(_loadingScreenIndex);
     }
 }

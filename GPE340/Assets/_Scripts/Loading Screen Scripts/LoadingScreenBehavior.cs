@@ -67,7 +67,7 @@ public class LoadingScreenBehavior : MonoBehaviour
         }
 
         _isFading = false;
-        SceneLoader.sceneLoader.UnloadMainMenu();
+        SceneManager.UnloadSceneAsync(SceneLoader.sceneLoader.MainMenuSceneIndex);
     }
 
     public IEnumerator FadeOut()

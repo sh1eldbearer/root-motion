@@ -84,19 +84,22 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // TODO: Expand functionality to make this setting change between game scenes and non-game scenes
-        if (scene.buildIndex == 1)
-        {
-            _isGamePaused = true;
-        }
-        else
+        if (scene.buildIndex == 1 || scene.buildIndex == 3)
         {
             _isGamePaused = false;
         }
+        else
+        {
+            _isGamePaused = true;
+        }
     }
 
+    /// <summary>
+    /// Initializes the game once the main game scene is launched.
+    /// </summary>
     public void InitializeGame()
     {
-
+        StartCoroutine(SceneLoader.sceneLoader.LoadGameScene());
     }
 
     /// <summary>

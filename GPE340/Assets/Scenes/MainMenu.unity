@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -96,7 +96,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: bc4db70f9021333489984edc83950f97,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -2911,6 +2912,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c5c9bff74dd214b813654d44c9bed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1291437484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d,
+    type: 3}
+  m_PrefabInstance: {fileID: 274655200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e234ebefc9cba8549ac04f8e2d45b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1302907511
 GameObject:
   m_ObjectHideFlags: 0
@@ -5649,8 +5662,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2137425898}
-        m_MethodName: StartGame
+      - m_Target: {fileID: 1291437484}
+        m_MethodName: InitializeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
