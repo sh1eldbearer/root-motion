@@ -3834,7 +3834,7 @@ GameObject:
   - component: {fileID: 1868554959}
   - component: {fileID: 1868554958}
   m_Layer: 0
-  m_Name: MenuManager
+  m_Name: MainMenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3871,6 +3871,7 @@ MonoBehaviour:
   _p4JoinLabel: {fileID: 1637865731}
   _p4ColorPicker: {fileID: 1013671895}
   _p4ReadyLabel: {fileID: 2146666577}
+  _startGameButton: {fileID: 2137425895}
 --- !u!4 &1868554959
 Transform:
   m_ObjectHideFlags: 0

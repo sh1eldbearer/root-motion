@@ -15,8 +15,6 @@ public class PlayerObjectGroupData : MonoBehaviour
         SerializeField] private int _selectedIndex = -1;
     #endregion
 
-
-
     #region Public Properties
     /// <summary>
     /// The player number this color picker is assigned to.
@@ -41,7 +39,6 @@ public class PlayerObjectGroupData : MonoBehaviour
         get { return _selectedIndex; }
     }
     #endregion
-
 
     public void Awake()
     {

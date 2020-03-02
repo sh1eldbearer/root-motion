@@ -44,6 +44,8 @@ public class MainMenuManager : MenuManager
     [SerializeField] private GameObject _p4JoinLabel;
     [SerializeField] private GameObject _p4ColorPicker;
     [SerializeField] private GameObject _p4ReadyLabel;
+
+    [Space, SerializeField] private Button _startGameButton;
     #endregion
 
     #region Public Properties
@@ -75,6 +77,15 @@ public class MainMenuManager : MenuManager
     {
         get { return _p4ObjectGroup; }
     }
+
+    /// <summary>
+    /// The start game button on the new game menu panel.
+    /// </summary>
+    public Button StartGameButton
+    {
+        get { return _startGameButton; }
+    }
+
     #endregion
 
     public void Awake()
@@ -92,6 +103,42 @@ public class MainMenuManager : MenuManager
 
     public override void Start()
     {
+        InitializeMainMenu();
+    }
+
+    /// <summary>
+    /// Initializes the main menu when the MainMenuManager loads into the game world
+    /// </summary>
+    private void InitializeMainMenu()
+    {
+        // Disables all color pickers and ready labels
+        // TODO: Disable player 1's color picker once multiplayer is working
+        _p1ColorPicker.SetActive(true);
+        _p1ReadyLabel.SetActive(false);
+        _p2ColorPicker.SetActive(false);
+        _p2ReadyLabel.SetActive(false);
+        _p3ColorPicker.SetActive(false);
+        _p3ReadyLabel.SetActive(false);
+        _p4ColorPicker.SetActive(false);
+        _p4ReadyLabel.SetActive(false);
+
+        // Enables all join labels
+        // TODO: Enable player 1's join label once multiplayer is working
+        _p1JoinLabel.SetActive(false);
+        _p2JoinLabel.SetActive(true);
+        _p3JoinLabel.SetActive(true);
+        _p4JoinLabel.SetActive(true);
+
+        // Disables all but player 1's group object
+        // TODO: Remove block once multiplayer is working        
+        _p2ObjectGroup.gameObject.SetActive(false);
+        _p3ObjectGroup.gameObject.SetActive(false);
+        _p4ObjectGroup.gameObject.SetActive(false);
+
+        // Disables the start game button until all players have chosen a skin
+        // TODO: Improve functionality once multiplayer is working
+        //_startGameButton.interactable = false;
+
         // Initialize game state by disabling all panels
         _newGameMenu.SetActive(false);
         _optionsMenu.SetActive(false);
