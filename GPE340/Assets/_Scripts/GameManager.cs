@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
         SerializeField] private Camera _currentActiveCamera;
 
     [Header("Current Player Information")]
-    [SerializeField] private PlayerData[] players = new PlayerData[4];
+    [SerializeField] private PlayerData[] _playerInfo = new PlayerData[4];
     #endregion
 
     /* Public Properties */
