@@ -76,7 +76,7 @@ public class SingleCameraController : CameraController
     {
         while (true)
         {
-            if (GameManager.gm.IsGameRunning)
+            if (GameManager.gm.IsGamePaused)
             {
                 ChangeZoomSetting(Input.GetAxis("Mouse ScrollWheel"));
             }
@@ -91,7 +91,7 @@ public class SingleCameraController : CameraController
     /// <returns>Null.</returns>
     public override IEnumerator UpdateCameraPosition()
     {
-        if (GameManager.gm.IsGameRunning && _followTarget != null)
+        if (GameManager.gm.IsGamePaused && _followTarget != null)
         {
             // As long as the camera has a target to follow, updates the camera's position 
             CameraTransform.position = Vector3.MoveTowards(CameraTransform.position, _followTf.position + _initialOffset + _heightOffset,

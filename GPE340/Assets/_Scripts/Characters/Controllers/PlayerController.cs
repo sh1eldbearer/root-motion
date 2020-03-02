@@ -33,7 +33,7 @@ public class PlayerController :  AgentController
     {
         while (true)
         {
-            while (GameManager.gm.IsGameRunning)
+            while (GameManager.gm.IsGamePaused)
             {
                 // Get the world vector that we want to move
                 Vector3 worldMoveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -80,7 +80,7 @@ public class PlayerController :  AgentController
     {
         while (true)
         {
-            while (GameManager.gm.IsGameRunning)
+            while (GameManager.gm.IsGamePaused)
             {
                 // Create a plane object for the plane the player is standing on
                 Plane groundPlane = new Plane(Vector3.up, AgentData.AgentTransform.position);

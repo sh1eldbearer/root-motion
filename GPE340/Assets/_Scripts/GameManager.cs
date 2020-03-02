@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
 
     #region Private Properties
     [Header("Current Game State")]
-    [SerializeField] private bool _isGameRunning;
-    [SerializeField, Range(0, 4)] private int _totalPlayerCount = 1;
+    [Tooltip("Denotes whether the game is paused or not. Has no effect in the main menu."),
+        SerializeField] private bool _isGamePaused;
+    [Tooltip("How many players are currently active in the game."),
+        SerializeField, Range(0, 4)] private int _totalPlayerCount = 1;
     [Tooltip("The currently active camera rendering the game."), 
         SerializeField] private Camera _currentActiveCamera;
 
@@ -20,16 +22,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerData[] _playerInfo = new PlayerData[4];
     #endregion
 
-    /* Public Properties */
-    public bool IsGameRunning
+    #region Public Properties
+    /// <summary>
+    /// Denotes whether the game is paused or not. Has no effect in the main menu.
+    /// </summary>
+    public bool IsGamePaused
     {
-        get { return _isGameRunning; }
+        get { return _isGamePaused; }
     }
 
+    /// <summary>
+    /// How many players are currently active in the game.
+    /// </summary>
     public int TotalPlayerCount
     {
         get { return _totalPlayerCount; }
     }
+    #endregion
 
     void Awake()
     {
@@ -64,11 +73,11 @@ public class GameManager : MonoBehaviour
         // TODO: Expand functionality to make this setting change between game scenes and non-game scenes
         if (scene.buildIndex == 1)
         {
-            _isGameRunning = true;
+            _isGamePaused = true;
         }
         else
         {
-            _isGameRunning = false;
+            _isGamePaused = false;
         }
     }
 
@@ -78,15 +87,21 @@ public class GameManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Pauses the game.
+    /// </summary>
     public void PauseGame()
     {
-        _isGameRunning = false;
+        _isGamePaused = false;
         Time.timeScale = 0;
     }
 
+    /// <summary>
+    /// Unpauses the game.
+    /// </summary>
     public void UnpauseGame()
     {
-        _isGameRunning = true;
+        _isGamePaused = true;
         Time.timeScale = 1;
     }
 }
