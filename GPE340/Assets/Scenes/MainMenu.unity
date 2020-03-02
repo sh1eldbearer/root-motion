@@ -480,8 +480,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _panelToEnable: {fileID: 1302907511}
   _panelsToDisable:
-  - {fileID: 1139965479}
-  - {fileID: 1084967346}
+  - {fileID: 2092877518}
+  - {fileID: 1495686642}
 --- !u!114 &120539063 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8966550238228026122, guid: 9674eea9a1b62874aa38072c940a29f3,
@@ -2509,8 +2509,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _panelToEnable: {fileID: 2092877518}
   _panelsToDisable:
-  - {fileID: 84883750}
-  - {fileID: 1084967346}
+  - {fileID: 1302907511}
+  - {fileID: 1495686642}
 --- !u!114 &1152987368 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5855499339678644021, guid: 9674eea9a1b62874aa38072c940a29f3,
