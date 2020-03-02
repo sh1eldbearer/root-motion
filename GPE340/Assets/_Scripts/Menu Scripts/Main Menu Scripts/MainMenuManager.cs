@@ -114,7 +114,7 @@ public class MainMenuManager : MenuManager
     /// is currently active in the hierarchy.
     /// </summary>
     /// <param name="player">An enumerator that designates which player's UI element to show.</param>
-    private void ShowJoinLabel(PlayerNumber player)
+    private void ShowJoinLabel(PlayerNumbers player)
     {
         // If the new game menu is currently displayed, run this function
         if (_newGameMenu.activeInHierarchy)
@@ -136,7 +136,7 @@ public class MainMenuManager : MenuManager
     /// is currently active in the hierarchy.
     /// </summary>
     /// <param name="player">An enumerator that designates which player's UI element to show.</param>
-    private void ShowColorPicker(PlayerNumber player)
+    private void ShowColorPicker(PlayerNumbers player)
     {
         // If the new game menu is currently displayed, run this function
         if (_newGameMenu.activeInHierarchy)
@@ -158,7 +158,7 @@ public class MainMenuManager : MenuManager
     /// is currently active in the hierarchy.
     /// </summary>
     /// <param name="player">An enumerator that designates which player's UI element to show.</param>
-    private void ShowReadyLabel(PlayerNumber player)
+    private void ShowReadyLabel(PlayerNumbers player)
     {
         // If the new game menu is currently displayed, run this function
         if (_newGameMenu.activeInHierarchy)

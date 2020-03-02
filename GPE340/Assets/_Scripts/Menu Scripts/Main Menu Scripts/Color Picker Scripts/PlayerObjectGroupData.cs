@@ -7,7 +7,7 @@ public class PlayerObjectGroupData : MonoBehaviour
 {
     #region Private Properties
     [Tooltip("The player number this color picker is assigned to."),
-        SerializeField] private PlayerNumber _playerNumber;
+        SerializeField] private PlayerNumbers _playerNumber;
     [Tooltip("The color selectors that are children of this color picker. " +
          "(REMINDER: A picker's index in this list is 1 less than its index in the ColorNames enum)"), 
         SerializeField] private List<ColorSelectorBehavior> _colorSelectors = new List<ColorSelectorBehavior>(8);
@@ -21,7 +21,7 @@ public class PlayerObjectGroupData : MonoBehaviour
     /// <summary>
     /// The player number this color picker is assigned to.
     /// </summary>
-    public PlayerNumber PlayerNumber
+    public PlayerNumbers PlayerNumber
     {
         get { return _playerNumber; }
     }

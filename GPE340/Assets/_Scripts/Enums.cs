@@ -1,13 +1,13 @@
 ﻿/// <summary>
 /// Designates which player an object is assigned to. Each player value has a corresponding integer value.
 /// </summary>
-public enum PlayerNumber
+public enum PlayerNumbers
 {
-    Unassigned = 0,
-    P1 = 1,
-    P2 = 2,
-    P3 = 3,
-    P4 = 4
+    Unassigned = -1,
+    P1 = 0,
+    P2 = 1,
+    P3 = 2,
+    P4 = 3
 }
 
 /// <summary>

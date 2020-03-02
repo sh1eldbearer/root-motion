@@ -111,22 +111,22 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
     {
         switch (_objGroupData.PlayerNumber)
         {
-            case PlayerNumber.P1:
+            case PlayerNumbers.P1:
                 MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 break;
-            case PlayerNumber.P2:
+            case PlayerNumbers.P2:
                 MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 break;
-            case PlayerNumber.P3:
+            case PlayerNumbers.P3:
                 MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 break;
-            case PlayerNumber.P4:
+            case PlayerNumbers.P4:
                 MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
                 MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
@@ -136,22 +136,22 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
 
     private void EnableSameColorSelectors(int selectorIndex)
     {
-        if (_objGroupData.PlayerNumber != PlayerNumber.P1 && 
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P1 && 
             MainMenuManager.mainMenuMgr.P1ObjectGroup.SelectedIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorSelectors[selectorIndex].EnableSelector();
         }
-        if (_objGroupData.PlayerNumber != PlayerNumber.P2 &&
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P2 &&
             MainMenuManager.mainMenuMgr.P2ObjectGroup.SelectedIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorSelectors[selectorIndex].EnableSelector();
         }
-        if (_objGroupData.PlayerNumber != PlayerNumber.P3 &&
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P3 &&
             MainMenuManager.mainMenuMgr.P3ObjectGroup.SelectedIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorSelectors[selectorIndex].EnableSelector();
         }
-        if (_objGroupData.PlayerNumber != PlayerNumber.P4 &&
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P4 &&
             MainMenuManager.mainMenuMgr.P4ObjectGroup.SelectedIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorSelectors[selectorIndex].EnableSelector();
