@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 public class PlayerObjectGroupData : MonoBehaviour
@@ -11,10 +12,12 @@ public class PlayerObjectGroupData : MonoBehaviour
         SerializeField] private PlayerNumbers _playerNumber;
     [Tooltip("The color selectors that are children of this color picker. " +
          "(REMINDER: A picker's index in this list is 1 less than its index in the ColorNames enum)"), 
-        SerializeField] private List<ColorSelectorBehavior> _colorSelectors = new List<ColorSelectorBehavior>(8);
-#pragma warning restore CS0649
+        SerializeField]
+    [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Local")]
+    private List<ColorSelectorBehavior> _colorSelectors = new List<ColorSelectorBehavior>(8);
     [Tooltip(""),
         SerializeField] private int _selectedIndex = -1;
+#pragma warning restore CS0649
     #endregion
 
     #region Public Properties
@@ -46,7 +49,7 @@ public class PlayerObjectGroupData : MonoBehaviour
     {
 #if UNITY_EDITOR
         // Yells at me if I forgot to assign a color picker's player number, but only in the editor
-        if (_playerNumber == 0)
+        if (_playerNumber.GetHashCode() == -1)
         {
             Debug.Log($"Color picker {this.gameObject.name} does not have its player number assigned.");
         }

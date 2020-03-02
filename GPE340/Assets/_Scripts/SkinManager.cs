@@ -37,12 +37,6 @@ public class SkinManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    public void Update()
-    {
-        
-    }
-
     public UnityEngine.Color GetRGBColor(int selectorIndex)
     {
         return skinColors[selectorIndex + 1].Color;

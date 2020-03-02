@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5186601212658157455}
   - component: {fileID: 5186601212658157448}
   m_Layer: 0
-  m_Name: Player 1 Camera
+  m_Name: SinglePlayer Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5186601212658157452}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &5186601212658157448
 MonoBehaviour:
   m_ObjectHideFlags: 0

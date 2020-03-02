@@ -12,6 +12,7 @@ public class AgentData : MonoBehaviour
     private float _turnSpeed = 720f;
 
     #region Private Properties
+#pragma warning disable CS0649
     [Space, Tooltip("This agent's controller."),
         SerializeField] private AgentController _controller;
     [Tooltip("This agent's Transform component."),
@@ -20,8 +21,7 @@ public class AgentData : MonoBehaviour
         SerializeField] private Animator _agentAnimator;
     [Tooltip("The camera that will be following this agent's movements."),
         SerializeField] private CameraController _agentCamera;
-
-
+#pragma warning restore CS0649
     #endregion
 
     #region Public Properties
@@ -72,15 +72,7 @@ public class AgentData : MonoBehaviour
         get { return _agentCamera; }
     }
     #endregion
-    // Start is called before the first frame update
-    void Awake()
-    {
-        // Component reference assignments
-        _controller = this.gameObject.GetComponent<AgentController>();
-        _agentTransform = this.gameObject.GetComponent<Transform>();
-        _agentAnimator = this.gameObject.GetComponentInChildren<Animator>();
-    }
-
+    
     /// <summary>
     /// Assigns a camera to follow this agent.
     /// </summary>

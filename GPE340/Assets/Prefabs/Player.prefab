@@ -98,9 +98,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 7
   _turnSpeed: 720
-  _controller: {fileID: 0}
-  _agentTransform: {fileID: 0}
-  _agentAnimator: {fileID: 0}
+  _controller: {fileID: 5734159263145574729}
+  _agentTransform: {fileID: 4361234882291488653}
+  _agentAnimator: {fileID: 1336301722049031383}
   _agentCamera: {fileID: 0}
 --- !u!114 &5734159263145574729
 MonoBehaviour:
@@ -114,4 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c99548353d2ca47bcba593fadd2324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agentData: {fileID: 0}
+  _agentData: {fileID: 1371200326193610036}

@@ -19,10 +19,11 @@ public abstract class AgentController : MonoBehaviour
     }
 
     #region Private Properties
-
+#pragma warning disable CS0649
     [Header("Component References")]
     [Tooltip("This agent's data component."),
         SerializeField] private AgentData _agentData;
+#pragma warning restore CS0649
     #endregion
 
     #region Public Properties
@@ -37,13 +38,6 @@ public abstract class AgentController : MonoBehaviour
 
     // Start is called before the first frame update
     public virtual void Start()
-    {
-        /* Component reference assignments */
-        _agentData = this.GetComponent<AgentData>();
-    }
-
-    // Update is called once per frame
-    public virtual void Update()
     {
         // TODO: Determine base functionality once AI controllers are set up
     }

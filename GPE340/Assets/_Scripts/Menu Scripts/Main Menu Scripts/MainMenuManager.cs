@@ -10,6 +10,18 @@ public class MainMenuManager : MenuManager
 
     #region Private Properties
 #pragma warning disable CS0649
+    // These references are set up so they can be disabled when the loading screen appears
+    [Tooltip("The title object for the main menu scene."),
+        SerializeField] private GameObject _title;
+    [Tooltip(""),
+        SerializeField] private GameObject _subtitle;
+    [Tooltip(""),
+        SerializeField] private GameObject _buttons;
+    [Tooltip(""),
+        SerializeField] private GameObject _thingy;
+
+
+
     [Header("Panel Objects")]
     [Tooltip("The GameObject containing the panel for the main menu's new game menu."),
         SerializeField] private GameObject _newGameMenu;
@@ -87,7 +99,6 @@ public class MainMenuManager : MenuManager
     {
         get { return _startGameButton; }
     }
-
     #endregion
 
     public void Awake()
@@ -106,6 +117,19 @@ public class MainMenuManager : MenuManager
     public override void Start()
     {
         InitializeMainMenu();
+    }
+
+    public void DisableCanvas()
+    {
+        //    Transform[] children = _canvas.GetComponentsInChildren<Transform>();
+
+        //    foreach (Transform child in children)
+        //    {
+        //        if (child.gameObject.GetComponent<LoadingScreenBehavior>() == null || child.gameObject.GetComponentInParent<LoadingScreenBehavior>() != null)
+        //        {
+        //            child.gameObject.SetActive(false);
+        //        }
+        //    }
     }
 
     /// <summary>

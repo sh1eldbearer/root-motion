@@ -87,6 +87,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void InitializeGame()
+    {
+
+    }
+
     /// <summary>
     /// Pauses the game.
     /// </summary>
