@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     #region Private Properties
+#pragma warning disable CS0649
     [Tooltip("The selector box object associated with this color swatch"),
      SerializeField]
     private GameObject _selectorBox;
@@ -19,6 +20,7 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
     [Tooltip("Whether or not this selector is able to be selected. (Essentially, whether this selector is \"enabled\" " +
              "or \"disabled\".)"),
      SerializeField]
+#pragma warning restore CS0649
     private bool _selectable = true;
     [Tooltip("Whether or not this selector has been selected. (A player has chosen this color for their avatar.)"),
      SerializeField]

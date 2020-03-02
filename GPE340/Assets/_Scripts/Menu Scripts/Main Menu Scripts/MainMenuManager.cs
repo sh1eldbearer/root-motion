@@ -9,6 +9,7 @@ public class MainMenuManager : MenuManager
     public static MainMenuManager mainMenuMgr;
 
     #region Private Properties
+#pragma warning disable CS0649
     [Header("Panel Objects")]
     [Tooltip("The GameObject containing the panel for the main menu's new game menu."),
         SerializeField] private GameObject _newGameMenu;
@@ -46,6 +47,7 @@ public class MainMenuManager : MenuManager
     [SerializeField] private GameObject _p4ReadyLabel;
 
     [Space, SerializeField] private Button _startGameButton;
+#pragma warning restore CS0649
     #endregion
 
     #region Public Properties
@@ -137,7 +139,7 @@ public class MainMenuManager : MenuManager
 
         // Disables the start game button until all players have chosen a skin
         // TODO: Improve functionality once multiplayer is working
-        //_startGameButton.interactable = false;
+        //  _startGameButton.interactable = false;
 
         // Initialize game state by disabling all panels
         _newGameMenu.SetActive(false);

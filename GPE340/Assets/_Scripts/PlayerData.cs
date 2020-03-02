@@ -7,7 +7,7 @@ using UnityEngine;
 public struct PlayerData
 {
     #region Private Properties
-
+#pragma warning disable CS0649
     [Header("Basic Info")]
     [Tooltip("The player number to assign to this player."),
         SerializeField] private PlayerNumbers _playerNumber;
@@ -15,7 +15,7 @@ public struct PlayerData
     [Header("Skin Info")]
     [Tooltip("The character model chosen by this player."),
         SerializeField] private GameObject _playerModel;
-
+#pragma warning restore CS0649
     #endregion
 
     #region Public Properties
@@ -34,7 +34,6 @@ public struct PlayerData
     {
         get { return _playerModel; }
     }
-
     #endregion
 
     /// <summary>

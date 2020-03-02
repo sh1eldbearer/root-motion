@@ -7,6 +7,7 @@ using UnityEngine;
 public struct ColorData
 {
     #region Private Properties
+#pragma warning disable CS0649
     [Tooltip("The name of this color."),
      SerializeField]
     private ColorNames _name;
@@ -22,6 +23,7 @@ public struct ColorData
     [Tooltip("Whether or not this skin color has been selected by a player."),
      SerializeField]
     private bool _selected;
+#pragma warning restore CS0649
     #endregion
 
     #region Public Properties

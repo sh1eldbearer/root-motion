@@ -478,10 +478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defe69be041643c4a87c3f7235e38903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelToEnable: {fileID: 1302907511}
-  panelsToDisable:
-  - {fileID: 2092877518}
-  - {fileID: 1495686642}
+  _panelToEnable: {fileID: 1302907511}
+  _panelsToDisable:
+  - {fileID: 1139965479}
+  - {fileID: 1084967346}
 --- !u!114 &120539063 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8966550238228026122, guid: 9674eea9a1b62874aa38072c940a29f3,
@@ -2125,8 +2125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defe69be041643c4a87c3f7235e38903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelToEnable: {fileID: 1495686642}
-  panelsToDisable:
+  _panelToEnable: {fileID: 1495686642}
+  _panelsToDisable:
   - {fileID: 2092877518}
   - {fileID: 1302907511}
 --- !u!114 &1084967349
@@ -2511,10 +2511,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defe69be041643c4a87c3f7235e38903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelToEnable: {fileID: 2092877518}
-  panelsToDisable:
-  - {fileID: 1302907511}
-  - {fileID: 1495686642}
+  _panelToEnable: {fileID: 2092877518}
+  _panelsToDisable:
+  - {fileID: 84883750}
+  - {fileID: 1084967346}
 --- !u!114 &1152987368 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5855499339678644021, guid: 9674eea9a1b62874aa38072c940a29f3,

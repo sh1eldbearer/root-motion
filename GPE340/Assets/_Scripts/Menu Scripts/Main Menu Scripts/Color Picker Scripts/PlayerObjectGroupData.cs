@@ -6,11 +6,13 @@ using UnityEngine;
 public class PlayerObjectGroupData : MonoBehaviour
 {
     #region Private Properties
+#pragma warning disable CS0649
     [Tooltip("The player number this color picker is assigned to."),
         SerializeField] private PlayerNumbers _playerNumber;
     [Tooltip("The color selectors that are children of this color picker. " +
          "(REMINDER: A picker's index in this list is 1 less than its index in the ColorNames enum)"), 
         SerializeField] private List<ColorSelectorBehavior> _colorSelectors = new List<ColorSelectorBehavior>(8);
+#pragma warning restore CS0649
     [Tooltip(""),
         SerializeField] private int _selectedIndex = -1;
     #endregion
