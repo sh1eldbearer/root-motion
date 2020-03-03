@@ -11,6 +11,8 @@ public struct PlayerData
     [Header("Basic Info")]
     [Tooltip("The player number to assign to this player."),
         SerializeField] private PlayerNumbers _playerNumber;
+    [Tooltip("The player's current status."),
+        SerializeField] private PlayerStatus _playerStatus;
 
     [Header("Skin Info")]
     [Tooltip("The character model chosen by this player."),
@@ -28,12 +30,21 @@ public struct PlayerData
     }
 
     /// <summary>
+    /// The player's current status.
+    /// </summary>
+    public PlayerStatus Status
+    {
+        get { return _playerStatus; }
+    }
+
+    /// <summary>
     /// The character model chosen by this player.
     /// </summary>
     public GameObject PlayerModel
     {
         get { return _playerModel; }
     }
+
     #endregion
 
     /// <summary>

@@ -10,6 +10,17 @@ public enum PlayerNumbers
     P4 = 3
 }
 
+public enum PlayerStatus
+{
+    Inactive, // Disable player object group
+    NotJoined, // Press button to join
+    Joined, // Pick color
+    Ready, // Color picked, awaiting game start
+    Alive, // Playing game
+    Killed, // Dead but awaiting respawn
+    Dead // Dead and out of lives
+}
+
 /// <summary>
 /// Allows for easy selection of a color in the inspector. Can also be quickly reference the
 /// appropriate element of the skin colors list on the SkinManager.

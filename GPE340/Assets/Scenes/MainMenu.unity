@@ -864,6 +864,10 @@ PrefabInstance:
       propertyPath: _loadScreenFadeTime
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _playerInfo.Array.data[0]._playerStatus
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
 --- !u!1 &294705343
