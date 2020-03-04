@@ -15,8 +15,8 @@ public struct PlayerData
         SerializeField] private PlayerStatus _playerStatus;
 
     [Header("Skin Info")]
-    [Tooltip("The character model chosen by this player."),
-        SerializeField] private GameObject _playerModel;
+    [Tooltip("The index of the character model chosen by this player."),
+        SerializeField] private int _skinColorIndex;
 #pragma warning restore CS0649
     #endregion
 
@@ -38,21 +38,34 @@ public struct PlayerData
     }
 
     /// <summary>
-    /// The character model chosen by this player.
+    /// The index of the character model chosen by this player.
     /// </summary>
-    public GameObject PlayerModel
+    public int SkinColorIndex
     {
-        get { return _playerModel; }
+        get { return _skinColorIndex; }
     }
 
     #endregion
 
     /// <summary>
-    /// Sets the character model for this player.
+    /// Stores the index of the skin color chosen by this player, and marks the player
+    /// as Ready.
     /// </summary>
-    /// <param name="model">The character model chosen by this player.</param>
-    public void SetPlayerModel(GameObject model)
+    /// <param name="model">The index of the skin color chosen by this player.</param>
+    public void SetSkinColorIndex(int index)
     {
-        _playerModel = model;
+        _skinColorIndex = index;
+        _playerStatus = PlayerStatus.Ready;
+    }
+
+    /// <summary>
+    /// Clears the index of the skin color for this player and removes the player's
+    /// Ready status.
+    /// from the player's info.
+    /// </summary>
+    public void ClearSkinColorIndex()
+    {
+        _skinColorIndex = 0;
+        _playerStatus = PlayerStatus.Joined;
     }
 }

@@ -72,15 +72,23 @@ public class AgentData : MonoBehaviour
         get { return _agentCamera; }
     }
     #endregion
+
+    /// <summary>
+    /// Sets the agent's transform (needs to be the transform of the model that is added to the player prefab
+    /// at the start of the game.)
+    /// </summary>
+    /// <param name="agentTransform">The Transform component to have transform and rotation assigned to.</param>
+    public void SetAgentTransform(Transform agentTransform)
+    {
+        _agentTransform = agentTransform;
+    }
     
     /// <summary>
     /// Assigns a camera to follow this agent.
     /// </summary>
     /// <param name="camera">The camera that should follow this agent.</param>
-    /// <returns>The camera that is assigned to follow this agent (for debugging purposes.)</returns>
-    public CameraController AssignCameraController(CameraController camera)
+    public void AssignCameraController(CameraController camera)
     {
         _agentCamera = camera;
-        return _agentCamera;
     }
 }

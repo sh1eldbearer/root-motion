@@ -60,11 +60,19 @@ public class SceneLoader : MonoBehaviour
     }
 
     /// <summary>
+    /// Starts the game from the main menu.
+    /// </summary>
+    public void StartGame()
+    {
+        StartCoroutine(SceneLoader.sceneLoader.LoadGameScene());
+    }
+
+    /// <summary>
     /// Performs all necessary operations to transition from the main menu, to the loading screen, to the
     /// main game scene.
     /// </summary>
     /// <returns>Null.</returns>
-    public IEnumerator LoadGameScene()
+    private IEnumerator LoadGameScene()
     {
         // Loads the loading screen scene additively, and waits for the loading screen UI to finish fading in before proceeding
         SceneManager.LoadScene(_loadingScreenIndex, LoadSceneMode.Additive);

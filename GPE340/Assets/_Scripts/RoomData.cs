@@ -47,6 +47,12 @@ public class RoomData : MonoBehaviour
 
     #endregion
 
+    void Awake()
+    {
+        // TODO: Needs to be removed when multiple rooms come into play, or the game is gonna get VERY confused 
+        GameManager.gm.SetCurrentRoomData(this);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

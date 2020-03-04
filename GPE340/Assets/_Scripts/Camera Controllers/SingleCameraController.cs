@@ -10,6 +10,7 @@ public class SingleCameraController : CameraController
     private const int MAX_OFFSET_HEIGHT_SETTING = 5;
 
     #region Private Properties
+#pragma warning disable 0649
     [Tooltip("The move speed of the camera."),
         SerializeField] private float _followSpeed = 3.5f;
     [Tooltip("The interval distance the camera will zoom in or out from the follow target."),
@@ -18,13 +19,11 @@ public class SingleCameraController : CameraController
         SerializeField, Range(MIN_OFFSET_HEIGHT_SETTING, MAX_OFFSET_HEIGHT_SETTING)] private int _zoomSetting = 3;
     private Vector3 _initialOffset; // The initial position of the camera relative to the object it is set to follow
     private Vector3 _heightOffset; // The "zoomed out" level of the camera relative to the object it is set to follow
-    #endregion
 
-    #region Game Components
-#pragma warning disable 0649
     [Header("Game Components")]
     [Tooltip("The object this camera should follow."),
-        SerializeField] private GameObject _followTarget;
+        SerializeField]
+    private GameObject _followTarget;
     [SerializeField] private Transform _followTf; // The Transform component of the follow target object
     [SerializeField] private AgentData _followData; // The Pawn component of the follow target object
 #pragma warning restore 0649
@@ -147,5 +146,7 @@ public class SingleCameraController : CameraController
     public void SetFollowTarget(GameObject followTarget)
     {
         _followTarget = followTarget;
+        _followTf = followTarget.transform;
+        _followData = followTarget.GetComponent<AgentData>();
     }
 }

@@ -62,6 +62,7 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
             EnableSameRowSelectors();
             EnableSameColorSelectors(_objGroupData.ColorSelectors.IndexOf((this)));
             _objGroupData.ClearSelectedIndex();
+            GameManager.gm.PlayerInfo[_objGroupData.PlayerNumber.GetHashCode()].ClearSkinColorIndex();
         }
         else
         {
@@ -70,6 +71,7 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
             DisableSameRowSelectors();
             DisableSameColorSelectors(_objGroupData.ColorSelectors.IndexOf(this));
             _objGroupData.SetSelectedIndex(index);
+            GameManager.gm.PlayerInfo[_objGroupData.PlayerNumber.GetHashCode()].SetSkinColorIndex(index);
         }
     }
 

@@ -53,6 +53,14 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// The RoomData component of the room the players are currently occupying.
+    /// </summary>
+    public RoomData CurrentRoomData
+    {
+        get { return _currentRoomData; }
+    }
+
+    /// <summary>
     /// Current information about the players.
     /// </summary>
     public PlayerData[] PlayerInfo
@@ -95,8 +103,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-
         // Marks the game as running when I run the main game scene directly from the editor
 #if UNITY_EDITOR
         if (SceneManager.GetActiveScene().buildIndex == 1)
@@ -104,27 +110,6 @@ public class GameManager : MonoBehaviour
             UnpauseGame();
         }
 #endif
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // TODO: Expand functionality to make this setting change between game scenes and non-game scenes
-        if (scene.buildIndex == 1 || scene.buildIndex == 3)
-        {
-            _isGamePaused = false;
-        }
-        else
-        {
-            _isGamePaused = true;
-        }
-    }
-
-    /// <summary>
-    /// Initializes the game once the main game scene is launched.
-    /// </summary>
-    public void InitializeGame()
-    {
-        StartCoroutine(SceneLoader.sceneLoader.LoadGameScene());
     }
 
     /// <summary>
@@ -143,5 +128,15 @@ public class GameManager : MonoBehaviour
     {
         _isGamePaused = true;
         Time.timeScale = 1;
+    }
+
+    /// <summary>
+    /// Changes the current RoomData component.
+    /// </summary>
+    /// <param name="roomData">The RoomData component of the room the room the players are
+    /// currently occupying.</param>
+    public void SetCurrentRoomData(RoomData roomData)
+    {
+        _currentRoomData = roomData;
     }
 }
