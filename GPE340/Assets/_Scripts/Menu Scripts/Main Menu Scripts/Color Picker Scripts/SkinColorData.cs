@@ -4,25 +4,18 @@ using UnityEngine;
 
 
 [Serializable]
-public struct ColorData
+public struct SkinColorData
 {
     #region Private Properties
 #pragma warning disable CS0649
     [Tooltip("The name of this color."),
-     SerializeField]
-    private ColorNames _name;
+     SerializeField] private ColorNames _name;
     [Tooltip("The RGB value associated with this color. (Used for UI display.)"),
-     SerializeField]
-    private Color _color;
+     SerializeField] private Color _color;
     [Tooltip("The character model to use when this color is selected by a player."),
-     SerializeField]
-    private GameObject _model;
+     SerializeField] private GameObject _model;
     [Tooltip("The avatar for this character model."),
-     SerializeField]
-    private Avatar _modelAvatar;
-    [Tooltip("Whether or not this skin color has been selected by a player."),
-     SerializeField]
-    private bool _selected;
+     SerializeField] private Avatar _modelAvatar;
 #pragma warning restore CS0649
     #endregion
 
@@ -58,23 +51,5 @@ public struct ColorData
     {
         get { return _modelAvatar; }
     }
-
-    /// <summary>
-    /// Whether or not this skin color has been selected by a player.
-    /// </summary>
-    public bool IsSelected
-    {
-        get { return _selected; }
-    }
-
     #endregion
-
-    /// <summary>
-    /// Sets whether or not this color has been selected by a player.
-    /// </summary>
-    /// <param name="isSelected"></param>
-    public void SetSelected(bool isSelected)
-    {
-        this._selected = isSelected;
-    }
 }

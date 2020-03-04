@@ -58,7 +58,7 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
         if (IsSelected)
         {
             _selected = false;
-            SkinManager.skinMgr.SkinColors[index].SetSelected(false);
+            // SkinManager.skinMgr.SkinColors[index].SetSelected(false);
             EnableSameRowSelectors();
             EnableSameColorSelectors(_objGroupData.ColorSelectors.IndexOf((this)));
             _objGroupData.ClearSelectedIndex();
@@ -66,7 +66,7 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
         else
         {
             _selected = true;
-            SkinManager.skinMgr.SkinColors[index].SetSelected(true);
+            // SkinManager.skinMgr.SkinColors[index].SetSelected(true);
             DisableSameRowSelectors();
             DisableSameColorSelectors(_objGroupData.ColorSelectors.IndexOf(this));
             _objGroupData.SetSelectedIndex(index);
@@ -109,33 +109,37 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
         _selectorBox.SetActive(false);
     }
 
+    /// <summary>
+    /// Disables all other color selectors representing the same color as this color selector.
+    /// </summary>
+    /// <param name="selectorIndex">The index of the color selector (from PlayerObjectGroupData.ColorSelectors)
+    /// that was selected.</param>
     private void DisableSameColorSelectors(int selectorIndex)
     {
-        switch (_objGroupData.PlayerNumber)
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P1)
         {
-            case PlayerNumbers.P1:
-                MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                break;
-            case PlayerNumbers.P2:
-                MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                break;
-            case PlayerNumbers.P3:
-                MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                break;
-            case PlayerNumbers.P4:
-                MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
-                break;
+            MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
+        }
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P2)
+        {
+            MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
+        }
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P3)
+        {
+            MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
+        }
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P4)
+        {
+            MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
         }
     }
 
+    /// <summary>
+    /// Enables all other color selectors representing the same color as this color selector,
+    /// provided there is not another color currently selected by that player.
+    /// </summary>
+    /// <param name="selectorIndex">The index of the color selector (from PlayerObjectGroupData.ColorSelectors)
+    /// that was unselected.</param>
     private void EnableSameColorSelectors(int selectorIndex)
     {
         if (_objGroupData.PlayerNumber != PlayerNumbers.P1 && 
@@ -160,11 +164,14 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
         }
     }
 
+    /// <summary>
+    /// Disables all other color selectors for this player.
+    /// </summary>
     private void DisableSameRowSelectors()
     {
         foreach (ColorSelectorBehavior picker in _objGroupData.ColorSelectors)
         {
-            if (picker != this)
+            if (picker != this && picker.IsSelected == false)
             {
                 picker.DisableSelector();
             }

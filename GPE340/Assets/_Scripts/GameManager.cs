@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager gm; // Singleton instance for the GameManager
 
     #region Private Properties
+#pragma warning disable CS0649
     [Header("Current Game State")]
     [Tooltip("Denotes whether the game is paused or not. Has no effect in the main menu."),
         SerializeField] private bool _isGamePaused;
@@ -16,13 +18,21 @@ public class GameManager : MonoBehaviour
         SerializeField, Range(0, 4)] private int _totalPlayerCount = 1;
     [Tooltip("The currently active camera rendering the game."), 
         SerializeField] private Camera _currentActiveCamera;
+    [Tooltip("When in the game proper, this is the room the players are currently in."),
+        SerializeField, Space] private RoomData _currentRoomData;
 
     [Header("Current Player Information")]
-    [SerializeField] private PlayerData[] _playerInfo = new PlayerData[4];
+    [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Local"), 
+        SerializeField] private PlayerData[] _playerInfo = new PlayerData[4];
+
+    [Header("Prefabs")]
+    [Tooltip("The prefab object for the player object that contains all the scripts for the players."),
+        SerializeField]private GameObject _playerPrefab;
 
     [Header("UI Settings")]
     [Tooltip("The length of time, in seconds, the loading screen will take to fade in and out."),
      Space, SerializeField, Range(0.1f, 2f)] private float _loadScreenFadeTime = 0.5f;
+#pragma warning restore CS0649
     #endregion
 
     #region Public Properties
@@ -40,6 +50,22 @@ public class GameManager : MonoBehaviour
     public int TotalPlayerCount
     {
         get { return _totalPlayerCount; }
+    }
+
+    /// <summary>
+    /// Current information about the players.
+    /// </summary>
+    public PlayerData[] PlayerInfo
+    {
+        get { return _playerInfo; }
+    }
+
+    /// <summary>
+    /// The prefab object for spawning players.
+    /// </summary>
+    public GameObject PlayerPrefab
+    {
+        get { return _playerPrefab; }
     }
 
     /// <summary>

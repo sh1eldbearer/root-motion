@@ -8,7 +8,7 @@ public class SkinManager : MonoBehaviour
     public static SkinManager skinMgr;
 
     [Tooltip("A array of objects containing information about the different skin colors available to players."), 
-        SerializeField] private ColorData[] skinColors = new ColorData[9];
+        SerializeField] private SkinColorData[] _skinColors = new SkinColorData[9];
 
     #region Public Properties
     /// <summary>
@@ -16,9 +16,9 @@ public class SkinManager : MonoBehaviour
     /// </summary>
     /// <returns>The array of ColorData objects containing information about the different skin colors available
     /// to players.</returns>
-    public ColorData[] SkinColors
+    public SkinColorData[] SkinColors
     {
-        get { return skinColors; }
+        get { return _skinColors; }
     }
     #endregion
     
@@ -39,6 +39,6 @@ public class SkinManager : MonoBehaviour
 
     public UnityEngine.Color GetRGBColor(int selectorIndex)
     {
-        return skinColors[selectorIndex + 1].Color;
+        return _skinColors[selectorIndex + 1].Color;
     }
 }
