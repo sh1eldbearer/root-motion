@@ -77,10 +77,20 @@ public class AgentData : MonoBehaviour
     /// Sets the agent's transform (needs to be the transform of the model that is added to the player prefab
     /// at the start of the game.)
     /// </summary>
-    /// <param name="agentTransform">The Transform component to have transform and rotation assigned to.</param>
+    /// <param name="agentTransform">The Transform component to assign to AgentData.</param>
     public void SetAgentTransform(Transform agentTransform)
     {
         _agentTransform = agentTransform;
+    }
+
+    /// <summary>
+    /// Sets the agent's animator (needs to be the animator of the model that is added to the player prefab at
+    /// the start of the game.)
+    /// </summary>
+    /// <param name="animator">The Animator component to assign to AgentData.</param>
+    public void SetAgentAnimator(Animator animator)
+    {
+        _agentAnimator = animator;
     }
     
     /// <summary>

@@ -76,21 +76,26 @@ public class InitializeGame : MonoBehaviour
     private void CreatePlayer(PlayerData player)
     {
         GameObject playerObject = null;
+        Transform spawnPoint = null;
 
-        // Gets the appropriate player object depending on which player is being created
+        // Gets the appropriate player objects depending on which player is being created
         switch (player.PlayerNumber)
         {
             case PlayerNumbers.P1:
                 playerObject = _p1Object;
+                spawnPoint = GameManager.gm.CurrentRoomData.P1SpawnPoint;
                 break;
             case PlayerNumbers.P2:
                 playerObject = _p2Object;
+                spawnPoint = GameManager.gm.CurrentRoomData.P2SpawnPoint;
                 break;
             case PlayerNumbers.P3:
                 playerObject = _p3Object;
+                spawnPoint = GameManager.gm.CurrentRoomData.P3SpawnPoint;
                 break;
             case PlayerNumbers.P4:
                 playerObject = _p4Object;
+                spawnPoint = GameManager.gm.CurrentRoomData.P4SpawnPoint;
                 break;
         }
 
@@ -98,20 +103,14 @@ public class InitializeGame : MonoBehaviour
         GameObject newPlayer = Instantiate(SkinManager.skinMgr.SkinColors[player.SkinColorIndex].Model,
             playerObject.transform);
         // Places the player at the appropriate spawn point
-        playerObject.transform.SetPositionAndRotation(GameManager.gm.CurrentRoomData.P1SpawnPoint.position,
-            GameManager.gm.CurrentRoomData.P1SpawnPoint.rotation);
-        // Assigns the models' transform the player's agent data
-        playerObject.GetComponent<AgentData>().SetAgentTransform(newPlayer.transform);
-        // Assigns the model's avatar to the player's animator
-        playerObject.GetComponent<Animator>().avatar =
-            SkinManager.skinMgr.SkinColors[player.SkinColorIndex].ModelAvatar;
+        playerObject.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
 
         // Activates the player object and its camera
         playerObject.SetActive(true);
 
         if (player.PlayerNumber == PlayerNumbers.P1)
         {
-            _singlePlayerCamera.SetFollowTarget(playerObject);
+            _singlePlayerCamera.SetFollowTarget(newPlayer);
         }
     }
 }
