@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
-public class PlayerObjectGroupData : MonoBehaviour
+public class ObjectGroupData : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
@@ -14,9 +14,7 @@ public class PlayerObjectGroupData : MonoBehaviour
          "(REMINDER: A picker's index in this list is 1 less than its index in the ColorNames enum)"), 
         SerializeField]
     [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Local")]
-    private List<ColorSelectorBehavior> _colorSelectors = new List<ColorSelectorBehavior>(8);
-    [Tooltip(""),
-        SerializeField] private int _selectedIndex = -1;
+    private List<ColorPickerBehavior> _colorPickers = new List<ColorPickerBehavior>(8);
 #pragma warning restore CS0649
     #endregion
 
@@ -34,53 +32,33 @@ public class PlayerObjectGroupData : MonoBehaviour
     /// is 1 less than its index in the ColorNames enum!)
     /// </summary>
     /// <returns>A list of the color selectors that are children of this color picker.c</returns>
-    public List<ColorSelectorBehavior> ColorSelectors
+    public List<ColorPickerBehavior> ColorPickers
     {
-        get { return _colorSelectors; }
-    }
-
-    public int SelectedIndex
-    {
-        get { return _selectedIndex; }
+        get { return _colorPickers; }
     }
     #endregion
 
+    // Awake is called before Start
     private void Awake()
     {
 #if UNITY_EDITOR
         // Yells at me if I forgot to assign a color picker's player number, but only in the editor
-        if (_playerNumber.GetHashCode() == -1)
+        if ((int)_playerNumber == -1)
         {
             Debug.Log($"Color picker {this.gameObject.name} does not have its player number assigned.");
         }
 
         // Yells at me if I didn't assign all of the color selectors, but only in the editor
-        if (_colorSelectors.Count < 8)
+        if (_colorPickers.Count < 8)
         {
             Debug.Log($"You didn't assign all of the color selectors for color picker {this.gameObject.name}.");
         }
 #endif
 
-        foreach (ColorSelectorBehavior selector in _colorSelectors)
+        // Tells each color picker which object group it belongs to
+        foreach (ColorPickerBehavior picker in _colorPickers)
         {
-            selector.SetObjGroupData(this);
+            picker.SetObjGroupData(this);
         }
-    }
-
-    public void SetSelectedIndex(int newIndex)
-    {
-        if (newIndex >= 0 || newIndex < _colorSelectors.Count)
-        {
-            _selectedIndex = newIndex;
-        }
-        else
-        {
-            throw new ArgumentOutOfRangeException($"The provided index must be between 0 and {_colorSelectors.Count - 1}.");
-        }
-    }
-
-    public void ClearSelectedIndex()
-    {
-        _selectedIndex = -1;
     }
 }

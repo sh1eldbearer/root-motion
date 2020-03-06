@@ -29,6 +29,7 @@ public class SingleCameraController : CameraController
 #pragma warning restore 0649
     #endregion
 
+    // Awake is called before Start
     public override void Awake()
     {
         base.Awake();
@@ -48,7 +49,11 @@ public class SingleCameraController : CameraController
             {
                 _followData.AssignCameraController(this);
             }
-
+            
+            // Initializes the camera's position relative to its follow target
+            CameraTransform.position = new Vector3(CameraTransform.position.x + _followTf.position.x,
+                                                   CameraTransform.position.y,
+                                                   CameraTransform.position.z + _followTf.position.z);
             // Stores the camera's original position relative to its target
             _initialOffset = CameraTransform.position - _followTf.position;
             // Stores the camera's initial height offset
@@ -60,7 +65,7 @@ public class SingleCameraController : CameraController
         {
             // If I forgot to set a follow target for the camera, yells at me (but only in the editor)
 #if UNITY_EDITOR
-            Debug.LogError($"You forgot to set a follow target for {this.name}!");
+            Debug.Log($"You forgot to set a follow target for {this.name}!");
 #endif
         }
 
@@ -71,7 +76,7 @@ public class SingleCameraController : CameraController
     /// Adjusts the current zoom setting of the camera
     /// </summary>
     /// <returns>Null.</returns>
-    public override IEnumerator AdjustCameraZoom()
+    protected override IEnumerator AdjustCameraZoom()
     {
         while (true)
         {
@@ -114,12 +119,12 @@ public class SingleCameraController : CameraController
             return 0;
         }
 
-        if (axisValue < 0)
+        if (axisValue < 0)  // Zoom out
         {
             _zoomSetting =
                 Mathf.Clamp(_zoomSetting + 1, MIN_OFFSET_HEIGHT_SETTING, MAX_OFFSET_HEIGHT_SETTING);
         }
-        else if (axisValue > 0)
+        else if (axisValue > 0) // Zoom in
         {
             _zoomSetting =
                     Mathf.Clamp(_zoomSetting - 1, MIN_OFFSET_HEIGHT_SETTING, MAX_OFFSET_HEIGHT_SETTING);

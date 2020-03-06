@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ExitToMainMenuButton : MonoBehaviour
+public class MainMenuButton : MonoBehaviour
 {
     /// <summary>
     /// Method for calling the LoadMainMenu function on the SceneLoader.

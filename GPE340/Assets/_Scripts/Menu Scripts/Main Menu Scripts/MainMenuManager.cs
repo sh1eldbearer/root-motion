@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MenuManager
 {
-    public static MainMenuManager mainMenuMgr;
+    public static MainMenuManager mainMenuMgr;  // Singleton instance for the MainMenuManager
 
     #region Private Properties
 #pragma warning disable CS0649
@@ -18,30 +18,27 @@ public class MainMenuManager : MenuManager
     [Tooltip("The GameObject containing the panel for the main menu's credits menu."), 
         SerializeField] private GameObject _creditsMenu;
 
-
-    [Header("Player Object Groups")]
-    [SerializeField] private PlayerObjectGroupData _p1ObjectGroup;
-    [SerializeField] private PlayerObjectGroupData _p2ObjectGroup;
-    [SerializeField] private PlayerObjectGroupData _p3ObjectGroup;
-    [SerializeField] private PlayerObjectGroupData _p4ObjectGroup;
-
-    // These individual values are stored so that they can be enabled/disabled easily
+    // These individual object references are stored so that they can be enabled/disabled easily
     [Header("Player 1 Objects")]
+    [SerializeField] private ObjectGroupData _p1ObjectGroup;
     [SerializeField] private GameObject _p1JoinLabel;
     [SerializeField] private GameObject _p1ColorPicker;
     [SerializeField] private GameObject _p1ReadyLabel;
     
     [Header("Player 2 Objects")]
+    [SerializeField] private ObjectGroupData _p2ObjectGroup;
     [SerializeField] private GameObject _p2JoinLabel;
     [SerializeField] private GameObject _p2ColorPicker;
     [SerializeField] private GameObject _p2ReadyLabel;
 
     [Header("Player 3 Objects")]
+    [SerializeField] private ObjectGroupData _p3ObjectGroup;
     [SerializeField] private GameObject _p3JoinLabel;
     [SerializeField] private GameObject _p3ColorPicker;
     [SerializeField] private GameObject _p3ReadyLabel;
 
     [Header("Player 4 Objects")]
+    [SerializeField] private ObjectGroupData _p4ObjectGroup;
     [SerializeField] private GameObject _p4JoinLabel;
     [SerializeField] private GameObject _p4ColorPicker;
     [SerializeField] private GameObject _p4ReadyLabel;
@@ -54,42 +51,35 @@ public class MainMenuManager : MenuManager
     /// <summary>
     /// The Player 1 object group (for mass enabling/disabling of said objects)
     /// </summary>
-    public PlayerObjectGroupData P1ObjectGroup
+    public ObjectGroupData P1ObjectGroup
     {
         get { return _p1ObjectGroup; }
     }
     /// <summary>
     /// The Player 2 object group (for mass enabling/disabling of said objects)
     /// </summary>
-    public PlayerObjectGroupData P2ObjectGroup
+    public ObjectGroupData P2ObjectGroup
     {
         get { return _p2ObjectGroup; }
     }
     /// <summary>
     /// The Player 3 object group (for mass enabling/disabling of said objects)
     /// </summary>
-    public PlayerObjectGroupData P3ObjectGroup
+    public ObjectGroupData P3ObjectGroup
     {
         get { return _p3ObjectGroup; }
     }
     /// <summary>
     /// The Player 4 object group (for mass enabling/disabling of said objects)
     /// </summary>
-    public PlayerObjectGroupData P4ObjectGroup
+    public ObjectGroupData P4ObjectGroup
     {
         get { return _p4ObjectGroup; }
     }
-
-    /// <summary>
-    /// The start game button on the new game menu panel.
-    /// </summary>
-    public Button StartGameButton
-    {
-        get { return _startGameButton; }
-    }
     #endregion
 
-    public void Awake()
+    // Awake is called before Start
+    protected override void Awake()
     {
         // Singleton patten for this game object
         if (mainMenuMgr == null)
@@ -102,22 +92,9 @@ public class MainMenuManager : MenuManager
         }
     }
 
-    public override void Start()
+    protected override void Start()
     {
         InitializeMainMenu();
-    }
-
-    public void DisableCanvas()
-    {
-        //    Transform[] children = _canvas.GetComponentsInChildren<Transform>();
-
-        //    foreach (Transform child in children)
-        //    {
-        //        if (child.gameObject.GetComponent<LoadingScreenBehavior>() == null || child.gameObject.GetComponentInParent<LoadingScreenBehavior>() != null)
-        //        {
-        //            child.gameObject.SetActive(false);
-        //        }
-        //    }
     }
 
     /// <summary>

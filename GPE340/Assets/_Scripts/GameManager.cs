@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
     [Header("Current Game State")]
     [Tooltip("Denotes whether the game is paused or not. Has no effect in the main menu."),
         SerializeField] private bool _isGameRunning;
-    [Tooltip("How many players are currently active in the game."),
-        SerializeField, Range(0, 4)] private int _totalPlayerCount = 1;
     [Tooltip("The currently active camera rendering the game."), 
         SerializeField] private Camera _currentActiveCamera;
     [Tooltip("When in the game proper, this is the room the players are currently in."),
@@ -25,9 +23,7 @@ public class GameManager : MonoBehaviour
     [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Local"), 
         SerializeField] private PlayerData[] _playerInfo = new PlayerData[4];
 
-    [Header("Prefabs")]
-    [Tooltip("The prefab object for the player object that contains all the scripts for the players."),
-        SerializeField]private GameObject _playerPrefab;
+    // [Header("Prefabs")]
 
     [Header("UI Settings")]
     [Tooltip("The length of time, in seconds, the loading screen will take to fade in and out."),
@@ -42,14 +38,6 @@ public class GameManager : MonoBehaviour
     public bool IsGameRunning
     {
         get { return _isGameRunning; }
-    }
-
-    /// <summary>
-    /// How many players are currently active in the game.
-    /// </summary>
-    public int TotalPlayerCount
-    {
-        get { return _totalPlayerCount; }
     }
 
     /// <summary>
@@ -69,14 +57,6 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// The prefab object for spawning players.
-    /// </summary>
-    public GameObject PlayerPrefab
-    {
-        get { return _playerPrefab; }
-    }
-
-    /// <summary>
     /// The length of time, in seconds, the loading screen will take to fade in and out.
     /// </summary>
     public float LoadScreenFadeTime
@@ -89,7 +69,7 @@ public class GameManager : MonoBehaviour
     // Awake is called before Start
     private void Awake()
     {
-        // GameManager exists as a singleton object
+        // Makes the GameManager a singleton and a persistent game object
         if (gm == null)
         {
             gm = this;
@@ -102,7 +82,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         // Marks the game as running when I run the main game scene directly from the editor
 #if UNITY_EDITOR

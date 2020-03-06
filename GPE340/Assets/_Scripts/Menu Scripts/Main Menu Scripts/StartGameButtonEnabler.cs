@@ -12,24 +12,31 @@ public class StartGameButtonEnabler : MonoBehaviour
 #pragma warning restore CS0649
     #endregion
 
-    #region Public Properties
-
-    #endregion
-
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        // Component reference assignments
+        if (_button == null)
+        {
+            _button = this.gameObject.GetComponent<Button>();
+        }
+
         StartCoroutine(MonitorReadyStatus());
     }
 
+    /// <summary>
+    /// Waits until all joined players have selected a color before activating the Start Game button.
+    /// </summary>
+    /// <returns>Null.</returns>
     private IEnumerator MonitorReadyStatus()
     {
         while (true)
         {
-            if ((!MainMenuManager.mainMenuMgr.P1ObjectGroup.isActiveAndEnabled || MainMenuManager.mainMenuMgr.P1ObjectGroup.SelectedIndex > 0) &&
-                (!MainMenuManager.mainMenuMgr.P2ObjectGroup.isActiveAndEnabled || MainMenuManager.mainMenuMgr.P2ObjectGroup.SelectedIndex > 0) &&
-                (!MainMenuManager.mainMenuMgr.P3ObjectGroup.isActiveAndEnabled || MainMenuManager.mainMenuMgr.P3ObjectGroup.SelectedIndex > 0) &&
-                (!MainMenuManager.mainMenuMgr.P4ObjectGroup.isActiveAndEnabled || MainMenuManager.mainMenuMgr.P4ObjectGroup.SelectedIndex > 0))
+            // All players that have joined the game must have selected a color in order for the game to start
+            if (((int)GameManager.gm.PlayerInfo[0].Status < 0 || GameManager.gm.PlayerInfo[0].Status == PlayerStatus.Ready) &&
+                ((int)GameManager.gm.PlayerInfo[1].Status < 0 || GameManager.gm.PlayerInfo[1].Status == PlayerStatus.Ready) &&
+                ((int)GameManager.gm.PlayerInfo[2].Status < 0 || GameManager.gm.PlayerInfo[2].Status == PlayerStatus.Ready) &&
+                ((int)GameManager.gm.PlayerInfo[3].Status < 0 || GameManager.gm.PlayerInfo[3].Status == PlayerStatus.Ready))
             {
                 _button.interactable = true;
             }

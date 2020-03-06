@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SkinManager : MonoBehaviour
 {
-    public static SkinManager skinMgr;
+    public static SkinManager skinMgr;  // Singleton instance for the SkinManager
 
     [Tooltip("A array of objects containing information about the different skin colors available to players."), 
         SerializeField] private SkinColorData[] _skinColors = new SkinColorData[9];
@@ -21,11 +21,11 @@ public class SkinManager : MonoBehaviour
         get { return _skinColors; }
     }
     #endregion
-    
 
-    public void Awake()
+    // Awake is called before Start
+    private void Awake()
     {
-        // Singleton pattern
+        // Makes the SkinManager a singleton and a persistent game object
         if (skinMgr == null)
         {
             skinMgr = this;
@@ -37,6 +37,11 @@ public class SkinManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets the color value set for this skin color (used for UI displays).
+    /// </summary>
+    /// <param name="selectorIndex"></param>
+    /// <returns>A color object representing the color assigned this skin color.</returns>
     public UnityEngine.Color GetRGBColor(int selectorIndex)
     {
         return _skinColors[selectorIndex + 1].Color;

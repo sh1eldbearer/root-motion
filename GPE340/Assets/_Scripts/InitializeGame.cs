@@ -17,44 +17,9 @@ public class InitializeGame : MonoBehaviour
 
 #pragma warning restore CS0649
     #endregion
-
-    #region Public Properties
-    /// <summary>
-    /// The Player 1 GameObject.
-    /// </summary>
-    public GameObject P1Object
-    {
-        get { return _p1Object; }
-    }
-
-    /// <summary>
-    /// The Player 2 GameObject.
-    /// </summary>
-    public GameObject P2Object
-    {
-        get { return _p2Object; }
-    }
-
-    /// <summary>
-    /// The Player 3 GameObject.
-    /// </summary>
-    public GameObject P3Object
-    {
-        get { return _p3Object; }
-    }
-
-    /// <summary>
-    /// The Player 4 GameObject.
-    /// </summary>
-    public GameObject P4Object
-    {
-        get { return _p4Object; }
-    }
-
-    #endregion
-
+    
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         foreach (PlayerData player in GameManager.gm.PlayerInfo)
         {
@@ -67,12 +32,10 @@ public class InitializeGame : MonoBehaviour
         GameManager.gm.UnpauseGame();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Assigns the chosen character model to the appropriate player, and spawns them into the game world
+    /// </summary>
+    /// <param name="player">The information about the player being spawned.</param>
     private void CreatePlayer(PlayerData player)
     {
         GameObject playerObject = null;

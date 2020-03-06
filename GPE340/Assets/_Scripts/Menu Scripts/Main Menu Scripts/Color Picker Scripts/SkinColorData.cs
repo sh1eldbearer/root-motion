@@ -14,8 +14,6 @@ public struct SkinColorData
      SerializeField] private Color _color;
     [Tooltip("The character model to use when this color is selected by a player."),
      SerializeField] private GameObject _model;
-    [Tooltip("The avatar for this character model."),
-     SerializeField] private Avatar _modelAvatar;
 #pragma warning restore CS0649
     #endregion
 
@@ -42,14 +40,6 @@ public struct SkinColorData
     public GameObject Model
     {
         get { return _model; }
-    }
-
-    /// <summary>
-    /// The avatar for this character model.
-    /// </summary>
-    public Avatar ModelAvatar
-    {
-        get { return _modelAvatar; }
     }
     #endregion
 }

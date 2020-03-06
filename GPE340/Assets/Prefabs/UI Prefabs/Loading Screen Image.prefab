@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 3711069308251149122}
   - component: {fileID: 3711069308251149121}
   - component: {fileID: -7251741490721552056}
+  - component: {fileID: 6487166492066570060}
   m_Layer: 5
   m_Name: Loading Screen Image
   m_TagString: Untagged
@@ -170,4 +171,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _background: {fileID: 3711069308251149121}
   _text: {fileID: 3711069307761684456}
-  _fadeTime: 1.5
+  _canvasGroup: {fileID: 6487166492066570060}
+  _isFading: 1
+--- !u!225 &6487166492066570060
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711069308251149183}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

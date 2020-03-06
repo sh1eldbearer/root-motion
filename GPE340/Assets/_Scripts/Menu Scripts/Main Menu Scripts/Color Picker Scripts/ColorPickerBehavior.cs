@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     #region Private Properties
 #pragma warning disable CS0649
@@ -16,7 +16,7 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
     private Image _image;
     [Tooltip("The data component of the object group this selector is associated with."),
      SerializeField]
-    private PlayerObjectGroupData _objGroupData;
+    private ObjectGroupData _objGroupData;
     [Tooltip("Whether or not this selector is able to be selected. (Essentially, whether this selector is \"enabled\" " +
              "or \"disabled\".)"),
      SerializeField]
@@ -48,30 +48,33 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
 
     public void Start()
     {
-        _image.color = SkinManager.skinMgr.GetRGBColor(_objGroupData.ColorSelectors.IndexOf(this));
+        _image.color = SkinManager.skinMgr.GetRGBColor(_objGroupData.ColorPickers.IndexOf(this));
     }
 
     public void OnPointerClick(PointerEventData pointerData)
     {
-        int index = _objGroupData.ColorSelectors.IndexOf(this) + 1;
+        int index = _objGroupData.ColorPickers.IndexOf(this) + 1;
 
         if (IsSelected)
         {
             _selected = false;
-            // SkinManager.skinMgr.SkinColors[index].SetSelected(false);
+
             EnableSameRowSelectors();
-            EnableSameColorSelectors(_objGroupData.ColorSelectors.IndexOf((this)));
-            _objGroupData.ClearSelectedIndex();
-            GameManager.gm.PlayerInfo[_objGroupData.PlayerNumber.GetHashCode()].ClearSkinColorIndex();
+            EnableSameColorSelectors(_objGroupData.ColorPickers.IndexOf((this)));
+
+            // Clears the skin color selection from the object group and the player data
+            GameManager.gm.PlayerInfo[(int)_objGroupData.PlayerNumber].ClearSkinColorIndex();
         }
         else
         {
+            // Marks this 
             _selected = true;
-            // SkinManager.skinMgr.SkinColors[index].SetSelected(true);
+
             DisableSameRowSelectors();
-            DisableSameColorSelectors(_objGroupData.ColorSelectors.IndexOf(this));
-            _objGroupData.SetSelectedIndex(index);
-            GameManager.gm.PlayerInfo[_objGroupData.PlayerNumber.GetHashCode()].SetSkinColorIndex(index);
+            DisableSameColorSelectors(_objGroupData.ColorPickers.IndexOf(this));
+
+            // Tells the player data which skin color was selected
+            GameManager.gm.PlayerInfo[(int)_objGroupData.PlayerNumber].SetSkinColorIndex(index);
         }
     }
 
@@ -107,7 +110,7 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
     private void EnableSelector()
     {
         _selectable = true;
-        _image.color = SkinManager.skinMgr.SkinColors[_objGroupData.ColorSelectors.IndexOf(this) + 1].Color;
+        _image.color = SkinManager.skinMgr.SkinColors[_objGroupData.ColorPickers.IndexOf(this) + 1].Color;
         _selectorBox.SetActive(false);
     }
 
@@ -120,19 +123,19 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
     {
         if (_objGroupData.PlayerNumber != PlayerNumbers.P1)
         {
-            MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
+            MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorPickers[selectorIndex].DisableSelector();
         }
         if (_objGroupData.PlayerNumber != PlayerNumbers.P2)
         {
-            MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
+            MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorPickers[selectorIndex].DisableSelector();
         }
         if (_objGroupData.PlayerNumber != PlayerNumbers.P3)
         {
-            MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
+            MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorPickers[selectorIndex].DisableSelector();
         }
         if (_objGroupData.PlayerNumber != PlayerNumbers.P4)
         {
-            MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorSelectors[selectorIndex].DisableSelector();
+            MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorPickers[selectorIndex].DisableSelector();
         }
     }
 
@@ -145,24 +148,24 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
     private void EnableSameColorSelectors(int selectorIndex)
     {
         if (_objGroupData.PlayerNumber != PlayerNumbers.P1 && 
-            MainMenuManager.mainMenuMgr.P1ObjectGroup.SelectedIndex == -1)
+            GameManager.gm.PlayerInfo[0].SkinColorIndex == -1)
         {
-            MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorSelectors[selectorIndex].EnableSelector();
+            MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
         }
         if (_objGroupData.PlayerNumber != PlayerNumbers.P2 &&
-            MainMenuManager.mainMenuMgr.P2ObjectGroup.SelectedIndex == -1)
+            GameManager.gm.PlayerInfo[1].SkinColorIndex == -1)
         {
-            MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorSelectors[selectorIndex].EnableSelector();
+            MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
         }
         if (_objGroupData.PlayerNumber != PlayerNumbers.P3 &&
-            MainMenuManager.mainMenuMgr.P3ObjectGroup.SelectedIndex == -1)
+            GameManager.gm.PlayerInfo[2].SkinColorIndex == -1)
         {
-            MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorSelectors[selectorIndex].EnableSelector();
+            MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
         }
         if (_objGroupData.PlayerNumber != PlayerNumbers.P4 &&
-            MainMenuManager.mainMenuMgr.P4ObjectGroup.SelectedIndex == -1)
+            GameManager.gm.PlayerInfo[3].SkinColorIndex == -1)
         {
-            MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorSelectors[selectorIndex].EnableSelector();
+            MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
         }
     }
 
@@ -171,68 +174,76 @@ public class ColorSelectorBehavior : MonoBehaviour, IPointerClickHandler, IPoint
     /// </summary>
     private void DisableSameRowSelectors()
     {
-        foreach (ColorSelectorBehavior picker in _objGroupData.ColorSelectors)
+        foreach (ColorPickerBehavior picker in _objGroupData.ColorPickers)
         {
+            // As long as the current picker isn't this one, disable it
             if (picker != this && picker.IsSelected == false)
             {
                 picker.DisableSelector();
             }
         }
     }
-
+    
+    /// <summary>
+    /// Enables all other eligible color selectors for this player.
+    /// </summary>
     private void EnableSameRowSelectors()
     {
-        List<PlayerObjectGroupData> otherRowObjData = GetOtherRowObjGroups(_objGroupData);
+        List<ObjectGroupData> otherRowObjData = GetOtherRowObjGroups(_objGroupData);
 
-        foreach (ColorSelectorBehavior picker in _objGroupData.ColorSelectors)
+        foreach (ColorPickerBehavior picker in _objGroupData.ColorPickers)
         {
+            // As long as the current picker isn't this one...
             if (picker != this)
             {
-                int thisIndex = _objGroupData.ColorSelectors.IndexOf(picker);
+                int pickerIndex = _objGroupData.ColorPickers.IndexOf(picker);
 
-                if (!otherRowObjData[0].ColorSelectors[thisIndex].IsSelected &&
-                    !otherRowObjData[1].ColorSelectors[thisIndex].IsSelected &&
-                    !otherRowObjData[2].ColorSelectors[thisIndex].IsSelected)
+                // Check to see if the current picker's color was selected in any other row...
+                if (!otherRowObjData[0].ColorPickers[pickerIndex].IsSelected &&
+                    !otherRowObjData[1].ColorPickers[pickerIndex].IsSelected &&
+                    !otherRowObjData[2].ColorPickers[pickerIndex].IsSelected)
                 {
+                    // If not, enable it
                     picker.EnableSelector();
                 }
             }
         }
     }
 
-    private List<PlayerObjectGroupData> GetOtherRowObjGroups(PlayerObjectGroupData thisRowObjGroup)
+    /// <summary>
+    /// Gets a list of the other players' ObjectGroupData components.
+    /// </summary>
+    /// <param name="thisRowObjGroup">This player's ObjectGroupData component.</param>
+    /// <returns>A list of the ObjectGroupData components for all other players.</returns>
+    private List<ObjectGroupData> GetOtherRowObjGroups(ObjectGroupData thisRowObjGroup)
     {
-        List<PlayerObjectGroupData> otherRowObjGroupData = new List<PlayerObjectGroupData>();
+        List<ObjectGroupData> otherRowObjGroupData = new List<ObjectGroupData>();
 
-        if (thisRowObjGroup == MainMenuManager.mainMenuMgr.P1ObjectGroup)
-        {
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P2ObjectGroup);
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P3ObjectGroup);
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P4ObjectGroup);
-        }
-        else if (thisRowObjGroup == MainMenuManager.mainMenuMgr.P2ObjectGroup)
+        if (thisRowObjGroup != MainMenuManager.mainMenuMgr.P1ObjectGroup)
         {
             otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P1ObjectGroup);
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P3ObjectGroup);
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P4ObjectGroup);
         }
-        else if (thisRowObjGroup == MainMenuManager.mainMenuMgr.P3ObjectGroup)
+        if (thisRowObjGroup != MainMenuManager.mainMenuMgr.P2ObjectGroup)
         {
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P1ObjectGroup);
             otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P2ObjectGroup);
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P4ObjectGroup);
         }
-        else if (thisRowObjGroup == MainMenuManager.mainMenuMgr.P4ObjectGroup)
+        if (thisRowObjGroup != MainMenuManager.mainMenuMgr.P3ObjectGroup)
         {
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P1ObjectGroup);
-            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P2ObjectGroup);
             otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P3ObjectGroup);
+        }
+        if (thisRowObjGroup != MainMenuManager.mainMenuMgr.P4ObjectGroup)
+        {
+            otherRowObjGroupData.Add(MainMenuManager.mainMenuMgr.P4ObjectGroup);
         }
 
         return otherRowObjGroupData;
     }
 
-    public void SetObjGroupData(PlayerObjectGroupData objGroupData)
+    /// <summary>
+    /// Tells this color picker which ObjectGroup it's a member of.
+    /// </summary>
+    /// <param name="objGroupData">The ObjectGroup this color selector is to be listed on.</param>
+    public void SetObjGroupData(ObjectGroupData objGroupData)
     {
         _objGroupData = objGroupData;
     }

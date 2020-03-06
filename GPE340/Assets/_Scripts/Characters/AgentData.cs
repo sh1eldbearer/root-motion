@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AgentData : MonoBehaviour
 {
+
+    #region Private Properties
+#pragma warning disable CS0649
     [Tooltip("The movement speed of this agent."),
      SerializeField]
     private float _moveSpeed = 7f;
@@ -11,8 +14,6 @@ public class AgentData : MonoBehaviour
      SerializeField]
     private float _turnSpeed = 720f;
 
-    #region Private Properties
-#pragma warning disable CS0649
     [Space, Tooltip("This agent's controller."),
         SerializeField] private AgentController _controller;
     [Tooltip("This agent's Transform component."),
@@ -72,26 +73,6 @@ public class AgentData : MonoBehaviour
         get { return _agentCamera; }
     }
     #endregion
-
-    /// <summary>
-    /// Sets the agent's transform (needs to be the transform of the model that is added to the player prefab
-    /// at the start of the game.)
-    /// </summary>
-    /// <param name="agentTransform">The Transform component to assign to AgentData.</param>
-    public void SetAgentTransform(Transform agentTransform)
-    {
-        _agentTransform = agentTransform;
-    }
-
-    /// <summary>
-    /// Sets the agent's animator (needs to be the animator of the model that is added to the player prefab at
-    /// the start of the game.)
-    /// </summary>
-    /// <param name="animator">The Animator component to assign to AgentData.</param>
-    public void SetAgentAnimator(Animator animator)
-    {
-        _agentAnimator = animator;
-    }
     
     /// <summary>
     /// Assigns a camera to follow this agent.

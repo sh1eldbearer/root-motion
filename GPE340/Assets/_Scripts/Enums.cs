@@ -12,13 +12,13 @@ public enum PlayerNumbers
 
 public enum PlayerStatus
 {
-    Inactive, // Disable player object group
-    NotJoined, // Press button to join
-    Joined, // Pick color
-    Ready, // Color picked, awaiting game start
-    Alive, // Playing game
-    Killed, // Dead but awaiting respawn
-    Dead // Dead and out of lives
+    Inactive = -2, // Disable player object group
+    NotJoined = -1, // Press button to join
+    Joined = 0, // Pick color
+    Ready = 1, // Color picked, awaiting game start
+    Alive = 2, // Playing game
+    Killed = 3, // Dead but awaiting respawn
+    Dead = 4 // Dead and out of lives
 }
 
 /// <summary>

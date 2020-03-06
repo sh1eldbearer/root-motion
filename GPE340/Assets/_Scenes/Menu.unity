@@ -862,11 +862,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
       propertyPath: _loadScreenFadeTime
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
       propertyPath: _playerInfo.Array.data[0]._playerStatus
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _playerInfo.Array.data[1]._playerStatus
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _playerInfo.Array.data[2]._playerStatus
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _playerInfo.Array.data[3]._playerStatus
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _playerInfo.Array.data[0]._skinColorIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _playerInfo.Array.data[1]._skinColorIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _playerInfo.Array.data[2]._skinColorIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _playerInfo.Array.data[3]._skinColorIndex
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
@@ -1014,7 +1042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 1
-  _colorSelectors:
+  _colorPickers:
   - {fileID: 2016506739}
   - {fileID: 1866566979}
   - {fileID: 212831508}
@@ -2034,7 +2062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 3
-  _colorSelectors:
+  _colorPickers:
   - {fileID: 2060676538}
   - {fileID: 1034416532}
   - {fileID: 305357743}
@@ -2247,7 +2275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 0
-  _colorSelectors:
+  _colorPickers:
   - {fileID: 1180670666}
   - {fileID: 1257393664}
   - {fileID: 1633780566}
@@ -3770,18 +3798,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2190113716466716463}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1777887446 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1253110628178658581, guid: a73a31cad2c3d3340bc6cac8001298d3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1253110628854492611}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcce428829c44af44952322accbb4a36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1835520453 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5855499339678644021, guid: 9674eea9a1b62874aa38072c940a29f3,
@@ -3839,18 +3855,18 @@ MonoBehaviour:
   _optionsMenu: {fileID: 1302907511}
   _creditsMenu: {fileID: 1495686642}
   _p1ObjectGroup: {fileID: 1106524125}
-  _p2ObjectGroup: {fileID: 316360864}
-  _p3ObjectGroup: {fileID: 2036770396}
-  _p4ObjectGroup: {fileID: 1071491257}
   _p1JoinLabel: {fileID: 294705343}
   _p1ColorPicker: {fileID: 1762329161}
   _p1ReadyLabel: {fileID: 666220323}
+  _p2ObjectGroup: {fileID: 316360864}
   _p2JoinLabel: {fileID: 1645372347}
   _p2ColorPicker: {fileID: 1252357479}
   _p2ReadyLabel: {fileID: 377801075}
+  _p3ObjectGroup: {fileID: 2036770396}
   _p3JoinLabel: {fileID: 1881249379}
   _p3ColorPicker: {fileID: 1966126614}
   _p3ReadyLabel: {fileID: 1154615048}
+  _p4ObjectGroup: {fileID: 1071491257}
   _p4JoinLabel: {fileID: 1637865731}
   _p4ColorPicker: {fileID: 1013671895}
   _p4ReadyLabel: {fileID: 2146666577}
@@ -4829,7 +4845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 2
-  _colorSelectors:
+  _colorPickers:
   - {fileID: 564631222}
   - {fileID: 1156690098}
   - {fileID: 590366025}
@@ -5333,6 +5349,7 @@ GameObject:
   - component: {fileID: 2137425896}
   - component: {fileID: 2137425895}
   - component: {fileID: 2137425898}
+  - component: {fileID: 2137425899}
   m_Layer: 5
   m_Name: Start Game Button
   m_TagString: Untagged
@@ -5403,7 +5420,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1777887446}
+      - m_Target: {fileID: 2137425899}
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -5467,6 +5484,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 2137425895}
+--- !u!114 &2137425899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137425893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f38b261fb2f7424dabe73296b7de831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2146666577
 GameObject:
   m_ObjectHideFlags: 0

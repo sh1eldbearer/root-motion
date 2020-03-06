@@ -65,7 +65,7 @@ public struct PlayerData
     /// </summary>
     public void ClearSkinColorIndex()
     {
-        _skinColorIndex = 0;
+        _skinColorIndex = -1;
         _playerStatus = PlayerStatus.Joined;
     }
 }

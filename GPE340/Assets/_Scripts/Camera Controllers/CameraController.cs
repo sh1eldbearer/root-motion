@@ -5,8 +5,10 @@ using UnityEngine;
 public abstract class CameraController : MonoBehaviour
 {
     #region Private Properties
-    [SerializeField] private Camera _thisCamera;
-    [SerializeField] private Transform _cameraTransform; // The Transform component of this camera controller
+    [Tooltip("This camera's Camera component."),
+        SerializeField] private Camera _thisCamera;
+    [Tooltip("This camera's Transform component."),
+        SerializeField] private Transform _cameraTransform;
     #endregion
 
     #region Public Properties
@@ -29,11 +31,18 @@ public abstract class CameraController : MonoBehaviour
 
     #endregion
 
+    // Awake is called before Start
     public virtual void Awake()
     {
-        /* Component reference assignments */
-        _thisCamera = this.gameObject.GetComponent<Camera>();
-        _cameraTransform = this.transform;
+        // Component reference assignments
+        if (_thisCamera == null)
+        {
+            _thisCamera = this.gameObject.GetComponent<Camera>();
+        }
+        if (_cameraTransform == null)
+        {
+            _cameraTransform = this.transform;
+        }
     }
 
     // Start is called before the first frame update
@@ -55,7 +64,7 @@ public abstract class CameraController : MonoBehaviour
     /// Adjusts the current zoom setting of the camera.
     /// </summary>
     /// <returns>Null.</returns>
-    public virtual IEnumerator AdjustCameraZoom()
+    protected virtual IEnumerator AdjustCameraZoom()
     {
         yield return null;
     }

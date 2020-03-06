@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class PlayerController :  AgentController
 {
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="model">The character model to attach to this player agent.</param>
-    public PlayerController(GameObject model)
-    {
-        Instantiate(model, this.transform);
-    }
-
     // Start is called before the first frame update
-    public override void Start()
+    protected override void Start()
     {
         StartCoroutine(Move());
         // TODO: When multiplayer is working, change this to point to the appropriate camera
@@ -26,7 +17,7 @@ public class PlayerController :  AgentController
     /// </summary>
     /// <returns>The vector the player is moving toward, in local space, if the game is not paused.
     /// Returns null otherwise. </returns>
-    public override IEnumerator Move()
+    protected override IEnumerator Move()
     {
         while (true)
         {
@@ -73,7 +64,7 @@ public class PlayerController :  AgentController
     /// <returns>The point in world space at which the mouse intersects with the ground plane.
     /// Returns Vector3.negativeInfinity if the camera is not facing the player. Returns null
     /// if the game is currently paused.</returns>
-    public override IEnumerator HandleRotation(CameraController activeCamera)
+    protected override IEnumerator HandleRotation(CameraController activeCamera)
     {
         while (true)
         {
@@ -104,8 +95,10 @@ public class PlayerController :  AgentController
                     }
                     else
                     {
+#if UNITY_EDITOR
                         Debug.LogError("Camera is not looking at plane");
                         yield return Vector3.negativeInfinity;
+#endif
                     }
 
                 }

@@ -8,6 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(AgentData))]
 public abstract class AgentController : MonoBehaviour
 {
+    // Nothing outside of AgentControllers is using this enum, so it does not need to be moved to the Enums script
     /// <summary>
     /// Designates which set of animations the agent should use to move.
     /// </summary>
@@ -37,7 +38,7 @@ public abstract class AgentController : MonoBehaviour
     #endregion
 
     // Start is called before the first frame update
-    public virtual void Start()
+    protected virtual void Start()
     {
         // TODO: Determine base functionality once AI controllers are set up
     }
@@ -46,7 +47,7 @@ public abstract class AgentController : MonoBehaviour
     /// Moves the agent relative to local space.
     /// </summary>
     /// <returns>Vector3.negativeInfinity as a placeholder value.</returns>
-    public virtual IEnumerator Move()
+    protected virtual IEnumerator Move()
     {
         // TODO: Determine base functionality once AI controllers are set up
         yield return Vector3.negativeInfinity;
@@ -56,7 +57,7 @@ public abstract class AgentController : MonoBehaviour
     /// Rotates the agent relative to local space.
     /// </summary>
     /// <returns>Vector3.negativeInfinity as a placeholder value.</returns>
-    public virtual IEnumerator HandleRotation()
+    protected virtual IEnumerator HandleRotation()
     {
         // TODO: Determine base functionality once AI controllers are set up
         yield return Vector3.negativeInfinity;
@@ -67,7 +68,7 @@ public abstract class AgentController : MonoBehaviour
     /// </summary>
     /// <param name="activeCamera"></param>
     /// <returns>Vector3.negativeInfinity as a placeholder value.</returns>
-    public virtual IEnumerator HandleRotation(CameraController activeCamera)
+    protected virtual IEnumerator HandleRotation(CameraController activeCamera)
     {
         // TODO: Determine base functionality once AI controllers are set up
         yield return Vector3.negativeInfinity;
