@@ -112,5 +112,10 @@ public class InitializeGame : MonoBehaviour
         {
             _singlePlayerCamera.SetFollowTarget(newPlayer);
         }
+        else
+        {
+            // TODO: Change camera assignment behavior for multiplayer
+            newPlayer.GetComponent<AgentData>().AssignCameraController(_singlePlayerCamera);
+        }
     }
 }
