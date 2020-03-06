@@ -45,7 +45,7 @@ public class PlayerObjectGroupData : MonoBehaviour
     }
     #endregion
 
-    public void Awake()
+    private void Awake()
     {
 #if UNITY_EDITOR
         // Yells at me if I forgot to assign a color picker's player number, but only in the editor

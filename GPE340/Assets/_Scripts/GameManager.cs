@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 #pragma warning disable CS0649
     [Header("Current Game State")]
     [Tooltip("Denotes whether the game is paused or not. Has no effect in the main menu."),
-        SerializeField] private bool _isGamePaused;
+        SerializeField] private bool _isGameRunning;
     [Tooltip("How many players are currently active in the game."),
         SerializeField, Range(0, 4)] private int _totalPlayerCount = 1;
     [Tooltip("The currently active camera rendering the game."), 
@@ -39,9 +39,9 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Denotes whether the game is paused or not. Has no effect in the main menu.
     /// </summary>
-    public bool IsGamePaused
+    public bool IsGameRunning
     {
-        get { return _isGamePaused; }
+        get { return _isGameRunning; }
     }
 
     /// <summary>
@@ -86,7 +86,8 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    void Awake()
+    // Awake is called before Start
+    private void Awake()
     {
         // GameManager exists as a singleton object
         if (gm == null)
@@ -117,7 +118,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void PauseGame()
     {
-        _isGamePaused = false;
+        _isGameRunning = false;
         Time.timeScale = 0;
     }
 
@@ -126,7 +127,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void UnpauseGame()
     {
-        _isGamePaused = true;
+        _isGameRunning = true;
         Time.timeScale = 1;
     }
 

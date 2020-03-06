@@ -64,15 +64,25 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        StartCoroutine(SceneLoader.sceneLoader.LoadGameScene());
+        StartCoroutine(LoadScene(_mainMenuSceneIndex, _gameSceneIndex));
     }
 
     /// <summary>
-    /// Performs all necessary operations to transition from the main menu, to the loading screen, to the
-    /// main game scene.
+    /// Goes back to the main menu from the game scene.
     /// </summary>
+    public void LoadMainMenu()
+    {
+        StartCoroutine(LoadScene(_gameSceneIndex, _mainMenuSceneIndex));
+    }
+
+    /// <summary>
+    /// Performs all necessary operations to transition from between two scenes, while displaying the loading
+    /// screen between scenes.
+    /// </summary>
+    /// <param name="originScene">The scene the game is currently in, and that will be unloaded.</param>
+    /// <param name="targetScene">The scene the game will load.</param>
     /// <returns>Null.</returns>
-    private IEnumerator LoadGameScene()
+    private IEnumerator LoadScene(int originScene, int targetScene)
     {
         // Loads the loading screen scene additively, and waits for the loading screen UI to finish fading in before proceeding
         SceneManager.LoadScene(_loadingScreenIndex, LoadSceneMode.Additive);
@@ -82,10 +92,10 @@ public class SceneLoader : MonoBehaviour
         }
 
         // Unloads the main menu scene
-        SceneManager.UnloadSceneAsync(_mainMenuSceneIndex);
+        SceneManager.UnloadSceneAsync(originScene);
 
         // Loads the main game scene additively, and waits for the scene to finish loading before proceeding
-        AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(_gameSceneIndex, LoadSceneMode.Additive);
+        AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(targetScene, LoadSceneMode.Additive);
         while (!sceneLoad.isDone)
         {
             yield return null;
@@ -93,7 +103,7 @@ public class SceneLoader : MonoBehaviour
         
         // Waits a single frame, then sets the main game scene as the active scene to make its lighting the dominant scene lighting
         yield return 0;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(_gameSceneIndex));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(targetScene));
 
         // Starts fading the loading screen UI out, and waits for it to finish before proceeding
         StartCoroutine(LoadingScreenFader.loadScreenFader.FadeOut());
