@@ -65,10 +65,13 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadSceneAsync(_loadingScreenIndex, LoadSceneMode.Additive);
 
         // Waits for the loading screen fade in to finish
-        while (LoadingScreenFader.loadScreenFader == null || LoadingScreenFader.loadScreenFader.IsFading)
+        while (LoadingScreenFader.loadScreenFader == null)
         {
             yield return null;
         }
+
+        // Starts fading the loading screen UI in, and waits for it to finish before proceeding
+        yield return StartCoroutine(LoadingScreenFader.loadScreenFader.FadeIn());
 
         // Unloads the main menu scene
         SceneManager.UnloadSceneAsync(originScene);
@@ -85,7 +88,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(targetScene));
 
         // Starts fading the loading screen UI out, and waits for it to finish before proceeding
-            yield return StartCoroutine(LoadingScreenFader.loadScreenFader.FadeOut());
+        yield return StartCoroutine(LoadingScreenFader.loadScreenFader.FadeOut());
 
         // Unloads the loading screen scene
         SceneManager.UnloadSceneAsync(_loadingScreenIndex);

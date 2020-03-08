@@ -48,8 +48,6 @@ public class LoadingScreenFader : MonoBehaviour
         {
             _canvasGroup = this.gameObject.GetComponent<CanvasGroup>();
         }
-
-        StartCoroutine(FadeIn());
     }
 
     void OnDestroy()

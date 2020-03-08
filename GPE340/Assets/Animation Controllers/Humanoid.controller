@@ -113,8 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956aabd73c983f549ae08afff1c33fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colliderCrouchHeight: 1
-  _speedAdjustRate: 5
+  _agentData: {fileID: 0}
 --- !u!1101 &-4428114497909813263
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -814,8 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454cdf02663a58b428ca8a05c439477e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colliderStandHeight: 2
-  _speedAdjustRate: 5
+  _agentData: {fileID: 0}
 --- !u!206 &2899040057241452150
 BlendTree:
   m_ObjectHideFlags: 1

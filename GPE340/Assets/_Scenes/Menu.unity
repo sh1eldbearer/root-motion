@@ -860,42 +860,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
-      propertyPath: _loadScreenFadeTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
-      propertyPath: _playerInfo.Array.data[0]._playerStatus
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
-      propertyPath: _playerInfo.Array.data[1]._playerStatus
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
-      propertyPath: _playerInfo.Array.data[2]._playerStatus
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
-      propertyPath: _playerInfo.Array.data[3]._playerStatus
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
-      propertyPath: _playerInfo.Array.data[0]._skinColorIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
-      propertyPath: _playerInfo.Array.data[1]._skinColorIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
-      propertyPath: _playerInfo.Array.data[2]._skinColorIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
-      propertyPath: _playerInfo.Array.data[3]._skinColorIndex
-      value: -1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
 --- !u!1 &294705343
@@ -1051,7 +1015,6 @@ MonoBehaviour:
   - {fileID: 995879200}
   - {fileID: 1835520453}
   - {fileID: 2111441304}
-  _selectedIndex: -1
 --- !u!1 &377801075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,47 +1917,38 @@ MonoBehaviour:
     _color: {r: 0.667, g: 0.667, b: 0.667, a: 1}
     _model: {fileID: -927199367670048503, guid: 001aec18ed4d8cc4f91fdd0911f335e5,
       type: 3}
-    _modelAvatar: {fileID: 9000000, guid: 001aec18ed4d8cc4f91fdd0911f335e5, type: 3}
   - _name: 1
     _color: {r: 1, g: 0, b: 1, a: 1}
     _model: {fileID: 4846940864865412748, guid: 9db7043100032994e832ec6a1ef1e7da,
       type: 3}
-    _modelAvatar: {fileID: 9000000, guid: df157f5a572533b4380de26246120b5d, type: 3}
   - _name: 2
     _color: {r: 1, g: 0, b: 0, a: 1}
     _model: {fileID: 3056419856995654888, guid: d4e63c307ba2cd04bb69ea57731ceebe,
       type: 3}
-    _modelAvatar: {fileID: 9000000, guid: c872477227f05714f8d2d0878e87dfa5, type: 3}
   - _name: 3
     _color: {r: 1, g: 0.5, b: 0, a: 1}
     _model: {fileID: 3383443635094590069, guid: fbf76f1300649a942a098a813479747f,
       type: 3}
-    _modelAvatar: {fileID: 9000000, guid: 5eefb6ba80eec0247a7a5f85403ffb53, type: 3}
   - _name: 4
     _color: {r: 1, g: 0.75, b: 0, a: 1}
     _model: {fileID: 1705096705181682383, guid: f442086d85610cd459f9e4db3bb19a15,
       type: 3}
-    _modelAvatar: {fileID: 9000000, guid: 74a0ec319e72e2741b0ba2d0d28b7404, type: 3}
   - _name: 5
     _color: {r: 0, g: 0.5, b: 0, a: 1}
     _model: {fileID: 8280556222786720912, guid: 8e399a67070ab664eb14ddca34ddf49f,
       type: 3}
-    _modelAvatar: {fileID: 9000000, guid: a798b76cece0035458931c3f121356a3, type: 3}
   - _name: 6
     _color: {r: 0, g: 0.75, b: 0.75, a: 1}
     _model: {fileID: 2744008165997167902, guid: c2094c06503474748b9d12e45e2d7c96,
       type: 3}
-    _modelAvatar: {fileID: 9000000, guid: 051e9b0262d3c6246aa2b36c5b518754, type: 3}
   - _name: 7
     _color: {r: 0, g: 0, b: 1, a: 1}
     _model: {fileID: 5515171803398130769, guid: 920a8cb0590957b44bce39ef29300d22,
       type: 3}
-    _modelAvatar: {fileID: 9000000, guid: aa224226556cc2646a93e26379e737e7, type: 3}
   - _name: 8
     _color: {r: 0.667, g: 0, b: 1, a: 1}
     _model: {fileID: 7917973503707983040, guid: 4c00ed30ac28aa74ea4a9bb88b897f27,
       type: 3}
-    _modelAvatar: {fileID: 9000000, guid: 77090f48e984c4149b90ed355f5f4c54, type: 3}
 --- !u!4 &1060838125
 Transform:
   m_ObjectHideFlags: 0
@@ -2071,7 +2025,6 @@ MonoBehaviour:
   - {fileID: 120539063}
   - {fileID: 1152987368}
   - {fileID: 1721809269}
-  _selectedIndex: -1
 --- !u!1 &1084967346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,7 +2237,6 @@ MonoBehaviour:
   - {fileID: 1210306188}
   - {fileID: 1736802164}
   - {fileID: 189850793}
-  _selectedIndex: -1
 --- !u!1 &1111563851
 GameObject:
   m_ObjectHideFlags: 0
@@ -4854,7 +4806,6 @@ MonoBehaviour:
   - {fileID: 1010523505}
   - {fileID: 1937106201}
   - {fileID: 129782995}
-  _selectedIndex: -1
 --- !u!114 &2060676538 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2190113715690461419, guid: 9674eea9a1b62874aa38072c940a29f3,
