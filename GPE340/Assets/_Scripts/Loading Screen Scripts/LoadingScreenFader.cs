@@ -15,22 +15,7 @@ public class LoadingScreenFader : MonoBehaviour
         SerializeField] private CanvasGroup _canvasGroup;
     [Tooltip("The camera used only in the loading screen. (Used to enable this camera just before unloading the previous scene."),
         SerializeField] private Camera _loadingScreenCam;
-
-    [Tooltip("Denotes if the loading screen is fading in or out. Can be read to tell scene loading" +
-             "coroutines to wait before proceeding to their next step."),
-        Space, SerializeField] private bool _isFading = true;
 #pragma warning restore CS0649
-    #endregion
-
-    #region Public Properties
-    /// <summary>
-    /// Denotes if the loading screen is fading in or out. Can be read to tell scene loading coroutines
-    /// to wait before proceeding to their next step.
-    /// </summary>
-    public bool IsFading
-    {
-        get { return _isFading; }
-    }
     #endregion
 
     // Awake is called before Start
@@ -64,8 +49,6 @@ public class LoadingScreenFader : MonoBehaviour
     {
         float timer = 0f;
 
-        _isFading = true;
-
         // Fades the UI's alphas from 0 up to 100 (fully invisible to fully opaque)
         while (timer <= GameManager.gm.LoadScreenFadeTime)
         {
@@ -76,8 +59,6 @@ public class LoadingScreenFader : MonoBehaviour
 
         // Enables the camera on the loading screen
         _loadingScreenCam.enabled = true;
-
-        _isFading = false;
     }
 
     /// <summary>
@@ -89,8 +70,6 @@ public class LoadingScreenFader : MonoBehaviour
     {
         float timer = GameManager.gm.LoadScreenFadeTime;
 
-        _isFading = true;
-
         // Fades the UI's alphas from 100 down to 0 (fully opaque to fully invisible)
         while (timer >= 0f)
         {
@@ -98,7 +77,5 @@ public class LoadingScreenFader : MonoBehaviour
             timer -= Time.unscaledDeltaTime;
             yield return null;
         }
-
-        _isFading = false;
     }
 }
