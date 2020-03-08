@@ -11,21 +11,24 @@ public class SingleCameraController : CameraController
 
     #region Private Properties
 #pragma warning disable 0649
+    [Header("Game Components")]
+    [Tooltip("The object this camera should follow."),
+     SerializeField]
+    private GameObject _followTarget;
+    [SerializeField] private Transform _followTf; // The Transform component of the follow target object
+    [SerializeField] private AgentData _followData; // The Pawn component of the follow target object
+
+    [Header("Movement Settings")]
     [Tooltip("The move speed of the camera."),
         SerializeField] private float _followSpeed = 3.5f;
+
+    [Header("Zoom Settings")]
     [Tooltip("The interval distance the camera will zoom in or out from the follow target."),
         SerializeField, Range(0f, 2f)] private float _zoomFactor = 0.5f;
     [Tooltip("The camera's current zoom \"setting\" (how far in or out the camera is zoomed. (min = zoomed in, max = zoomed out)"),
         SerializeField, Range(MIN_OFFSET_HEIGHT_SETTING, MAX_OFFSET_HEIGHT_SETTING)] private int _zoomSetting = 3;
     private Vector3 _initialOffset; // The initial position of the camera relative to the object it is set to follow
     private Vector3 _heightOffset; // The "zoomed out" level of the camera relative to the object it is set to follow
-
-    [Header("Game Components")]
-    [Tooltip("The object this camera should follow."),
-        SerializeField]
-    private GameObject _followTarget;
-    [SerializeField] private Transform _followTf; // The Transform component of the follow target object
-    [SerializeField] private AgentData _followData; // The Pawn component of the follow target object
 #pragma warning restore 0649
     #endregion
 
@@ -34,26 +37,28 @@ public class SingleCameraController : CameraController
     {
         base.Awake();
 
-        // Component reference assignments
-        _followTf = _followTarget.transform;
-        _followData = _followTarget.GetComponent<AgentData>();
-    }
-
-    // Start is called before the first frame update
-    public override void Start()
-    {
         if (_followTarget != null)
         {
+            // Component reference assignments
+            if (_followTf == null)
+            {
+                _followTf = _followTarget.transform;
+            }
+            if (_followData == null)
+            {
+                _followData = _followTarget.GetComponent<AgentData>();
+            }
+
             // If that assigned agent is a player, assigns this camera as the pawn's camera
             if (_followData.Controller.GetType() == typeof(PlayerController))
             {
                 _followData.AssignCameraController(this);
             }
-            
+
             // Initializes the camera's position relative to its follow target
             CameraTransform.position = new Vector3(CameraTransform.position.x + _followTf.position.x,
-                                                   CameraTransform.position.y,
-                                                   CameraTransform.position.z + _followTf.position.z);
+                CameraTransform.position.y,
+                CameraTransform.position.z + _followTf.position.z);
             // Stores the camera's original position relative to its target
             _initialOffset = CameraTransform.position - _followTf.position;
             // Stores the camera's initial height offset
@@ -68,7 +73,11 @@ public class SingleCameraController : CameraController
             Debug.Log($"You forgot to set a follow target for {this.name}!");
 #endif
         }
+    }
 
+    // Start is called before the first frame update
+    public override void Start()
+    {
         StartCoroutine(AdjustCameraZoom());
     }
 
@@ -99,7 +108,7 @@ public class SingleCameraController : CameraController
         {
             // As long as the camera has a target to follow, updates the camera's position 
             CameraTransform.position = Vector3.MoveTowards(CameraTransform.position, _followTf.position + _initialOffset + _heightOffset,
-                _followSpeed);
+                _followSpeed * Time.deltaTime);
 
             yield return null;
         }
