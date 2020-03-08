@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class CameraController : MonoBehaviour
 {
     #region Private Properties
+    [Header("Camera Components")]
     [Tooltip("This camera's Camera component."),
         SerializeField] private Camera _thisCamera;
     [Tooltip("This camera's Transform component."),

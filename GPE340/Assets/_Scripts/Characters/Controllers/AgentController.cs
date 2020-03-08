@@ -41,6 +41,12 @@ public abstract class AgentController : MonoBehaviour
     protected virtual void Start()
     {
         // TODO: Determine base functionality once AI controllers are set up
+        
+        // Component reference assignments
+        if (_agentData == null)
+        {
+            _agentData = this.gameObject.GetComponent<AgentData>();
+        }
     }
 
     /// <summary>

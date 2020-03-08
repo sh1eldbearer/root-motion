@@ -73,7 +73,25 @@ public class AgentData : MonoBehaviour
         get { return _agentCamera; }
     }
     #endregion
-    
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        // Component reference assignments
+        if (_controller == null)
+        {
+            _controller = this.gameObject.GetComponent<AgentController>();
+        }
+        if (_agentTransform == null)
+        {
+            _agentTransform = this.transform;
+        }
+        if (_agentAnimator == null)
+        {
+            _agentAnimator = this.gameObject.GetComponent<Animator>();
+        }
+    }
+
     /// <summary>
     /// Assigns a camera to follow this agent.
     /// </summary>

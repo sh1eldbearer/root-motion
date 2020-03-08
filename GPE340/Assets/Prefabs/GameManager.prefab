@@ -44,18 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e234ebefc9cba8549ac04f8e2d45b6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isGamePaused: 0
-  _totalPlayerCount: 1
+  _isGameRunning: 0
   _currentActiveCamera: {fileID: 0}
+  _currentRoomData: {fileID: 0}
   _playerInfo:
   - _playerNumber: 0
-    _playerModel: {fileID: 0}
+    _playerStatus: 0
+    _skinColorIndex: -1
   - _playerNumber: 1
-    _playerModel: {fileID: 0}
+    _playerStatus: -2
+    _skinColorIndex: -1
   - _playerNumber: 2
-    _playerModel: {fileID: 0}
+    _playerStatus: -2
+    _skinColorIndex: -1
   - _playerNumber: 3
-    _playerModel: {fileID: 0}
+    _playerStatus: -2
+    _skinColorIndex: -1
+  _loadScreenFadeTime: 0.75
 --- !u!81 &8060879576209064799
 AudioListener:
   m_ObjectHideFlags: 0

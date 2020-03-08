@@ -92,6 +92,7 @@ public class MainMenuManager : MenuManager
         }
     }
 
+    // Start is called before the first frame update
     protected override void Start()
     {
         InitializeMainMenu();

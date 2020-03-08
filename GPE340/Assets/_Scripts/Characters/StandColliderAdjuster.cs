@@ -14,7 +14,10 @@ public class StandColliderAdjuster : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Component reference assignments
-        _thisCollider = animator.gameObject.GetComponent<CapsuleCollider>();
+        if (_thisCollider == null)
+        {
+            _thisCollider = animator.gameObject.GetComponent<CapsuleCollider>();
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
