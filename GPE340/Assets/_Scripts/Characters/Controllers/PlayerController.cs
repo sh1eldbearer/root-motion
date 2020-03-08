@@ -2,7 +2,7 @@
 using UnityEditor.Animations;
 using UnityEngine;
 
-public class PlayerController :  AgentController
+public class PlayerController : AgentController
 {
     // Start is called before the first frame update
     protected override void Start()
@@ -26,7 +26,7 @@ public class PlayerController :  AgentController
             while (GameManager.gm.IsGameRunning)
             {
                 // Get the world vector that we want to move
-                Vector3 worldMoveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+                Vector3 worldMoveVector = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
                 // Normalize it to allow controllers and keyboards to function the same
                 worldMoveVector.Normalize();
 
