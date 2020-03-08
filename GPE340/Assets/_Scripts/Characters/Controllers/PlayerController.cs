@@ -49,7 +49,7 @@ public class PlayerController :  AgentController
 
                 // Pass values from the input controller into the animator to generate movement
                 AgentData.AgentAnimator.SetFloat("Horizontal", localMoveVector.x * AgentData.MoveSpeed);
-                AgentData.AgentAnimator.SetFloat("Vertical", localMoveVector.z *AgentData.MoveSpeed);
+                AgentData.AgentAnimator.SetFloat("Vertical", localMoveVector.z * AgentData.MoveSpeed);
 
                 StartCoroutine(AgentData.AgentCamera.UpdateCameraPosition());
                 yield return localMoveVector;

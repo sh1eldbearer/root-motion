@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isGameRunning: 0
-  _currentActiveCamera: {fileID: 0}
+  _activeCamera: {fileID: 0}
   _currentRoomData: {fileID: 0}
   _playerInfo:
   - _playerNumber: 0

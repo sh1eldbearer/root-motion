@@ -2920,9 +2920,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 7
   _turnSpeed: 720
+  _standColliderHeight: 1.8
+  _standColliderCenter: {x: 0, y: 0.9, z: 0}
+  _crouchColliderHeight: 1.25
+  _crouchColliderCenter: {x: 0, y: 0.65, z: 0}
+  _colliderAdjustSpeed: 5
   _controller: {fileID: 7316619785491220062}
   _agentTransform: {fileID: 8850288294867320386}
   _agentAnimator: {fileID: 1466072937144095544}
+  _agentCollider: {fileID: 480174649770189716}
   _agentCamera: {fileID: 0}
 --- !u!114 &7316619785491220062
 MonoBehaviour:
