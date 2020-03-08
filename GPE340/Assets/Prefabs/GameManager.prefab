@@ -49,16 +49,20 @@ MonoBehaviour:
   _currentRoomData: {fileID: 0}
   _playerInfo:
   - _playerNumber: 0
-    _playerStatus: 0
+    _playerStatus: 3
+    _agentData: {fileID: 0}
     _skinColorIndex: -1
   - _playerNumber: 1
-    _playerStatus: -2
+    _playerStatus: 1
+    _agentData: {fileID: 0}
     _skinColorIndex: -1
   - _playerNumber: 2
     _playerStatus: -2
+    _agentData: {fileID: 0}
     _skinColorIndex: -1
   - _playerNumber: 3
     _playerStatus: -2
+    _agentData: {fileID: 0}
     _skinColorIndex: -1
   _loadScreenFadeTime: 0.75
 --- !u!81 &8060879576209064799
