@@ -62,7 +62,9 @@ public class SceneLoader : MonoBehaviour
     private IEnumerator LoadScene(int originScene, int targetScene)
     {
         // Loads the loading screen scene additively, and waits for the loading screen UI to finish fading in before proceeding
-        SceneManager.LoadScene(_loadingScreenIndex, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(_loadingScreenIndex, LoadSceneMode.Additive);
+
+        // Waits for the loading screen fade in to finish
         while (LoadingScreenFader.loadScreenFader == null || LoadingScreenFader.loadScreenFader.IsFading)
         {
             yield return null;

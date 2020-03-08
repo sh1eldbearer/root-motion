@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("Denotes whether the game is paused or not. Has no effect in the main menu."),
         SerializeField] private bool _isGameRunning;
     [Tooltip("The currently active camera rendering the game."), 
-        SerializeField] private Camera _currentActiveCamera;
+        SerializeField] private Camera _activeCamera;
     [Tooltip("When in the game proper, this is the room the players are currently in."),
         SerializeField, Space] private RoomData _currentRoomData;
 

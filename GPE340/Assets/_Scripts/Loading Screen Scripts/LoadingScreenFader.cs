@@ -13,6 +13,8 @@ public class LoadingScreenFader : MonoBehaviour
 #pragma warning disable CS0649
     [Tooltip("The Canvas Group component for the loading screen UI elements."),
         SerializeField] private CanvasGroup _canvasGroup;
+    [Tooltip("The camera used only in the loading screen. (Used to enable this camera just before unloading the previous scene."),
+        SerializeField] private Camera _loadingScreenCam;
 
     [Tooltip("Denotes if the loading screen is fading in or out. Can be read to tell scene loading" +
              "coroutines to wait before proceeding to their next step."),
@@ -62,10 +64,7 @@ public class LoadingScreenFader : MonoBehaviour
     /// <returns>Null.</returns>
     public IEnumerator FadeIn()
     {
-        // Makes sure the time scale is not 0
-        GameManager.gm.UnpauseGame();
-
-        float timer = 0;
+        float timer = 0f;
 
         _isFading = true;
 
@@ -73,9 +72,12 @@ public class LoadingScreenFader : MonoBehaviour
         while (timer <= GameManager.gm.LoadScreenFadeTime)
         {
             _canvasGroup.alpha = timer / GameManager.gm.LoadScreenFadeTime;
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             yield return null;
         }
+
+        // Enables the camera on the loading screen
+        _loadingScreenCam.enabled = true;
 
         _isFading = false;
     }
@@ -95,7 +97,7 @@ public class LoadingScreenFader : MonoBehaviour
         while (timer >= 0f)
         {
             _canvasGroup.alpha = timer / GameManager.gm.LoadScreenFadeTime;
-            timer -= Time.deltaTime;
+            timer -= Time.unscaledDeltaTime;
             yield return null;
         }
 
