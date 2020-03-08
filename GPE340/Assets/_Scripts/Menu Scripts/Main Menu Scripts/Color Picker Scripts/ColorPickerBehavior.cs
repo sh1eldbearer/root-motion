@@ -54,27 +54,29 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     public void OnPointerClick(PointerEventData pointerData)
     {
         int index = _objGroupData.ColorPickers.IndexOf(this) + 1;
-
-        if (IsSelected)
+        if (IsSelectable)
         {
-            _selected = false;
+            if (IsSelected)
+            {
+                _selected = false;
 
-            EnableSameRowSelectors();
-            EnableSameColorSelectors(_objGroupData.ColorPickers.IndexOf((this)));
+                EnableSameRowSelectors();
+                EnableSameColorSelectors(_objGroupData.ColorPickers.IndexOf((this)));
 
-            // Clears the skin color selection from the object group and the player data
-            GameManager.gm.PlayerInfo[(int)_objGroupData.PlayerNumber].ClearSkinColorIndex();
-        }
-        else
-        {
-            // Marks this 
-            _selected = true;
+                // Clears the skin color selection from the object group and the player data
+                GameManager.gm.PlayerInfo[(int) _objGroupData.PlayerNumber].ClearSkinColorIndex();
+            }
+            else
+            {
+                // Marks this 
+                _selected = true;
 
-            DisableSameRowSelectors();
-            DisableSameColorSelectors(_objGroupData.ColorPickers.IndexOf(this));
+                DisableSameRowSelectors();
+                DisableSameColorSelectors(_objGroupData.ColorPickers.IndexOf(this));
 
-            // Tells the player data which skin color was selected
-            GameManager.gm.PlayerInfo[(int)_objGroupData.PlayerNumber].SetSkinColorIndex(index);
+                // Tells the player data which skin color was selected
+                GameManager.gm.PlayerInfo[(int) _objGroupData.PlayerNumber].SetSkinColorIndex(index);
+            }
         }
     }
 
