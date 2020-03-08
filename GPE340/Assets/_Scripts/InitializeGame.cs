@@ -70,6 +70,8 @@ public class InitializeGame : MonoBehaviour
 
         // Activates the player object and its camera
         playerObject.SetActive(true);
+        // Assigns the new character's agent data component to the player info array
+        player.SetAgentData(newPlayer.GetComponent<AgentData>());
 
         if (player.PlayerNumber == PlayerNumbers.P1)
         {
@@ -78,7 +80,7 @@ public class InitializeGame : MonoBehaviour
         else
         {
             // TODO: Change camera assignment behavior for multiplayer
-            newPlayer.GetComponent<AgentData>().AssignCameraController(_singlePlayerCamera);
+            player.AgentData.AssignCameraController(_singlePlayerCamera);
         }
     }
 }

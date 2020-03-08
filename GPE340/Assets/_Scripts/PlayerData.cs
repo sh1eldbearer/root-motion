@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-[Serializable]
-public struct PlayerData
+[System.Serializable]
+public class PlayerData
 {
     #region Private Properties
 #pragma warning disable CS0649
@@ -13,10 +14,12 @@ public struct PlayerData
         SerializeField] private PlayerNumbers _playerNumber;
     [Tooltip("The player's current status."),
         SerializeField] private PlayerStatus _playerStatus;
+    [Tooltip("The agent data component of this player (if active.)"),
+        SerializeField] private AgentData _agentData;
 
     [Header("Skin Info")]
     [Tooltip("The index of the character model chosen by this player."),
-        SerializeField] private int _skinColorIndex;
+        SerializeField] private int _skinColorIndex = -1;
 #pragma warning restore CS0649
     #endregion
 
@@ -38,14 +41,58 @@ public struct PlayerData
     }
 
     /// <summary>
+    /// The agent data component of this player (if active.)
+    /// </summary>
+    public AgentData AgentData
+    {
+        get { return _agentData; }
+    }
+
+    /// <summary>
     /// The index of the character model chosen by this player.
     /// </summary>
     public int SkinColorIndex
     {
         get { return _skinColorIndex; }
     }
-
     #endregion
+
+    /// <summary>
+    /// Resets some of the properties of this PlayerData object.
+    /// </summary>
+    public void ResetPlayerInfo()
+    {
+        // Player 1 should always be at least joined
+        if (_playerNumber == PlayerNumbers.P1)
+        {
+            _playerStatus = PlayerStatus.Joined;
+        }
+        else
+        {
+            // Players 2-4 should be "not joined" if they were active in a previous game this session
+            if ((int)_playerStatus >= 0)
+            {
+                _playerStatus = PlayerStatus.NotJoined;
+            }
+            // Players 2-4 should be "inactive" if they were not active in any previous game this session
+            else
+            {
+                _playerStatus = PlayerStatus.Inactive;
+            }
+        }
+
+        // Clears other information about the players
+        ClearAgentData();
+        ClearSkinColorIndex();
+    }
+
+    /// <summary>
+    /// Sets this player's status.
+    /// </summary>
+    public void SetStatus(PlayerStatus newStatus)
+    {
+        _playerStatus = newStatus;
+    }
 
     /// <summary>
     /// Stores the index of the skin color chosen by this player, and marks the player
@@ -61,11 +108,27 @@ public struct PlayerData
     /// <summary>
     /// Clears the index of the skin color for this player and removes the player's
     /// Ready status.
-    /// from the player's info.
     /// </summary>
     public void ClearSkinColorIndex()
     {
         _skinColorIndex = -1;
-        _playerStatus = PlayerStatus.Joined;
+        //_playerStatus = PlayerStatus.Joined;
+    }
+
+    /// <summary>
+    /// Assigns a reference to this player's agent data when the game is running. 
+    /// </summary>
+    /// <param name="agentData">The agent data to be associated with this player.</param>
+    public void SetAgentData(AgentData agentData)
+    {
+        _agentData = agentData;
+    }
+
+    /// <summary>
+    /// Clears the reference to this player's agent data.
+    /// </summary>
+    public void ClearAgentData()
+    {
+        _agentData = null;
     }
 }

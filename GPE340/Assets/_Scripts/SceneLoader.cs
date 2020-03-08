@@ -50,6 +50,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadMainMenu()
     {
         StartCoroutine(LoadScene(_gameSceneIndex, _mainMenuSceneIndex));
+        GameManager.gm.ResetPlayerInfo();
     }
 
     /// <summary>

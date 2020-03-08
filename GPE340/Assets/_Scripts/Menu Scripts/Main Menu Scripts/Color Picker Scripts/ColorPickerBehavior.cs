@@ -65,6 +65,7 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
 
                 // Clears the skin color selection from the object group and the player data
                 GameManager.gm.PlayerInfo[(int) _objGroupData.PlayerNumber].ClearSkinColorIndex();
+                GameManager.gm.PlayerInfo[(int) _objGroupData.PlayerNumber].SetStatus(PlayerStatus.Joined);
             }
             else
             {

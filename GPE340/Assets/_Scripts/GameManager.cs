@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Current Player Information")]
     [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Local"), 
-        SerializeField] private PlayerData[] _playerInfo = new PlayerData[4];
+        SerializeField] private PlayerData[] _playerInfo;
 
     // [Header("Prefabs")]
 
@@ -91,6 +91,18 @@ public class GameManager : MonoBehaviour
             UnpauseGame();
         }
 #endif
+        ResetPlayerInfo();
+    }
+
+    /// <summary>
+    /// Resets the player info to the default state
+    /// </summary>
+    public void ResetPlayerInfo()
+    {
+        foreach (PlayerData player in PlayerInfo)
+        {
+            player.ResetPlayerInfo();
+        }
     }
 
     /// <summary>
