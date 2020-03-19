@@ -25,16 +25,14 @@ public class SkinManager : MonoBehaviour
     // Awake is called before Start
     private void Awake()
     {
-        // Makes the SkinManager a singleton and a persistent game object
+        /* Makes the SkinManager a singleton but not a persistent game object
+         (Once the game is running, the configuration of the SkinManager will be stored
+         in the static class member, and will no longer need to be viewable or editable) */
         if (skinMgr == null)
         {
             skinMgr = this;
-            DontDestroyOnLoad(this.gameObject);
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        Destroy(this.gameObject);
     }
 
     /// <summary>
