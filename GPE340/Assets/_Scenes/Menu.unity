@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 221144055}
   - component: {fileID: 221144054}
   m_Layer: 5
-  m_Name: Options Menu
+  m_Name: Options Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -717,8 +717,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1410690461}
+  m_Children: []
   m_Father: {fileID: 1302907514}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1677,7 +1676,7 @@ GameObject:
   - component: {fileID: 902981939}
   - component: {fileID: 902981938}
   m_Layer: 5
-  m_Name: Credits
+  m_Name: Credits Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2934,6 +2933,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 221144053}
+  - {fileID: 1410690461}
   m_Father: {fileID: 578790084}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2983,13 +2983,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 221144053}
-  m_RootOrder: 0
+  m_Father: {fileID: 1302907514}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: -264.99997}
-  m_SizeDelta: {x: 575, y: 450}
+  m_AnchoredPosition: {x: 0, y: -25}
+  m_SizeDelta: {x: 1150, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1410690462
 MonoBehaviour:
@@ -3406,8 +3406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: -25}
-  m_SizeDelta: {x: 575, y: 450}
+  m_AnchoredPosition: {x: 0, y: -25}
+  m_SizeDelta: {x: 1150, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1655126801
 MonoBehaviour:
@@ -3439,13 +3439,11 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Programming by . . . . . . . . . . . . . . . . . . . . . .. . . . . . .
-    Nathan Scott\n\nOriginal Character Model\n\t'Exo Red' and\n\tAnimations . . .
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . Mixamo.com\nPalette Swaps
-    . . . . . . . . . . . . . . .. . . . . . . . . . . . . . . . Nathan Scott"
+  m_Text: "Programming by Nathan Scott\n\nOriginal Character Model 'Exo Red' and \nHumanoid
+    Animations by Mixamo.com\n\n'Exo Red' Model Palette Swaps by Nathan Scott"
 --- !u!222 &1655126802
 CanvasRenderer:
   m_ObjectHideFlags: 0
