@@ -15,7 +15,7 @@ public class PlayerData
     [Tooltip("The player's current status."),
         SerializeField] private PlayerStatus _playerStatus;
     [Tooltip("The agent data component of this player (if active.)"),
-        SerializeField] private AgentData _agentData;
+        SerializeField] private PawnData _pawnData;
 
     [Header("Skin Info")]
     [Tooltip("The index of the character model chosen by this player."),
@@ -43,9 +43,9 @@ public class PlayerData
     /// <summary>
     /// The agent data component of this player (if active.)
     /// </summary>
-    public AgentData AgentData
+    public PawnData PawnData
     {
-        get { return _agentData; }
+        get { return _pawnData; }
     }
 
     /// <summary>
@@ -118,10 +118,10 @@ public class PlayerData
     /// <summary>
     /// Assigns a reference to this player's agent data when the game is running. 
     /// </summary>
-    /// <param name="agentData">The agent data to be associated with this player.</param>
-    public void SetAgentData(AgentData agentData)
+    /// <param name="pawnData">The agent data to be associated with this player.</param>
+    public void SetAgentData(PawnData pawnData)
     {
-        _agentData = agentData;
+        _pawnData = pawnData;
     }
 
     /// <summary>
@@ -129,6 +129,6 @@ public class PlayerData
     /// </summary>
     public void ClearAgentData()
     {
-        _agentData = null;
+        _pawnData = null;
     }
 }

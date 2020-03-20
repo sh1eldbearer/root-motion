@@ -16,7 +16,7 @@ public class SingleCameraController : CameraController
      SerializeField]
     private GameObject _followTarget;
     [SerializeField] private Transform _followTf; // The Transform component of the follow target object
-    [SerializeField] private AgentData _followData; // The Pawn component of the follow target object
+    [SerializeField] private PawnData _followData; // The Pawn component of the follow target object
 
     [Header("Movement Settings")]
     [Tooltip("The move speed of the camera."),
@@ -46,7 +46,7 @@ public class SingleCameraController : CameraController
             }
             if (_followData == null)
             {
-                _followData = _followTarget.GetComponent<AgentData>();
+                _followData = _followTarget.GetComponent<PawnData>();
             }
 
             // If that assigned agent is a player, assigns this camera as the pawn's camera
@@ -161,6 +161,6 @@ public class SingleCameraController : CameraController
     {
         _followTarget = followTarget;
         _followTf = followTarget.transform;
-        _followData = followTarget.GetComponent<AgentData>();
+        _followData = followTarget.GetComponent<PawnData>();
     }
 }

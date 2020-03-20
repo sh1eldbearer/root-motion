@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))] 
-[RequireComponent(typeof(Animator), typeof(AgentData))]
 public abstract class AgentController : MonoBehaviour
 {
     // Nothing outside of AgentControllers is using this enum, so it does not need to be moved to the Enums script
@@ -23,7 +21,7 @@ public abstract class AgentController : MonoBehaviour
 #pragma warning disable CS0649
     [Header("Component References")]
     [Tooltip("This agent's data component."),
-        SerializeField] private AgentData _agentData;
+        SerializeField] private PawnData _pawnData;
 #pragma warning restore CS0649
     #endregion
 
@@ -31,9 +29,9 @@ public abstract class AgentController : MonoBehaviour
     /// <summary>
     /// This agent's data component.
     /// </summary>
-    public AgentData AgentData
+    public PawnData PawnData
     {
-        get { return _agentData; }
+        get { return _pawnData; }
     }
     #endregion
 
@@ -43,9 +41,9 @@ public abstract class AgentController : MonoBehaviour
         // TODO: Determine base functionality once AI controllers are set up
         
         // Component reference assignments
-        if (_agentData == null)
+        if (_pawnData == null)
         {
-            _agentData = this.gameObject.GetComponent<AgentData>();
+            _pawnData = this.gameObject.GetComponentInChildren<PawnData>();
         }
     }
 
@@ -90,16 +88,16 @@ public abstract class AgentController : MonoBehaviour
         switch (locoState)
         {
             case LocomotionState.Walking:
-                _agentData.AgentAnimator.SetBool("isSprinting", false);
-                _agentData.AgentAnimator.SetBool("isCrouching", false);
+                _pawnData.PawnAnimator.SetBool("isSprinting", false);
+                _pawnData.PawnAnimator.SetBool("isCrouching", false);
                 break;
             case LocomotionState.Crouching:
-                _agentData.AgentAnimator.SetBool("isSprinting", false);
-                _agentData.AgentAnimator.SetBool("isCrouching", true);
+                _pawnData.PawnAnimator.SetBool("isSprinting", false);
+                _pawnData.PawnAnimator.SetBool("isCrouching", true);
                 break;
             case LocomotionState.Sprinting:
-                _agentData.AgentAnimator.SetBool("isSprinting", true);
-                _agentData.AgentAnimator.SetBool("isCrouching", false);
+                _pawnData.PawnAnimator.SetBool("isSprinting", true);
+                _pawnData.PawnAnimator.SetBool("isCrouching", false);
                 break;
         }
     }

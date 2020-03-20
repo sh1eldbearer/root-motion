@@ -11,7 +11,7 @@ public class PlayerController : AgentController
 
         StartCoroutine(Move());
         // TODO: When multiplayer is working, change this to point to the appropriate camera
-        StartCoroutine(HandleRotation(AgentData.AgentCamera));
+        StartCoroutine(HandleRotation(PawnData.PawnCamera));
     }
 
     /// <summary>
@@ -48,10 +48,11 @@ public class PlayerController : AgentController
                 }
 
                 // Pass values from the input controller into the animator to generate movement
-                AgentData.AgentAnimator.SetFloat("Horizontal", localMoveVector.x * AgentData.MoveSpeed);
-                AgentData.AgentAnimator.SetFloat("Vertical", localMoveVector.z * AgentData.MoveSpeed);
+                //Debug.Log($"X: {Input.GetAxis("Horizontal")}, Z: {Input.GetAxis("Vertical")}");
+                PawnData.PawnAnimator.SetFloat("Horizontal", localMoveVector.x * PawnData.MoveSpeed);
+                PawnData.PawnAnimator.SetFloat("Vertical", localMoveVector.z * PawnData.MoveSpeed);
 
-                StartCoroutine(AgentData.AgentCamera.UpdateCameraPosition());
+                StartCoroutine(PawnData.PawnCamera.UpdateCameraPosition());
                 yield return localMoveVector;
             }
 
@@ -73,7 +74,7 @@ public class PlayerController : AgentController
             while (GameManager.gm.IsGameRunning)
             {
                 // Create a plane object for the plane the player is standing on
-                Plane groundPlane = new Plane(Vector3.up, AgentData.AgentTransform.position);
+                Plane groundPlane = new Plane(Vector3.up, PawnData.PawnTransform.position);
 
                 // Create a ray from camera through the mouse position in the direction the camera is facing
                 if (activeCamera != null)
@@ -90,9 +91,9 @@ public class PlayerController : AgentController
 
                         // Get the rotation needed for the player to look at that point
                         Quaternion targetRotation =
-                            Quaternion.LookRotation(collisionPoint - AgentData.AgentTransform.position, AgentData.AgentTransform.up);
-                        AgentData.AgentTransform.rotation = Quaternion.RotateTowards(AgentData.AgentTransform.rotation, targetRotation,
-                            AgentData.TurnSpeed * Time.deltaTime);
+                            Quaternion.LookRotation(collisionPoint - PawnData.PawnTransform.position, PawnData.PawnTransform.up);
+                        PawnData.PawnTransform.rotation = Quaternion.RotateTowards(PawnData.PawnTransform.rotation, targetRotation,
+                            PawnData.TurnSpeed * Time.deltaTime);
                         yield return collisionPoint;
                     }
                     else
