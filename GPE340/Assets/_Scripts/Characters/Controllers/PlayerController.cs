@@ -31,7 +31,7 @@ public class PlayerController : AgentController
                 worldMoveVector.Normalize();
 
                 // Find local version of the worldMoveVector (relative to the object's transform)
-                Vector3 localMoveVector = transform.InverseTransformDirection(worldMoveVector);
+                Vector3 localMoveVector = PawnData.PawnTransform.InverseTransformDirection(worldMoveVector);
 
                 // Set sprinting or walking booleans if any of the inputs are pressed
                 if (Input.GetAxis("Sprint") > 0f)
