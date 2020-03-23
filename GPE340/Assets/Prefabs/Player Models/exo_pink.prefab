@@ -2520,6 +2520,7 @@ GameObject:
   - component: {fileID: 1986809883800041957}
   - component: {fileID: -8994324490253491578}
   - component: {fileID: 3371373809164030142}
+  - component: {fileID: -6854404092855732732}
   - component: {fileID: 4195750060168634495}
   m_Layer: 0
   m_Name: exo_pink
@@ -2593,6 +2594,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-6854404092855732732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4846940864865412748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a31272d8681be242a4dadde68fc0a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pawnData: {fileID: 4195750060168634495}
 --- !u!114 &4195750060168634495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2608,14 +2622,14 @@ MonoBehaviour:
   _moveSpeed: 7
   _turnSpeed: 720
   _standColliderHeight: 1.8
-  _standColliderCenterY: 1
+  _standColliderCenterY: 0.9
   _crouchColliderHeight: 1.25
   _crouchColliderCenterY: 0.5
-  _colliderAdjustSpeed: 5
+  _colliderAdjustSpeed: 20
   _controller: {fileID: 0}
-  _pawnTransform: {fileID: 0}
-  _pawnAnimator: {fileID: 0}
-  _pawnCollider: {fileID: 0}
+  _pawnTransform: {fileID: 8437655331415676063}
+  _pawnAnimator: {fileID: 1986809883800041957}
+  _pawnCollider: {fileID: 3371373809164030142}
   _pawnCamera: {fileID: 0}
 --- !u!1 &5033160236768262014
 GameObject:

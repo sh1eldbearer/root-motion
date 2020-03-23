@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CapsuleCollider))]
-[RequireComponent(typeof(Animator))]
-
 public class PawnData : MonoBehaviour
 {
     #region Private Properties
@@ -141,7 +137,6 @@ public class PawnData : MonoBehaviour
     {
         get { return _pawnCamera; }
     }
-
     #endregion
 
     // Awake is called before Start

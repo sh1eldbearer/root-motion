@@ -11,52 +11,40 @@ public class PlayerController : AgentController
 
         StartCoroutine(Move());
         // TODO: When multiplayer is working, change this to point to the appropriate camera
-        StartCoroutine(HandleRotation(PawnData.PawnCamera));
+        StartCoroutine(HandleRotation(ThisPawn.PawnData.PawnCamera));
     }
 
     /// <summary>
     /// Moves the agent, relative to local space.
     /// </summary>
-    /// <returns>The vector the player is moving toward, in local space, if the game is not paused.
-    /// Returns null otherwise. </returns>
+    /// <returns>A co-routine enumerator.</returns>
     protected override IEnumerator Move()
     {
         while (true)
         {
             while (GameManager.gm.IsGameRunning)
             {
-                // Get the world vector that we want to move
-                Vector3 worldMoveVector = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-                // Normalize it to allow controllers and keyboards to function the same
-                worldMoveVector.Normalize();
-
-                // Find local version of the worldMoveVector (relative to the object's transform)
-                Vector3 localMoveVector = PawnData.PawnTransform.InverseTransformDirection(worldMoveVector);
-
                 // Set sprinting or walking booleans if any of the inputs are pressed
                 if (Input.GetAxis("Sprint") > 0f)
                 {
-                    ChangeLocomotionState(LocomotionState.Sprinting);
+                    SetLocomotionState(LocomotionState.Sprinting);
                 }
                 else if (Input.GetAxis("Crouch") > 0f)
                 {
-                    ChangeLocomotionState(LocomotionState.Crouching);
+                    SetLocomotionState(LocomotionState.Crouching);
                 }
                 else
                 {
-                    ChangeLocomotionState(LocomotionState.Walking);
+                    SetLocomotionState(LocomotionState.Walking);
                 }
 
-                // Pass values from the input controller into the animator to generate movement
-                //Debug.Log($"X: {Input.GetAxis("Horizontal")}, Z: {Input.GetAxis("Vertical")}");
-                PawnData.PawnAnimator.SetFloat("Horizontal", localMoveVector.x * PawnData.MoveSpeed);
-                PawnData.PawnAnimator.SetFloat("Vertical", localMoveVector.z * PawnData.MoveSpeed);
+                ThisPawn.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-                StartCoroutine(PawnData.PawnCamera.UpdateCameraPosition());
-                yield return localMoveVector;
+                yield return new WaitForFixedUpdate();
+                StartCoroutine(ThisPawn.PawnData.PawnCamera.UpdateCameraPosition());
             }
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -74,7 +62,7 @@ public class PlayerController : AgentController
             while (GameManager.gm.IsGameRunning)
             {
                 // Create a plane object for the plane the player is standing on
-                Plane groundPlane = new Plane(Vector3.up, PawnData.PawnTransform.position);
+                Plane groundPlane = new Plane(Vector3.up, ThisPawn.PawnData.PawnTransform.position);
 
                 // Create a ray from camera through the mouse position in the direction the camera is facing
                 if (activeCamera != null)
@@ -82,19 +70,19 @@ public class PlayerController : AgentController
                     // Uses the mouse position to rotate the pawn
                     Ray mouseRay = activeCamera.ThisCamera.ScreenPointToRay(Input.mousePosition);
 
-                    // Raycast
+                    // Raycast to find where the mouse ray intersects with our ground plane
                     float intersectDistance;
                     if (groundPlane.Raycast(mouseRay, out intersectDistance))
                     {
                         // Gets the point in world space where the mouse is aiming
-                        Vector3 collisionPoint = mouseRay.GetPoint(intersectDistance);
+                        Vector3 intersectPoint = mouseRay.GetPoint(intersectDistance);
 
                         // Get the rotation needed for the player to look at that point
                         Quaternion targetRotation =
-                            Quaternion.LookRotation(collisionPoint - PawnData.PawnTransform.position, PawnData.PawnTransform.up);
-                        PawnData.PawnTransform.rotation = Quaternion.RotateTowards(PawnData.PawnTransform.rotation, targetRotation,
-                            PawnData.TurnSpeed * Time.deltaTime);
-                        yield return collisionPoint;
+                            Quaternion.LookRotation(intersectPoint - ThisPawn.PawnData.PawnTransform.position, ThisPawn.PawnData.PawnTransform.up);
+                        ThisPawn.PawnData.PawnTransform.rotation = Quaternion.RotateTowards(ThisPawn.PawnData.PawnTransform.rotation, targetRotation,
+                            ThisPawn.PawnData.TurnSpeed * Time.deltaTime);
+                        yield return intersectPoint;
                     }
                     else
                     {

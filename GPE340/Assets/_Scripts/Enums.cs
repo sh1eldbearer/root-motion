@@ -37,3 +37,13 @@ public enum ColorNames
     Blue = 7,
     Violet = 8
 }
+
+/// <summary>
+/// Designates which set of animations a pawn's animator should use to move.
+/// </summary>
+public enum LocomotionState
+{
+    Walking = 0,
+    Crouching = 1,
+    Sprinting = 2
+}
