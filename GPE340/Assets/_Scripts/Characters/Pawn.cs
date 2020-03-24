@@ -68,27 +68,20 @@ public class Pawn : MonoBehaviour
     /// <returns>A co-routine enumerator.</returns>
     public void Move(float horizontalInput, float verticalInput)
     {
-        while (true)
-        {
-            while (GameManager.gm.IsGameRunning)
-            {
+        // Get the world vector that we want to move
+        Vector3 worldMoveVector = new Vector3(horizontalInput, 0f, verticalInput);
+        // Normalize it to allow controllers and keyboards to function the same
+        Vector3.ClampMagnitude(worldMoveVector, 1f);
 
-                // Get the world vector that we want to move
-                Vector3 worldMoveVector = new Vector3(horizontalInput, 0f, verticalInput);
-                // Normalize it to allow controllers and keyboards to function the same
-                Vector3.ClampMagnitude(worldMoveVector, 1f);
+        // Find local version of the worldMoveVector (relative to the object's transform)
+        Vector3 localMoveVector = PawnData.PawnTransform.InverseTransformDirection(worldMoveVector);
 
-                // Find local version of the worldMoveVector (relative to the object's transform)
-                Vector3 localMoveVector = PawnData.PawnTransform.InverseTransformDirection(worldMoveVector);
+        // Pass values from the input controller into the animator to generate movement
+        //Debug.Log($"X: {Input.GetAxis("Horizontal")}, Z: {Input.GetAxis("Vertical")}");
+        PawnData.PawnAnimator.SetFloat("Horizontal", localMoveVector.x * PawnData.MoveSpeed);
+        PawnData.PawnAnimator.SetFloat("Vertical", localMoveVector.z * PawnData.MoveSpeed);
 
-                // Pass values from the input controller into the animator to generate movement
-                //Debug.Log($"X: {Input.GetAxis("Horizontal")}, Z: {Input.GetAxis("Vertical")}");
-                PawnData.PawnAnimator.SetFloat("Horizontal", localMoveVector.x * PawnData.MoveSpeed);
-                PawnData.PawnAnimator.SetFloat("Vertical", localMoveVector.z * PawnData.MoveSpeed);
-
-                StartCoroutine(PawnData.PawnCamera.UpdateCameraPosition());
-            }
-        }
+        StartCoroutine(PawnData.PawnCamera.UpdateCameraPosition());
     }
 
     /// <summary>
