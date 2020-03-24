@@ -250,4 +250,23 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     {
         _objGroupData = objGroupData;
     }
+
+    /// <summary>
+    /// Waits until all joined players have selected a color before activating the Start Game button.
+    /// </summary>
+    private void UpdateGameReadyStatus()
+    {
+        // All players that have joined the game must have selected a color in order for the game to start
+        if (((int)GameManager.gm.PlayerInfo[0].Status < 0 || GameManager.gm.PlayerInfo[0].Status == PlayerStatus.Ready) &&
+            ((int)GameManager.gm.PlayerInfo[1].Status < 0 || GameManager.gm.PlayerInfo[1].Status == PlayerStatus.Ready) &&
+            ((int)GameManager.gm.PlayerInfo[2].Status < 0 || GameManager.gm.PlayerInfo[2].Status == PlayerStatus.Ready) &&
+            ((int)GameManager.gm.PlayerInfo[3].Status < 0 || GameManager.gm.PlayerInfo[3].Status == PlayerStatus.Ready))
+        {
+            MainMenuManager.mainMenuMgr.StartGameButton.interactable = true;
+        }
+        else
+        {
+            MainMenuManager.mainMenuMgr.StartGameButton.interactable = false;
+        }
+    }
 }

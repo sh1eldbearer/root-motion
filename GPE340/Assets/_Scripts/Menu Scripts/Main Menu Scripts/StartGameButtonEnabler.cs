@@ -20,32 +20,5 @@ public class StartGameButtonEnabler : MonoBehaviour
         {
             _button = this.gameObject.GetComponent<Button>();
         }
-
-        StartCoroutine(MonitorReadyStatus());
-    }
-
-    /// <summary>
-    /// Waits until all joined players have selected a color before activating the Start Game button.
-    /// </summary>
-    /// <returns>Null.</returns>
-    private IEnumerator MonitorReadyStatus()
-    {
-        while (true)
-        {
-            // All players that have joined the game must have selected a color in order for the game to start
-            if (((int)GameManager.gm.PlayerInfo[0].Status < 0 || GameManager.gm.PlayerInfo[0].Status == PlayerStatus.Ready) &&
-                ((int)GameManager.gm.PlayerInfo[1].Status < 0 || GameManager.gm.PlayerInfo[1].Status == PlayerStatus.Ready) &&
-                ((int)GameManager.gm.PlayerInfo[2].Status < 0 || GameManager.gm.PlayerInfo[2].Status == PlayerStatus.Ready) &&
-                ((int)GameManager.gm.PlayerInfo[3].Status < 0 || GameManager.gm.PlayerInfo[3].Status == PlayerStatus.Ready))
-            {
-                _button.interactable = true;
-            }
-            else
-            {
-                _button.interactable = false;
-            }
-
-            yield return null;
-        }
     }
 }

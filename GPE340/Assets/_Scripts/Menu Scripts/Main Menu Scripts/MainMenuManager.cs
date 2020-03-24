@@ -76,6 +76,15 @@ public class MainMenuManager : MenuManager
     {
         get { return _p4ObjectGroup; }
     }
+
+    /// <summary>
+    /// The Start Game button that enables once all players are joined and ready.
+    /// </summary>
+    public Button StartGameButton
+    {
+        get { return _startGameButton; }
+    }
+
     #endregion
 
     // Awake is called before Start
