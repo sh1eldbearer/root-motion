@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -32,6 +32,10 @@ public class PlayerController : AgentController
                 else if (Input.GetAxis("Crouch") > 0f)
                 {
                     SetLocomotionState(LocomotionState.Crouching);
+                }
+                else if (Input.GetAxis("Sprint") > 0f && Input.GetAxis("Crouch") > 0f)
+                {
+                    SetLocomotionState(LocomotionState.Walking);
                 }
                 else
                 {
