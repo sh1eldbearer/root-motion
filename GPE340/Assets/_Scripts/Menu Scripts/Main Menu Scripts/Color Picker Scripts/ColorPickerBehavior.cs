@@ -90,6 +90,8 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
                 // Tells the player data which skin color was selected
                 GameManager.gm.PlayerInfo[(int) _objGroupData.PlayerNumber].SetSkinColorIndex(index);
             }
+
+            UpdateGameReadyStatus();
         }
     }
 
