@@ -65,7 +65,6 @@ public class Pawn : MonoBehaviour
     /// </summary>
     /// <param name="horizontalInput">The input from the horizontal input axis the player is using.</param>
     /// <param name="verticalInput">The input from the vertical input axis the player is using.</param>
-    /// <returns>A co-routine enumerator.</returns>
     public void Move(float horizontalInput, float verticalInput)
     {
         // Get the world vector that we want to move
@@ -77,7 +76,6 @@ public class Pawn : MonoBehaviour
         Vector3 localMoveVector = PawnData.PawnTransform.InverseTransformDirection(worldMoveVector);
 
         // Pass values from the input controller into the animator to generate movement
-        //Debug.Log($"X: {Input.GetAxis("Horizontal")}, Z: {Input.GetAxis("Vertical")}");
         PawnData.PawnAnimator.SetFloat("Horizontal", localMoveVector.x * PawnData.MoveSpeed);
         PawnData.PawnAnimator.SetFloat("Vertical", localMoveVector.z * PawnData.MoveSpeed);
 
