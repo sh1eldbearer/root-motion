@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -46,7 +47,18 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     }
     #endregion
 
-    public void Start()
+    // Awake is called before Start
+    private void Awake()
+    {
+        // Component reference assignments
+        if (_objGroupData == null)
+        {
+            _objGroupData = this.gameObject.GetComponentInParent<ObjectGroupData>();
+        }
+    }
+
+    // Start is called before the first frame update
+    private void Start()
     {
         _image.color = SkinManager.skinMgr.GetRGBColor(_objGroupData.ColorPickers.IndexOf(this));
     }
@@ -151,21 +163,25 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     private void EnableSameColorSelectors(int selectorIndex)
     {
         if (_objGroupData.PlayerNumber != PlayerNumbers.P1 && 
+            MainMenuManager.mainMenuMgr.P1ObjectGroup.gameObject.activeInHierarchy &&
             GameManager.gm.PlayerInfo[0].SkinColorIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
         }
         if (_objGroupData.PlayerNumber != PlayerNumbers.P2 &&
+            MainMenuManager.mainMenuMgr.P2ObjectGroup.gameObject.activeInHierarchy &&
             GameManager.gm.PlayerInfo[1].SkinColorIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
         }
         if (_objGroupData.PlayerNumber != PlayerNumbers.P3 &&
+            MainMenuManager.mainMenuMgr.P3ObjectGroup.gameObject.activeInHierarchy &&
             GameManager.gm.PlayerInfo[2].SkinColorIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
         }
         if (_objGroupData.PlayerNumber != PlayerNumbers.P4 &&
+            MainMenuManager.mainMenuMgr.P4ObjectGroup.gameObject.activeInHierarchy &&
             GameManager.gm.PlayerInfo[3].SkinColorIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
@@ -201,10 +217,13 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
             {
                 int pickerIndex = _objGroupData.ColorPickers.IndexOf(picker);
 
-                // Check to see if the current picker's color was selected in any other row...
-                if (!otherRowObjData[0].ColorPickers[pickerIndex].IsSelected &&
-                    !otherRowObjData[1].ColorPickers[pickerIndex].IsSelected &&
-                    !otherRowObjData[2].ColorPickers[pickerIndex].IsSelected)
+                // Check to see if the current picker's color was selected in any other row (or if those rows aren't currently enabled)...
+                if ((otherRowObjData[0].gameObject.activeInHierarchy == false || 
+                     otherRowObjData[0].ColorPickers[pickerIndex].IsSelected == false) &&
+                    (otherRowObjData[0].gameObject.activeInHierarchy == false || 
+                     otherRowObjData[1].ColorPickers[pickerIndex].IsSelected == false) &&
+                    (otherRowObjData[0].gameObject.activeInHierarchy == false || 
+                     otherRowObjData[2].ColorPickers[pickerIndex].IsSelected == false))
                 {
                     // If not, enable it
                     picker.EnableSelector();
