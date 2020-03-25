@@ -47,7 +47,6 @@ public class PawnData : MonoBehaviour
     public float MoveSpeed
     {
         get { return _moveSpeed; }
-        protected set { _moveSpeed = value; }
     }
 
     /// <summary>
@@ -56,7 +55,6 @@ public class PawnData : MonoBehaviour
     public float TurnSpeed
     {
         get { return _turnSpeed; }
-        protected set { _turnSpeed = value; }
     }
 
     /// <summary>
