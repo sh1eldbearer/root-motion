@@ -72,10 +72,10 @@ public class SceneLoader : MonoBehaviour
         // Starts fading the loading screen UI in, and waits for it to finish before proceeding
         yield return StartCoroutine(LoadingScreenFader.loadScreenFader.FadeIn());
 
-        // Unloads the main menu scene
+        // Unloads the previous scene
         SceneManager.UnloadSceneAsync(originScene);
 
-        // Loads the main game scene additively, and waits for the scene to finish loading before proceeding
+        // Loads the new scene additively, and waits for the scene to finish loading before proceeding
         AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(targetScene, LoadSceneMode.Additive);
         while (!sceneLoad.isDone)
         {
