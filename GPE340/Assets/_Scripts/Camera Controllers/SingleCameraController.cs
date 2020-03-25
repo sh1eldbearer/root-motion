@@ -101,19 +101,14 @@ public class SingleCameraController : CameraController
     /// <summary>
     /// Updates the camera position relative to the camera's follow target.
     /// </summary>
-    /// <returns>Null.</returns>
-    public override IEnumerator UpdateCameraPosition()
+    public override void UpdateCameraPosition()
     {
         if (GameManager.gm.IsGameRunning && _followTarget != null)
         {
             // As long as the camera has a target to follow, updates the camera's position 
             CameraTransform.position = Vector3.MoveTowards(CameraTransform.position, _followTf.position + _initialOffset + _heightOffset,
                 _followSpeed * Time.deltaTime);
-
-            yield return null;
         }
-
-        yield return null;
     }
 
     /// <summary>

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -79,7 +79,7 @@ public class Pawn : MonoBehaviour
         PawnData.PawnAnimator.SetFloat("Horizontal", localMoveVector.x * PawnData.MoveSpeed);
         PawnData.PawnAnimator.SetFloat("Vertical", localMoveVector.z * PawnData.MoveSpeed);
 
-        StartCoroutine(PawnData.PawnCamera.UpdateCameraPosition());
+        PawnData.PawnCamera.UpdateCameraPosition();
     }
 
     /// <summary>

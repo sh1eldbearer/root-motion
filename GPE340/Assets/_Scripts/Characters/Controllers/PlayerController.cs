@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -41,7 +41,6 @@ public class PlayerController : AgentController
                 ThisPawn.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
                 yield return new WaitForFixedUpdate();
-                StartCoroutine(ThisPawn.PawnData.PawnCamera.UpdateCameraPosition());
             }
 
             yield return new WaitForFixedUpdate();
@@ -91,7 +90,7 @@ public class PlayerController : AgentController
                         yield return Vector3.negativeInfinity;
 #endif
                     }
-
+                    
                 }
 
                 yield return null;

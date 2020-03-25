@@ -55,10 +55,9 @@ public abstract class CameraController : MonoBehaviour
     /// <summary>
     /// Updates the camera position.
     /// </summary>
-    /// <returns>Null.</returns>
-    public virtual IEnumerator UpdateCameraPosition()
+    public virtual void UpdateCameraPosition()
     {
-        yield return null;
+
     }
 
     /// <summary>
