@@ -3443,7 +3443,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Programming by Nathan Scott\n\nOriginal Character Model 'Exo Red' and \nHumanoid
-    Animations by Mixamo.com\n\n'Exo Red' Model Palette Swaps by Nathan Scott"
+    Animations by Mixamo.com\n\n'Exo Red' Model Palette Swaps by Nathan Scott\n\nSci-Fi
+    Weapon Models and Textures by Taylor Huff\nAvailable at DevAssets.com"
 --- !u!222 &1655126802
 CanvasRenderer:
   m_ObjectHideFlags: 0
