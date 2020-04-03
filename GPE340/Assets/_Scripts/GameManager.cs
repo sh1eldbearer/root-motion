@@ -14,8 +14,10 @@ public class GameManager : MonoBehaviour
     [Header("Current Game State")]
     [Tooltip("Denotes whether the game is paused or not. Has no effect in the main menu."),
         SerializeField] private bool _isGameRunning;
-    [Tooltip("The currently active camera rendering the game."), 
-        SerializeField] private Camera _activeCamera;
+    [Tooltip("The camera rendering the game."), 
+        SerializeField] private Camera _gameCamera;
+    [Tooltip("The game camera's CameraController component."),
+        SerializeField] private CameraController _gameCameraController;
     [Tooltip("When in the game proper, this is the room the players are currently in."),
         SerializeField, Space] private RoomData _currentRoomData;
 
@@ -38,6 +40,22 @@ public class GameManager : MonoBehaviour
     public bool IsGameRunning
     {
         get { return _isGameRunning; }
+    }
+
+    /// <summary>
+    /// The camera rendering the game.
+    /// </summary>
+    public Camera GameCamera
+    {
+        get { return _gameCamera; }
+    }
+
+    /// <summary>
+    /// The game camera's CameraController component.
+    /// </summary>
+    public CameraController GameCameraController
+    {
+        get { return _gameCameraController; }
     }
 
     /// <summary>
@@ -92,6 +110,16 @@ public class GameManager : MonoBehaviour
         }
 #endif
         ResetPlayerInfo();
+    }
+
+    /// <summary>
+    /// Sets the active camera for the game scene.
+    /// </summary>
+    /// <param name="gameCamera"></param>
+    public void SetGameCamera(Camera gameCamera, CameraController cameraController)
+    {
+        _gameCamera = gameCamera;
+        _gameCameraController = cameraController;
     }
 
     /// <summary>

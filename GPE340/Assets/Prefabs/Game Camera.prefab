@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5186601212658157449}
   - component: {fileID: 5186601212658157454}
   - component: {fileID: 5186601212658157455}
-  - component: {fileID: 5186601212658157448}
+  - component: {fileID: 4385384914102485288}
   m_Layer: 0
-  m_Name: SinglePlayer Camera
+  m_Name: Game Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5186601212658157452}
   m_Enabled: 0
---- !u!114 &5186601212658157448
+--- !u!114 &4385384914102485288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,14 +93,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5186601212658157452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1f481a160ffc8e4da9e835f8b9b0c59, type: 3}
+  m_Script: {fileID: 11500000, guid: 793cded774bb479448dbe916c18b13bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _thisCamera: {fileID: 0}
-  _cameraTransform: {fileID: 0}
   _followSpeed: 3.5
   _zoomFactor: 0.5
   _zoomSetting: 3
+  _neutralPosition: {x: 0, y: 0, z: 0}
+  _followPosition: {x: 0, y: 0, z: 0}
+  _thisCamera: {fileID: 0}
+  _cameraTransform: {fileID: 0}
   _followTarget: {fileID: 0}
   _followTf: {fileID: 0}
   _followData: {fileID: 0}
