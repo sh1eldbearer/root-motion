@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,7 +62,7 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
 
     public void OnPointerClick(PointerEventData pointerData)
     {
-        int index = _objGroupData.ColorPickers.IndexOf(this) + 1;
+        int index = _objGroupData.ColorPickers.IndexOf(this);
         if (IsSelectable)
         {
             if (IsSelected)
@@ -114,7 +114,7 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     private void DisableSelector()
     {
         _selectable = false;
-        _image.color = SkinManager.skinMgr.SkinColors[0].Color;
+        _image.color = SkinManager.skinMgr.GetRGBColor(8);
         _selectorBox.SetActive(false);
     }
 
@@ -124,7 +124,7 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     private void EnableSelector()
     {
         _selectable = true;
-        _image.color = SkinManager.skinMgr.SkinColors[_objGroupData.ColorPickers.IndexOf(this) + 1].Color;
+        _image.color = SkinManager.skinMgr.GetRGBColor(_objGroupData.ColorPickers.IndexOf(this));
         _selectorBox.SetActive(false);
     }
 
@@ -275,16 +275,49 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     private void UpdateGameReadyStatus()
     {
         // All players that have joined the game must have selected a color in order for the game to start
-        if (((int)GameManager.gm.PlayerInfo[0].Status < 0 || GameManager.gm.PlayerInfo[0].Status == PlayerStatus.Ready) &&
-            ((int)GameManager.gm.PlayerInfo[1].Status < 0 || GameManager.gm.PlayerInfo[1].Status == PlayerStatus.Ready) &&
-            ((int)GameManager.gm.PlayerInfo[2].Status < 0 || GameManager.gm.PlayerInfo[2].Status == PlayerStatus.Ready) &&
-            ((int)GameManager.gm.PlayerInfo[3].Status < 0 || GameManager.gm.PlayerInfo[3].Status == PlayerStatus.Ready))
+        if (CheckPlayerReadyStatus(GameManager.gm.PlayerInfo[0]) &&
+            CheckPlayerReadyStatus(GameManager.gm.PlayerInfo[1]) &&
+            CheckPlayerReadyStatus(GameManager.gm.PlayerInfo[2]) &&
+            CheckPlayerReadyStatus(GameManager.gm.PlayerInfo[3]))
         {
             MainMenuManager.mainMenuMgr.StartGameButton.interactable = true;
         }
         else
         {
             MainMenuManager.mainMenuMgr.StartGameButton.interactable = false;
+        }
+    }
+    
+    /// <summary>
+    /// Checks to see if a player has joined the game, and is ready to begin the game.
+    /// </summary>
+    /// <param name="playerData">The data for the player that is being checked.</param>
+    /// <returns>True if the player has not joined the game, or is ready.</returns>
+    private bool CheckPlayerReadyStatus(PlayerData playerData)
+    {
+        if ((int)playerData.Status < 0 || playerData.Status == PlayerStatus.Ready)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    /// <summary>
+    /// Checks to see if a player has joined the game, and is ready to begin the game.
+    /// </summary>
+    /// <param name="playerStatus">The status for the player that is being checked.</param>
+    /// <returns>True if the player has not joined the game, or is ready.</returns>
+    private bool CheckPlayerReadyStatus(PlayerStatus playerStatus)
+    {
+        if ((int)playerStatus < 0 || playerStatus == PlayerStatus.Ready)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

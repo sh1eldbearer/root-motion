@@ -112,7 +112,11 @@ public class PlayerData
     public void ClearSkinColorIndex()
     {
         _skinColorIndex = -1;
-        //_playerStatus = PlayerStatus.Joined;
+
+        if ((int) _playerStatus >= 0)
+        {
+            _playerStatus = PlayerStatus.Joined;
+        }
     }
 
     /// <summary>

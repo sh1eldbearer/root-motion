@@ -17,8 +17,8 @@ public enum PlayerStatus
     Joined = 0, // Pick color
     Ready = 1, // Color picked, awaiting game start
     Alive = 2, // Playing game
-    Killed = 3, // Dead but awaiting respawn
-    Dead = 4 // Dead and out of lives
+    Dead = 3, // Dead but awaiting respawn
+    GameOver = 4 // Dead and out of lives
 }
 
 /// <summary>

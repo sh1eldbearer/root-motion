@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +44,6 @@ public class SkinManager : MonoBehaviour
     /// <returns>A color object representing the color assigned this skin color.</returns>
     public UnityEngine.Color GetRGBColor(int selectorIndex)
     {
-        return _skinColors[selectorIndex + 1].Color;
+        return _skinColors[selectorIndex].Color;
     }
 }
