@@ -19,7 +19,6 @@ public abstract class CameraController : MonoBehaviour
     public Camera ThisCamera
     {
         get { return _thisCamera; }
-        protected set { _thisCamera = value; }
     }
     /// <summary>
     /// The Transform component of this camera controller.
@@ -27,7 +26,6 @@ public abstract class CameraController : MonoBehaviour
     public Transform CameraTransform
     {
         get { return _cameraTransform; }
-        protected set { _cameraTransform = value; }
     }
 
     #endregion
@@ -36,8 +34,24 @@ public abstract class CameraController : MonoBehaviour
     public virtual void Awake()
     {
         // Component reference assignments
-        _thisCamera = _thisCamera ?? this.gameObject.GetComponent<Camera>();
-        _cameraTransform = _cameraTransform ?? this.transform;
+
+        /* The null-coalescing operator (??) doesn't work with these two references, so I'm
+           using if statements to perform the same function. (I thought it might be an issue 
+           with inheritance, but testing them on references local to the child class also 
+           fails to properly assign for some reason. I think this an issue with Unity's 
+           backend but I don't have the time to dive too deeply down the rabbit hole to see 
+           if it's ever properly been fixed or addressed.
+           
+           Here's a brief thread on this issue: 
+           https://issuetracker.unity3d.com/issues/null-coalescing-operator-does-not-work-for-the-transform-component*/
+        if (_thisCamera == null)
+        {
+            _thisCamera = this.gameObject.GetComponent<Camera>();
+        }
+        if (_cameraTransform == null)
+        {
+            _cameraTransform = this.transform;
+        }
     }
 
     // Start is called before the first frame update

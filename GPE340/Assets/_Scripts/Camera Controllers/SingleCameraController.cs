@@ -37,17 +37,11 @@ public class SingleCameraController : CameraController
     {
         base.Awake();
 
+        // Component reference assignments
         if (_followTarget != null)
         {
-            // Component reference assignments
-            if (_followTf == null)
-            {
-                _followTf = _followTarget.transform;
-            }
-            if (_followData == null)
-            {
-                _followData = _followTarget.GetComponent<PawnData>();
-            }
+            _followTf = _followTf ?? _followTarget.transform;
+            _followData = _followData ?? _followTarget.GetComponent<PawnData>();
 
             // If that assigned agent is a player, assigns this camera as the pawn's camera
             if (_followData.Controller.GetType() == typeof(PlayerController))
