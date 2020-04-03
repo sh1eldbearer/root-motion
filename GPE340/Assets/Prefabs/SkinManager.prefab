@@ -70,7 +70,7 @@ MonoBehaviour:
       type: 3}
   - _name: 7
     _color: {r: 0, g: 0, b: 1, a: 1}
-    _model: {fileID: 2744008165997167902, guid: c2094c06503474748b9d12e45e2d7c96,
+    _model: {fileID: 5515171803398130769, guid: 920a8cb0590957b44bce39ef29300d22,
       type: 3}
   - _name: 8
     _color: {r: 0.6666667, g: 0, b: 1, a: 1}
