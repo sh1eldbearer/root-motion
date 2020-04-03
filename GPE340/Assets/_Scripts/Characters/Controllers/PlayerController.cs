@@ -24,7 +24,7 @@ public class PlayerController : AgentController
         {
             while (GameManager.gm.IsGameRunning)
             {
-                // Set sprinting or walking booleans if any of the inputs are pressed
+                // Set sprinting or walking states if any of the inputs are pressed
                 if (Input.GetAxis("Sprint") > 0f)
                 {
                     SetLocomotionState(LocomotionState.Sprinting);
@@ -42,12 +42,19 @@ public class PlayerController : AgentController
                     SetLocomotionState(LocomotionState.Walking);
                 }
 
+                // Move the pawn
                 ThisPawn.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                
+                // If there is a camera following this pawn, updates the camera position
+                if (ThisPawn.PawnData != null)
+                {
+                    ThisPawn.PawnData.PawnCamera.UpdateCameraPosition();
+                }
 
-                yield return new WaitForFixedUpdate();
+                yield return null;
             }
 
-            yield return new WaitForFixedUpdate();
+            yield return null;
         }
     }
 

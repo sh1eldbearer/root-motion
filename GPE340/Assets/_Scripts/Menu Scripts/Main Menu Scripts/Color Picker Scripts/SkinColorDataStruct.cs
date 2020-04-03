@@ -2,9 +2,8 @@
 using TMPro;
 using UnityEngine;
 
-
 [Serializable]
-public struct SkinColorData
+public struct SkinColorDataStruct
 {
     #region Private Properties
 #pragma warning disable CS0649

@@ -36,14 +36,8 @@ public abstract class CameraController : MonoBehaviour
     public virtual void Awake()
     {
         // Component reference assignments
-        if (_thisCamera == null)
-        {
-            _thisCamera = this.gameObject.GetComponent<Camera>();
-        }
-        if (_cameraTransform == null)
-        {
-            _cameraTransform = this.transform;
-        }
+        _thisCamera = _thisCamera ?? this.gameObject.GetComponent<Camera>();
+        _cameraTransform = _cameraTransform ?? this.transform;
     }
 
     // Start is called before the first frame update

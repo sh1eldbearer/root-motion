@@ -26,6 +26,8 @@ public class PauseMenuManager : MenuManager
     /// <returns>Null.</returns>
     private IEnumerator WaitForMenuKey()
     {
+        // TODO: Could be rebuilt as an event for cleaning debugging?
+
         while (true)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -48,7 +50,7 @@ public class PauseMenuManager : MenuManager
             _pauseMenu.SetActive(false);
             GameManager.gm.UnpauseGame();
         }
-        else    // Pause menu is closed
+        else                                // Pause menu is closed
         {
             // Open menu and pause game
             _pauseMenu.SetActive(true);

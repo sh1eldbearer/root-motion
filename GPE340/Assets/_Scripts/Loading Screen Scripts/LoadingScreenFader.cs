@@ -23,16 +23,9 @@ public class LoadingScreenFader : MonoBehaviour
     {
         // Assigns this script as a globally accessible object
         loadScreenFader = this;
-    }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
         // Component reference assignments
-        if (_canvasGroup == null)
-        {
-            _canvasGroup = this.gameObject.GetComponent<CanvasGroup>();
-        }
+        _canvasGroup = _canvasGroup ?? this.gameObject.GetComponent<CanvasGroup>();
     }
 
     void OnDestroy()

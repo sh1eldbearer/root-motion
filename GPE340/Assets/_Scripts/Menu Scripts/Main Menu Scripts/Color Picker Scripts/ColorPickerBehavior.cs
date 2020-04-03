@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,10 +51,7 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     private void Awake()
     {
         // Component reference assignments
-        if (_objGroupData == null)
-        {
-            _objGroupData = this.gameObject.GetComponentInParent<ObjectGroupData>();
-        }
+        _objGroupData = _objGroupData ?? this.gameObject.GetComponentInParent<ObjectGroupData>();
     }
 
     // Start is called before the first frame update

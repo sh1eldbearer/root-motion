@@ -91,6 +91,6 @@ public class SceneLoader : MonoBehaviour
 
         // Unloads the loading screen scene
         SceneManager.UnloadSceneAsync(_loadingScreenIndex);
-        yield return true;
+        yield return null;
     }
 }

@@ -11,8 +11,6 @@ public abstract class AgentController : MonoBehaviour
     [Header("Component References")]
     [Tooltip("This agent's Pawn component."),
      SerializeField] private Pawn _thisPawn;
-    [Tooltip("This agent's data component."),
-     SerializeField] private PawnData _pawnData;
 #pragma warning restore CS0649
     #endregion
 
@@ -30,12 +28,9 @@ public abstract class AgentController : MonoBehaviour
     protected virtual void Start()
     {
         // TODO: Determine base functionality once AI controllers are set up
-        
+
         // Component reference assignments
-        if (_thisPawn == null)
-        {
-            _thisPawn = this.gameObject.GetComponentInChildren<Pawn>();
-        }
+        _thisPawn = _thisPawn ?? this.gameObject.GetComponentInChildren<Pawn>();
     }
 
     /// <summary>

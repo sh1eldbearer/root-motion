@@ -31,11 +31,8 @@ public class Pawn : MonoBehaviour
     // Awake is called before Start
     private void Awake()
 	{
-		// Component reference assignments
-        if (PawnData == null)
-        {
-            _pawnData = this.gameObject.GetComponent<PawnData>();
-        }
+        // Component reference assignments
+        _pawnData = _pawnData ?? this.gameObject.GetComponent<PawnData>();
 	}
 
     /// <summary>
@@ -62,12 +59,10 @@ public class Pawn : MonoBehaviour
 
         // Find local version of the worldMoveVector (relative to the object's transform)
         Vector3 localMoveVector = PawnData.PawnTransform.InverseTransformDirection(worldMoveVector);
-
+        
         // Pass values from the input controller into the animator to generate movement
         PawnData.PawnAnimator.SetFloat("Horizontal", localMoveVector.x * PawnData.MoveSpeed);
         PawnData.PawnAnimator.SetFloat("Vertical", localMoveVector.z * PawnData.MoveSpeed);
-
-        PawnData.PawnCamera.UpdateCameraPosition();
     }
 
     /// <summary>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +8,7 @@ public class SkinManager : MonoBehaviour
     public static SkinManager skinMgr;  // Singleton instance for the SkinManager
 
     [Tooltip("A array of objects containing information about the different skin colors available to players."), 
-        SerializeField] private SkinColorData[] _skinColors = new SkinColorData[9];
+        SerializeField] private SkinColorDataStruct[] _skinColors = new SkinColorDataStruct[9];
 
     #region Public Properties
     /// <summary>
@@ -16,7 +16,7 @@ public class SkinManager : MonoBehaviour
     /// </summary>
     /// <returns>The array of ColorData objects containing information about the different skin colors available
     /// to players.</returns>
-    public SkinColorData[] SkinColors
+    public SkinColorDataStruct[] SkinColors
     {
         get { return _skinColors; }
     }
