@@ -28,12 +28,14 @@ public class CameraController : MonoBehaviour
     [Tooltip("The worldspace position this camera should snap to at the start of the game " +
              "if the camera doesn't have a target it's following."),
         SerializeField] private Vector3 _neutralPosition;
-    [Tooltip(""),
+    [Tooltip("The euler rotation this camera should snap to at the start of the game if " +
+             "the camera doesn't have a target it's following."),
         SerializeField] private Vector3 _neutralRotation;
     [Tooltip("The worldspace position this camera should snap to at the start of the game " +
              "if the camera has a target it's following."), Space(1.5f),
         SerializeField] private Vector3 _followPosition;
-    [Tooltip(""),
+    [Tooltip("The euler rotation this camera should snap to at the start of the game if " +
+             "the camera has a target it's following."),
         SerializeField] private Vector3 _followRotation;
 
     [Header("Camera Components")]
@@ -60,7 +62,6 @@ public class CameraController : MonoBehaviour
     {
         get { return _followTf; }
     }
-
     #endregion
 
     // Awake is called before Start
@@ -86,6 +87,7 @@ public class CameraController : MonoBehaviour
             _cameraTransform = this.transform;
         }
 
+        // If the camera has a follow target assigned, assign it as the follow target; otherwise, set up a neutral camera
         if (_followTarget != null)
         {
             SetFollowTarget();
@@ -125,10 +127,15 @@ public class CameraController : MonoBehaviour
     {
         while (true)
         {
-            if (GameManager.gm.IsGameRunning)
+            if (GameManager.gm.IsGameRunning && _followTf != null)
             {
-                ChangeZoomSetting(Input.GetAxis("Mouse ScrollWheel"));
+                if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+                {
+                    ChangeZoomSetting(Input.GetAxis("Mouse ScrollWheel"));
+                }
             }
+
+            // TODO: MP: Try a dynamically zoomed camera that fits all players within the camera's view?
 
             yield return null;
         }
@@ -141,11 +148,6 @@ public class CameraController : MonoBehaviour
     /// <returns>Returns the current zoom setting value, or zero if the value was unchanged.</returns>
     private int ChangeZoomSetting(float axisValue)
     {
-        if (axisValue == 0f)
-        {
-            return 0;
-        }
-
         if (axisValue < 0) // Zoom out
         {
             _zoomSetting =
@@ -181,10 +183,17 @@ public class CameraController : MonoBehaviour
     /// </summary>
     private void SetFollowTarget()
     {
+        // Component reference assignments
         _followData = _followTarget.GetComponentInChildren<PawnData>();
         _followTf = _followData.PawnTransform;
 
-        SetPositionAndRotation(_followPosition, _followRotation);
+        // Sets the camera's follow speed to match the move speed of its follow target
+        _followSpeed = _followData.MoveSpeed;
+
+        // Stores the camera's initial height offset
+        SetHeightOffset();
+
+        SetPositionAndRotation(_followPosition + FollowTf.position, _followRotation);
 
         // If the assigned agent is a player, assigns this camera as the pawn's camera
         if (_followData.Controller.GetType() == typeof(PlayerController))
@@ -192,29 +201,31 @@ public class CameraController : MonoBehaviour
             _followData.AssignCameraController(this);
         }
 
-        // Sets the camera's follow speed to match the move speed of its follow target
-        _followSpeed = _followData.MoveSpeed;
         // Stores the camera's original position relative to its target
         _initialOffset = _cameraTransform.position - _followTf.position;
-        // Stores the camera's initial height offset
-        SetHeightOffset();
     }
 
     /// <summary>
     /// Sets the camera's follow target.
     /// </summary>
-    /// <param name="followTarget"></param>
+    /// <param name="followTarget">The GameObject the camera should follow.</param>
     public void SetFollowTarget(GameObject followTarget)
     {
         _followTarget = followTarget;
         SetFollowTarget();
     }
 
+    /// <summary>
+    /// Clears the camera's follow target.
+    /// </summary>
     public void ClearFollowTarget()
     {
+        // Clears component references 
         _followTarget = null;
         _followTf = null;
         _followData = null;
+
+        // Resets the camera's position to the neutral position
         SetPositionAndRotation(_neutralPosition, _neutralRotation);
     }
 }

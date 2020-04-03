@@ -15,32 +15,43 @@ public class InitializeGame : MonoBehaviour
     [SerializeField] private GameObject _p3Object;
     [SerializeField] private GameObject _p4Object;
 
-    [Space, SerializeField] private CameraController _gameCamera; 
-
 #pragma warning restore CS0649
     #endregion
     
     // Start is called before the first frame update
     private void Awake()
     {
+        // Checks to see if there is at least 1 ready player (if not, the game was started in the game scene)
         List<PlayerData> players = (from player in GameManager.gm.PlayerInfo where (int)player.Status >= 0 select player).ToList();
-        if (players.Count == 0)
+        
+        if (players.Count == 0) // Testing mode (started from the game scene)
         {
             // Places the player at the player 1 spawn point
-            _testPlayerObject.transform.SetPositionAndRotation(_p1Object.transform.position, _p1Object.transform.rotation);
-            GameManager.gm.PlayerInfo[0].SetAgentData(_testPlayerObject.GetComponent<PawnData>());
-            _gameCamera.SetFollowTarget(_testPlayerObject);
-        }
-        else
-        {
-            Destroy(_testPlayerObject);
-        }
+            _testPlayerObject.transform.SetPositionAndRotation(GameManager.gm.CurrentRoomData.P1SpawnPoint.transform.position,
+                GameManager.gm.CurrentRoomData.P1SpawnPoint.transform.rotation);
 
-        foreach (PlayerData player in GameManager.gm.PlayerInfo)
+            // Assigns the test object
+            GameManager.gm.PlayerInfo[0].SetAgentData(_testPlayerObject.GetComponent<PawnData>());
+            GameManager.gm.GameCameraController.SetFollowTarget(_testPlayerObject);
+        }
+        else // Standard game mode (started from the menu scene)
         {
-            if (player.Status == PlayerStatus.Ready)
+            // We don't want the test player to exist, so get rid of it
+            Destroy(_testPlayerObject);
+
+            // Instantiate all active players into the game scene
+            foreach (PlayerData player in players)
             {
-                CreatePlayer(player);
+                if (player.Status == PlayerStatus.Ready)
+                {
+                    CreatePlayer(player);
+
+                    // If there is only 1 active player, assigns the camera to follow that player
+                    if (players.Count == 1)
+                    {
+                        GameManager.gm.GameCameraController.SetFollowTarget(player.PawnData.gameObject);
+                    }
+                }
             }
         }
 
@@ -87,10 +98,5 @@ public class InitializeGame : MonoBehaviour
         playerObject.SetActive(true);
         // Assigns the new character's agent data component to the player info array
         player.SetAgentData(newPlayer.GetComponent<PawnData>());
-
-        if (player.PlayerNumber == PlayerNumbers.P1)
-        {
-            _gameCamera.SetFollowTarget(newPlayer);
-        }
     }
 }
