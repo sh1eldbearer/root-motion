@@ -25,17 +25,17 @@ public class PlayerController : AgentController
             while (GameManager.gm.IsGameRunning)
             {
                 // Set sprinting or walking states if any of the inputs are pressed
-                if (Input.GetAxis("Sprint") > 0f)
+                if (Input.GetAxis("Sprint") > 0f && Input.GetAxis("Crouch") > 0f)
+                {
+                    SetLocomotionState(LocomotionState.Walking);
+                }
+                else if (Input.GetAxis("Sprint") > 0f)
                 {
                     SetLocomotionState(LocomotionState.Sprinting);
                 }
                 else if (Input.GetAxis("Crouch") > 0f)
                 {
                     SetLocomotionState(LocomotionState.Crouching);
-                }
-                else if (Input.GetAxis("Sprint") > 0f && Input.GetAxis("Crouch") > 0f)
-                {
-                    SetLocomotionState(LocomotionState.Walking);
                 }
                 else
                 {
@@ -46,7 +46,7 @@ public class PlayerController : AgentController
                 ThisPawn.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 
                 // If there is a camera following this pawn, updates the camera position
-                if (ThisPawn.PawnData != null)
+                if (ThisPawn.PawnData.PawnCamera != null)
                 {
                     ThisPawn.PawnData.PawnCamera.UpdateCameraPosition();
                 }
