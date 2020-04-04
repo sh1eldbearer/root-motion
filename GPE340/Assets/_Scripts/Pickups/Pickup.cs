@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(Rigidbody))]
 
-public abstract class Pickup : MonoBehaviour, IPickupHandler
+public abstract class Pickup : MonoBehaviour, IPickupable
 {
     #region Private Properties
 #pragma warning disable CS0649

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPickupHandler
+public interface IPickupable
 {
     /// <summary>
     /// Defines behaviors when this object is picked up.
