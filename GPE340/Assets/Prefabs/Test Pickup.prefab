@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9149428360726915344}
   - component: {fileID: 4984309706475738936}
   - component: {fileID: 2898541433567322586}
+  - component: {fileID: -475040113818976132}
   m_Layer: 0
   m_Name: Test Pickup
   m_TagString: Untagged
@@ -109,3 +110,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-475040113818976132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851138970545442235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e43e3cccf2f1248889f57a72a20cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -9,20 +10,38 @@ public abstract class Pickup : MonoBehaviour, IPickupHandler
 {
     #region Private Properties
 #pragma warning disable CS0649
-    private Collider _pickupCollider;
-    private Rigidbody _pickupRb;
+    [SerializeField] private Collider _pickupCollider;
+    [SerializeField] private Rigidbody _pickupRb;
 #pragma warning restore CS0649
     #endregion
 
     #region Public Properties
+    public Collider PickupCollider
+    {
+        get { return _pickupCollider; }
+        protected set { _pickupCollider = value; }
+    }
+
+    public Rigidbody PickupRb
+    {
+        get { return _pickupRb; }
+        protected set { _pickupRb = value; }
+    }
 
     #endregion
-	
-	// Awake is called before Start
-	public virtual void Awake()
-	{
+
+    // Awake is called before Start
+    public virtual void Awake()
+    {
         // Component reference assignments
-        _pickupCollider = _pickupCollider ?? this.gameObject.GetComponent<Collider>();
+        if (_pickupCollider == null)
+        {
+            _pickupCollider = this.gameObject.GetComponent<Collider>();
+        }
+        if (_pickupRb == null)
+        {
+            _pickupRb = this.gameObject.GetComponent<Rigidbody>();
+        }
     }
 
     // Start is called before the first frame update
@@ -43,9 +62,7 @@ public abstract class Pickup : MonoBehaviour, IPickupHandler
 
     public virtual void OnTriggerEnter(Collider collider)
     {
-        // TODO: Delete after testing
-        Debug.Log($"{collider.name} grabbed a {this.gameObject.name} pickup");
-        OnPickup();
+
     }
 
     public virtual void OnPickup()

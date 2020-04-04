@@ -13,22 +13,17 @@ public class TestPickup : Pickup
     #region Public Properties
 
     #endregion
-	
-	// Awake is called before Start
-	private void Awake()
-	{
-		
-	}
 
-    // Start is called before the first frame update
-    private void Start()
+    public override void OnTriggerEnter(Collider collider)
     {
         
+        // TODO: Delete after testing
+        Debug.Log($"{collider.name} grabbed a {this.gameObject.name} pickup");
+        OnPickup();
     }
 
-    // Update is called once per frame
-    private void Update()
+    public override void OnPickup()
     {
-        
+        base.OnPickup();
     }
 }
