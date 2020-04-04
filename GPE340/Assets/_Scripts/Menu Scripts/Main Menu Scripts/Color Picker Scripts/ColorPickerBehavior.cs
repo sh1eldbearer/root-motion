@@ -51,7 +51,10 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     private void Awake()
     {
         // Component reference assignments
-        _objGroupData = _objGroupData ?? this.gameObject.GetComponentInParent<ObjectGroupData>();
+        if (_objGroupData)
+        {
+            _objGroupData = this.gameObject.GetComponentInParent<ObjectGroupData>();
+        }
     }
 
     // Start is called before the first frame update

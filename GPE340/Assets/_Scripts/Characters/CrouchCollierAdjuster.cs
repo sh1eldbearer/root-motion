@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class CrouchCollierAdjuster : StateMachineBehaviour
@@ -11,7 +12,10 @@ public class CrouchCollierAdjuster : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Component reference assignments
-        _pawnData = _pawnData ?? animator.gameObject.GetComponent<PawnData>();
+        if (_pawnData == null)
+        {
+            _pawnData = animator.gameObject.GetComponent<PawnData>();
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -16,6 +16,9 @@ public class StartGameButtonEnabler : MonoBehaviour
     private void Start()
     {
         // Component reference assignments
-        _button = _button ?? this.gameObject.GetComponent<Button>();
+        if (_button == null)
+        {
+            _button = this.gameObject.GetComponent<Button>();
+        }
     }
 }

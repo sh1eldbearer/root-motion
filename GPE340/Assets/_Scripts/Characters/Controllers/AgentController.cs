@@ -30,7 +30,10 @@ public abstract class AgentController : MonoBehaviour
         // TODO: Determine base functionality once AI controllers are set up
 
         // Component reference assignments
-        _thisPawn = _thisPawn ?? this.gameObject.GetComponentInChildren<Pawn>();
+        if (_thisPawn == null)
+        {
+            _thisPawn = this.gameObject.GetComponentInChildren<Pawn>();
+        }
     }
 
     /// <summary>

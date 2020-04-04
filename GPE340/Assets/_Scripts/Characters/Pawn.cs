@@ -32,7 +32,10 @@ public class Pawn : MonoBehaviour
     private void Awake()
 	{
         // Component reference assignments
-        _pawnData = _pawnData ?? this.gameObject.GetComponent<PawnData>();
+        if (_pawnData == null)
+        {
+            _pawnData = this.gameObject.GetComponent<PawnData>();
+        }
 	}
 
     /// <summary>

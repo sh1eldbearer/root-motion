@@ -25,7 +25,10 @@ public class LoadingScreenFader : MonoBehaviour
         loadScreenFader = this;
 
         // Component reference assignments
-        _canvasGroup = _canvasGroup ?? this.gameObject.GetComponent<CanvasGroup>();
+        if (_canvasGroup == null)
+        {
+            _canvasGroup = this.gameObject.GetComponent<CanvasGroup>();
+        }
     }
 
     void OnDestroy()

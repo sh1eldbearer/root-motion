@@ -68,16 +68,6 @@ public class CameraController : MonoBehaviour
     public void Awake()
     {
         // Component reference assignments
-
-        /* The null-coalescing operator (??) doesn't work with these two references, so I'm
-           using if statements to perform the same function. (I thought it might be an issue 
-           with inheritance, but testing them on references local to the child class also 
-           fails to properly assign for some reason. I think this an issue with Unity's 
-           backend but I don't have the time to dive too deeply down the rabbit hole to see 
-           if it's ever properly been fixed or addressed.
-           
-           Here's a brief thread on this issue: 
-           https://issuetracker.unity3d.com/issues/null-coalescing-operator-does-not-work-for-the-transform-component*/
         if (_thisCamera == null)
         {
             _thisCamera = this.gameObject.GetComponent<Camera>();

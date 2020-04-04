@@ -143,10 +143,22 @@ public class PawnData : MonoBehaviour
     private void Awake()
     {
         // Component reference assignments
-        _controller = _controller ?? this.gameObject.GetComponentInParent<AgentController>();
-        _pawnTransform = _pawnTransform ?? this.transform;
-        _pawnAnimator = _pawnAnimator ?? this.gameObject.GetComponentInChildren<Animator>();
-        _pawnCollider = _pawnCollider ?? this.gameObject.GetComponentInChildren<CapsuleCollider>();
+        if (_controller == null)
+        {
+            _controller = this.gameObject.GetComponentInParent<AgentController>();
+        }
+        if (_pawnTransform == null)
+        {
+            _pawnTransform = this.gameObject.GetComponentInChildren<Transform>();
+        }
+        if (_pawnAnimator == null)
+        {
+            _pawnAnimator = this.gameObject.GetComponentInChildren<Animator>();
+        }
+        if (_pawnCollider == null)
+        {
+            _pawnCollider = this.gameObject.GetComponentInChildren<CapsuleCollider>();
+        }
     }
 
     /// <summary>
