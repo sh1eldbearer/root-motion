@@ -294,11 +294,11 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     /// <summary>
     /// Checks to see if a player has joined the game, and is ready to begin the game.
     /// </summary>
-    /// <param name="playerData">The data for the player that is being checked.</param>
+    /// <param name="playerTracking">The data for the player that is being checked.</param>
     /// <returns>True if the player has not joined the game, or is ready.</returns>
-    private bool CheckPlayerReadyStatus(PlayerData playerData)
+    private bool CheckPlayerReadyStatus(PlayerTracking playerTracking)
     {
-        if ((int)playerData.Status < 0 || playerData.Status == PlayerStatus.Ready)
+        if ((int)playerTracking.Status < 0 || playerTracking.Status == PlayerStatus.Ready)
         {
             return true;
         }

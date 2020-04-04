@@ -22,7 +22,7 @@ public class InitializeGame : MonoBehaviour
     private void Awake()
     {
         // Checks to see if there is at least 1 ready player (if not, the game was started in the game scene)
-        List<PlayerData> players = (from player in GameManager.gm.PlayerInfo where (int)player.Status >= 0 select player).ToList();
+        List<PlayerTracking> players = (from player in GameManager.gm.PlayerInfo where (int)player.Status >= 0 select player).ToList();
         
         if (players.Count == 0) // Testing mode (started from the game scene)
         {
@@ -40,7 +40,7 @@ public class InitializeGame : MonoBehaviour
             Destroy(_testPlayerObject);
 
             // Instantiate all active players into the game scene
-            foreach (PlayerData player in players)
+            foreach (PlayerTracking player in players)
             {
                 if (player.Status == PlayerStatus.Ready)
                 {
@@ -62,7 +62,7 @@ public class InitializeGame : MonoBehaviour
     /// Assigns the chosen character model to the appropriate player, and spawns them into the game world
     /// </summary>
     /// <param name="player">The information about the player being spawned.</param>
-    private void CreatePlayer(PlayerData player)
+    private void CreatePlayer(PlayerTracking player)
     {
         GameObject playerObject = null;
         Transform spawnPoint = null;

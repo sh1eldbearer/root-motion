@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Current Player Information")]
     [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Local"), 
-        SerializeField] private PlayerData[] _playerInfo;
+        SerializeField] private PlayerTracking[] _playerInfo;
 
     // [Header("Prefabs")]
 
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Current information about the players.
     /// </summary>
-    public PlayerData[] PlayerInfo
+    public PlayerTracking[] PlayerInfo
     {
         get { return _playerInfo; }
     }
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetPlayerInfo()
     {
-        foreach (PlayerData player in PlayerInfo)
+        foreach (PlayerTracking player in PlayerInfo)
         {
             player.ResetPlayerInfo();
         }

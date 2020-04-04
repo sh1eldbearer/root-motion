@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerData
+public class PlayerTracking
 {
     #region Private Properties
 #pragma warning disable CS0649
