@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3256744351341716515}
   - component: {fileID: 1299789970}
+  - component: {fileID: 8774724078017790371}
   - component: {fileID: 8060879576209064799}
   m_Layer: 0
   m_Name: GameManager
@@ -45,26 +46,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isGameRunning: 0
-  _activeCamera: {fileID: 0}
+  _gameCamera: {fileID: 0}
+  _gameCameraController: {fileID: 0}
   _currentRoomData: {fileID: 0}
   _playerInfo:
   - _playerNumber: 0
     _playerStatus: 3
-    _agentData: {fileID: 0}
+    _pawnData: {fileID: 0}
     _skinColorIndex: -1
   - _playerNumber: 1
     _playerStatus: 1
-    _agentData: {fileID: 0}
+    _pawnData: {fileID: 0}
     _skinColorIndex: -1
   - _playerNumber: 2
     _playerStatus: -2
-    _agentData: {fileID: 0}
+    _pawnData: {fileID: 0}
     _skinColorIndex: -1
   - _playerNumber: 3
     _playerStatus: -2
-    _agentData: {fileID: 0}
+    _pawnData: {fileID: 0}
     _skinColorIndex: -1
   _loadScreenFadeTime: 0.75
+--- !u!114 &8774724078017790371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286150354306523289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2251011e3d2d3ca4db3df9d41eb7c8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pauseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _unpauseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!81 &8060879576209064799
 AudioListener:
   m_ObjectHideFlags: 0

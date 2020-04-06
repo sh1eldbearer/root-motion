@@ -55,7 +55,7 @@ public class InitializeGame : MonoBehaviour
             }
         }
 
-        GameManager.gm.UnpauseGame();
+        PauseManager.pauseMgr.UnpauseGame();
     }
 
     /// <summary>

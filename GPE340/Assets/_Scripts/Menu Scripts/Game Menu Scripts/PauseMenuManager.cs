@@ -48,13 +48,13 @@ public class PauseMenuManager : MenuManager
         {
             // Close menu and unpause game
             _pauseMenu.SetActive(false);
-            GameManager.gm.UnpauseGame();
+            PauseManager.pauseMgr.PauseGame();
         }
         else                                // Pause menu is closed
         {
             // Open menu and pause game
             _pauseMenu.SetActive(true);
-            GameManager.gm.PauseGame();
+            PauseManager.pauseMgr.UnpauseGame();
         }
     }
 }

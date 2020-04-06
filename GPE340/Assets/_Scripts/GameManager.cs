@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     #region Private Properties
 #pragma warning disable CS0649
     [Header("Current Game State")]
-    [Tooltip("Denotes whether the game is paused or not. Has no effect in the main menu."),
-        SerializeField] private bool _isGameRunning;
     [Tooltip("The camera rendering the game."), 
         SerializeField] private Camera _gameCamera;
     [Tooltip("The game camera's CameraController component."),
@@ -34,13 +32,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Public Properties
-    /// <summary>
-    /// Denotes whether the game is paused or not. Has no effect in the main menu.
-    /// </summary>
-    public bool IsGameRunning
-    {
-        get { return _isGameRunning; }
-    }
 
     /// <summary>
     /// The camera rendering the game.
@@ -102,13 +93,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        // Marks the game as running when I run the main game scene directly from the editor
 #if UNITY_EDITOR
+        // Marks the game as running when I run the main game scene directly from the editor
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            UnpauseGame();
+            PauseManager.pauseMgr.UnpauseGame();
         }
 #endif
+
         ResetPlayerInfo();
     }
 
@@ -131,24 +123,6 @@ public class GameManager : MonoBehaviour
         {
             player.ResetPlayerInfo();
         }
-    }
-
-    /// <summary>
-    /// Pauses the game.
-    /// </summary>
-    public void PauseGame()
-    {
-        _isGameRunning = false;
-        Time.timeScale = 0;
-    }
-
-    /// <summary>
-    /// Unpauses the game.
-    /// </summary>
-    public void UnpauseGame()
-    {
-        _isGameRunning = true;
-        Time.timeScale = 1;
     }
 
     /// <summary>

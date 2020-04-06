@@ -87,13 +87,27 @@ public class CameraController : MonoBehaviour
             ClearFollowTarget();
         }
 
+        // Register coroutines with the pause manager
+        PauseManager.pauseMgr.AddListeners(StartCameraZoomCoroutine, StopCameraZoomCoroutine);
+
+        // Register camera with the GameManager
         GameManager.gm.SetGameCamera(_thisCamera, this);
     }
 
     // Start is called before the first frame update
     public void Start()
     {
+
+    }
+
+    private void StartCameraZoomCoroutine()
+    {
         StartCoroutine(AdjustCameraZoom());
+    }
+
+    private void StopCameraZoomCoroutine()
+    {
+        StopCoroutine(AdjustCameraZoom());
     }
 
     /// <summary>
@@ -101,7 +115,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public void UpdateCameraPosition()
     {
-        if (GameManager.gm.IsGameRunning && _followTarget != null)
+        if (_followTarget != null)
         {
             // As long as the camera has a target to follow, updates the camera's position 
             _cameraTransform.position = Vector3.MoveTowards(_cameraTransform.position, _followTf.position + _initialOffset + _heightOffset,
@@ -117,7 +131,7 @@ public class CameraController : MonoBehaviour
     {
         while (true)
         {
-            if (GameManager.gm.IsGameRunning && _followTf != null)
+            if (_followTf != null)
             {
                 if (Input.GetAxis("Mouse ScrollWheel") != 0f)
                 {
