@@ -47,3 +47,12 @@ public enum LocomotionState
     Crouching = 1,
     Sprinting = 2
 }
+
+public enum WeaponQuality
+{
+    Base = 0,
+    Uncommon = 1,
+    Rare = 2,
+    Epic = 3,
+    Legendary = 4
+}
