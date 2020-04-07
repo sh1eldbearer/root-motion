@@ -27,16 +27,6 @@ public class PawnData : MonoBehaviour
     [Tooltip("The speed at which the pawn's collider height and center position should adjust."),
         SerializeField] private float _colliderAdjustSpeed = 20f;
 
-    [Header("Animation Settings")]
-    [Tooltip("The weight to apply to the position of the avatar's left hand for inverse kinematics."),
-        SerializeField, Range(0.0f, 1.0f)] private float _leftHandIKPositionWeight = 1.0f;
-    [Tooltip("The weight to apply to the rotation of the avatar's left hand for inverse kinematics."),
-        SerializeField, Range(0.0f, 1.0f)] private float _leftHandIKRotationWeight = 1.0f;
-    [Tooltip("The weight to apply to the position of the avatar's right hand for inverse kinematics."),
-        SerializeField, Range(0.0f, 1.0f)] private float _rightHandIKPositionWeight = 1.0f;
-    [Tooltip("The weight to apply to the rotation of the avatar's right hand for inverse kinematics."),
-        SerializeField, Range(0.0f, 1.0f)] private float _rightHandIKRotationWeight = 1.0f;
-
     [Header("Game Components")]
     [Tooltip("This pawn's controller."),
         SerializeField] private AgentController _controller;
@@ -105,39 +95,6 @@ public class PawnData : MonoBehaviour
     public float ColliderAdjustSpeed
     {
         get { return _colliderAdjustSpeed; }
-    }
-
-    /// <summary>
-    /// The weight to apply to the position of the avatar's left hand for inverse kinematics.
-    /// </summary>
-    public float LeftHandIKPositionWeight
-    {
-        get { return _leftHandIKPositionWeight; }
-    }
-
-    /// <summary>
-    /// The weight to apply to the rotation of the avatar's left hand for inverse kinematics.
-    /// </summary>
-    public float LeftHandIKRotationWeight
-    {
-        get { return _leftHandIKRotationWeight; }
-    }
-
-    /// <summary>
-    /// The weight to apply to the position of the avatar's right hand for inverse kinematics.
-    /// </summary>
-    public float RightHandIKPositionWeight
-    {
-        get { return _rightHandIKPositionWeight; }
-    }
-
-    /// <summary>
-    /// The weight to apply to the rotation of the avatar's right hand for inverse kinematics.
-    /// </summary>
-    public float RightHandIKRotationWeight
-    {
-        get { return _rightHandIKRotationWeight; }
-        set { _rightHandIKRotationWeight = value; }
     }
 
     /// <summary>

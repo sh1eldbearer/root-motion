@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
@@ -23,21 +24,129 @@ public abstract class Weapon : MonoBehaviour
              "Will be populated at runtime if the parts are not manually added."),
         SerializeField] private List<MeshRenderer> _partMeshes;
 
-    [Header("IK Positions")]
-    [SerializeField] private Transform _leftHandIKTransform;
-    [SerializeField] private Transform _rightHandIKTransform;
+    [Header("IK Positions"), 
+        Tooltip("NOTE: These can be left null if they aren't needed for a particular weapon.")]
+    [SerializeField] private Transform _lHandIKTransform;
+    [SerializeField] private Transform _lElbowIKTransform;
+    [SerializeField] private Transform _rHandIKTransform;
+    [SerializeField] private Transform _rElbowIKTransform;
+
+    [Header("IK Settings")]
+    [Tooltip("The weight to apply to the position of the avatar's left hand for inverse kinematics."),
+     SerializeField, Range(0.0f, 1.0f)] private float _lHandIKPositionWeight = 1.0f;
+    [Tooltip("The weight to apply to the rotation of the avatar's left hand for inverse kinematics."),
+        SerializeField, Range(0.0f, 1.0f)] private float _lHandIKRotationWeight = 1.0f;
+    [Tooltip("The weight to apply to the position of the avatar's left elbow for inverse kinematics."),
+        SerializeField, Range(0.0f, 1.0f)] private float _lElbowIKPositionWeight = 1.0f;
+    [Tooltip("The weight to apply to the rotation of the avatar's left elbow for inverse kinematics."),
+        SerializeField, Range(0.0f, 1.0f)] private float _lElbowIKRotationWeight = 1.0f;
+
+    [Tooltip("The weight to apply to the position of the avatar's right hand for inverse kinematics."),
+        Space, SerializeField, Range(0.0f, 1.0f)] private float _rHandIKPositionWeight = 1.0f;
+    [Tooltip("The weight to apply to the rotation of the avatar's right hand for inverse kinematics."),
+        SerializeField, Range(0.0f, 1.0f)] private float _rHandIKRotationWeight = 1.0f;
+    [Tooltip("The weight to apply to the position of the avatar's right elbow for inverse kinematics."),
+        SerializeField, Range(0.0f, 1.0f)] private float _rElbowIKPositionWeight = 1.0f;
+    [Tooltip("The weight to apply to the rotation of the avatar's right elbow for inverse kinematics."),
+        SerializeField, Range(0.0f, 1.0f)] private float _rElbowIKRotationWeight = 1.0f;
 #pragma warning restore CS0649
     #endregion
 
     #region Public Properties
-    public Transform LeftHandIKTransform
+    /// <summary>
+    /// The transform to use for the avatar's left hand's position and rotation.
+    /// </summary>
+    public Transform LHandIKTransform
     {
-        get { return _leftHandIKTransform; }
+        get { return _lHandIKTransform; }
     }
 
-    public Transform RightHandIKTransform
+    /// <summary>
+    /// The transform to use for the avatar's left elbow's position and rotation.
+    /// </summary>
+    public Transform LElbowIKTransform
     {
-        get { return _rightHandIKTransform; }
+        get { return _lElbowIKTransform; }
+    }
+
+    /// <summary>
+    /// The transform to use for the avatar's right hand's position and rotation.
+    /// </summary>
+    public Transform RHandIKTransform
+    {
+        get { return _rHandIKTransform; }
+    }
+
+    /// <summary>
+    /// The transform to use for the avatar's right elbow's position and rotation.
+    /// </summary>
+    public Transform RElbowIKTransform
+    {
+        get { return _rElbowIKTransform; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the position of the avatar's left hand for inverse kinematics.
+    /// </summary>
+    public float LHandIKPositionWeight
+    {
+        get { return _lHandIKPositionWeight; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the rotation of the avatar's left hand for inverse kinematics.
+    /// </summary>
+    public float LHandIKRotationWeight
+    {
+        get { return _lHandIKRotationWeight; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the position of the avatar's left elbow for inverse kinematics.
+    /// </summary>
+    public float LElbowIKPositionWeight
+    {
+        get { return _lElbowIKPositionWeight; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the rotation of the avatar's left elbow for inverse kinematics.
+    /// </summary>
+    public float LElbowIKRotationWeight
+    {
+        get { return _lElbowIKRotationWeight; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the position of the avatar's right hand for inverse kinematics.
+    /// </summary>
+    public float RHandIKPositionWeight
+    {
+        get { return _rHandIKPositionWeight; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the rotation of the avatar's right hand for inverse kinematics.
+    /// </summary>
+    public float RHandIKRotationWeight
+    {
+        get { return _rHandIKRotationWeight; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the position of the avatar's right elbow for inverse kinematics.
+    /// </summary>
+    public float RElbowIKPositionWeight
+    {
+        get { return _rElbowIKPositionWeight; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the rotation of the avatar's right elbow for inverse kinematics.
+    /// </summary>
+    public float RElbowIKRotationWeight
+    {
+        get { return _rElbowIKRotationWeight; }
     }
 
     #endregion
