@@ -6,13 +6,14 @@ public class PawnData : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
-    [Header("Movement Settings")]
+    [Header("")]
+    [SerializeField] private Weapon _equippedWeapon;
+
+        [Header("Movement Settings")]
     [Tooltip("The movement speed of this pawn."),
-     SerializeField]
-    private float _moveSpeed = 7f;
+        SerializeField] private float _moveSpeed = 7f;
     [Tooltip("The turning speed of this pawn."),
-     SerializeField]
-    private float _turnSpeed = 720f;
+        SerializeField] private float _turnSpeed = 720f;
 
     [Header("Collider Settings")]
     [Tooltip("The height the collider should be when the pawn is standing."),
@@ -25,6 +26,16 @@ public class PawnData : MonoBehaviour
         SerializeField] private float _crouchColliderCenterY = 0.5f;
     [Tooltip("The speed at which the pawn's collider height and center position should adjust."),
         SerializeField] private float _colliderAdjustSpeed = 20f;
+
+    [Header("Animation Settings")]
+    [Tooltip("The weight to apply to the position of the avatar's left hand for inverse kinematics."),
+        SerializeField, Range(0.0f, 1.0f)] private float _leftHandIKPositionWeight = 1.0f;
+    [Tooltip("The weight to apply to the rotation of the avatar's left hand for inverse kinematics."),
+        SerializeField, Range(0.0f, 1.0f)] private float _leftHandIKRotationWeight = 1.0f;
+    [Tooltip("The weight to apply to the position of the avatar's right hand for inverse kinematics."),
+        SerializeField, Range(0.0f, 1.0f)] private float _rightHandIKPositionWeight = 1.0f;
+    [Tooltip("The weight to apply to the rotation of the avatar's right hand for inverse kinematics."),
+        SerializeField, Range(0.0f, 1.0f)] private float _rightHandIKRotationWeight = 1.0f;
 
     [Header("Game Components")]
     [Tooltip("This pawn's controller."),
@@ -97,6 +108,39 @@ public class PawnData : MonoBehaviour
     }
 
     /// <summary>
+    /// The weight to apply to the position of the avatar's left hand for inverse kinematics.
+    /// </summary>
+    public float LeftHandIKPositionWeight
+    {
+        get { return _leftHandIKPositionWeight; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the rotation of the avatar's left hand for inverse kinematics.
+    /// </summary>
+    public float LeftHandIKRotationWeight
+    {
+        get { return _leftHandIKRotationWeight; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the position of the avatar's right hand for inverse kinematics.
+    /// </summary>
+    public float RightHandIKPositionWeight
+    {
+        get { return _rightHandIKPositionWeight; }
+    }
+
+    /// <summary>
+    /// The weight to apply to the rotation of the avatar's right hand for inverse kinematics.
+    /// </summary>
+    public float RightHandIKRotationWeight
+    {
+        get { return _rightHandIKRotationWeight; }
+        set { _rightHandIKRotationWeight = value; }
+    }
+
+    /// <summary>
     /// This agent's controller.
     /// </summary>
     public AgentController Controller
@@ -126,6 +170,12 @@ public class PawnData : MonoBehaviour
     {
         get { return _pawnCollider; }
     }
+
+    public Weapon EquippedWeapon
+    {
+        get { return _equippedWeapon; }
+    }
+
     #endregion
 
     // Awake is called before Start

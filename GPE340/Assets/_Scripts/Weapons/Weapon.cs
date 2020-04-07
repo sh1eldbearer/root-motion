@@ -4,10 +4,12 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-public class WeaponSkinManager : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
+    [Header("Weapon Stats")]
+    [Tooltip(""), SerializeField] private WeaponScriptable _weaponData;
     [SerializeField] private WeaponQuality _weaponQuality = WeaponQuality.Base;
 
     [Header("Weapon Skins"), Tooltip("The skins to use for each quality tier of the weapon.")]
@@ -17,13 +19,26 @@ public class WeaponSkinManager : MonoBehaviour
     [SerializeField] private Material _epicMat;
     [SerializeField] private Material _legendaryMat;
 
-    [Tooltip("The list of parts to apply materials to when the weapon quality changes." +
+    [Tooltip("The list of parts to apply materials to when the weapon quality changes. " +
              "Will be populated at runtime if the parts are not manually added."),
-        Space, SerializeField] private List<MeshRenderer> _partMeshes;
+        SerializeField] private List<MeshRenderer> _partMeshes;
+
+    [Header("IK Positions")]
+    [SerializeField] private Transform _leftHandIKTransform;
+    [SerializeField] private Transform _rightHandIKTransform;
 #pragma warning restore CS0649
     #endregion
 
     #region Public Properties
+    public Transform LeftHandIKTransform
+    {
+        get { return _leftHandIKTransform; }
+    }
+
+    public Transform RightHandIKTransform
+    {
+        get { return _rightHandIKTransform; }
+    }
 
     #endregion
 

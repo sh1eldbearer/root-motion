@@ -48,6 +48,9 @@ public enum LocomotionState
     Sprinting = 2
 }
 
+/// <summary>
+/// The quality level of a weapon.
+/// </summary>
 public enum WeaponQuality
 {
     Base = 0,
@@ -55,4 +58,14 @@ public enum WeaponQuality
     Rare = 2,
     Epic = 3,
     Legendary = 4
+}
+
+/// <summary>
+/// The firing behavior of a weapon.
+/// </summary>
+public enum FireMode
+{
+    SingleShot = 0,
+    BurstFire = 1,
+    FullAuto = 2
 }
