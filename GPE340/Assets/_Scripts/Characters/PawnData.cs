@@ -149,13 +149,4 @@ public class PawnData : MonoBehaviour
             _pawnCollider = this.gameObject.GetComponentInChildren<CapsuleCollider>();
         }
     }
-
-    /// <summary>
-    /// Assigns a camera to follow this agent.
-    /// </summary>
-    /// <param name="camera">The camera that should follow this agent.</param>
-    public void AssignCameraController(CameraController camera)
-    {
-        _pawnCamera = camera;
-    }
 }

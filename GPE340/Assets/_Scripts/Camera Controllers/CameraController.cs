@@ -199,12 +199,6 @@ public class CameraController : MonoBehaviour
 
         SetPositionAndRotation(_followPosition + FollowTf.position, _followRotation);
 
-        // If the assigned agent is a player, assigns this camera as the pawn's camera
-        if (_followData.Controller.GetType() == typeof(PlayerController))
-        {
-            _followData.AssignCameraController(this);
-        }
-
         // Stores the camera's original position relative to its target
         _initialOffset = _cameraTransform.position - _followTf.position;
     }
