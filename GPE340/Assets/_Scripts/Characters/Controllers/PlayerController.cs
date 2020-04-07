@@ -75,7 +75,7 @@ public class PlayerController : AgentController
             // If there is a camera following this pawn, updates the camera position
             if (GameManager.gm.GameCameraController.FollowTf == ThisPawn.PawnData.PawnTransform)
             {
-                ThisPawn.PawnData.PawnCamera.UpdateCameraPosition();
+                GameManager.gm.GameCameraController.UpdateCameraPosition();
             }
 
             yield return null;

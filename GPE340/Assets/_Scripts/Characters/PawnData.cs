@@ -35,8 +35,6 @@ public class PawnData : MonoBehaviour
         SerializeField] private Animator _pawnAnimator;
     [Tooltip("The Capsule Collider attached to this pawn."),
         SerializeField] private CapsuleCollider _pawnCollider;
-    [Tooltip("The camera that will be following this pawn's movements."),
-        SerializeField] private CameraController _pawnCamera;
 #pragma warning restore CS0649
     #endregion
 
@@ -128,15 +126,6 @@ public class PawnData : MonoBehaviour
     {
         get { return _pawnCollider; }
     }
-
-    /// <summary>
-    /// The camera that will be following this agent's movements.
-    /// </summary>
-    public CameraController PawnCamera
-    {
-        get { return _pawnCamera; }
-    }
-
     #endregion
 
     // Awake is called before Start
