@@ -498,23 +498,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5572743992246355164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 020a367fa2f20f24296127f1a14c1af5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cfb94688da225c4b81f700cd5f5ac98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponData: {fileID: 0}
   _weaponQuality: 0
   _baseMat: {fileID: 2100000, guid: 52990b8f3d88e124dbe93b83a73a66f8, type: 2}
   _uncommonMat: {fileID: 2100000, guid: aa28eca2f781003408646780176d6624, type: 2}
-  _rareMat: {fileID: 2100000, guid: 5c659af30ba44a144b1ec8f4ba11c459, type: 2}
-  _epicMat: {fileID: 2100000, guid: 175689d58099ca941823ef3ec5706e96, type: 2}
+  _rareMat: {fileID: 2100000, guid: 175689d58099ca941823ef3ec5706e96, type: 2}
+  _epicMat: {fileID: 2100000, guid: 5c659af30ba44a144b1ec8f4ba11c459, type: 2}
   _legendaryMat: {fileID: 2100000, guid: 4f36991b11ab7c94c92f0a4cb7e3b326, type: 2}
-  _partMeshes:
-  - {fileID: 5572743992248621586}
-  - {fileID: 5572743992248621584}
-  - {fileID: 5572743992248621588}
-  - {fileID: 5572743992248621594}
-  - {fileID: 5572743992248621592}
-  - {fileID: 5572743992248621598}
+  _partMeshes: []
   _leftHandIKTransform: {fileID: 144573415}
   _rightHandIKTransform: {fileID: 327690883}
 --- !u!1 &5572743992246355166

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
     [Header("Weapon Stats")]
-    [Tooltip(""), SerializeField] private WeaponScriptable _weaponData;
+    //[Tooltip(""), SerializeField] private WeaponScriptable _weaponData;
     [SerializeField] private WeaponQuality _weaponQuality = WeaponQuality.Base;
 
     [Header("Weapon Skins"), Tooltip("The skins to use for each quality tier of the weapon.")]
@@ -43,28 +43,28 @@ public class Weapon : MonoBehaviour
     #endregion
 
     // Awake is called before Start
-    private void Awake()
+    protected virtual void Awake()
     {
         // Stores the MeshRenders of each part of the weapon so we can modify their materials
         _partMeshes = this.gameObject.GetComponentsInChildren<MeshRenderer>().ToList();
     }
 
     // Start is called before the first frame update
-    private void Start()
+    protected virtual void Start()
     {
         // TODO: Remove after implementing in game
         SetToBaseQuality();
     }
 
     // Update is called once per frame
-    private void Update()
+    protected virtual void Update()
     {
         // TODO: Remove before submitting
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.Comma))
         {
             DegradeWeapon();
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.Period))
         {
             UpgradeWeapon();
         }

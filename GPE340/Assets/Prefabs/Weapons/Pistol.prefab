@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5392964394620238877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4953779581388903177}
+  m_Layer: 0
+  m_Name: LeftHandIKTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4953779581388903177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5392964394620238877}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8228462304055252812}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6035428327529836836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7592973638337274644}
+  m_Layer: 0
+  m_Name: RightHandIKTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7592973638337274644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035428327529836836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8228462304055252812}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8228462304054758252
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,6 +95,8 @@ Transform:
   - {fileID: 8228462304055252822}
   - {fileID: 8228462304055252816}
   - {fileID: 8228462304055252818}
+  - {fileID: 4953779581388903177}
+  - {fileID: 7592973638337274644}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,7 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8228462304054758252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 020a367fa2f20f24296127f1a14c1af5, type: 3}
+  m_Script: {fileID: 11500000, guid: c78b1c7aec9cf5147b729ac405f32946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponQuality: 0
@@ -56,14 +118,9 @@ MonoBehaviour:
   _rareMat: {fileID: 2100000, guid: e4a5818d0f7a4b04ab61050731fafb9a, type: 2}
   _epicMat: {fileID: 2100000, guid: 1ef9f13312977a647a4c93fed87712db, type: 2}
   _legendaryMat: {fileID: 2100000, guid: 9b79ea855c91bde4eb3267eedff51b07, type: 2}
-  _partMeshes:
-  - {fileID: 8228462304052827580}
-  - {fileID: 8228462304052827576}
-  - {fileID: 8228462304052827578}
-  - {fileID: 8228462304052827572}
-  - {fileID: 8228462304052827574}
-  - {fileID: 8228462304052827568}
-  - {fileID: 8228462304052827570}
+  _partMeshes: []
+  _leftHandIKTransform: {fileID: 4953779581388903177}
+  _rightHandIKTransform: {fileID: 7592973638337274644}
 --- !u!1 &8228462304054758256
 GameObject:
   m_ObjectHideFlags: 0
