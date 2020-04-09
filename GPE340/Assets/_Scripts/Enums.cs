@@ -1,4 +1,4 @@
-﻿namespace Enums
+namespace Enums
 {
     /// <summary>
     /// Designates which player an object is assigned to. Each player value has a corresponding integer value.
@@ -55,6 +55,7 @@
     /// </summary>
     public enum WeaponQuality
     {
+        NotAvailable = -1,
         Base = 0,
         Uncommon = 1,
         Rare = 2,
