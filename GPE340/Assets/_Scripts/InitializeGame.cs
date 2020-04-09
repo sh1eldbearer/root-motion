@@ -42,7 +42,7 @@ public class InitializeGame : MonoBehaviour
             // Instantiate all active players into the game scene
             foreach (PlayerTracking player in players)
             {
-                if (player.Status == PlayerStatus.Ready)
+                if (player.Status == Enums.PlayerStatus.Ready)
                 {
                     CreatePlayer(player);
 
@@ -70,19 +70,19 @@ public class InitializeGame : MonoBehaviour
         // Gets the appropriate player objects depending on which player is being created
         switch (player.PlayerNumber)
         {
-            case PlayerNumbers.P1:
+            case Enums.PlayerNumbers.P1:
                 playerObject = _p1Object;
                 spawnPoint = GameManager.gm.CurrentRoomData.P1SpawnPoint;
                 break;
-            case PlayerNumbers.P2:
+            case Enums.PlayerNumbers.P2:
                 playerObject = _p2Object;
                 spawnPoint = GameManager.gm.CurrentRoomData.P2SpawnPoint;
                 break;
-            case PlayerNumbers.P3:
+            case Enums.PlayerNumbers.P3:
                 playerObject = _p3Object;
                 spawnPoint = GameManager.gm.CurrentRoomData.P3SpawnPoint;
                 break;
-            case PlayerNumbers.P4:
+            case Enums.PlayerNumbers.P4:
                 playerObject = _p4Object;
                 spawnPoint = GameManager.gm.CurrentRoomData.P4SpawnPoint;
                 break;

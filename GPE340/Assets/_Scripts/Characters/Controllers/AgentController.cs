@@ -78,19 +78,19 @@ public abstract class AgentController : MonoBehaviour
     /// the agent.
     /// </summary>
     /// <param name="locoState">The current movement state of the agent.</param>
-    protected void SetLocomotionState(LocomotionState locoState)
+    protected void SetLocomotionState(Enums.LocomotionState locoState)
     {
         switch (locoState)
         {
-            case LocomotionState.Walking:
+            case Enums.LocomotionState.Walking:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", false);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", false);
                 break;
-            case LocomotionState.Crouching:
+            case Enums.LocomotionState.Crouching:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", false);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", true);
                 break;
-            case LocomotionState.Sprinting:
+            case Enums.LocomotionState.Sprinting:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", true);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", false);
                 break;

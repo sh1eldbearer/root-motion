@@ -54,19 +54,19 @@ public class PlayerController : AgentController
             // Set sprinting or walking states if any of the inputs are pressed
             if (Input.GetAxis("Sprint") > 0f && Input.GetAxis("Crouch") > 0f)
             {
-                SetLocomotionState(LocomotionState.Walking);
+                SetLocomotionState(Enums.LocomotionState.Walking);
             }
             else if (Input.GetAxis("Sprint") > 0f)
             {
-                SetLocomotionState(LocomotionState.Sprinting);
+                SetLocomotionState(Enums.LocomotionState.Sprinting);
             }
             else if (Input.GetAxis("Crouch") > 0f)
             {
-                SetLocomotionState(LocomotionState.Crouching);
+                SetLocomotionState(Enums.LocomotionState.Crouching);
             }
             else
             {
-                SetLocomotionState(LocomotionState.Walking);
+                SetLocomotionState(Enums.LocomotionState.Walking);
             }
 
             // Move the pawn

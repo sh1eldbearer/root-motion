@@ -9,7 +9,7 @@ public class ObjectGroupData : MonoBehaviour
     #region Private Properties
 #pragma warning disable CS0649
     [Tooltip("The player number this color picker is assigned to."),
-        SerializeField] private PlayerNumbers _playerNumber;
+        SerializeField] private Enums.PlayerNumbers _playerNumber;
     [Tooltip("The color selectors that are children of this color picker. " +
          "(REMINDER: A picker's index in this list is 1 less than its index in the ColorNames enum)"), 
         SerializeField]
@@ -22,7 +22,7 @@ public class ObjectGroupData : MonoBehaviour
     /// <summary>
     /// The player number this color picker is assigned to.
     /// </summary>
-    public PlayerNumbers PlayerNumber
+    public Enums.PlayerNumbers PlayerNumber
     {
         get { return _playerNumber; }
     }

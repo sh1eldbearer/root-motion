@@ -13,7 +13,7 @@ public class WeaponScriptable : ScriptableObject
     [Tooltip("The display name of this weapon."),
         SerializeField] private string _name = "New Weapon";
     [Tooltip("The quality level of this weapon."), 
-        SerializeField] private WeaponQuality _weaponQuality = WeaponQuality.Base;
+        SerializeField] private Enums.WeaponQuality _weaponQuality = Enums.WeaponQuality.Base;
     [Tooltip("The amount of damage dealt per shot by this weapon."),
         SerializeField] private float _baseDamage = 10;
     [Tooltip("The delay between effective pulls of the trigger for this weapon (in seconds)."),
@@ -21,7 +21,7 @@ public class WeaponScriptable : ScriptableObject
     [Tooltip("The clip size of this weapon."),
         SerializeField] private float _baseClipSize = 6;
     [Tooltip("The firing behavior of this weapon."),
-        SerializeField] private FireMode _firingMode = FireMode.SingleShot;
+        SerializeField] private Enums.FireMode _firingMode = Enums.FireMode.SingleShot;
 
     [Header("Burst Settings (Ignored if not using BurstFire mode)")]
     [Tooltip("How many bullets should be fired per trigger pull in burst mode. (Will be ignored if " +
@@ -46,7 +46,7 @@ public class WeaponScriptable : ScriptableObject
     /// <summary>
     /// The quality level of this weapon.
     /// </summary>
-    public WeaponQuality Quality
+    public Enums.WeaponQuality Quality
     {
         get { return _weaponQuality; }
     }
@@ -78,7 +78,7 @@ public class WeaponScriptable : ScriptableObject
     /// <summary>
     /// The firing behavior of this weapon.
     /// </summary>
-    public FireMode FiringMode
+    public Enums.FireMode FiringMode
     {
         get { return _firingMode; }
     }

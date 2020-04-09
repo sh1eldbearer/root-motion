@@ -11,9 +11,9 @@ public class PlayerTracking
 #pragma warning disable CS0649
     [Header("Basic Info")]
     [Tooltip("The player number to assign to this player."),
-        SerializeField] private PlayerNumbers _playerNumber;
+        SerializeField] private Enums.PlayerNumbers _playerNumber;
     [Tooltip("The player's current status."),
-        SerializeField] private PlayerStatus _playerStatus;
+        SerializeField] private Enums.PlayerStatus _playerStatus;
     [Tooltip("The agent data component of this player (if active.)"),
         SerializeField] private PawnData _pawnData;
 
@@ -27,7 +27,7 @@ public class PlayerTracking
     /// <summary>
     /// The player number to assigned to this player.
     /// </summary>
-    public PlayerNumbers PlayerNumber
+    public Enums.PlayerNumbers PlayerNumber
     {
         get { return _playerNumber; }
     }
@@ -35,7 +35,7 @@ public class PlayerTracking
     /// <summary>
     /// The player's current status.
     /// </summary>
-    public PlayerStatus Status
+    public Enums.PlayerStatus Status
     {
         get { return _playerStatus; }
     }
@@ -63,21 +63,21 @@ public class PlayerTracking
     public void ResetPlayerInfo()
     {
         // Player 1 should always be at least joined
-        if (_playerNumber == PlayerNumbers.P1)
+        if (_playerNumber == Enums.PlayerNumbers.P1)
         {
-            _playerStatus = PlayerStatus.Joined;
+            _playerStatus = Enums.PlayerStatus.Joined;
         }
         else
         {
             // Players 2-4 should be "not joined" if they were active in a previous game this session
             if ((int)_playerStatus >= 0)
             {
-                _playerStatus = PlayerStatus.NotJoined;
+                _playerStatus = Enums.PlayerStatus.NotJoined;
             }
             // Players 2-4 should be "inactive" if they were not active in any previous game this session
             else
             {
-                _playerStatus = PlayerStatus.Inactive;
+                _playerStatus = Enums.PlayerStatus.Inactive;
             }
         }
 
@@ -89,7 +89,7 @@ public class PlayerTracking
     /// <summary>
     /// Sets this player's status.
     /// </summary>
-    public void SetStatus(PlayerStatus newStatus)
+    public void SetStatus(Enums.PlayerStatus newStatus)
     {
         _playerStatus = newStatus;
     }
@@ -102,7 +102,7 @@ public class PlayerTracking
     public void SetSkinColorIndex(int index)
     {
         _skinColorIndex = index;
-        _playerStatus = PlayerStatus.Ready;
+        _playerStatus = Enums.PlayerStatus.Ready;
     }
 
     /// <summary>
@@ -115,7 +115,7 @@ public class PlayerTracking
 
         if ((int) _playerStatus >= 0)
         {
-            _playerStatus = PlayerStatus.Joined;
+            _playerStatus = Enums.PlayerStatus.Joined;
         }
     }
 

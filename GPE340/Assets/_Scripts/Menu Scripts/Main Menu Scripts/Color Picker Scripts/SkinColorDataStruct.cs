@@ -8,7 +8,7 @@ public struct SkinColorDataStruct
     #region Private Properties
 #pragma warning disable CS0649
     [Tooltip("The name of this color."),
-     SerializeField] private ColorNames _name;
+     SerializeField] private Enums.ColorNames _name;
     [Tooltip("The RGB value associated with this color. (Used for UI display.)"),
      SerializeField] private Color _color;
     [Tooltip("The character model to use when this color is selected by a player."),
@@ -20,7 +20,7 @@ public struct SkinColorDataStruct
     /// <summary>
     /// The name of this color.
     /// </summary>
-    public ColorNames Name
+    public Enums.ColorNames Name
     {
         get { return _name; }
     }
