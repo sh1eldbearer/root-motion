@@ -66,7 +66,7 @@ public class PauseManager : MonoBehaviour
     }
 
     /// <summary> 
-    /// Adds listeners to the OnPause and OnUnpause events.
+    /// Adds a pair of listeners to the OnPause and OnUnpause events.
     /// </summary>
     /// <param name="pauseCall">The name of the function to call when OnPause is invoked.</param>
     /// <param name="unpauseCall">The name of the function to call when OnUnpause is invoked.</param>
@@ -77,7 +77,7 @@ public class PauseManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Removes listeners from the OnPause and OnUnpause events.
+    /// Removes a pair of listeners from the OnPause and OnUnpause events.
     /// </summary>
     /// <param name="pauseCall">The name of the function to remove from the OnPause invoke array.</param>
     /// <param name="unpauseCall">The name of the function to remove from the OnUnpause invoke array.</param>

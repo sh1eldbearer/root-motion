@@ -88,15 +88,13 @@ public class InitializeGame : MonoBehaviour
                 break;
         }
 
-        // Attaches a character model to the player object
-        GameObject newPlayer = Instantiate(SkinManager.skinMgr.SkinColors[player.SkinColorIndex].Model,
-            playerObject.transform);
-        // Places the player at the appropriate spawn point
-        playerObject.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
-
         // Activates the player object and its camera
         playerObject.SetActive(true);
         // Assigns the new character's agent data component to the player info array
-        player.SetAgentData(newPlayer.GetComponent<PawnData>());
+        player.SetAgentData(playerObject.GetComponent<PawnData>());
+        // Assigns the selected skin color materials to the player object
+        SkinManager.skinMgr.AssignMaterials(player.SkinColorIndex, player.PawnData);
+        // Places the player at the appropriate spawn point
+        playerObject.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
     }
 }

@@ -10,9 +10,6 @@ public abstract class AgentController : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
-    [SerializeField] private UnityEvent _onCrouch = new UnityEvent();
-    [SerializeField] private UnityEvent _onStand = new UnityEvent();
-
     [Header("Component References")]
     [Tooltip("This agent's Pawn component."),
         SerializeField] private Pawn _thisPawn;
@@ -79,64 +76,26 @@ public abstract class AgentController : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds a listener to the OnCrouch event.
-    /// </summary>
-    /// <param name="call">The name of the function to call when OnCrouch is invoked.</param>
-    public void AddOnCrouchListener(UnityAction call)
-    {
-        _onCrouch.AddListener(call);
-    }
-
-    /// <summary>
-    /// Removes a listener from the OnCrouch event.
-    /// </summary>
-    /// <param name="call">The name of the function to remove from the OnCrouch invoke array.</param>
-    public void RemoveOnCrouchListener(UnityAction call)
-    {
-        _onCrouch.RemoveListener(call);
-    }
-
-    /// <summary>
-    /// Adds a listener to the OnStand event.
-    /// </summary>
-    /// <param name="call">The name of the function to call when OnStand is invoked.</param>
-    public void AddOnStandListener(UnityAction call)
-    {
-        _onStand.AddListener(call);
-    }
-
-    /// <summary>
-    /// Removes a listener from the OnStand event.
-    /// </summary>
-    /// <param name="call">The name of the function to remove from the OnStand invoke array.</param>
-    public void RemoveOnStandListener(UnityAction call)
-    {
-        _onStand.RemoveListener(call);
-    }
-
-    /// <summary>
     /// Sets the appropriate animator booleans in order to use the designated movement type for
     /// the agent.
     /// </summary>
     /// <param name="locoState">The current movement state of the agent.</param>
     protected void SetLocomotionState(Enums.LocomotionState locoState)
     {
+        // Set the new locomotion state
         switch (locoState)
         {
             case Enums.LocomotionState.Walking:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", false);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", false);
-                _onStand.Invoke();
                 break;
             case Enums.LocomotionState.Crouching:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", false);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", true);
-                _onCrouch.Invoke();
                 break;
             case Enums.LocomotionState.Sprinting:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", true);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", false);
-                _onStand.Invoke();
                 break;
         }
     }

@@ -8,38 +8,27 @@ public class IKAdjuster : MonoBehaviour
 
 #pragma warning disable CS0649
 
+    [Header("Game Components")]
+    [Tooltip("The PawnData component for this pawn."),
+        SerializeField] private PawnData _pawnData;
+
     [Header("IK Weight Settings")]
     [Tooltip("The weight to apply to the position of the avatar's left hand for inverse kinematics."),
-     SerializeField, Range(0.0f, 1.0f)]
-    private float _lHandPositionWeight = 1.0f;
-
+        SerializeField, Range(0.0f, 1.0f)] private float _lHandPositionWeight = 1.0f;
     [Tooltip("The weight to apply to the rotation of the avatar's left hand for inverse kinematics."),
-     SerializeField, Range(0.0f, 1.0f)]
-    private float _lHandRotationWeight = 1.0f;
-
+        SerializeField, Range(0.0f, 1.0f)] private float _lHandRotationWeight = 1.0f;
     [Tooltip("The weight to apply to the position of the avatar's left elbow for inverse kinematics."),
-     SerializeField, Range(0.0f, 1.0f)]
-    private float _lElbowPositionWeight = 1.0f;
+        SerializeField, Range(0.0f, 1.0f)] private float _lElbowPositionWeight = 1.0f;
 
     [Tooltip("The weight to apply to the position of the avatar's right hand for inverse kinematics."),
-     Space, SerializeField, Range(0.0f, 1.0f)]
-    private float _rHandPositionWeight = 1.0f;
-
+        Space, SerializeField, Range(0.0f, 1.0f)] private float _rHandPositionWeight = 1.0f;
     [Tooltip("The weight to apply to the rotation of the avatar's right hand for inverse kinematics."),
-     SerializeField, Range(0.0f, 1.0f)]
-    private float _rHandRotationWeight = 1.0f;
-
+        SerializeField, Range(0.0f, 1.0f)] private float _rHandRotationWeight = 1.0f;
     [Tooltip("The weight to apply to the position of the avatar's right elbow for inverse kinematics."),
-     SerializeField, Range(0.0f, 1.0f)]
-    private float _rElbowPositionWeight = 1.0f;
 
+        SerializeField, Range(0.0f, 1.0f)] private float _rElbowPositionWeight = 1.0f;
     [Tooltip("The weight to apply to the position of the avatar's head for inverse kinematics."),
-     Space, SerializeField, Range(0.0f, 1.0f)]
-    private float _headPositionWeight = 1.0f;
-
-    [Header("Game Components")]
-    [Tooltip("The Pawn component for this character."),
-     SerializeField] private Pawn _thisPawn;
+        Space, SerializeField, Range(0.0f, 1.0f)] private float _headPositionWeight = 1.0f;
 #pragma warning restore CS0649
 
     #endregion
@@ -48,9 +37,9 @@ public class IKAdjuster : MonoBehaviour
     private void Awake()
     {
         // Component reference assignments
-        if (_thisPawn == null)
+        if (_pawnData == null)
         {
-            _thisPawn = this.gameObject.GetComponent<Pawn>();
+            _pawnData = this.gameObject.GetComponent<PawnData>();
         }
     }
 
@@ -58,7 +47,7 @@ public class IKAdjuster : MonoBehaviour
     {
         // Checks the weapon type to see which animations it should use
         // TODO: Could be optimized to not run every IK pass
-        if (_thisPawn.PawnData.EquippedWeapon.GetType() == typeof(PistolWeapon))
+        if (_pawnData.EquippedWeapon.GetType() == typeof(PistolWeapon))
         {
             UsePistolAnimation();
         }
@@ -68,35 +57,35 @@ public class IKAdjuster : MonoBehaviour
         }
 
         // Adjusts the position and rotation of the avatar's hands and elbows based on the provided weights
-        if (_thisPawn.PawnData.EquippedWeapon.LHandIKTransform != null) // Left hand
+        if (_pawnData.EquippedWeapon.LHandIKTransform != null) // Left hand
         {
-            SetIKTransforms(AvatarIKGoal.LeftHand, _thisPawn.PawnData.EquippedWeapon.LHandIKTransform.position,
-                _lHandPositionWeight, _thisPawn.PawnData.EquippedWeapon.LHandIKTransform.rotation, _lHandRotationWeight);
+            SetIKTransforms(AvatarIKGoal.LeftHand, _pawnData.EquippedWeapon.LHandIKTransform.position,
+                _lHandPositionWeight, _pawnData.EquippedWeapon.LHandIKTransform.rotation, _lHandRotationWeight);
         }
 
-        if (_thisPawn.PawnData.EquippedWeapon.LElbowIKTransform != null) // Left elbow
+        if (_pawnData.EquippedWeapon.LElbowIKTransform != null) // Left elbow
         {
-            SetIKHintTransforms(AvatarIKHint.LeftElbow, _thisPawn.PawnData.EquippedWeapon.LElbowIKTransform.position,
+            SetIKHintTransforms(AvatarIKHint.LeftElbow, _pawnData.EquippedWeapon.LElbowIKTransform.position,
                 _lElbowPositionWeight);
         }
 
-        if (_thisPawn.PawnData.EquippedWeapon.RHandIKTransform != null) // Right hand
+        if (_pawnData.EquippedWeapon.RHandIKTransform != null) // Right hand
         {
-            SetIKTransforms(AvatarIKGoal.RightHand, _thisPawn.PawnData.EquippedWeapon.RHandIKTransform.position,
-                _rHandPositionWeight, _thisPawn.PawnData.EquippedWeapon.RHandIKTransform.rotation, _rHandRotationWeight);
+            SetIKTransforms(AvatarIKGoal.RightHand, _pawnData.EquippedWeapon.RHandIKTransform.position,
+                _rHandPositionWeight, _pawnData.EquippedWeapon.RHandIKTransform.rotation, _rHandRotationWeight);
         }
 
-        if (_thisPawn.PawnData.EquippedWeapon.RElbowIKTransform != null) // Right elbow
+        if (_pawnData.EquippedWeapon.RElbowIKTransform != null) // Right elbow
         {
-            SetIKHintTransforms(AvatarIKHint.RightElbow, _thisPawn.PawnData.EquippedWeapon.RElbowIKTransform.position,
+            SetIKHintTransforms(AvatarIKHint.RightElbow, _pawnData.EquippedWeapon.RElbowIKTransform.position,
                 _rElbowPositionWeight);
         }
 
         // Adjusts the rotation of the character's head so they always look where the mouse is pointing
-        if (_thisPawn.PawnData.HeadTransform != null)
+        if (_pawnData.HeadTransform != null)
         {
             // Creates an imaginary plane at the position of the model's head
-            Plane headPlane = new Plane(_thisPawn.PawnData.HeadTransform.up, _thisPawn.PawnData.HeadTransform.position);
+            Plane headPlane = new Plane(_pawnData.HeadTransform.up, _pawnData.HeadTransform.position);
 
             // Gets a ray from the mouse's position through the camera's view direction
             Ray mouseRay = GameManager.gm.GameCamera.ScreenPointToRay(Input.mousePosition);
@@ -108,8 +97,8 @@ public class IKAdjuster : MonoBehaviour
             {
                 Vector3 intersectPoint = mouseRay.GetPoint(intersectDistance);
 
-                _thisPawn.PawnData.PawnAnimator.SetLookAtPosition(intersectPoint);
-                _thisPawn.PawnData.PawnAnimator.SetLookAtWeight(_headPositionWeight);
+                _pawnData.PawnAnimator.SetLookAtPosition(intersectPoint);
+                _pawnData.PawnAnimator.SetLookAtWeight(_headPositionWeight);
             }
         }
     }
@@ -119,8 +108,8 @@ public class IKAdjuster : MonoBehaviour
     /// </summary>
     private void UseRifleAnimation()
     {
-        _thisPawn.PawnData.PawnAnimator.SetBool("usingRifle", true);
-        _thisPawn.PawnData.PawnAnimator.SetBool("usingPistol", false);
+        _pawnData.PawnAnimator.SetBool("usingRifle", true);
+        _pawnData.PawnAnimator.SetBool("usingPistol", false);
     }
 
     /// <summary>
@@ -128,8 +117,8 @@ public class IKAdjuster : MonoBehaviour
     /// </summary>
     private void UsePistolAnimation()
     {
-        _thisPawn.PawnData.PawnAnimator.SetBool("usingRifle", false);
-        _thisPawn.PawnData.PawnAnimator.SetBool("usingPistol", true);
+        _pawnData.PawnAnimator.SetBool("usingRifle", false);
+        _pawnData.PawnAnimator.SetBool("usingPistol", true);
     }
 
 
@@ -144,10 +133,10 @@ public class IKAdjuster : MonoBehaviour
     private void SetIKTransforms(AvatarIKGoal ikGoal, Vector3 goalPosition, float positionWeight,
         Quaternion goalRotation, float rotationWeight)
     {
-        _thisPawn.PawnData.PawnAnimator.SetIKPosition(ikGoal, goalPosition);
-        _thisPawn.PawnData.PawnAnimator.SetIKPositionWeight(ikGoal, positionWeight);
-        _thisPawn.PawnData.PawnAnimator.SetIKRotation(ikGoal, goalRotation);
-        _thisPawn.PawnData.PawnAnimator.SetIKRotationWeight(ikGoal, rotationWeight);
+        _pawnData.PawnAnimator.SetIKPosition(ikGoal, goalPosition);
+        _pawnData.PawnAnimator.SetIKPositionWeight(ikGoal, positionWeight);
+        _pawnData.PawnAnimator.SetIKRotation(ikGoal, goalRotation);
+        _pawnData.PawnAnimator.SetIKRotationWeight(ikGoal, rotationWeight);
     }
 
     /// <summary>
@@ -158,7 +147,7 @@ public class IKAdjuster : MonoBehaviour
     /// <param name="positionWeight">The weight to apply to the hint position.</param>
     private void SetIKHintTransforms(AvatarIKHint ikHint, Vector3 hintPosition, float positionWeight)
     {
-        _thisPawn.PawnData.PawnAnimator.SetIKHintPosition(ikHint, hintPosition);
-        _thisPawn.PawnData.PawnAnimator.SetIKHintPositionWeight(ikHint, positionWeight);
+        _pawnData.PawnAnimator.SetIKHintPosition(ikHint, hintPosition);
+        _pawnData.PawnAnimator.SetIKHintPositionWeight(ikHint, positionWeight);
     }
 }

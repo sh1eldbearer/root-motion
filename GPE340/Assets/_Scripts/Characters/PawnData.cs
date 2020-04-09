@@ -9,6 +9,7 @@ public class PawnData : MonoBehaviour
 #pragma warning disable CS0649
     [Header("")]
     [SerializeField] private Weapon _equippedWeapon;
+    [SerializeField] private WeaponInventoryItem[] _weaponInventory = new WeaponInventoryItem[4];
 
         [Header("Movement Settings")]
     [Tooltip("The movement speed of this pawn."),
@@ -39,8 +40,6 @@ public class PawnData : MonoBehaviour
         SerializeField] private CapsuleCollider _pawnCollider;
     [Tooltip("The Transform component of this pawn's model's head."),
         Space, SerializeField] private Transform _headTransform;
-    [Tooltip("The Transform component of this pawn's weapons container object."),
-        SerializeField] private Transform _weaponsTransform;
 
     [Header("Skinned Mesh Renderers")]
     //[Space, SerializeField] private List<SkinnedMeshRenderer> _modelMeshes = new List<SkinnedMeshRenderer>();
@@ -117,15 +116,8 @@ public class PawnData : MonoBehaviour
     public float ColliderAdjustSpeed
     {
         get { return _colliderAdjustSpeed; }
-    }
+    } 
 
-    /// <summary>
-    /// This agent's controller.
-    /// </summary>
-    public AgentController Controller
-    {
-        get { return _controller; }
-    }
     /// <summary>
     /// This agent's Transform component.
     /// </summary>
@@ -199,7 +191,6 @@ public class PawnData : MonoBehaviour
     {
         get { return _eyeSpecRenderers; }
     }
-
     #endregion
 
     // Awake is called before Start
@@ -223,7 +214,7 @@ public class PawnData : MonoBehaviour
             _pawnCollider = this.gameObject.GetComponentInChildren<CapsuleCollider>();
         }
 
-        // Stores the SkinnedMeshRenderers of each part of the character so we can modify their materials
+        // Stores references to the SkinnedMeshRenderers of each part of the character so we can modify their materials
         SkinnedMeshRenderer[] _modelMeshes = this.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
         _bodyRenderers =
             (from renderer in _modelMeshes where renderer.material.name.Contains("Body_MAT") select renderer).ToList();
