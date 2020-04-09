@@ -1,16 +1,21 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public abstract class AgentController : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
+    [SerializeField] private UnityEvent _onCrouch = new UnityEvent();
+    [SerializeField] private UnityEvent _onStand = new UnityEvent();
+
     [Header("Component References")]
     [Tooltip("This agent's Pawn component."),
-     SerializeField] private Pawn _thisPawn;
+        SerializeField] private Pawn _thisPawn;
 #pragma warning restore CS0649
     #endregion
 
@@ -74,6 +79,42 @@ public abstract class AgentController : MonoBehaviour
     }
 
     /// <summary>
+    /// Adds a listener to the OnCrouch event.
+    /// </summary>
+    /// <param name="call">The name of the function to call when OnCrouch is invoked.</param>
+    protected void AddOnCrouchListener(UnityAction call)
+    {
+        _onCrouch.AddListener(call);
+    }
+
+    /// <summary>
+    /// Removes a listener from the OnCrouch event.
+    /// </summary>
+    /// <param name="call">The name of the function to remove from the OnCrouch invoke array.</param>
+    protected void RemoveOnCrouchListener(UnityAction call)
+    {
+        _onCrouch.RemoveListener(call);
+    }
+
+    /// <summary>
+    /// Adds a listener to the OnStand event.
+    /// </summary>
+    /// <param name="call">The name of the function to call when OnStand is invoked.</param>
+    protected void AddOnStandListener(UnityAction call)
+    {
+        _onStand.AddListener(call);
+    }
+
+    /// <summary>
+    /// Removes a listener from the OnStand event.
+    /// </summary>
+    /// <param name="call">The name of the function to remove from the OnStand invoke array.</param>
+    protected void RemoveOnStandListener(UnityAction call)
+    {
+        _onStand.RemoveListener(call);
+    }
+
+    /// <summary>
     /// Sets the appropriate animator booleans in order to use the designated movement type for
     /// the agent.
     /// </summary>
@@ -85,14 +126,17 @@ public abstract class AgentController : MonoBehaviour
             case Enums.LocomotionState.Walking:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", false);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", false);
+                _onStand.Invoke();
                 break;
             case Enums.LocomotionState.Crouching:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", false);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", true);
+                _onCrouch.Invoke();
                 break;
             case Enums.LocomotionState.Sprinting:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", true);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", false);
+                _onStand.Invoke();
                 break;
         }
     }
