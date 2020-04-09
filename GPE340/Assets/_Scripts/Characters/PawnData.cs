@@ -174,4 +174,13 @@ public class PawnData : MonoBehaviour
         // Stores the SkinnedMeshRenderers of each part of the character so we can modify their materials
         _modelMeshes = this.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>().ToList();
     }
+
+    /// <summary>
+    /// Assigns a reference to the AgentController responsible for controlling this Pawn.
+    /// </summary>
+    /// <param name="controller">The AgentController responsible for controlling this Pawn.</param>
+    public void SetController(AgentController controller)
+    {
+        _controller = controller;
+    }
 }
