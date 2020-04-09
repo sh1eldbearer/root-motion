@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PawnData : MonoBehaviour
@@ -36,6 +37,9 @@ public class PawnData : MonoBehaviour
         SerializeField] private Animator _pawnAnimator;
     [Tooltip("The Capsule Collider attached to this pawn."),
         SerializeField] private CapsuleCollider _pawnCollider;
+    [Tooltip("The Transform component of this pawn's model's head."),
+        SerializeField] private Transform _headTransform;
+    [Space, SerializeField] private List<SkinnedMeshRenderer> _modelMeshes = new List<SkinnedMeshRenderer>();
 #pragma warning restore CS0649
     #endregion
 
@@ -70,7 +74,8 @@ public class PawnData : MonoBehaviour
     /// </summary>
     public Vector3 StandColliderCenter
     {
-        get { return new Vector3(0f,_standColliderCenterY, 0f); }
+        get { return new Vector3(_pawnCollider.center.x ,_standColliderCenterY, 
+            _pawnCollider.center.z); }
     }
 
     /// <summary>
@@ -86,7 +91,8 @@ public class PawnData : MonoBehaviour
     /// </summary>
     public Vector3 CrouchColliderCenter
     {
-        get { return new Vector3(0f, _crouchColliderCenterY, 0f); }
+        get { return new Vector3(_pawnCollider.center.x, _crouchColliderCenterY, 
+            _pawnCollider.center.z); }
     }
 
     /// <summary>
@@ -128,9 +134,18 @@ public class PawnData : MonoBehaviour
         get { return _pawnCollider; }
     }
 
+    // TODO: Move once this system is finalized
     public Weapon EquippedWeapon
     {
         get { return _equippedWeapon; }
+    }
+
+    /// <summary>
+    /// The Transform component of this pawn's model's head.
+    /// </summary>
+    public Transform HeadTransform
+    {
+        get { return _headTransform; }
     }
 
     #endregion
@@ -155,5 +170,8 @@ public class PawnData : MonoBehaviour
         {
             _pawnCollider = this.gameObject.GetComponentInChildren<CapsuleCollider>();
         }
+
+        // Stores the SkinnedMeshRenderers of each part of the character so we can modify their materials
+        _modelMeshes = this.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>().ToList();
     }
 }
