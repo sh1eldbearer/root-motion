@@ -1,4 +1,4 @@
-namespace Enums
+﻿namespace Enums
 {
     /// <summary>
     /// Designates which player an object is assigned to. Each player value has a corresponding integer value.
@@ -68,8 +68,8 @@ namespace Enums
     /// </summary>
     public enum FireMode
     {
-        SingleShot = 0,
-        BurstFire = 1,
-        FullAuto = 2
+        SingleShot = 1,
+        BurstFire = 2,
+        FullAuto = 3
     }
 }
