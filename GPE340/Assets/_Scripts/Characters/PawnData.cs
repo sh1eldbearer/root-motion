@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -38,8 +38,24 @@ public class PawnData : MonoBehaviour
     [Tooltip("The Capsule Collider attached to this pawn."),
         SerializeField] private CapsuleCollider _pawnCollider;
     [Tooltip("The Transform component of this pawn's model's head."),
-        SerializeField] private Transform _headTransform;
-    [Space, SerializeField] private List<SkinnedMeshRenderer> _modelMeshes = new List<SkinnedMeshRenderer>();
+        Space, SerializeField] private Transform _headTransform;
+    [Tooltip("The Transform component of this pawn's weapons container object."),
+        SerializeField] private Transform _weaponsTransform;
+
+    [Header("Skinned Mesh Renderers")]
+    //[Space, SerializeField] private List<SkinnedMeshRenderer> _modelMeshes = new List<SkinnedMeshRenderer>();
+    [Tooltip("The parts of the character mesh that use the Body_MAT material. Used for for changing the player " +
+             "model's skin color when the game starts. Auto-populated at run-time."), 
+        SerializeField] private List<SkinnedMeshRenderer> _bodyRenderers = new List<SkinnedMeshRenderer>();
+    [Tooltip("The parts of the character mesh that use the Brows_MAT material. Used for for changing the player " +
+             "model's skin color when the game starts. Auto-populated at run-time."), 
+        SerializeField] private List<SkinnedMeshRenderer> _browsRenderers = new List<SkinnedMeshRenderer>();
+    [Tooltip("The parts of the character mesh that use the Eye_MAT material. Used for for changing the player " +
+             "model's skin color when the game starts. Auto-populated at run-time."), 
+        SerializeField] private List<SkinnedMeshRenderer> _eyeRenderers = new List<SkinnedMeshRenderer>();
+    [Tooltip("The parts of the character mesh that use the Eye_Spec_MAT material. Used for for changing the player " +
+             "model's skin color when the game starts. Auto-populated at run-time."), 
+        SerializeField] private List<SkinnedMeshRenderer> _eyeSpecRenderers = new List<SkinnedMeshRenderer>();
 #pragma warning restore CS0649
     #endregion
 
@@ -148,6 +164,42 @@ public class PawnData : MonoBehaviour
         get { return _headTransform; }
     }
 
+    /// <summary>
+    /// The parts of the character mesh that use the Body_MAT material. Used for for changing the player
+    /// model's skin color when the game starts. Auto-populated at run-time.
+    /// </summary>
+    public List<SkinnedMeshRenderer> BodyRenderers
+    {
+        get { return _bodyRenderers; }
+    }
+
+    /// <summary>
+    /// The parts of the character mesh that use the Brows_MAT material. Used for for changing the player
+    /// model's skin color when the game starts. Auto-populated at run-time.
+    /// </summary>
+    public List<SkinnedMeshRenderer> BrowsRenderers
+    {
+        get { return _browsRenderers; }
+    }
+
+    /// <summary>
+    /// The parts of the character mesh that use the Eye_MAT material. Used for for changing the player
+    /// model's skin color when the game starts. Auto-populated at run-time.
+    /// </summary>
+    public List<SkinnedMeshRenderer> EyeRenderers
+    {
+        get { return _eyeRenderers; }
+    }
+
+    /// <summary>
+    /// The parts of the character mesh that use the Eye_Spec_MAT material. Used for for changing the player
+    /// model's skin color when the game starts. Auto-populated at run-time.
+    /// </summary>
+    public List<SkinnedMeshRenderer> EyeSpecRenderers
+    {
+        get { return _eyeSpecRenderers; }
+    }
+
     #endregion
 
     // Awake is called before Start
@@ -172,7 +224,15 @@ public class PawnData : MonoBehaviour
         }
 
         // Stores the SkinnedMeshRenderers of each part of the character so we can modify their materials
-        _modelMeshes = this.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>().ToList();
+        SkinnedMeshRenderer[] _modelMeshes = this.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+        _bodyRenderers =
+            (from renderer in _modelMeshes where renderer.material.name.Contains("Body_MAT") select renderer).ToList();
+        _browsRenderers =
+            (from renderer in _modelMeshes where renderer.material.name.Contains("Brows_MAT") select renderer).ToList();
+        _eyeRenderers =
+            (from renderer in _modelMeshes where renderer.material.name.Contains("Eye_MAT") select renderer).ToList();
+        _eyeSpecRenderers =
+            (from renderer in _modelMeshes where renderer.material.name.Contains("Eye_Spec_MAT") select renderer).ToList();
     }
 
     /// <summary>

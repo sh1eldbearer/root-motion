@@ -48,34 +48,79 @@ MonoBehaviour:
     _color: {r: 0.8745099, g: 0, b: 0.8745099, a: 1}
     _model: {fileID: 4846940864865412748, guid: 9db7043100032994e832ec6a1ef1e7da,
       type: 3}
+    _avatar: {fileID: 9000000, guid: df157f5a572533b4380de26246120b5d, type: 3}
+    _bodyMaterial: {fileID: 2100000, guid: 6235310812ecd1d4889238dcc55ff3cc, type: 2}
+    _browsMaterial: {fileID: 2100000, guid: d3e5c414fb221e04996fc2ab232c9d1e, type: 2}
+    _eyeMaterial: {fileID: 2100000, guid: 5622dba39003380468346667b6adfb8c, type: 2}
+    _eyeSpecMaterial: {fileID: 2100000, guid: ab5b8a8c707d0af40a801aca0409f371, type: 2}
   - _name: 2
     _color: {r: 1, g: 0, b: 0, a: 1}
     _model: {fileID: 3056419856995654888, guid: d4e63c307ba2cd04bb69ea57731ceebe,
       type: 3}
+    _avatar: {fileID: 9000000, guid: c872477227f05714f8d2d0878e87dfa5, type: 3}
+    _bodyMaterial: {fileID: 2100000, guid: 29bb868a59d86144d97ba86c03c589b0, type: 2}
+    _browsMaterial: {fileID: 2100000, guid: a655058c20cbcce48a75d1f4e6b0fd98, type: 2}
+    _eyeMaterial: {fileID: 2100000, guid: 16226f4cc29cb96449bdb74fc15bbe2c, type: 2}
+    _eyeSpecMaterial: {fileID: 2100000, guid: e2bf7462ff8e5194794d0e7fceba05c2, type: 2}
   - _name: 3
     _color: {r: 1, g: 0.5019608, b: 0, a: 1}
     _model: {fileID: 3383443635094590069, guid: fbf76f1300649a942a098a813479747f,
       type: 3}
+    _avatar: {fileID: 9000000, guid: 5eefb6ba80eec0247a7a5f85403ffb53, type: 3}
+    _bodyMaterial: {fileID: 2100000, guid: 0bf4cfeaebe810c4480f664f36739580, type: 2}
+    _browsMaterial: {fileID: 2100000, guid: 4fe77da7657fb224296a6443c125c13f, type: 2}
+    _eyeMaterial: {fileID: 2100000, guid: eaeb7652ce83b624499808987091c1b9, type: 2}
+    _eyeSpecMaterial: {fileID: 2100000, guid: 0c7c4f4ef1aa6d64ca66ee5f33476e09, type: 2}
   - _name: 4
     _color: {r: 1, g: 0.7490196, b: 0, a: 1}
     _model: {fileID: 1705096705181682383, guid: f442086d85610cd459f9e4db3bb19a15,
       type: 3}
+    _avatar: {fileID: 9000000, guid: 74a0ec319e72e2741b0ba2d0d28b7404, type: 3}
+    _bodyMaterial: {fileID: 2100000, guid: cb388e0fe5dfe6949820dfffc9aa9456, type: 2}
+    _browsMaterial: {fileID: 2100000, guid: 58d678c80680701478e59779df06b7ad, type: 2}
+    _eyeMaterial: {fileID: 2100000, guid: a4648d398da83a14da67d6144c6ad25c, type: 2}
+    _eyeSpecMaterial: {fileID: 2100000, guid: 3855c8eefe5b74848a68188f107bfd3e, type: 2}
   - _name: 5
     _color: {r: 0, g: 0.5019608, b: 0, a: 1}
     _model: {fileID: 8280556222786720912, guid: 8e399a67070ab664eb14ddca34ddf49f,
       type: 3}
+    _avatar: {fileID: 9000000, guid: a798b76cece0035458931c3f121356a3, type: 3}
+    _bodyMaterial: {fileID: 2100000, guid: fd88c439d2df30448a7575481833b9ac, type: 2}
+    _browsMaterial: {fileID: 2100000, guid: 9c6e444335ab425419970455dcc6009f, type: 2}
+    _eyeMaterial: {fileID: 2100000, guid: bc9c54896ce8b6d44be2837d8cc0297c, type: 2}
+    _eyeSpecMaterial: {fileID: 2100000, guid: 094fa7bac6235594eb32db811e038fc5, type: 2}
   - _name: 6
     _color: {r: 0, g: 0.7490196, b: 0.7490196, a: 1}
     _model: {fileID: 2744008165997167902, guid: c2094c06503474748b9d12e45e2d7c96,
       type: 3}
+    _avatar: {fileID: 9000000, guid: 051e9b0262d3c6246aa2b36c5b518754, type: 3}
+    _bodyMaterial: {fileID: 2100000, guid: 2f1ce81f27b08584aa002a3c3fd5cf71, type: 2}
+    _browsMaterial: {fileID: 2100000, guid: ea4820b4d753b2042a08b980793e11a4, type: 2}
+    _eyeMaterial: {fileID: 2100000, guid: 022d1f8aeb4196d438505143629aeb6a, type: 2}
+    _eyeSpecMaterial: {fileID: 2100000, guid: 625aec2f37a6e8340b02c650e8fc17da, type: 2}
   - _name: 7
     _color: {r: 0, g: 0, b: 1, a: 1}
     _model: {fileID: 5515171803398130769, guid: 920a8cb0590957b44bce39ef29300d22,
       type: 3}
+    _avatar: {fileID: 9000000, guid: aa224226556cc2646a93e26379e737e7, type: 3}
+    _bodyMaterial: {fileID: 2100000, guid: 54886b79deeba8d428b95472de5e0589, type: 2}
+    _browsMaterial: {fileID: 2100000, guid: 76651ea9ef53b6448a6f4cedcef991c2, type: 2}
+    _eyeMaterial: {fileID: 2100000, guid: 57122436a6855774bac064841167f293, type: 2}
+    _eyeSpecMaterial: {fileID: 2100000, guid: a28dd2087a6d24946b3d6fb6acd9ebed, type: 2}
   - _name: 8
     _color: {r: 0.6666667, g: 0, b: 1, a: 1}
     _model: {fileID: 7917973503707983040, guid: 4c00ed30ac28aa74ea4a9bb88b897f27,
       type: 3}
+    _avatar: {fileID: 9000000, guid: 77090f48e984c4149b90ed355f5f4c54, type: 3}
+    _bodyMaterial: {fileID: 2100000, guid: 8f354c1e6f5a5214c8e772cae0af5c12, type: 2}
+    _browsMaterial: {fileID: 2100000, guid: ae7553a35e02f874ead453592e1a421a, type: 2}
+    _eyeMaterial: {fileID: 2100000, guid: 2e30e6de46126a34dad3548796adcc90, type: 2}
+    _eyeSpecMaterial: {fileID: 2100000, guid: 80f0f66e2c7d1a440a2bb9a0a5e1bf48, type: 2}
   - _name: 0
     _color: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
     _model: {fileID: 0}
+    _avatar: {fileID: 0}
+    _bodyMaterial: {fileID: 0}
+    _browsMaterial: {fileID: 0}
+    _eyeMaterial: {fileID: 0}
+    _eyeSpecMaterial: {fileID: 0}
