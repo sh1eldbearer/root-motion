@@ -82,7 +82,7 @@ public abstract class AgentController : MonoBehaviour
     /// Adds a listener to the OnCrouch event.
     /// </summary>
     /// <param name="call">The name of the function to call when OnCrouch is invoked.</param>
-    protected void AddOnCrouchListener(UnityAction call)
+    public void AddOnCrouchListener(UnityAction call)
     {
         _onCrouch.AddListener(call);
     }
@@ -91,7 +91,7 @@ public abstract class AgentController : MonoBehaviour
     /// Removes a listener from the OnCrouch event.
     /// </summary>
     /// <param name="call">The name of the function to remove from the OnCrouch invoke array.</param>
-    protected void RemoveOnCrouchListener(UnityAction call)
+    public void RemoveOnCrouchListener(UnityAction call)
     {
         _onCrouch.RemoveListener(call);
     }
@@ -100,7 +100,7 @@ public abstract class AgentController : MonoBehaviour
     /// Adds a listener to the OnStand event.
     /// </summary>
     /// <param name="call">The name of the function to call when OnStand is invoked.</param>
-    protected void AddOnStandListener(UnityAction call)
+    public void AddOnStandListener(UnityAction call)
     {
         _onStand.AddListener(call);
     }
@@ -109,7 +109,7 @@ public abstract class AgentController : MonoBehaviour
     /// Removes a listener from the OnStand event.
     /// </summary>
     /// <param name="call">The name of the function to remove from the OnStand invoke array.</param>
-    protected void RemoveOnStandListener(UnityAction call)
+    public void RemoveOnStandListener(UnityAction call)
     {
         _onStand.RemoveListener(call);
     }
