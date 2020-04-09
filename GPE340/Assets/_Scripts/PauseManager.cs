@@ -9,13 +9,9 @@ public class PauseManager : MonoBehaviour
 
     #region Private Properties
 #pragma warning disable CS0649
-    private UnityEvent _onPause = new UnityEvent();
-    private UnityEvent _onUnpause = new UnityEvent();
+    [SerializeField] private UnityEvent _onPause = new UnityEvent();
+    [SerializeField] private UnityEvent _onUnpause = new UnityEvent();
 #pragma warning restore CS0649
-    #endregion
-
-    #region Public Properties
-
     #endregion
 
     // Awake is called before Start
