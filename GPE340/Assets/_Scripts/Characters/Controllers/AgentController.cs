@@ -5,6 +5,7 @@ using System.Data;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Utility.Enums;
 
 public abstract class AgentController : MonoBehaviour
 {
@@ -80,20 +81,20 @@ public abstract class AgentController : MonoBehaviour
     /// the agent.
     /// </summary>
     /// <param name="locoState">The current movement state of the agent.</param>
-    protected void SetLocomotionState(Enums.LocomotionState locoState)
+    protected void SetLocomotionState(LocomotionState locoState)
     {
         // Set the new locomotion state
         switch (locoState)
         {
-            case Enums.LocomotionState.Walking:
+            case LocomotionState.Walking:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", false);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", false);
                 break;
-            case Enums.LocomotionState.Crouching:
+            case LocomotionState.Crouching:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", false);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", true);
                 break;
-            case Enums.LocomotionState.Sprinting:
+            case LocomotionState.Sprinting:
                 _thisPawn.PawnData.PawnAnimator.SetBool("isSprinting", true);
                 _thisPawn.PawnData.PawnAnimator.SetBool("isCrouching", false);
                 break;

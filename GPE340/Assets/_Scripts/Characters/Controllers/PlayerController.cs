@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
+using Utility.Enums;
 
 public class PlayerController : AgentController
 {
@@ -54,19 +55,19 @@ public class PlayerController : AgentController
             // Set sprinting or walking states if any of the inputs are pressed
             if (Input.GetAxis("Sprint") > 0f && Input.GetAxis("Crouch") > 0f)
             {
-                SetLocomotionState(Enums.LocomotionState.Walking);
+                SetLocomotionState(LocomotionState.Walking);
             }
             else if (Input.GetAxis("Sprint") > 0f)
             {
-                SetLocomotionState(Enums.LocomotionState.Sprinting);
+                SetLocomotionState(LocomotionState.Sprinting);
             }
             else if (Input.GetAxis("Crouch") > 0f)
             {
-                SetLocomotionState(Enums.LocomotionState.Crouching);
+                SetLocomotionState(LocomotionState.Crouching);
             }
             else
             {
-                SetLocomotionState(Enums.LocomotionState.Walking);
+                SetLocomotionState(LocomotionState.Walking);
             }
 
             // Move the pawn
