@@ -20,7 +20,7 @@ public class WeaponData : ScriptableObject
     [Tooltip("The delay between effective pulls of the trigger for this weapon (in seconds)."),
         SerializeField] private float _baseFireRate = 0.75f; // TODO: Implement a range after initial testing
     [Tooltip("The clip size of this weapon."),
-        SerializeField] private float _baseClipSize = 6;
+        SerializeField] private int _baseClipSize = 6;
     [Tooltip("The firing behavior of this weapon."),
         SerializeField] private FireMode _firingMode = FireMode.SingleShot;
 
@@ -71,7 +71,7 @@ public class WeaponData : ScriptableObject
     /// <summary>
     /// The clip size of this weapon.
     /// </summary>
-    public float BaseClipSize
+    public int BaseClipSize
     {
         get { return _baseClipSize; }
     }
