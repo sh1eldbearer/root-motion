@@ -90,6 +90,7 @@ public class InventoryManager : MonoBehaviour
             // If the element being checked has weapon data, equip that weapon
             else if (_weaponInventory[nextIndex].WeaponInfo != null)
             {
+                ToggleWeaponTransforms(nextIndex);
                 SetEquippedWeaponIndex(nextIndex);
                 return;
             }
