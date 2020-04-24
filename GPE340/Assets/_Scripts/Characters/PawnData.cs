@@ -10,8 +10,6 @@ public class PawnData : MonoBehaviour
     #region Private Properties
 #pragma warning disable CS0649
     [Header("")]
-    [SerializeField] private WeaponModelData _equippedWeaponModelData;
-    [SerializeField, Range(0, 3)] private int _equippedWeaponIndex;
     [SerializeField] private List<WeaponInventorySlot> _weaponInventory = new List<WeaponInventorySlot>(4);
 
         [Header("Movement Settings")]
@@ -153,12 +151,6 @@ public class PawnData : MonoBehaviour
     public CapsuleCollider PawnCollider
     {
         get { return _pawnCollider; }
-    }
-
-    // TODO: Move once this system is finalized
-    public WeaponModelData EquippedWeaponModelData
-    {
-        get { return _equippedWeaponModelData; }
     }
 
     /// <summary>
