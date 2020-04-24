@@ -44,9 +44,9 @@ public class WeaponPickup : Pickup, IPlayerPickup
 
     public void OnPickup(Collider collider)
     {
-        if (collider.GetComponent<IPlayerPickup>() != null)
+        if (collider.tag == "Player")
         {
-            OnPlayerPickup(collider.GetComponent<PawnData>());
+            OnPlayerPickup(collider);
             Destroy(this.gameObject);
         }
         else
@@ -56,16 +56,13 @@ public class WeaponPickup : Pickup, IPlayerPickup
         }
     }
 
+    public void OnPlayerPickup(Collider collider)
+    {
+        OnPlayerPickup(collider.GetComponent<PawnData>());
+    }
+
     public void OnPlayerPickup(PawnData playerPawnData)
     {
-        if (playerPawnData.GetWeaponQuality(_weaponData.WeaponType) < _weaponData.Quality)
-        {
-            playerPawnData.ChangeWeaponInfo(_weaponData);
-            // TODO: Add ammo for this weapon type?
-        }
-        else
-        {
-            // TODO: Add ammo for this weapon type
-        }
+        playerPawnData.InventoryMgr.AddWeaponToInventory(_weaponData);
     }
 }

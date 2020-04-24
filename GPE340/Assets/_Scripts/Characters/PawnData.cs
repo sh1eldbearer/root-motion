@@ -9,10 +9,7 @@ public class PawnData : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
-    [Header("")]
-    [SerializeField] private List<WeaponInventorySlot> _weaponInventory = new List<WeaponInventorySlot>(4);
-
-        [Header("Movement Settings")]
+    [Header("Movement Settings")]
     [Tooltip("The movement speed of this pawn."),
         SerializeField] private float _moveSpeed = 7f;
     [Tooltip("The turning speed of this pawn."),
@@ -242,30 +239,5 @@ public class PawnData : MonoBehaviour
     public void SetController(AgentController controller)
     {
         _controller = controller;
-    }
-
-    public WeaponQuality GetWeaponQuality(WeaponType compareType)
-    {
-        return FindWeaponSlotByType(compareType).WeaponInfo.Quality;
-    }
-
-    public void ChangeWeaponInfo(WeaponData newInfo)
-    {
-        FindWeaponSlotByType(newInfo.WeaponType).SetNewWeaponInfo(newInfo);
-    }
-
-    private WeaponInventorySlot FindWeaponSlotByType(WeaponType compareType)
-    {
-        foreach (WeaponInventorySlot weaponSlot in _weaponInventory)
-        {
-            if (weaponSlot.WeaponType == compareType)
-            {
-                return weaponSlot;
-            }
-        }
-
-        // If there's no match, I forgot to assign weapon types in the inventory, so throw an exception
-        throw new Exception($"No inventory slot accepts a weapon of type {compareType.ToString()}. " +
-                            $"Check the way your players' Weapon Inventories are configured.");
     }
 }
