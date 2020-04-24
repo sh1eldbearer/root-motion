@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(Rigidbody))]
 
-public abstract class Pickup : MonoBehaviour, IPickupable
+public abstract class Pickup : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
@@ -62,16 +62,6 @@ public abstract class Pickup : MonoBehaviour, IPickupable
 
     // Update is called once per frame
     public virtual void Update()
-    {
-
-    }
-
-    public virtual void OnTriggerEnter(Collider collider)
-    {
-
-    }
-
-    public virtual void OnPickup(Collider collider)
     {
 
     }

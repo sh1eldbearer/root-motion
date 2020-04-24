@@ -33,7 +33,7 @@ public class WeaponPickup : Pickup, IPlayerPickup
     {
 
     }
-    public override void OnTriggerEnter(Collider collider)
+    public void OnTriggerEnter(Collider collider)
     {
         // Disable the trigger so that the code doesn't accidentally execute multiple times
         PickupCollider.isTrigger = false;
@@ -42,9 +42,9 @@ public class WeaponPickup : Pickup, IPlayerPickup
         OnPickup(collider);
     }
 
-    public override void OnPickup(Collider collider)
+    public void OnPickup(Collider collider)
     {
-        if (collider.tag == "Player")
+        if (collider.GetComponent<IPlayerPickup>() != null)
         {
             OnPlayerPickup(collider.GetComponent<PawnData>());
             Destroy(this.gameObject);
@@ -61,11 +61,11 @@ public class WeaponPickup : Pickup, IPlayerPickup
         if (playerPawnData.GetWeaponQuality(_weaponData.WeaponType) < _weaponData.Quality)
         {
             playerPawnData.ChangeWeaponInfo(_weaponData);
-            Debug.Log($"{this.gameObject.name} was a higher quality than the currently equipped {_weaponData.WeaponType.ToString()}");
+            // TODO: Add ammo for this weapon type?
         }
         else
         {
-            Debug.Log($"{this.gameObject.name} was not a higher quality than the currently equipped {_weaponData.WeaponType.ToString()}");
+            // TODO: Add ammo for this weapon type
         }
     }
 }

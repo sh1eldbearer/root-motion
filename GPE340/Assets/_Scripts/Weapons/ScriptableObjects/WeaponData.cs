@@ -11,8 +11,6 @@ public class WeaponData : ScriptableObject
 {
     #region Private Properties
 #pragma warning disable CS0649
-    [Tooltip("The display name of this weapon."),
-        SerializeField] private string _name = "New Weapon";
     [Tooltip("The type of weapon this is."),
         SerializeField] private WeaponType _weaponType = WeaponType.None;
     [Tooltip("The quality level of this weapon."), 
@@ -33,18 +31,10 @@ public class WeaponData : ScriptableObject
     [Tooltip("The delay between shots when the weapon is in burst mode. (Will be ignored if the " +
              "weapon is not configured to use BurstFire mode."),
         SerializeField] private float _burstDelay = 0.25f; // TODO: Implement a range after initial testing
-
 #pragma warning restore CS0649
     #endregion
 
     #region Public Properties
-    /// <summary>
-    /// The display name of this weapon.
-    /// </summary>
-    public string Name
-    {
-        get { return _name; }
-    }
 
     /// <summary>
     /// The type of weapon this is.
