@@ -83,6 +83,5 @@ public struct SkinColorDataStruct
     {
         get { return _eyeSpecMaterial; }
     }
-
     #endregion
 }
