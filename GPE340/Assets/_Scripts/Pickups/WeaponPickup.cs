@@ -7,7 +7,7 @@ public class WeaponPickup : Pickup, IPlayerPickup
 {
     #region Private Properties
 #pragma warning disable CS0649
-    [Tooltip("The "),
+    [Tooltip("The data about the weapon this pickup represents."),
         SerializeField] private WeaponData _weaponData;
 #pragma warning restore CS0649
     #endregion

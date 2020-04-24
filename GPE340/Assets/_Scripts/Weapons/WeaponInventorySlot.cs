@@ -11,8 +11,8 @@ public class WeaponInventorySlot
     #region Private Properties
 #pragma warning disable CS0649
     [Tooltip(""), SerializeField] private Enums.WeaponType _weaponType;
-    [Tooltip(""), SerializeField] private Transform _weaponTransform;
     [Tooltip(""), SerializeField] private WeaponData _weaponInfo;
+    [Tooltip(""), SerializeField] private WeaponModelData _weaponModelData;
     [Tooltip(""), SerializeField] private int _currentAmmo;
     [Tooltip(""), SerializeField] private int _maxAmmo;
 
@@ -25,14 +25,14 @@ public class WeaponInventorySlot
         get { return _weaponType; }
     }
 
-    public Transform WeaponTransform
-    {
-        get { return _weaponTransform; }
-    }
-
     public WeaponData WeaponInfo
     {
         get { return _weaponInfo; }
+    }
+
+    public WeaponModelData WeaponModelData
+    {
+        get { return _weaponModelData; }
     }
 
     public int CurrentAmmo

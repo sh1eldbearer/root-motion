@@ -10,7 +10,7 @@ public class PawnData : MonoBehaviour
     #region Private Properties
 #pragma warning disable CS0649
     [Header("")]
-    [SerializeField] private Weapon _equippedWeapon;
+    [SerializeField] private WeaponModelData _equippedWeaponModelData;
     [SerializeField, Range(0, 3)] private int _equippedWeaponIndex;
     [SerializeField] private List<WeaponInventorySlot> _weaponInventory = new List<WeaponInventorySlot>(4);
 
@@ -156,9 +156,9 @@ public class PawnData : MonoBehaviour
     }
 
     // TODO: Move once this system is finalized
-    public Weapon EquippedWeapon
+    public WeaponModelData EquippedWeaponModelData
     {
-        get { return _equippedWeapon; }
+        get { return _equippedWeaponModelData; }
     }
 
     /// <summary>

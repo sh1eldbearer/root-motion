@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1.2500001, y: 1.25, z: 1.2500001}
   m_Children: []
   m_Father: {fileID: 5917793491280862229}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &143698978978236760
 GameObject:
@@ -252,7 +252,7 @@ Transform:
   m_LocalScale: {x: 1.2500001, y: 1.25, z: 1.2500001}
   m_Children: []
   m_Father: {fileID: 6364761501986088763}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &411025656285313882
 GameObject:
@@ -373,7 +373,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5750422104959625713}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: -3.8460002, y: 0.33100003, z: -90.747}
 --- !u!1 &588266493469243817
 GameObject:
@@ -775,7 +775,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6364761501986088763}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -7.202, y: 0.063, z: -90.506004}
 --- !u!1 &1513897767454817313
 GameObject:
@@ -961,7 +961,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8645846079793267675}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
 --- !u!1 &1970953991520283728
 GameObject:
@@ -1494,7 +1494,7 @@ Transform:
   m_LocalScale: {x: 1.2500002, y: 1.25, z: 1.2500002}
   m_Children: []
   m_Father: {fileID: 5750422104959625713}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2675023378317284202
 GameObject:
@@ -1628,7 +1628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6936515942947010570}
   m_Layer: 0
-  m_Name: RightElbowIKTransform (1)
+  m_Name: RightElbowIKTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1690,12 +1690,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2991597396998628883}
   - component: {fileID: 1714909858679315984}
+  - component: {fileID: -5050434134849316571}
+  - component: {fileID: 2478015284733781260}
+  - component: {fileID: 8652560125920750360}
+  - component: {fileID: 4604697025485225838}
   - component: {fileID: 5574581402221683709}
   - component: {fileID: 4675420157026408419}
   - component: {fileID: 5043264499658602175}
-  - component: {fileID: 8652560125920750360}
-  - component: {fileID: 4604697025485225838}
-  - component: {fileID: 2478015284733781260}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1732,21 +1733,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c93105eec38f044b88963ef7ff69b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _equippedWeapon: {fileID: 8645846081006803651}
+  _equippedWeaponModelData: {fileID: 0}
   _equippedWeaponIndex: 0
   _weaponInventory:
   - _weaponType: 1
-    _weaponTransform: {fileID: 8645846079793267675}
     _weaponInfo: {fileID: 11400000, guid: 7c183fa6558ab0c469a22196e8e0ec40, type: 2}
+    _weaponModelData: {fileID: 2962739872172852709}
+    _currentAmmo: 120
+    _maxAmmo: 120
   - _weaponType: 2
-    _weaponTransform: {fileID: 5917793491280862229}
     _weaponInfo: {fileID: 0}
+    _weaponModelData: {fileID: 2171134616934262586}
+    _currentAmmo: 0
+    _maxAmmo: 240
   - _weaponType: 3
-    _weaponTransform: {fileID: 6364761501986088763}
     _weaponInfo: {fileID: 0}
+    _weaponModelData: {fileID: 1626060378344821398}
+    _currentAmmo: 0
+    _maxAmmo: 360
   - _weaponType: 4
-    _weaponTransform: {fileID: 5750422104959625713}
     _weaponInfo: {fileID: 0}
+    _weaponModelData: {fileID: 1692196434820285459}
+    _currentAmmo: 0
+    _maxAmmo: 80
   _moveSpeed: 7
   _turnSpeed: 720
   _standColliderHeight: 1.8
@@ -1754,7 +1763,8 @@ MonoBehaviour:
   _crouchColliderHeight: 1.25
   _crouchColliderCenterY: 0.625
   _colliderAdjustSpeed: 20
-  _controller: {fileID: 0}
+  _controller: {fileID: 2478015284733781260}
+  _inventoryMgr: {fileID: -5050434134849316571}
   _pawnTransform: {fileID: 2991597396998628883}
   _pawnAnimator: {fileID: 5574581402221683709}
   _pawnCollider: {fileID: 5043264499658602175}
@@ -1763,6 +1773,85 @@ MonoBehaviour:
   _browsRenderers: []
   _eyeRenderers: []
   _eyeSpecRenderers: []
+--- !u!114 &-5050434134849316571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991597396998628886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a7f6a8134c0d94eb454f2b586f5ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponInventory:
+  - _weaponType: 1
+    _weaponInfo: {fileID: 0}
+    _weaponModelData: {fileID: 2962739872172852709}
+    _currentAmmo: 120
+    _maxAmmo: 120
+  - _weaponType: 2
+    _weaponInfo: {fileID: 0}
+    _weaponModelData: {fileID: 2171134616934262586}
+    _currentAmmo: 0
+    _maxAmmo: 240
+  - _weaponType: 3
+    _weaponInfo: {fileID: 0}
+    _weaponModelData: {fileID: 1626060378344821398}
+    _currentAmmo: 0
+    _maxAmmo: 360
+  - _weaponType: 4
+    _weaponInfo: {fileID: 0}
+    _weaponModelData: {fileID: 1692196434820285459}
+    _currentAmmo: 0
+    _maxAmmo: 80
+--- !u!114 &2478015284733781260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991597396998628886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c99548353d2ca47bcba593fadd2324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _thisPawn: {fileID: 0}
+--- !u!114 &8652560125920750360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991597396998628886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a31272d8681be242a4dadde68fc0a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pawnData: {fileID: 1714909858679315984}
+--- !u!114 &4604697025485225838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991597396998628886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c6baccfc7fd5047b7beca8e15ea824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pawnData: {fileID: 0}
+  _lHandPositionWeight: 1
+  _lHandRotationWeight: 1
+  _lElbowPositionWeight: 1
+  _rHandPositionWeight: 1
+  _rHandRotationWeight: 1
+  _rElbowPositionWeight: 1
+  _headPositionWeight: 0.35
 --- !u!95 &5574581402221683709
 Animator:
   serializedVersion: 3
@@ -1812,52 +1901,6 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0.1, y: 0.9, z: 0.1}
---- !u!114 &8652560125920750360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991597396998628886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a31272d8681be242a4dadde68fc0a30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pawnData: {fileID: 1714909858679315984}
---- !u!114 &4604697025485225838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991597396998628886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54c6baccfc7fd5047b7beca8e15ea824, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pawnData: {fileID: 0}
-  _lHandPositionWeight: 1
-  _lHandRotationWeight: 1
-  _lElbowPositionWeight: 1
-  _rHandPositionWeight: 1
-  _rHandRotationWeight: 1
-  _rElbowPositionWeight: 1
-  _headPositionWeight: 0.35
---- !u!114 &2478015284733781260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991597396998628886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c99548353d2ca47bcba593fadd2324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _thisPawn: {fileID: 0}
 --- !u!1 &3073158202007033252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,7 +3040,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5917793491280862229}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -7.662, y: 0, z: -90.506004}
 --- !u!1 &4941063186585812242
 GameObject:
@@ -3188,7 +3231,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8645846079793267675}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5372000786804509801
 GameObject:
@@ -3200,7 +3243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5372000786804509806}
   m_Layer: 0
-  m_Name: RightElbowIKTransform (1)
+  m_Name: RightElbowIKTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3869,7 +3912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5750422104959625713}
-  - component: {fileID: 2424280515330360760}
+  - component: {fileID: 1692196434820285459}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -3899,13 +3942,13 @@ Transform:
   - {fileID: 5750422104959625717}
   - {fileID: 5750422104959625715}
   - {fileID: 4902084303561665664}
-  - {fileID: 3739442231618750429}
   - {fileID: 6386305762090538067}
+  - {fileID: 3739442231618750429}
   - {fileID: 1208227942808379368}
   m_Father: {fileID: 4023832202104194949}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2424280515330360760
+--- !u!114 &1692196434820285459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3914,7 +3957,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5750422104959595985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb882042a023134aafa1de02eaed732, type: 3}
+  m_Script: {fileID: 11500000, guid: 020a367fa2f20f24296127f1a14c1af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponQuality: 0
@@ -3928,6 +3971,7 @@ MonoBehaviour:
   _lElbowIKTransform: {fileID: 6386305762090538067}
   _rHandIKTransform: {fileID: 3739442231618750429}
   _rElbowIKTransform: {fileID: 1208227942808379368}
+  _weaponTransform: {fileID: 5750422104959625713}
 --- !u!1 &5750422104959595987
 GameObject:
   m_ObjectHideFlags: 0
@@ -4748,7 +4792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5917793491280862229}
-  - component: {fileID: 5917793491281084468}
+  - component: {fileID: 2171134616934262586}
   m_Layer: 0
   m_Name: BurstRifle
   m_TagString: Untagged
@@ -4775,13 +4819,13 @@ Transform:
   - {fileID: 5917793491280862217}
   - {fileID: 5917793491280862219}
   - {fileID: 577204303842806146}
-  - {fileID: 9214432008742494943}
   - {fileID: 4839760158887016615}
+  - {fileID: 9214432008742494943}
   - {fileID: 6936515942947010570}
   m_Father: {fileID: 4023832202104194949}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5917793491281084468
+--- !u!114 &2171134616934262586
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4790,7 +4834,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5917793491281084469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6922a8bf7d65ab24e8ec78bfb25c305a, type: 3}
+  m_Script: {fileID: 11500000, guid: 020a367fa2f20f24296127f1a14c1af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponQuality: 0
@@ -4804,6 +4848,7 @@ MonoBehaviour:
   _lElbowIKTransform: {fileID: 4839760158887016615}
   _rHandIKTransform: {fileID: 9214432008742494943}
   _rElbowIKTransform: {fileID: 6936515942947010570}
+  _weaponTransform: {fileID: 5917793491280862229}
 --- !u!1 &5943982305424892126
 GameObject:
   m_ObjectHideFlags: 0
@@ -5366,7 +5411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6364761501986088763}
-  - component: {fileID: 3004659799876789185}
+  - component: {fileID: 1626060378344821398}
   m_Layer: 0
   m_Name: AutoRifle
   m_TagString: Untagged
@@ -5392,13 +5437,13 @@ Transform:
   - {fileID: 6364761501986088767}
   - {fileID: 6364761501986088761}
   - {fileID: 1513897767454817312}
-  - {fileID: 1513897767002477892}
   - {fileID: 3210618874502109199}
+  - {fileID: 1513897767002477892}
   - {fileID: 5758033534064217207}
   m_Father: {fileID: 4023832202104194949}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3004659799876789185
+--- !u!114 &1626060378344821398
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5407,7 +5452,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6364761501985798939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cfb94688da225c4b81f700cd5f5ac98, type: 3}
+  m_Script: {fileID: 11500000, guid: 020a367fa2f20f24296127f1a14c1af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponQuality: 0
@@ -5421,6 +5466,7 @@ MonoBehaviour:
   _lElbowIKTransform: {fileID: 3210618874502109199}
   _rHandIKTransform: {fileID: 1513897767002477892}
   _rElbowIKTransform: {fileID: 5758033534064217207}
+  _weaponTransform: {fileID: 6364761501986088763}
 --- !u!1 &6364761501985798941
 GameObject:
   m_ObjectHideFlags: 0
@@ -5834,7 +5880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5758033534064217207}
   m_Layer: 0
-  m_Name: RightElbowIKTransform (1)
+  m_Name: RightElbowIKTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6232,7 +6278,7 @@ GameObject:
   - component: {fileID: 4023832202104194949}
   - component: {fileID: 6767306770360170758}
   m_Layer: 0
-  m_Name: Weapon Anchor
+  m_Name: Weapon Transform Anchors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7270,7 +7316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8645846079793267675}
-  - component: {fileID: 8645846081006803651}
+  - component: {fileID: 2962739872172852709}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -7297,13 +7343,13 @@ Transform:
   - {fileID: 8645846079793267655}
   - {fileID: 8645846079793267653}
   - {fileID: 970282003889136284}
-  - {fileID: 2348582488562946689}
   - {fileID: 5372000785139139345}
+  - {fileID: 2348582488562946689}
   - {fileID: 5372000786804509806}
   m_Father: {fileID: 4023832202104194949}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8645846081006803651
+--- !u!114 &2962739872172852709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7312,7 +7358,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8645846079793766395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c78b1c7aec9cf5147b729ac405f32946, type: 3}
+  m_Script: {fileID: 11500000, guid: 020a367fa2f20f24296127f1a14c1af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponQuality: 0
@@ -7321,18 +7367,12 @@ MonoBehaviour:
   _rareMat: {fileID: 2100000, guid: e4a5818d0f7a4b04ab61050731fafb9a, type: 2}
   _epicMat: {fileID: 2100000, guid: 1ef9f13312977a647a4c93fed87712db, type: 2}
   _legendaryMat: {fileID: 2100000, guid: 9b79ea855c91bde4eb3267eedff51b07, type: 2}
-  _partMeshes:
-  - {fileID: 8645846079795691819}
-  - {fileID: 8645846079795691823}
-  - {fileID: 8645846079795691821}
-  - {fileID: 8645846079795691811}
-  - {fileID: 8645846079795691809}
-  - {fileID: 8645846079795691815}
-  - {fileID: 8645846079795691813}
+  _partMeshes: []
   _lHandIKTransform: {fileID: 970282003889136284}
   _lElbowIKTransform: {fileID: 5372000785139139345}
   _rHandIKTransform: {fileID: 2348582488562946689}
   _rElbowIKTransform: {fileID: 5372000786804509806}
+  _weaponTransform: {fileID: 8645846079793267675}
 --- !u!1 &8731180090533646425
 GameObject:
   m_ObjectHideFlags: 0

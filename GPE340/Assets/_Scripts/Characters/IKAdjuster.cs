@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 public class IKAdjuster : MonoBehaviour
@@ -25,7 +26,6 @@ public class IKAdjuster : MonoBehaviour
     [Tooltip("The weight to apply to the rotation of the avatar's right hand for inverse kinematics."),
         SerializeField, Range(0.0f, 1.0f)] private float _rHandRotationWeight = 1.0f;
     [Tooltip("The weight to apply to the position of the avatar's right elbow for inverse kinematics."),
-
         SerializeField, Range(0.0f, 1.0f)] private float _rElbowPositionWeight = 1.0f;
     [Tooltip("The weight to apply to the position of the avatar's head for inverse kinematics."),
         Space, SerializeField, Range(0.0f, 1.0f)] private float _headPositionWeight = 1.0f;
@@ -47,7 +47,7 @@ public class IKAdjuster : MonoBehaviour
     {
         // Checks the weapon type to see which animations it should use
         // TODO: Could be optimized to not run every IK pass
-        if (_pawnData.EquippedWeapon.GetType() == typeof(PistolWeapon))
+        if (_pawnData.InventoryMgr.GetEquippedWeapon().WeaponType == WeaponType.Pistol)
         {
             UsePistolAnimation();
         }
@@ -57,27 +57,27 @@ public class IKAdjuster : MonoBehaviour
         }
 
         // Adjusts the position and rotation of the avatar's hands and elbows based on the provided weights
-        if (_pawnData.EquippedWeapon.LHandIKTransform != null) // Left hand
+        if (_pawnData.EquippedWeaponModelData.LHandIKTransform != null) // Left hand
         {
-            SetIKTransforms(AvatarIKGoal.LeftHand, _pawnData.EquippedWeapon.LHandIKTransform.position,
-                _lHandPositionWeight, _pawnData.EquippedWeapon.LHandIKTransform.rotation, _lHandRotationWeight);
+            SetIKTransforms(AvatarIKGoal.LeftHand, _pawnData.EquippedWeaponModelData.LHandIKTransform.position,
+                _lHandPositionWeight, _pawnData.EquippedWeaponModelData.LHandIKTransform.rotation, _lHandRotationWeight);
         }
 
-        if (_pawnData.EquippedWeapon.LElbowIKTransform != null) // Left elbow
+        if (_pawnData.EquippedWeaponModelData.LElbowIKTransform != null) // Left elbow
         {
-            SetIKHintTransforms(AvatarIKHint.LeftElbow, _pawnData.EquippedWeapon.LElbowIKTransform.position,
+            SetIKHintTransforms(AvatarIKHint.LeftElbow, _pawnData.EquippedWeaponModelData.LElbowIKTransform.position,
                 _lElbowPositionWeight);
         }
 
-        if (_pawnData.EquippedWeapon.RHandIKTransform != null) // Right hand
+        if (_pawnData.EquippedWeaponModelData.RHandIKTransform != null) // Right hand
         {
-            SetIKTransforms(AvatarIKGoal.RightHand, _pawnData.EquippedWeapon.RHandIKTransform.position,
-                _rHandPositionWeight, _pawnData.EquippedWeapon.RHandIKTransform.rotation, _rHandRotationWeight);
+            SetIKTransforms(AvatarIKGoal.RightHand, _pawnData.EquippedWeaponModelData.RHandIKTransform.position,
+                _rHandPositionWeight, _pawnData.EquippedWeaponModelData.RHandIKTransform.rotation, _rHandRotationWeight);
         }
 
-        if (_pawnData.EquippedWeapon.RElbowIKTransform != null) // Right elbow
+        if (_pawnData.EquippedWeaponModelData.RElbowIKTransform != null) // Right elbow
         {
-            SetIKHintTransforms(AvatarIKHint.RightElbow, _pawnData.EquippedWeapon.RElbowIKTransform.position,
+            SetIKHintTransforms(AvatarIKHint.RightElbow, _pawnData.EquippedWeaponModelData.RElbowIKTransform.position,
                 _rElbowPositionWeight);
         }
 
