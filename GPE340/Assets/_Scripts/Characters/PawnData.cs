@@ -35,6 +35,8 @@ public class PawnData : MonoBehaviour
     [Header("Game Components")]
     [Tooltip("This pawn's controller."),
         SerializeField] private AgentController _controller;
+    [Tooltip("This pawn's InventoryManager."),
+        SerializeField] private InventoryManager _inventoryMgr;
     [Tooltip("This pawn's Transform component."),
         SerializeField] private Transform _pawnTransform;
     [Tooltip("This pawn's Animator component."),
@@ -119,7 +121,15 @@ public class PawnData : MonoBehaviour
     public float ColliderAdjustSpeed
     {
         get { return _colliderAdjustSpeed; }
-    } 
+    }
+
+    /// <summary>
+    /// This Pawn's InventoryManager.
+    /// </summary>
+    public InventoryManager InventoryMgr
+    {
+        get { return _inventoryMgr; }
+    }
 
     /// <summary>
     /// This agent's Transform component.
@@ -203,6 +213,10 @@ public class PawnData : MonoBehaviour
         if (_controller == null)
         {
             _controller = this.gameObject.GetComponentInParent<AgentController>();
+        }
+        if (_inventoryMgr == null)
+        {
+            _inventoryMgr = this.gameObject.GetComponent<InventoryManager>();
         }
         if (_pawnTransform == null)
         {
