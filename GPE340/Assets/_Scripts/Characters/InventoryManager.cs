@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -160,6 +160,7 @@ public class InventoryManager : MonoBehaviour
 
         SetEquippedWeaponIndex(slotIndex);
 
+        _weaponInventory[slotIndex].WeaponModelData.ChangeSkin(pickupData.Quality);
         // TODO: Additional functionality
     }
 
