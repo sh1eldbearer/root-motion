@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -6,11 +7,14 @@ using UnityEngine;
 [System.Serializable]
 public class WeaponInventorySlot
 {
+    // TODO: Needs tooltips/summary tags
     #region Private Properties
 #pragma warning disable CS0649
     [Tooltip(""), SerializeField] private Enums.WeaponType _weaponType;
     [Tooltip(""), SerializeField] private Transform _weaponTransform;
     [Tooltip(""), SerializeField] private WeaponData _weaponInfo;
+    [Tooltip(""), SerializeField] private int _currentAmmo;
+    [Tooltip(""), SerializeField] private int _maxAmmo;
 
 #pragma warning restore CS0649
     #endregion
@@ -30,10 +34,73 @@ public class WeaponInventorySlot
     {
         get { return _weaponInfo; }
     }
+
+    public int CurrentAmmo
+    {
+        get { return _currentAmmo; }
+    }
+
+    public int MaxAmmo
+    {
+        get { return _maxAmmo; }
+    }
+
     #endregion
 
     public void SetNewWeaponInfo(WeaponData newInfo)
     {
         _weaponInfo = newInfo;
+    }
+
+    /// <summary>
+    /// Increases the weapon's current ammo count by 1.
+    /// </summary>
+    public void IncreaseCurrentAmmo()
+    {
+        _currentAmmo = Mathf.Clamp(_currentAmmo++, 0, _maxAmmo);
+    }
+
+    /// <summary>
+    /// Increases the weapon's current ammo count by the specified amount.
+    /// </summary>
+    /// <param name="addAmount">The amount of ammo to add the weapon's current ammo count. Must be a positive,
+    /// non-zero number.</param>
+    public void IncreaseCurrentAmmo(int addAmount)
+    {
+        if (addAmount > 0)
+        {
+            _currentAmmo = Mathf.Clamp(_currentAmmo + addAmount, 0, _maxAmmo);
+        }
+        else
+        {
+            // If addAmount is zero or a negative value, throw an error
+            throw new Exception($"You must use a positive, non-zero number with this method!");
+        }
+    }
+
+    /// <summary>
+    /// Decreases the weapon's current ammo count by 1.
+    /// </summary>
+    public void DecreaseCurrentAmmo()
+    {
+        _currentAmmo = Mathf.Clamp(_currentAmmo--, 0, _maxAmmo);
+    }
+
+    /// <summary>
+    /// Decreases the weapon's current ammo count by the specified amount.
+    /// </summary>
+    /// <param name="subAmount">The amount of ammo to reduce the weapon's current ammo count by. Must be a
+    /// positive, non-zero number.</param>
+    public void DecreaseCurrentAmmo(int subAmount)
+    {
+        if (subAmount > 0)
+        {
+            _currentAmmo = Mathf.Clamp(_currentAmmo - subAmount, 0, _maxAmmo);
+        }
+        else
+        {
+            // If subAmount is zero or a negative value, throw an error
+            throw new Exception($"You must use a positive, non-zero number with this method!");
+        }
     }
 }
