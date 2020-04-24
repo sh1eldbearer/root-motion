@@ -56,11 +56,11 @@ public class WeaponPickup : Pickup, IPlayerPickup
         }
     }
 
-    public void OnPlayerPickup(PawnData playerPawn)
+    public void OnPlayerPickup(PawnData playerPawnData)
     {
-        if (playerPawn.GetWeaponQuality(_weaponData.WeaponType) < _weaponData.Quality)
+        if (playerPawnData.GetWeaponQuality(_weaponData.WeaponType) < _weaponData.Quality)
         {
-            playerPawn.ChangeWeaponInfo(_weaponData);
+            playerPawnData.ChangeWeaponInfo(_weaponData);
             Debug.Log($"{this.gameObject.name} was a higher quality than the currently equipped {_weaponData.WeaponType.ToString()}");
         }
         else

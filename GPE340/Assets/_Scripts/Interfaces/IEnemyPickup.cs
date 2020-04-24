@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IEnemyPickup : IPickupable
 {
-    void OnEnemyPickup();
+    void OnEnemyPickup(PawnData enemyPawnData);
 }

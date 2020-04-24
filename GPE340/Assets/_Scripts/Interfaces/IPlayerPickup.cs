@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPlayerPickup : IPickupable
 {
-    void OnPlayerPickup(PawnData playerPawn);
+    void OnPlayerPickup(PawnData playerPawnData);
 }
