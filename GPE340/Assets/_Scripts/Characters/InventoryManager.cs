@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -122,6 +122,7 @@ public class InventoryManager : MonoBehaviour
             // If the element being checked has weapon data, equip that weapon
             else if (_weaponInventory[nextIndex].WeaponInfo != null)
             {
+                ToggleWeaponTransforms(nextIndex);
                 SetEquippedWeaponIndex(nextIndex);
                 return;
             }
@@ -129,6 +130,21 @@ public class InventoryManager : MonoBehaviour
             else
             {
                 nextIndex--;
+            }
+        }
+    }
+
+    private void ToggleWeaponTransforms(int indexToShow)
+    {
+        for (int loopIndex = 0; loopIndex <= MAX_WEAPON_COUNT; loopIndex++)
+        {
+            if (loopIndex == indexToShow)
+            {
+                _weaponInventory[loopIndex].WeaponModelData.transform.gameObject.SetActive(true);
+            }
+            else
+            {
+                _weaponInventory[loopIndex].WeaponModelData.transform.gameObject.SetActive(false);
             }
         }
     }
@@ -159,6 +175,8 @@ public class InventoryManager : MonoBehaviour
 
             // Add ammo to weapon
             _weaponInventory[targetIndex].IncreaseCurrentAmmo(pickupData.BaseClipSize * 4); // TODO: Make the multiplier a variable somewhere
+
+            ToggleWeaponTransforms(targetIndex);
         }
         // The picked up weapon has a higher quality than the player's previous version of the weapon
         else if (_weaponInventory[targetIndex].WeaponInfo.Quality < pickupData.Quality)
@@ -168,6 +186,8 @@ public class InventoryManager : MonoBehaviour
 
             // Add ammo to weapon
             _weaponInventory[targetIndex].IncreaseCurrentAmmo(pickupData.BaseClipSize * 2); // TODO: Make the multiplier a variable somewhere
+
+            ToggleWeaponTransforms(targetIndex);
         }
         // The player already has an equal or higher-quality version of this weapon
         {
