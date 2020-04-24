@@ -1,0 +1,71 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using Enums;
+using UnityEngine;
+
+public class WeaponPickup : Pickup, IPlayerPickup
+{
+    #region Private Properties
+#pragma warning disable CS0649
+    [Tooltip("The "),
+        SerializeField] private WeaponData _weaponData;
+#pragma warning restore CS0649
+    #endregion
+
+    #region Public Properties
+
+    #endregion
+
+    // Awake is called before Start
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
+    // Start is called before the first frame update
+    public override void Start()
+    {
+        base.Start();
+    }
+
+    // Update is called once per frame
+    public override void Update()
+    {
+
+    }
+    public override void OnTriggerEnter(Collider collider)
+    {
+        // Disable the trigger so that the code doesn't accidentally execute multiple times
+        PickupCollider.isTrigger = false;
+        // TODO: Delete after testing
+        Debug.Log($"{collider.name} grabbed a {this.gameObject.name} pickup");
+        OnPickup(collider);
+    }
+
+    public override void OnPickup(Collider collider)
+    {
+        if (collider.tag == "Player")
+        {
+            OnPlayerPickup(collider.GetComponent<PawnData>());
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            // Re-enables the trigger collider, enemies won't use weapon pickups
+            PickupCollider.isTrigger = true;
+        }
+    }
+
+    public void OnPlayerPickup(PawnData playerPawn)
+    {
+        if (playerPawn.GetWeaponQuality(_weaponData.WeaponType) < _weaponData.Quality)
+        {
+            playerPawn.ChangeWeaponInfo(_weaponData);
+            Debug.Log($"{this.gameObject.name} was a higher quality than the currently equipped {_weaponData.WeaponType.ToString()}");
+        }
+        else
+        {
+            Debug.Log($"{this.gameObject.name} was not a higher quality than the currently equipped {_weaponData.WeaponType.ToString()}");
+        }
+    }
+}

@@ -7,5 +7,5 @@ public interface IPickupable
     /// <summary>
     /// Defines behaviors when this object is picked up.
     /// </summary>
-    void OnPickup();
+    void OnPickup(Collider collider);
 }

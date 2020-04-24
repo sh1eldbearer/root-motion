@@ -1689,16 +1689,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2991597396998628883}
+  - component: {fileID: 1714909858679315984}
   - component: {fileID: 5574581402221683709}
   - component: {fileID: 4675420157026408419}
   - component: {fileID: 5043264499658602175}
   - component: {fileID: 8652560125920750360}
-  - component: {fileID: 1714909858679315984}
   - component: {fileID: 4604697025485225838}
   - component: {fileID: 2478015284733781260}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1720,6 +1720,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1714909858679315984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991597396998628886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c93105eec38f044b88963ef7ff69b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _equippedWeapon: {fileID: 8645846081006803651}
+  _equippedWeaponIndex: 0
+  _weaponInventory:
+  - _weaponType: 1
+    _weaponTransform: {fileID: 8645846079793267675}
+    _weaponInfo: {fileID: 11400000, guid: 7c183fa6558ab0c469a22196e8e0ec40, type: 2}
+  - _weaponType: 2
+    _weaponTransform: {fileID: 5917793491280862229}
+    _weaponInfo: {fileID: 0}
+  - _weaponType: 3
+    _weaponTransform: {fileID: 6364761501986088763}
+    _weaponInfo: {fileID: 0}
+  - _weaponType: 4
+    _weaponTransform: {fileID: 5750422104959625713}
+    _weaponInfo: {fileID: 0}
+  _moveSpeed: 7
+  _turnSpeed: 720
+  _standColliderHeight: 1.8
+  _standColliderCenterY: 0.9
+  _crouchColliderHeight: 1.25
+  _crouchColliderCenterY: 0.625
+  _colliderAdjustSpeed: 20
+  _controller: {fileID: 0}
+  _pawnTransform: {fileID: 2991597396998628883}
+  _pawnAnimator: {fileID: 5574581402221683709}
+  _pawnCollider: {fileID: 5043264499658602175}
+  _headTransform: {fileID: 6627135288692363152}
+  _bodyRenderers: []
+  _browsRenderers: []
+  _eyeRenderers: []
+  _eyeSpecRenderers: []
 --- !u!95 &5574581402221683709
 Animator:
   serializedVersion: 3
@@ -1782,48 +1825,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pawnData: {fileID: 1714909858679315984}
---- !u!114 &1714909858679315984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2991597396998628886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0c93105eec38f044b88963ef7ff69b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _equippedWeapon: {fileID: 2424280515330360760}
-  _weaponInventory:
-  - _name: Pistol
-    _weaponTransform: {fileID: 8645846079793267675}
-    _hasWeapon: 0
-  - _name: BurstRifle
-    _weaponTransform: {fileID: 5917793491280862229}
-    _hasWeapon: 0
-  - _name: AutoRifle
-    _weaponTransform: {fileID: 6364761501986088763}
-    _hasWeapon: 0
-  - _name: Sniper
-    _weaponTransform: {fileID: 5750422104959625713}
-    _hasWeapon: 0
-  _moveSpeed: 7
-  _turnSpeed: 720
-  _standColliderHeight: 1.8
-  _standColliderCenterY: 0.9
-  _crouchColliderHeight: 1.25
-  _crouchColliderCenterY: 0.625
-  _colliderAdjustSpeed: 20
-  _controller: {fileID: 0}
-  _pawnTransform: {fileID: 2991597396998628883}
-  _pawnAnimator: {fileID: 5574581402221683709}
-  _pawnCollider: {fileID: 5043264499658602175}
-  _headTransform: {fileID: 6627135288692363152}
-  _bodyRenderers: []
-  _browsRenderers: []
-  _eyeRenderers: []
-  _eyeSpecRenderers: []
 --- !u!114 &4604697025485225838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3875,7 +3876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5750422104959625713
 Transform:
   m_ObjectHideFlags: 0
@@ -5395,7 +5396,7 @@ Transform:
   - {fileID: 3210618874502109199}
   - {fileID: 5758033534064217207}
   m_Father: {fileID: 4023832202104194949}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3004659799876789185
 MonoBehaviour:
@@ -6248,9 +6249,9 @@ Transform:
   m_LocalPosition: {x: 0.061401956, y: 1.456825, z: -0.037094742}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6364761501986088763}
-  - {fileID: 5917793491280862229}
   - {fileID: 8645846079793267675}
+  - {fileID: 5917793491280862229}
+  - {fileID: 6364761501986088763}
   - {fileID: 5750422104959625713}
   m_Father: {fileID: 2991597396998628883}
   m_RootOrder: 2
@@ -7276,7 +7277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8645846079793267675
 Transform:
   m_ObjectHideFlags: 0
@@ -7300,7 +7301,7 @@ Transform:
   - {fileID: 5372000785139139345}
   - {fileID: 5372000786804509806}
   m_Father: {fileID: 4023832202104194949}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8645846081006803651
 MonoBehaviour:

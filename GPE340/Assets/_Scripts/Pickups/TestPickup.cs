@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestPickup : Pickup
+public class TestPickup : Pickup, IPlayerPickup
 {
     #region Private Properties
 #pragma warning disable CS0649
@@ -19,11 +19,16 @@ public class TestPickup : Pickup
         
         // TODO: Delete after testing
         Debug.Log($"{collider.name} grabbed a {this.gameObject.name} pickup");
-        OnPickup();
+        OnPickup(collider);
     }
 
-    public override void OnPickup()
+    public void OnPickup(Collider collider)
     {
-        base.OnPickup();
+        base.OnPickup(collider);
+    }
+
+    public void OnPlayerPickup(PawnData playerPawn)
+    {
+        Debug.Log("A player picked me up");
     }
 }

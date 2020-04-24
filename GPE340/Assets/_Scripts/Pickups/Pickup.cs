@@ -10,18 +10,24 @@ public abstract class Pickup : MonoBehaviour, IPickupable
 {
     #region Private Properties
 #pragma warning disable CS0649
-    [SerializeField] private Collider _pickupCollider;
-    [SerializeField] private Rigidbody _pickupRb;
+    private Collider _pickupCollider;
+    private Rigidbody _pickupRb;
 #pragma warning restore CS0649
     #endregion
 
     #region Public Properties
+    /// <summary>
+    /// The Collider component for this weapon pickup
+    /// </summary>
     public Collider PickupCollider
     {
         get { return _pickupCollider; }
         protected set { _pickupCollider = value; }
     }
 
+    /// <summary>
+    /// The Rigidbody component for this weapon pickup
+    /// </summary>
     public Rigidbody PickupRb
     {
         get { return _pickupRb; }
@@ -65,8 +71,8 @@ public abstract class Pickup : MonoBehaviour, IPickupable
 
     }
 
-    public virtual void OnPickup()
+    public virtual void OnPickup(Collider collider)
     {
-        Destroy(this.gameObject);
+
     }
 }
