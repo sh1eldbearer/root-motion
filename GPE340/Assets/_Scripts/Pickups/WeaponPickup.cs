@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Enums;
+using Utility.Enums;
 using UnityEngine;
 
 public class WeaponPickup : Pickup, IPlayerPickup

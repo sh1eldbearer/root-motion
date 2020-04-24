@@ -1,4 +1,4 @@
-﻿namespace Enums
+﻿namespace Utility.Enums
 {
     /// <summary>
     /// Designates which player an object is assigned to. Each player value has a corresponding integer value.

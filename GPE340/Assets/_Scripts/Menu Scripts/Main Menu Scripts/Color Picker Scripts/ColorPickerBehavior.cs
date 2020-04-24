@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Utility.Enums;
 
 public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -77,7 +78,7 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
 
                 // Clears the skin color selection from the object group and the player data
                 GameManager.gm.PlayerInfo[(int) _objGroupData.PlayerNumber].ClearSkinColorIndex();
-                GameManager.gm.PlayerInfo[(int) _objGroupData.PlayerNumber].SetStatus(Enums.PlayerStatus.Joined);
+                GameManager.gm.PlayerInfo[(int) _objGroupData.PlayerNumber].SetStatus(PlayerStatus.Joined);
             }
             else
             {
@@ -138,19 +139,19 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     /// that was selected.</param>
     private void DisableSameColorSelectors(int selectorIndex)
     {
-        if (_objGroupData.PlayerNumber != Enums.PlayerNumbers.P1)
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P1)
         {
             MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorPickers[selectorIndex].DisableSelector();
         }
-        if (_objGroupData.PlayerNumber != Enums.PlayerNumbers.P2)
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P2)
         {
             MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorPickers[selectorIndex].DisableSelector();
         }
-        if (_objGroupData.PlayerNumber != Enums.PlayerNumbers.P3)
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P3)
         {
             MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorPickers[selectorIndex].DisableSelector();
         }
-        if (_objGroupData.PlayerNumber != Enums.PlayerNumbers.P4)
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P4)
         {
             MainMenuManager.mainMenuMgr.P4ObjectGroup.ColorPickers[selectorIndex].DisableSelector();
         }
@@ -164,25 +165,25 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     /// that was unselected.</param>
     private void EnableSameColorSelectors(int selectorIndex)
     {
-        if (_objGroupData.PlayerNumber != Enums.PlayerNumbers.P1 && 
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P1 && 
             MainMenuManager.mainMenuMgr.P1ObjectGroup.gameObject.activeInHierarchy &&
             GameManager.gm.PlayerInfo[0].SkinColorIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P1ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
         }
-        if (_objGroupData.PlayerNumber != Enums.PlayerNumbers.P2 &&
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P2 &&
             MainMenuManager.mainMenuMgr.P2ObjectGroup.gameObject.activeInHierarchy &&
             GameManager.gm.PlayerInfo[1].SkinColorIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P2ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
         }
-        if (_objGroupData.PlayerNumber != Enums.PlayerNumbers.P3 &&
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P3 &&
             MainMenuManager.mainMenuMgr.P3ObjectGroup.gameObject.activeInHierarchy &&
             GameManager.gm.PlayerInfo[2].SkinColorIndex == -1)
         {
             MainMenuManager.mainMenuMgr.P3ObjectGroup.ColorPickers[selectorIndex].EnableSelector();
         }
-        if (_objGroupData.PlayerNumber != Enums.PlayerNumbers.P4 &&
+        if (_objGroupData.PlayerNumber != PlayerNumbers.P4 &&
             MainMenuManager.mainMenuMgr.P4ObjectGroup.gameObject.activeInHierarchy &&
             GameManager.gm.PlayerInfo[3].SkinColorIndex == -1)
         {
@@ -298,7 +299,7 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     /// <returns>True if the player has not joined the game, or is ready.</returns>
     private bool CheckPlayerReadyStatus(PlayerTracking playerTracking)
     {
-        if ((int)playerTracking.Status < 0 || playerTracking.Status == Enums.PlayerStatus.Ready)
+        if ((int)playerTracking.Status < 0 || playerTracking.Status == PlayerStatus.Ready)
         {
             return true;
         }
@@ -312,9 +313,9 @@ public class ColorPickerBehavior : MonoBehaviour, IPointerClickHandler, IPointer
     /// </summary>
     /// <param name="playerStatus">The status for the player that is being checked.</param>
     /// <returns>True if the player has not joined the game, or is ready.</returns>
-    private bool CheckPlayerReadyStatus(Enums.PlayerStatus playerStatus)
+    private bool CheckPlayerReadyStatus(PlayerStatus playerStatus)
     {
-        if ((int)playerStatus < 0 || playerStatus == Enums.PlayerStatus.Ready)
+        if ((int)playerStatus < 0 || playerStatus == PlayerStatus.Ready)
         {
             return true;
         }

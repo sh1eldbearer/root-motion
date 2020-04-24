@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility.Enums;
 
 [RequireComponent(typeof(PawnData))]
 [RequireComponent(typeof(Rigidbody))]
@@ -73,19 +74,19 @@ public class Pawn : MonoBehaviour
     /// the agent.
     /// </summary>
     /// <param name="locoState">The current movement state of the agent.</param>
-    protected void SetLocomotionState(Enums.LocomotionState locoState)
+    protected void SetLocomotionState(LocomotionState locoState)
     {
         switch (locoState)
         {
-            case Enums.LocomotionState.Walking:
+            case LocomotionState.Walking:
                 _pawnData.PawnAnimator.SetBool("isSprinting", false);
                 _pawnData.PawnAnimator.SetBool("isCrouching", false);
                 break;
-            case Enums.LocomotionState.Crouching:
+            case LocomotionState.Crouching:
                 _pawnData.PawnAnimator.SetBool("isSprinting", false);
                 _pawnData.PawnAnimator.SetBool("isCrouching", true);
                 break;
-            case Enums.LocomotionState.Sprinting:
+            case LocomotionState.Sprinting:
                 _pawnData.PawnAnimator.SetBool("isSprinting", true);
                 _pawnData.PawnAnimator.SetBool("isCrouching", false);
                 break;

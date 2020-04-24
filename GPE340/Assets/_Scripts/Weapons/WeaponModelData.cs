@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
+using Utility.Enums;
 
 public class WeaponModelData : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class WeaponModelData : MonoBehaviour
 #pragma warning disable CS0649
     [Header("Weapon Stats")]
     //[Tooltip(""), SerializeField] private WeaponData _weaponData;
-    [SerializeField] private Enums.WeaponQuality _weaponQuality = Enums.WeaponQuality.Base;
+    [SerializeField] private WeaponQuality _weaponQuality = WeaponQuality.Base;
 
     [Header("Weapon Skins"), Tooltip("The skins to use for each quality tier of the weapon.")]
     [SerializeField] private Material _baseMat;
@@ -121,7 +122,7 @@ public class WeaponModelData : MonoBehaviour
     /// </summary>
     private void DegradeWeapon()
     {
-        if (_weaponQuality != Enums.WeaponQuality.Base)
+        if (_weaponQuality != WeaponQuality.Base)
         {
             _weaponQuality--;
             ChangeSkin(_weaponQuality);
@@ -137,7 +138,7 @@ public class WeaponModelData : MonoBehaviour
     /// </summary>
     private void UpgradeWeapon()
     {
-        if (_weaponQuality != Enums.WeaponQuality.Legendary)
+        if (_weaponQuality != WeaponQuality.Legendary)
         {
             _weaponQuality++;
             ChangeSkin(_weaponQuality);
@@ -153,23 +154,23 @@ public class WeaponModelData : MonoBehaviour
     /// </summary>
     /// <param name="weaponQuality">The quality of the weapon used to determine which
     /// weapon material to show.</param>
-    public void ChangeSkin(Enums.WeaponQuality weaponQuality)
+    public void ChangeSkin(WeaponQuality weaponQuality)
     {
         switch (weaponQuality)
         {
-            case Enums.WeaponQuality.Base:
+            case WeaponQuality.Base:
                 SetToBaseQuality();
                 break;
-            case Enums.WeaponQuality.Uncommon:
+            case WeaponQuality.Uncommon:
                 SetToUncommonQuality();
                 break;
-            case Enums.WeaponQuality.Rare:
+            case WeaponQuality.Rare:
                 SetToRareQuality();
                 break;
-            case Enums.WeaponQuality.Epic:
+            case WeaponQuality.Epic:
                 SetToEpicQuality();
                 break;
-            case Enums.WeaponQuality.Legendary:
+            case WeaponQuality.Legendary:
                 SetToLegendaryQuality();
                 break;
         }

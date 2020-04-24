@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using Utility.Enums;
 
 [System.Serializable]
 public class WeaponInventorySlot
@@ -10,7 +11,7 @@ public class WeaponInventorySlot
     // TODO: Needs tooltips/summary tags
     #region Private Properties
 #pragma warning disable CS0649
-    [Tooltip(""), SerializeField] private Enums.WeaponType _weaponType;
+    [Tooltip(""), SerializeField] private WeaponType _weaponType;
     [Tooltip(""), SerializeField] private WeaponData _weaponInfo;
     [Tooltip(""), SerializeField] private WeaponModelData _weaponModelData;
     [Tooltip(""), SerializeField] private int _currentAmmo;
@@ -20,7 +21,7 @@ public class WeaponInventorySlot
     #endregion
 
     #region Public Properties
-    public Enums.WeaponType WeaponType
+    public WeaponType WeaponType
     {
         get { return _weaponType; }
     }
