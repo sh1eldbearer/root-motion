@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Enums;
 using UnityEngine;
 
 public class PawnData : MonoBehaviour
@@ -9,7 +11,8 @@ public class PawnData : MonoBehaviour
 #pragma warning disable CS0649
     [Header("")]
     [SerializeField] private Weapon _equippedWeapon;
-    [SerializeField] private WeaponInventoryItem[] _weaponInventory = new WeaponInventoryItem[4];
+    [SerializeField, Range(0, 3)] private int _equippedWeaponIndex;
+    [SerializeField] private List<WeaponInventorySlot> _weaponInventory = new List<WeaponInventorySlot>(4);
 
         [Header("Movement Settings")]
     [Tooltip("The movement speed of this pawn."),
@@ -38,11 +41,11 @@ public class PawnData : MonoBehaviour
         SerializeField] private Animator _pawnAnimator;
     [Tooltip("The Capsule Collider attached to this pawn."),
         SerializeField] private CapsuleCollider _pawnCollider;
+
     [Tooltip("The Transform component of this pawn's model's head."),
         Space, SerializeField] private Transform _headTransform;
 
     [Header("Skinned Mesh Renderers")]
-    //[Space, SerializeField] private List<SkinnedMeshRenderer> _modelMeshes = new List<SkinnedMeshRenderer>();
     [Tooltip("The parts of the character mesh that use the Body_MAT material. Used for for changing the player " +
              "model's skin color when the game starts. Auto-populated at run-time."), 
         SerializeField] private List<SkinnedMeshRenderer> _bodyRenderers = new List<SkinnedMeshRenderer>();
@@ -233,5 +236,30 @@ public class PawnData : MonoBehaviour
     public void SetController(AgentController controller)
     {
         _controller = controller;
+    }
+
+    public WeaponQuality GetWeaponQuality(WeaponType compareType)
+    {
+        return FindWeaponSlotByType(compareType).WeaponInfo.Quality;
+    }
+
+    public void ChangeWeaponInfo(WeaponData newInfo)
+    {
+        FindWeaponSlotByType(newInfo.WeaponType).SetNewWeaponInfo(newInfo);
+    }
+
+    private WeaponInventorySlot FindWeaponSlotByType(WeaponType compareType)
+    {
+        foreach (WeaponInventorySlot weaponSlot in _weaponInventory)
+        {
+            if (weaponSlot.WeaponType == compareType)
+            {
+                return weaponSlot;
+            }
+        }
+
+        // If there's no match, I forgot to assign weapon types in the inventory, so throw an exception
+        throw new Exception($"No inventory slot accepts a weapon of type {compareType.ToString()}. " +
+                            $"Check the way your players' Weapon Inventories are configured.");
     }
 }

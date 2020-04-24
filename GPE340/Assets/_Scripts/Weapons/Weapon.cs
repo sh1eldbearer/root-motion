@@ -10,7 +10,7 @@ public abstract class Weapon : MonoBehaviour
     #region Private Properties
 #pragma warning disable CS0649
     [Header("Weapon Stats")]
-    //[Tooltip(""), SerializeField] private WeaponScriptable _weaponData;
+    //[Tooltip(""), SerializeField] private WeaponData _weaponData;
     [SerializeField] private Enums.WeaponQuality _weaponQuality = Enums.WeaponQuality.Base;
 
     [Header("Weapon Skins"), Tooltip("The skins to use for each quality tier of the weapon.")]

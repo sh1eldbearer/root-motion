@@ -64,6 +64,18 @@
     }
 
     /// <summary>
+    /// A type of weapon (used for weapon pickups)
+    /// </summary>
+    public enum WeaponType
+    {
+        None = 0,
+        Pistol = 1,
+        BurstRifle = 2,
+        AutoRifle = 3,
+        Sniper = 4
+    }
+
+    /// <summary>
     /// The firing behavior of a weapon.
     /// </summary>
     public enum FireMode
