@@ -13,6 +13,9 @@ public class IKAdjuster : MonoBehaviour
     [Tooltip("The PawnData component for this pawn."),
         SerializeField] private PawnData _pawnData;
 
+    [Tooltip("The Transform component of this pawn's model's head."),
+        Space, SerializeField] private Transform _headTransform;
+
     [Header("IK Weight Settings")]
     [Tooltip("The weight to apply to the position of the avatar's left hand for inverse kinematics."),
         SerializeField, Range(0.0f, 1.0f)] private float _lHandPositionWeight = 1.0f;
@@ -90,10 +93,10 @@ public class IKAdjuster : MonoBehaviour
         }
 
         // Adjusts the rotation of the character's head so they always look where the mouse is pointing
-        if (_pawnData.HeadTransform != null)
+        if (_headTransform != null)
         {
             // Creates an imaginary plane at the position of the model's head
-            Plane headPlane = new Plane(_pawnData.HeadTransform.up, _pawnData.HeadTransform.position);
+            Plane headPlane = new Plane(_headTransform.up, _headTransform.position);
 
             // Gets a ray from the mouse's position through the camera's view direction
             Ray mouseRay = GameManager.gm.GameCamera.ScreenPointToRay(Input.mousePosition);

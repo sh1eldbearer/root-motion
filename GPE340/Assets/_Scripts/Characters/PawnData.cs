@@ -39,9 +39,6 @@ public class PawnData : MonoBehaviour
     [Tooltip("The Capsule Collider attached to this pawn."),
         SerializeField] private CapsuleCollider _pawnCollider;
 
-    [Tooltip("The Transform component of this pawn's model's head."),
-        Space, SerializeField] private Transform _headTransform;
-
     [Header("Skinned Mesh Renderers")]
     [Tooltip("The parts of the character mesh that use the Body_MAT material. Used for for changing the player " +
              "model's skin color when the game starts. Auto-populated at run-time."), 
@@ -148,14 +145,6 @@ public class PawnData : MonoBehaviour
     public CapsuleCollider PawnCollider
     {
         get { return _pawnCollider; }
-    }
-
-    /// <summary>
-    /// The Transform component of this pawn's model's head.
-    /// </summary>
-    public Transform HeadTransform
-    {
-        get { return _headTransform; }
     }
 
     /// <summary>

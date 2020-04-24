@@ -1733,29 +1733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c93105eec38f044b88963ef7ff69b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _equippedWeaponModelData: {fileID: 0}
-  _equippedWeaponIndex: 0
-  _weaponInventory:
-  - _weaponType: 1
-    _weaponInfo: {fileID: 11400000, guid: 7c183fa6558ab0c469a22196e8e0ec40, type: 2}
-    _weaponModelData: {fileID: 2962739872172852709}
-    _currentAmmo: 120
-    _maxAmmo: 120
-  - _weaponType: 2
-    _weaponInfo: {fileID: 0}
-    _weaponModelData: {fileID: 2171134616934262586}
-    _currentAmmo: 0
-    _maxAmmo: 240
-  - _weaponType: 3
-    _weaponInfo: {fileID: 0}
-    _weaponModelData: {fileID: 1626060378344821398}
-    _currentAmmo: 0
-    _maxAmmo: 360
-  - _weaponType: 4
-    _weaponInfo: {fileID: 0}
-    _weaponModelData: {fileID: 1692196434820285459}
-    _currentAmmo: 0
-    _maxAmmo: 80
   _moveSpeed: 7
   _turnSpeed: 720
   _standColliderHeight: 1.8
@@ -1768,7 +1745,6 @@ MonoBehaviour:
   _pawnTransform: {fileID: 2991597396998628883}
   _pawnAnimator: {fileID: 5574581402221683709}
   _pawnCollider: {fileID: 5043264499658602175}
-  _headTransform: {fileID: 6627135288692363152}
   _bodyRenderers: []
   _browsRenderers: []
   _eyeRenderers: []
@@ -1785,6 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a7f6a8134c0d94eb454f2b586f5ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _equippedWeaponIndex: 0
   _weaponInventory:
   - _weaponType: 1
     _weaponInfo: {fileID: 0}
@@ -1845,6 +1822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pawnData: {fileID: 0}
+  _headTransform: {fileID: 6627135288692363152}
   _lHandPositionWeight: 1
   _lHandRotationWeight: 1
   _lElbowPositionWeight: 1
