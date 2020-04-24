@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Legendary BurstRifle
   m_EditorClassIdentifier: 
   _weaponType: 2
-  _weaponQuality: 0
+  _weaponQuality: 4
   _baseDamage: 10
   _baseFireRate: 0.75
   _baseClipSize: 6
