@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb013bf149adc14cbda729d0938a5ac, type: 3}
   m_Name: Rare Pistol
   m_EditorClassIdentifier: 
-  _name: New Weapon
   _weaponType: 1
   _weaponQuality: 2
   _baseDamage: 10

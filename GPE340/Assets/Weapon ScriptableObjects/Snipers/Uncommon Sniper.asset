@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8eb013bf149adc14cbda729d0938a5ac, type: 3}
-  m_Name: Base Pistol
+  m_Name: Uncommon Sniper
   m_EditorClassIdentifier: 
-  _weaponType: 1
-  _weaponQuality: 0
+  _weaponType: 4
+  _weaponQuality: 1
   _baseDamage: 10
   _baseFireRate: 0.75
   _baseClipSize: 6
