@@ -36,8 +36,7 @@ public class InitializeGame : MonoBehaviour
             GameManager.gm.GameCameraController.SetFollowTarget(_testPlayerObject);
 
             // Sets the player indicator of the test player to a random color
-            GameManager.gm.PlayerInfo[0].PawnData.PlayerIndicatorImage.color =
-                SkinManager.skinMgr.GetRGBColor(Random.Range(0, 9));
+            GameManager.gm.PlayerInfo[0].PawnData.SetPlayerIndicatorColor(SkinManager.skinMgr.GetRGBColor(Random.Range(0, 8)));
         }
         else // Standard game mode (started from the menu scene)
         {
@@ -99,6 +98,8 @@ public class InitializeGame : MonoBehaviour
         player.SetPawnData(playerObject.GetComponent<PawnData>());
         // Assigns the selected skin color materials to the player object
         SkinManager.skinMgr.AssignMaterials(player.SkinColorIndex, player.PawnData);
+        // Assigns the chosen player color to the player indicator
+        player.PawnData.SetPlayerIndicatorColor(SkinManager.skinMgr.GetRGBColor(player.SkinColorIndex));
         // Places the player at the appropriate spawn point
         playerObject.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
     }

@@ -299,4 +299,22 @@ public class PawnData : MonoBehaviour
     {
         _controller = controller;
     }
+
+
+    /// <summary>
+    /// Sets the color of the player indicator for this pawn. (
+    /// </summary>
+    /// <param name="newColor"></param>
+    public void SetPlayerIndicatorColor(Color newColor)
+    {
+        // Checks to make sure that the player indicator image was correctly assigned 
+        if (_playerIndicatorImage != null && PlayerIndicatorImage != null)
+        {
+            PlayerIndicatorImage.color = newColor;
+        }
+        else
+        {
+            // Do nothing if there was no image component stored in this varaiable
+        }
+    }
 }
