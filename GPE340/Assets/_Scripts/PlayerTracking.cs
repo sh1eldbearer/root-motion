@@ -124,7 +124,7 @@ public class PlayerTracking
     /// Assigns a reference to this player's agent data when the game is running. 
     /// </summary>
     /// <param name="pawnData">The agent data to be associated with this player.</param>
-    public void SetAgentData(PawnData pawnData)
+    public void SetPawnData(PawnData pawnData)
     {
         _pawnData = pawnData;
     }

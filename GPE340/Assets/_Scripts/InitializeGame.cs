@@ -31,8 +31,10 @@ public class InitializeGame : MonoBehaviour
             _testPlayerObject.transform.SetPositionAndRotation(GameManager.gm.CurrentRoomData.P1SpawnPoint.transform.position,
                 GameManager.gm.CurrentRoomData.P1SpawnPoint.transform.rotation);
 
-            // Assigns the test object
-            GameManager.gm.PlayerInfo[0].SetAgentData(_testPlayerObject.GetComponent<PawnData>());
+            // Sets the player indicator of the test p
+
+            // Assigns the test player's PawnData to the game manager and camera
+            GameManager.gm.PlayerInfo[0].SetPawnData(_testPlayerObject.GetComponent<PawnData>());
             GameManager.gm.GameCameraController.SetFollowTarget(_testPlayerObject);
         }
         else // Standard game mode (started from the menu scene)
@@ -92,7 +94,7 @@ public class InitializeGame : MonoBehaviour
         // Activates the player object and its camera
         playerObject.SetActive(true);
         // Assigns the new character's agent data component to the player info array
-        player.SetAgentData(playerObject.GetComponent<PawnData>());
+        player.SetPawnData(playerObject.GetComponent<PawnData>());
         // Assigns the selected skin color materials to the player object
         SkinManager.skinMgr.AssignMaterials(player.SkinColorIndex, player.PawnData);
         // Places the player at the appropriate spawn point

@@ -39,11 +39,13 @@ public class PawnData : MonoBehaviour
     [Header("UI Elements")]
     [Tooltip("The transform component of the health canvas object associated with this pawn."),
         SerializeField] private Transform _healthCanvasTransform;
-    [Tooltip("The health slider for this pawn."),
-        SerializeField] private Slider _healthSlider;
+    [Tooltip("The health slider for this pawn." +
+             "(Public accessor will return the Slider component."),
+        SerializeField] private GameObject _healthSlider;
     [Tooltip("The player indicator ring displayed at the pawn's feet. (If this pawn is not a player, " +
-             "this can be left blank."),
-        SerializeField] private Image _playerIndicatorImage;
+             "this can be left empty/null." +
+             "(Public accessor will return the Image component."),
+        SerializeField] private GameObject _playerIndicatorImage;
 
     [Header("Game Components")]
     [Tooltip("This pawn's controller."),
@@ -171,7 +173,7 @@ public class PawnData : MonoBehaviour
     /// </summary>
     public Slider HealthSlider
     {
-        get { return _healthSlider; }
+        get { return _healthSlider.GetComponent<Slider>(); }
     }
 
     /// <summary>
@@ -180,7 +182,7 @@ public class PawnData : MonoBehaviour
     /// </summary>
     public Image PlayerIndicatorImage
     {
-        get { return _playerIndicatorImage; }
+        get { return _playerIndicatorImage.GetComponent<Image>(); }
     }
 
     /// <summary>
