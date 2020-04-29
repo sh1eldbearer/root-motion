@@ -8,186 +8,242 @@ using UnityEngine;
 public class PawnData : MonoBehaviour
 {
     #region Private Properties
-#pragma warning disable CS0649
-    [Header("Health Settings")]
-    [Tooltip(""),
-        SerializeField] private float _currentHealth = 100;
-    [Tooltip(""),
-        SerializeField] private float _maxHealth = 100;
+        #pragma warning disable CS0649
 
-    [Header("Movement Settings")]
-    [Tooltip("The movement speed of this pawn."),
-        SerializeField] private float _moveSpeed = 7f;
-    [Tooltip("The turning speed of this pawn."),
-        SerializeField] private float _turnSpeed = 720f;
+        #region Health Settings (Private)
+            [Header("Health Settings")]
+            [Tooltip("The current health value of this pawn."),
+                SerializeField] private float _currentHealth = 100;
+            [Tooltip("The maximum health value of this pawn."),
+                SerializeField] private float _maxHealth = 100;
+        #endregion
 
-    [Header("Collider Settings")]
-    [Tooltip("The height the collider should be when the pawn is standing."),
-        SerializeField] private float _standColliderHeight = 2f;
-    [Tooltip("The position the center of the collider should be at when the pawn is standing."),
-        SerializeField] private float _standColliderCenterY = 1f;
-    [Tooltip("The height the collider should be when the pawn is crouching."),
-        SerializeField] private float _crouchColliderHeight = 1f;
-    [Tooltip("The position the center of the collider should be at when the pawn is crouching."),
-        SerializeField] private float _crouchColliderCenterY = 0.5f;
-    [Tooltip("The speed at which the pawn's collider height and center position should adjust."),
-        SerializeField] private float _colliderAdjustSpeed = 20f;
+        #region Movement Settings (Private)
+            [Header("Movement Settings")]
+            [Tooltip("The movement speed of this pawn."),
+                SerializeField] private float _moveSpeed = 7f;
+            [Tooltip("The turning speed of this pawn."),
+                SerializeField] private float _turnSpeed = 720f;
+        #endregion
 
-    [Header("Game Components")]
-    [Tooltip("This pawn's controller."),
-        SerializeField] private AgentController _controller;
-    [Tooltip("This pawn's InventoryManager."),
-        SerializeField] private InventoryManager _inventoryMgr;
-    [Tooltip("This pawn's Transform component."),
-        SerializeField] private Transform _pawnTransform;
-    [Tooltip("This pawn's Animator component."),
-        SerializeField] private Animator _pawnAnimator;
-    [Tooltip("The Capsule Collider attached to this pawn."),
-        SerializeField] private CapsuleCollider _pawnCollider;
+        #region Collider Settings (Private)
+            [Header("Collider Settings")]
+            [Tooltip("The height the collider should be when the pawn is standing."),
+                SerializeField] private float _standColliderHeight = 2f;
+            [Tooltip("The position the center of the collider should be at when the pawn is standing."),
+                SerializeField] private float _standColliderCenterY = 1f;
+            [Tooltip("The height the collider should be when the pawn is crouching."),
+                SerializeField] private float _crouchColliderHeight = 1f;
+            [Tooltip("The position the center of the collider should be at when the pawn is crouching."),
+                SerializeField] private float _crouchColliderCenterY = 0.5f;
+            [Tooltip("The speed at which the pawn's collider height and center position should adjust."),
+              SerializeField] private float _colliderAdjustSpeed = 20f;
+        #endregion
 
-    [Header("Skinned Mesh Renderers")]
-    [Tooltip("The parts of the character mesh that use the Body_MAT material. Used for for changing the player " +
-             "model's skin color when the game starts. Auto-populated at run-time."), 
-        SerializeField] private List<SkinnedMeshRenderer> _bodyRenderers = new List<SkinnedMeshRenderer>();
-    [Tooltip("The parts of the character mesh that use the Brows_MAT material. Used for for changing the player " +
-             "model's skin color when the game starts. Auto-populated at run-time."), 
-        SerializeField] private List<SkinnedMeshRenderer> _browsRenderers = new List<SkinnedMeshRenderer>();
-    [Tooltip("The parts of the character mesh that use the Eye_MAT material. Used for for changing the player " +
-             "model's skin color when the game starts. Auto-populated at run-time."), 
-        SerializeField] private List<SkinnedMeshRenderer> _eyeRenderers = new List<SkinnedMeshRenderer>();
-    [Tooltip("The parts of the character mesh that use the Eye_Spec_MAT material. Used for for changing the player " +
-             "model's skin color when the game starts. Auto-populated at run-time."), 
-        SerializeField] private List<SkinnedMeshRenderer> _eyeSpecRenderers = new List<SkinnedMeshRenderer>();
-#pragma warning restore CS0649
+        #region UI Elements (Private)
+            [Header("UI Elements")]
+            [Tooltip("The transform component of the health canvas object associated with this pawn."),
+                SerializeField] private Transform _healthCanvasTransform;
+        #endregion
+
+        #region Game Components (Private)
+            [Header("Game Components")]
+            [Tooltip("This pawn's controller."),
+                SerializeField] private AgentController _controller;
+            [Tooltip("This pawn's InventoryManager."),
+                SerializeField] private InventoryManager _inventoryMgr;
+            [Tooltip("This pawn's Transform component."),
+                SerializeField] private Transform _pawnTransform;
+            [Tooltip("This pawn's Animator component."),
+                SerializeField] private Animator _pawnAnimator;
+            [Tooltip("The Capsule Collider attached to this pawn."),
+                SerializeField] private CapsuleCollider _pawnCollider;
+        #endregion
+
+        #region Skinned Mesh Renderers (Private)
+            [Header("Skinned Mesh Renderers")]
+            [Tooltip("The parts of the character mesh that use the Body_MAT material. Used for for changing the player " +
+                     "model's skin color when the game starts. Auto-populated at run-time."), 
+                SerializeField] private List<SkinnedMeshRenderer> _bodyRenderers = new List<SkinnedMeshRenderer>();
+            [Tooltip("The parts of the character mesh that use the Brows_MAT material. Used for for changing the player " +
+                     "model's skin color when the game starts. Auto-populated at run-time."), 
+                SerializeField] private List<SkinnedMeshRenderer> _browsRenderers = new List<SkinnedMeshRenderer>();
+            [Tooltip("The parts of the character mesh that use the Eye_MAT material. Used for for changing the player " +
+                     "model's skin color when the game starts. Auto-populated at run-time."), 
+                SerializeField] private List<SkinnedMeshRenderer> _eyeRenderers = new List<SkinnedMeshRenderer>();
+            [Tooltip("The parts of the character mesh that use the Eye_Spec_MAT material. Used for for changing the player " +
+                     "model's skin color when the game starts. Auto-populated at run-time."), 
+                SerializeField] private List<SkinnedMeshRenderer> _eyeSpecRenderers = new List<SkinnedMeshRenderer>();
+    #endregion
+
+        #pragma warning restore CS0649
     #endregion
 
     #region Public Properties
-    /// <summary>
-    /// The movement speed of this agent.
-    /// </summary>
-    public float MoveSpeed
-    {
-        get { return _moveSpeed; }
-    }
 
-    /// <summary>
-    /// The turn speed of this agent.
-    /// </summary>
-    public float TurnSpeed
-    {
-        get { return _turnSpeed; }
-    }
+        #region Health Settings (Public)
+            /// <summary>
+            /// The current health value of this pawn.
+            /// </summary>
+            public float CurrentHealth
+            {
+                get { return _currentHealth; }
+            }
 
-    /// <summary>
-    /// The height the collider should be when the agent is standing.
-    /// </summary>
-    public float StandColliderHeight
-    {
-        get { return _standColliderHeight; }
-    }
+            /// <summary>
+            /// The maximum health value of this pawn.
+            /// </summary>
+            public float MaxHealth
+            {
+                get { return _maxHealth; }
+            }
+        #endregion
+
+        #region Movement Settings (Public)
+            /// <summary>
+            /// The movement speed of this agent.
+            /// </summary>
+            public float MoveSpeed
+            {
+                get { return _moveSpeed; }
+            }
+
+            /// <summary>
+            /// The turn speed of this agent.
+            /// </summary>
+            public float TurnSpeed
+            {
+                get { return _turnSpeed; }
+            }
+        #endregion
+
+        #region Collider Settings (Public)
+            /// <summary>
+            /// The height the collider should be when the agent is standing.
+            /// </summary>
+            public float StandColliderHeight
+            {
+                get { return _standColliderHeight; }
+            }
 
 
-    /// <summary>
-    /// The position the center of the collider should be at when the agent is standing.
-    /// </summary>
-    public Vector3 StandColliderCenter
-    {
-        get { return new Vector3(_pawnCollider.center.x ,_standColliderCenterY, 
-            _pawnCollider.center.z); }
-    }
+            /// <summary>
+            /// The position the center of the collider should be at when the agent is standing.
+            /// </summary>
+            public Vector3 StandColliderCenter
+            {
+                get
+                {
+                    return new Vector3(_pawnCollider.center.x, _standColliderCenterY,
+                        _pawnCollider.center.z);
+                }
+            }
 
-    /// <summary>
-    /// The height the collider should be when the agent is crouching.
-    /// </summary>
-    public float CrouchColliderHeight
-    {
-        get { return _crouchColliderHeight; }
-    }
+            /// <summary>
+            /// The height the collider should be when the agent is crouching.
+            /// </summary>
+            public float CrouchColliderHeight
+            {
+                get { return _crouchColliderHeight; }
+            }
 
-    /// <summary>
-    /// The position the center of the collider should be at when the agent is crouching.
-    /// </summary>
-    public Vector3 CrouchColliderCenter
-    {
-        get { return new Vector3(_pawnCollider.center.x, _crouchColliderCenterY, 
-            _pawnCollider.center.z); }
-    }
+            /// <summary>
+            /// The position the center of the collider should be at when the agent is crouching.
+            /// </summary>
+            public Vector3 CrouchColliderCenter
+            {
+                get
+                {
+                    return new Vector3(_pawnCollider.center.x, _crouchColliderCenterY,
+                        _pawnCollider.center.z);
+                }
+            }
 
-    /// <summary>
-    /// The speed at which the collider's height and center position should adjust.
-    /// </summary>
-    public float ColliderAdjustSpeed
-    {
-        get { return _colliderAdjustSpeed; }
-    }
+            /// <summary>
+            /// The speed at which the collider's height and center position should adjust.
+            /// </summary>
+            public float ColliderAdjustSpeed
+            {
+                get { return _colliderAdjustSpeed; }
+            }
+        #endregion
 
-    /// <summary>
-    /// This Pawn's InventoryManager.
-    /// </summary>
-    public InventoryManager InventoryMgr
-    {
-        get { return _inventoryMgr; }
-    }
+        #region UI Elements (Public)
 
-    /// <summary>
-    /// This agent's Transform component.
-    /// </summary>
-    public Transform PawnTransform
-    {
-        get { return _pawnTransform; }
-    }
+        #endregion
+    
+        #region Game Components (Public)
+            /// <summary>
+            /// This Pawn's InventoryManager.
+            /// </summary>
+            public InventoryManager InventoryMgr
+            {
+                get { return _inventoryMgr; }
+            }
 
-    /// <summary>
-    /// This agent's Animator component.
-    /// </summary>
-    public Animator PawnAnimator
-    {
-        get { return _pawnAnimator; }
-    }
+            /// <summary>
+            /// This agent's Transform component.
+            /// </summary>
+            public Transform PawnTransform
+            {
+                get { return _pawnTransform; }
+            }
 
-    /// <summary>
-    /// The Capsule Collider attached to this agent.
-    /// </summary>
-    public CapsuleCollider PawnCollider
-    {
-        get { return _pawnCollider; }
-    }
+            /// <summary>
+            /// This agent's Animator component.
+            /// </summary>
+            public Animator PawnAnimator
+            {
+                get { return _pawnAnimator; }
+            }
 
-    /// <summary>
-    /// The parts of the character mesh that use the Body_MAT material. Used for for changing the player
-    /// model's skin color when the game starts. Auto-populated at run-time.
-    /// </summary>
-    public List<SkinnedMeshRenderer> BodyRenderers
-    {
-        get { return _bodyRenderers; }
-    }
+            /// <summary>
+            /// The Capsule Collider attached to this agent.
+            /// </summary>
+            public CapsuleCollider PawnCollider
+            {
+                get { return _pawnCollider; }
+            }
+        #endregion
+    
+        #region Skinned Mesh Renderers (Public)
+            /// <summary>
+            /// The parts of the character mesh that use the Body_MAT material. Used for for changing the player
+            /// model's skin color when the game starts. Auto-populated at run-time.
+            /// </summary>
+            public List<SkinnedMeshRenderer> BodyRenderers
+            {
+                get { return _bodyRenderers; }
+            }
 
-    /// <summary>
-    /// The parts of the character mesh that use the Brows_MAT material. Used for for changing the player
-    /// model's skin color when the game starts. Auto-populated at run-time.
-    /// </summary>
-    public List<SkinnedMeshRenderer> BrowsRenderers
-    {
-        get { return _browsRenderers; }
-    }
+            /// <summary>
+            /// The parts of the character mesh that use the Brows_MAT material. Used for for changing the player
+            /// model's skin color when the game starts. Auto-populated at run-time.
+            /// </summary>
+            public List<SkinnedMeshRenderer> BrowsRenderers
+            {
+                get { return _browsRenderers; }
+            }
 
-    /// <summary>
-    /// The parts of the character mesh that use the Eye_MAT material. Used for for changing the player
-    /// model's skin color when the game starts. Auto-populated at run-time.
-    /// </summary>
-    public List<SkinnedMeshRenderer> EyeRenderers
-    {
-        get { return _eyeRenderers; }
-    }
+            /// <summary>
+            /// The parts of the character mesh that use the Eye_MAT material. Used for for changing the player
+            /// model's skin color when the game starts. Auto-populated at run-time.
+            /// </summary>
+            public List<SkinnedMeshRenderer> EyeRenderers
+            {
+                get { return _eyeRenderers; }
+            }
 
-    /// <summary>
-    /// The parts of the character mesh that use the Eye_Spec_MAT material. Used for for changing the player
-    /// model's skin color when the game starts. Auto-populated at run-time.
-    /// </summary>
-    public List<SkinnedMeshRenderer> EyeSpecRenderers
-    {
-        get { return _eyeSpecRenderers; }
-    }
+            /// <summary>
+            /// The parts of the character mesh that use the Eye_Spec_MAT material. Used for for changing the player
+            /// model's skin color when the game starts. Auto-populated at run-time.
+            /// </summary>
+            public List<SkinnedMeshRenderer> EyeSpecRenderers
+            {
+                get { return _eyeSpecRenderers; }
+            }
+    #endregion
+
     #endregion
 
     // Awake is called before Start
