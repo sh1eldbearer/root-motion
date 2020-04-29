@@ -99,22 +99,13 @@ public class WeaponModelData : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        // TODO: Remove after implementing in game
-        SetToBaseQuality();
+
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        // TODO: Remove before submitting
-        if (Input.GetKeyDown(KeyCode.Comma))
-        {
-            DegradeWeapon();
-        }
-        else if (Input.GetKeyDown(KeyCode.Period))
-        {
-            UpgradeWeapon();
-        }
+
     }
 
     /// <summary>
