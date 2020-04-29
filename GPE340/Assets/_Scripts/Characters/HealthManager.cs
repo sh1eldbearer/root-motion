@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor.Events;
 
-public class HealthManager : MonoBehaviour
+public class HealthManager : MonoBehaviour, IDamageable, IHealable
 {
     #region Private Properties
 #pragma warning disable CS0649
     [SerializeField] private UnityEvent _healthChanged;
+
+    [Header("Game Components")]
+    [Tooltip("The PawnData component for this Pawn."), 
+        SerializeField] private PawnData _pawnData;
 #pragma warning restore CS0649
     #endregion
 
@@ -18,9 +22,13 @@ public class HealthManager : MonoBehaviour
 	
 	// Awake is called before Start
 	private void Awake()
-	{
-		
-	}
+    {
+        // Component reference assignments
+        if (_pawnData == null)
+        {
+            _pawnData = this.gameObject.GetComponent<PawnData>();
+        }
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -44,7 +52,7 @@ public class HealthManager : MonoBehaviour
         #if UNITY_EDITOR
             UnityEventTools.AddPersistentListener(_healthChanged, call);
         #else
-            _onPause.AddListener(call);
+            _healthChanged.AddListener(call);
         #endif
     }
 
@@ -70,7 +78,7 @@ public class HealthManager : MonoBehaviour
         #if UNITY_EDITOR
             UnityEventTools.RemovePersistentListener(_healthChanged, call);
         #else
-            _onPause.AddListener(call);
+            _healthChanged.AddListener(call);
         #endif
     }
 
@@ -84,5 +92,31 @@ public class HealthManager : MonoBehaviour
         {
             RemoveHealthChangedListener(call);
         }
+    }
+
+    /// <summary>
+    /// Takes a specified amount of damage, and alerts all listeners that the health of this pawn has changed.
+    /// </summary>
+    /// <typeparam name="T">The data type of the damage value (should match PawnData's CurrentHealth and MaxHealth.)</typeparam>
+    /// <param name="incomingDmg">The amount of damage this pawn will take.</param>
+    public void TakeDamage<T> (T dmgAmount)
+    {
+        // TODO: Damage functionality (mostly just reduce current health and a death check)
+
+        // Notifies all listeners that this pawn's health has changed
+        _healthChanged.Invoke();
+    }
+
+    /// <summary>
+    /// Receives a specified amount of healing, and alerts all listeners that the health of this pawn has changed.
+    /// </summary>
+    /// <typeparam name="T">The data type of the damage value (should match PawnData's CurrentHealth and MaxHealth.)</typeparam>
+    /// <param name="healAmount">The amount of damage this pawn will take.</param>
+    public void ReceiveHealing<T>(T healAmount)
+    {
+        // TODO: Heal functionality (mostly just increase current health)
+
+        // Notifies all listeners that this pawn's health has changed
+        _healthChanged.Invoke();
     }
 }
