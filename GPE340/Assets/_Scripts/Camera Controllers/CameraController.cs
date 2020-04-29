@@ -65,7 +65,7 @@ public class CameraController : MonoBehaviour
     #endregion
 
     // Awake is called before Start
-    public void Awake()
+    private void Awake()
     {
 
         // Component reference assignments
@@ -88,17 +88,23 @@ public class CameraController : MonoBehaviour
             ClearFollowTarget();
         }
 
-        // Register coroutines with the pause manager
-        PauseManager.pauseMgr.AddListeners(StartCameraZoomCoroutine, StopCameraZoomCoroutine);
 
         // Register camera with the GameManager
         GameManager.gm.SetGameCamera(_thisCamera, this);
     }
 
-    // Start is called before the first frame update
-    public void Start()
+    private void OnEnable()
     {
-        StartCameraZoomCoroutine();
+        // Register coroutines with the pause manager
+        PauseManager.pauseMgr.AddOnUnpauseListener(StartCameraZoomCoroutine);
+        PauseManager.pauseMgr.AddOnPauseListener(StopCameraZoomCoroutine);
+    }
+
+    private void OnDisable()
+    {
+        // Unregister coroutines with the pause manager
+        PauseManager.pauseMgr.RemoveOnUnpauseListener(StartCameraZoomCoroutine);
+        PauseManager.pauseMgr.RemoveOnPauseListener(StopCameraZoomCoroutine);
     }
 
     /// <summary>

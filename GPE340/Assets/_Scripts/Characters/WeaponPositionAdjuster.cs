@@ -24,19 +24,20 @@ public class WeaponPositionAdjuster : MonoBehaviour
         {
             _thisTransform = this.transform;
         }
-
-        // Register this function's coroutines with the pause manager events
-        PauseManager.pauseMgr.AddListeners(StartPositionCoroutine, StopPositionCoroutine);
     }
 
     private void OnEnable()
     {
-        StartPositionCoroutine();
+        // Register coroutines with the pause manager
+        PauseManager.pauseMgr.AddOnUnpauseListener(StartPositionCoroutine);
+        PauseManager.pauseMgr.AddOnPauseListener(StopPositionCoroutine);
     }
 
     private void OnDisable()
     {
-        StopPositionCoroutine();
+        // Unregister coroutines with the pause manager
+        PauseManager.pauseMgr.RemoveOnUnpauseListener(StartPositionCoroutine);
+        PauseManager.pauseMgr.RemoveOnPauseListener(StopPositionCoroutine);
     }
 
     /// <summary>

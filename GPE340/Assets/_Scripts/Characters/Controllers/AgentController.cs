@@ -30,12 +30,6 @@ public abstract class AgentController : MonoBehaviour
     // Awake is called before Start
     protected virtual void Awake()
     {
-
-    }
-
-    // Start is called before the first frame update
-    protected virtual void Start()
-    {
         // TODO: Determine base functionality once AI controllers are set up
 
         // Component reference assignments
@@ -43,6 +37,22 @@ public abstract class AgentController : MonoBehaviour
         {
             _thisPawn = this.gameObject.GetComponentInChildren<Pawn>();
         }
+    }
+
+    // Start is called before the first frame update
+    protected virtual void Start()
+    {
+
+    }
+
+    protected virtual void OnEnable()
+    {
+
+    }
+
+    protected virtual void OnDisable()
+    {
+
     }
 
     /// <summary>

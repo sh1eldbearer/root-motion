@@ -5,22 +5,24 @@ using Utility.Enums;
 
 public class PlayerController : AgentController
 {
-    // Update is called before start
+    // Start is called before the first frame update
     protected override void Awake()
     {
-        // Register coroutines with the pause manager
-        PauseManager.pauseMgr.AddListeners(StartMoveCoroutine, StopMoveCoroutine);
-        PauseManager.pauseMgr.AddListeners(StartRotationCoroutine, StopRotationCoroutine);
+        base.Awake();
     }
 
-    // Start is called before the first frame update
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        // Register coroutines with the pause manager
+        PauseManager.pauseMgr.AddOnUnpauseListeners(StartMoveCoroutine, StartRotationCoroutine);
+        PauseManager.pauseMgr.AddOnPauseListeners(StopMoveCoroutine, StopRotationCoroutine);
+    }
 
-        // Starts the appropriate coroutines
-        StartMoveCoroutine();
-        StartRotationCoroutine();
+    protected override void OnDisable()
+    {
+        // Unregister coroutines with the pause manager
+        PauseManager.pauseMgr.RemoveOnUnpauseListeners(StartMoveCoroutine, StartRotationCoroutine);
+        PauseManager.pauseMgr.RemoveOnPauseListeners(StopMoveCoroutine, StopRotationCoroutine);
     }
 
     private void StartMoveCoroutine()
