@@ -31,11 +31,13 @@ public class InitializeGame : MonoBehaviour
             _testPlayerObject.transform.SetPositionAndRotation(GameManager.gm.CurrentRoomData.P1SpawnPoint.transform.position,
                 GameManager.gm.CurrentRoomData.P1SpawnPoint.transform.rotation);
 
-            // Sets the player indicator of the test p
-
             // Assigns the test player's PawnData to the game manager and camera
             GameManager.gm.PlayerInfo[0].SetPawnData(_testPlayerObject.GetComponent<PawnData>());
             GameManager.gm.GameCameraController.SetFollowTarget(_testPlayerObject);
+
+            // Sets the player indicator of the test player to a random color
+            GameManager.gm.PlayerInfo[0].PawnData.PlayerIndicatorImage.color =
+                SkinManager.skinMgr.GetRGBColor(Random.Range(0, 9));
         }
         else // Standard game mode (started from the menu scene)
         {
