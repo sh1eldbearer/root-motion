@@ -15,7 +15,7 @@ public class LockCanvasRotation : StateMachineBehaviour
         // Component reference assignments
         if (_pawnData == null)
         {
-            _pawnData = animator.gameObject.GetComponent<PawnData>();
+            _pawnData = animator.gameObject.GetComponentInParent<PawnData>();
         }
     }
 
