@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEditor.Events;
 
 public class PauseManager : MonoBehaviour
 {
@@ -35,7 +36,12 @@ public class PauseManager : MonoBehaviour
     /// <param name="call">The name of the function to call when OnPause is invoked.</param>
     public void AddOnPauseListener(UnityAction call)
     {
-        _onPause.AddListener(call);
+        // Adding a persistent listener allows me to visualize when events have been added
+        #if UNITY_EDITOR
+            UnityEventTools.AddPersistentListener(_onPause, call);
+        #else
+            _onPause.AddListener(call);
+        #endif
     }
 
     /// <summary>
@@ -56,7 +62,12 @@ public class PauseManager : MonoBehaviour
     /// <param name="call">The name of the function to remove from the OnPause invoke array.</param>
     public void RemoveOnPauseListener(UnityAction call)
     {
-        _onPause.RemoveListener(call);
+        // Removing a persistent listener allows me to visualize when events have been removed
+        #if UNITY_EDITOR
+            UnityEventTools.RemovePersistentListener(_onPause, call);
+        #else
+            _onUnpause.AddListener(call);
+        #endif
     }
 
     /// <summary>
@@ -77,7 +88,12 @@ public class PauseManager : MonoBehaviour
     /// <param name="call">The name of the function to call when OnUnpause is invoked.</param>
     public void AddOnUnpauseListener(UnityAction call)
     {
-        _onUnpause.AddListener(call);
+        // Adding a persistent listener allows me to visualize when events have been added
+        #if UNITY_EDITOR
+            UnityEventTools.AddPersistentListener(_onUnpause, call);
+        #else
+            _onUnpause.AddListener(call);
+        #endif
     }
 
     /// <summary>
@@ -98,7 +114,12 @@ public class PauseManager : MonoBehaviour
     /// <param name="call">The name of the function to remove from the OnUnpause invoke array.</param>
     public void RemoveOnUnpauseListener(UnityAction call)
     {
-        _onUnpause.RemoveListener(call);
+        // Removing a persistent listener allows me to visualize when events have been removed
+        #if UNITY_EDITOR
+            UnityEventTools.AddPersistentListener(_onUnpause, call);
+        #else
+            _onUnpause.RemoveListener(call);
+        #endif
     }
 
     /// <summary>
