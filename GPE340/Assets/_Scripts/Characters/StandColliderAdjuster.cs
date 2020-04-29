@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class StandColliderAdjuster : StateMachineBehaviour
 {
+    #region Private Properties
     [Tooltip("This agent's data component."),
         SerializeField] private PawnData _pawnData;
+    #endregion
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

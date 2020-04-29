@@ -2,60 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockCanvasRotation : MonoBehaviour
+public class LockCanvasRotation : StateMachineBehaviour
 {
     #region Private Properties
-#pragma warning disable CS0649
-    [Tooltip("The target euler angles this canvas will attempt to lock itself to."),
-        SerializeField] private Vector3 _targetRotation;
-#pragma warning restore CS0649
+    [Tooltip("This agent's data component."),
+        SerializeField] private PawnData _pawnData;
     #endregion
-	
-	// Awake is called before Start
-	private void Awake()
-    {
-        _targetRotation = this.transform.rotation.eulerAngles;
-    }
 
-    // Start is called before the first frame update
-    private void Start()
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-    }
-
-    private void OnEnable()
-    {
-        // Register coroutines with the pause manager
-        PauseManager.pauseMgr.AddOnUnpauseListener(StartLockRotationCoroutine);
-        PauseManager.pauseMgr.AddOnPauseListener(StopLockRotationCoroutine);
-    }
-
-    private void OnDisable()
-    {
-        // Unregister coroutines with the pause manager
-        PauseManager.pauseMgr.RemoveOnUnpauseListener(StartLockRotationCoroutine);
-        PauseManager.pauseMgr.RemoveOnPauseListener(StopLockRotationCoroutine);
-    }
-
-    public void StartLockRotationCoroutine()
-    {
-        StartCoroutine(LockRotation());
-    }
-
-    public void StopLockRotationCoroutine()
-    {
-        StopCoroutine(LockRotation());
-    }
-
-    // Update is called once per frame
-    private IEnumerator LockRotation()
-    {
-        while (true)
+        // Component reference assignments
+        if (_pawnData == null)
         {
-            this.transform.rotation = Quaternion.Euler(_targetRotation);
-            yield return null;
+            _pawnData = animator.gameObject.GetComponent<PawnData>();
         }
     }
 
+    // OnStateMove is called right after Animator.OnAnimatorMove()
+    public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        // Implement code that processes and affects root motion
 
+        // Locks this canvas's rotation to the designated rotation
+        _pawnData.PawnCanvasTransform.rotation = _pawnData.PawnCanvasRotation;
+    }
 }

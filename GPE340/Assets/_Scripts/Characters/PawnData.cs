@@ -30,9 +30,11 @@ public class PawnData : MonoBehaviour
     [Tooltip("The speed at which the pawn's collider height and center position should adjust."),
         SerializeField] private float _colliderAdjustSpeed = 20f;
 
-    [Header("UI Elements")]
-    [Tooltip("The transform component of the health canvas object associated with this pawn."),
-        SerializeField] private Transform _healthCanvasTransform;
+    [Header("UI Elements & Settings")]
+    [Tooltip("The transform component of the canvas object that is childed to this pawn."),
+        SerializeField] private Transform _pawnCanvasTransform;
+    [Tooltip("The target rotation for this pawn's canvas."), 
+        SerializeField] private Vector3 _pawnCanvasRotation;
     [Tooltip("The health slider for this pawn." +
              "(Public accessor will return the Slider component."),
         SerializeField] private GameObject _healthSlider;
@@ -157,11 +159,19 @@ public class PawnData : MonoBehaviour
     }
 
     /// <summary>
-    /// The transform component of the health canvas object associated with this pawn.
+    /// The transform component of the canvas object that is childed to this pawn.
     /// </summary>
-    public Transform HealthCanvasTransform
+    public Transform PawnCanvasTransform
     {
-        get { return _healthCanvasTransform; }
+        get { return _pawnCanvasTransform; }
+    }
+
+    /// <summary>
+    /// The target rotation for this pawn's canvas.
+    /// </summary>
+    public Quaternion PawnCanvasRotation
+    {
+        get { return Quaternion.Euler(_pawnCanvasRotation); }
     }
 
     /// <summary>
@@ -256,6 +266,7 @@ public class PawnData : MonoBehaviour
     {
         get { return _eyeSpecRenderers; }
     }
+
     #endregion
 
     // Awake is called before Start
@@ -285,6 +296,12 @@ public class PawnData : MonoBehaviour
         if (_pawnCollider == null)
         {
             _pawnCollider = this.gameObject.GetComponentInChildren<CapsuleCollider>();
+        }
+
+        // Gets the initial rotation of the pawn's canvas, if one was not provided
+        if (_pawnCanvasRotation == Vector3.zero)
+        {
+            _pawnCanvasRotation = _pawnCanvasTransform.eulerAngles;
         }
 
         // Stores references to the SkinnedMeshRenderers of each part of the character so we can modify their materials

@@ -2085,8 +2085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c93105eec38f044b88963ef7ff69b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 100
-  _maxHealth: 100
   _moveSpeed: 7
   _turnSpeed: 720
   _standColliderHeight: 1.8
@@ -2099,6 +2097,7 @@ MonoBehaviour:
   _playerIndicatorImage: {fileID: 348452193}
   _controller: {fileID: 2478015284733781260}
   _inventoryMgr: {fileID: -5050434134849316571}
+  _healthMgr: {fileID: 0}
   _pawnTransform: {fileID: 2991597396998628883}
   _pawnAnimator: {fileID: 5574581402221683709}
   _pawnCollider: {fileID: 5043264499658602175}
@@ -6725,7 +6724,7 @@ GameObject:
   - component: {fileID: 3839587360828384877}
   - component: {fileID: 4881449187935147886}
   - component: {fileID: 1253871350297778966}
-  - component: {fileID: 11103082}
+  - component: {fileID: 11103081}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6814,19 +6813,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &11103082
-MonoBehaviour:
+--- !u!95 &11103081
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7909498979423817382}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030913af1db62ea4f88149b83039dbc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetRotation: {x: 90, y: 0, z: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 109dcf5e9f72e8342aa7d233eab446cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7951619443694211579
 GameObject:
   m_ObjectHideFlags: 0
