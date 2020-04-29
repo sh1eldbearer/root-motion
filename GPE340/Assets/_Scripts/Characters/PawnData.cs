@@ -9,6 +9,12 @@ public class PawnData : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
+    [Header("Health Settings")]
+    [Tooltip(""),
+        SerializeField] private float _currentHealth = 100;
+    [Tooltip(""),
+        SerializeField] private float _maxHealth = 100;
+
     [Header("Movement Settings")]
     [Tooltip("The movement speed of this pawn."),
         SerializeField] private float _moveSpeed = 7f;
