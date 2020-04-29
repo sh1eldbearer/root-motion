@@ -39,12 +39,36 @@ public class PauseManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Adds multiple listeners to the OnPause event.
+    /// </summary>
+    /// <param name="calls">The names of the functions to add from the OnPause invoke array.</param>
+    public void AddOnPauseListeners(params UnityAction[] calls)
+    {
+        foreach (UnityAction call in calls)
+        {
+            AddOnPauseListener(call);
+        }
+    }
+
+    /// <summary>
     /// Removes a listener from the OnPause event.
     /// </summary>
     /// <param name="call">The name of the function to remove from the OnPause invoke array.</param>
     public void RemoveOnPauseListener(UnityAction call)
     {
         _onPause.RemoveListener(call);
+    }
+
+    /// <summary>
+    /// Removes multiple listeners from the OnPause event.
+    /// </summary>
+    /// <param name="calls">The names of the functions to remove from the OnPause invoke array.</param>
+    public void RemoveOnPauseListeners(params UnityAction[] calls)
+    {
+        foreach (UnityAction call in calls)
+        {
+            RemoveOnPauseListener(call);
+        }
     }
 
     /// <summary>
@@ -57,6 +81,18 @@ public class PauseManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Adds multiple listeners to the OnUnpause event.
+    /// </summary>
+    /// <param name="calls">The names of the functions to call when OnUnpause is invoked.</param>
+    public void AddOnUnpauseListeners(params UnityAction[] calls)
+    {
+        foreach (UnityAction call in calls)
+        {
+            AddOnUnpauseListener(call);
+        }
+    }
+
+    /// <summary>
     /// Removes a listener from the OnUnpause event.
     /// </summary>
     /// <param name="call">The name of the function to remove from the OnUnpause invoke array.</param>
@@ -65,28 +101,17 @@ public class PauseManager : MonoBehaviour
         _onUnpause.RemoveListener(call);
     }
 
-    /// <summary> 
-    /// Adds a pair of listeners to the OnPause and OnUnpause events.
-    /// </summary>
-    /// <param name="pauseCall">The name of the function to call when OnPause is invoked.</param>
-    /// <param name="unpauseCall">The name of the function to call when OnUnpause is invoked.</param>
-    public void AddListeners(UnityAction pauseCall, UnityAction unpauseCall)
-    {
-        AddOnPauseListener(pauseCall);
-        AddOnUnpauseListener(unpauseCall);
-    }
-
     /// <summary>
-    /// Removes a pair of listeners from the OnPause and OnUnpause events.
+    /// Removes multiple listeners from the OnUnpause event.
     /// </summary>
-    /// <param name="pauseCall">The name of the function to remove from the OnPause invoke array.</param>
-    /// <param name="unpauseCall">The name of the function to remove from the OnUnpause invoke array.</param>
-    public void RemoveListeners(UnityAction pauseCall, UnityAction unpauseCall)
+    /// <param name="calls">The names of the functions to remove from the OnUnpause invoke array.</param>
+    public void RemoveOnUnpauseListeners(params UnityAction[] calls)
     {
-        RemoveOnPauseListener(pauseCall);
-        RemoveOnUnpauseListener(unpauseCall);
+        foreach (UnityAction call in calls)
+        {
+            RemoveOnUnpauseListener(call);
+        }
     }
-
 
     /// <summary>
     /// Pauses the game.
