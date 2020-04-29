@@ -33,7 +33,7 @@ public class LockCanvasRotation : MonoBehaviour
         while (true)
         {
             this.transform.rotation = Quaternion.Euler(_targetRotation);
-            yield return null;
+            yield return null;  
         }
     }
 }
