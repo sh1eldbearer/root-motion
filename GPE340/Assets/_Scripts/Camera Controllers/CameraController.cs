@@ -67,6 +67,7 @@ public class CameraController : MonoBehaviour
     // Awake is called before Start
     public void Awake()
     {
+
         // Component reference assignments
         if (_thisCamera == null)
         {
