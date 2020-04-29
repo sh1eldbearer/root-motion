@@ -8,7 +8,13 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable
 {
     #region Private Properties
 #pragma warning disable CS0649
-    [SerializeField] private UnityEvent _healthChanged;
+    [Header("Health Settings")]
+    [Tooltip("The current health value of this pawn."),
+        SerializeField] private float _currentHealth = 100;
+    [Tooltip("The maximum health value of this pawn."),
+        SerializeField] private float _maxHealth = 100;
+
+    [Space, SerializeField] private UnityEvent _healthChanged;
 
     [Header("Game Components")]
     [Tooltip("The PawnData component for this Pawn."), 
@@ -17,11 +23,25 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable
     #endregion
 
     #region Public Properties
+    /// <summary>
+    /// The current health value of this pawn.
+    /// </summary>
+    public float CurrentHealth
+    {
+        get { return _currentHealth; }
+    }
 
+    /// <summary>
+    /// The maximum health value of this pawn.
+    /// </summary>
+    public float MaxHealth
+    {
+        get { return _maxHealth; }
+    }
     #endregion
-	
-	// Awake is called before Start
-	private void Awake()
+
+    // Awake is called before Start
+    private void Awake()
     {
         // Component reference assignments
         if (_pawnData == null)
@@ -97,7 +117,7 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable
     /// <summary>
     /// Takes a specified amount of damage, and alerts all listeners that the health of this pawn has changed.
     /// </summary>
-    /// <typeparam name="T">The data type of the damage value (should match PawnData's CurrentHealth and MaxHealth.)</typeparam>
+    /// <typeparam name="T">The data type of the damage value (should match type of CurrentHealth and MaxHealth.)</typeparam>
     /// <param name="incomingDmg">The amount of damage this pawn will take.</param>
     public void TakeDamage<T> (T dmgAmount)
     {
@@ -110,7 +130,7 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable
     /// <summary>
     /// Receives a specified amount of healing, and alerts all listeners that the health of this pawn has changed.
     /// </summary>
-    /// <typeparam name="T">The data type of the damage value (should match PawnData's CurrentHealth and MaxHealth.)</typeparam>
+    /// <typeparam name="T">The data type of the damage value (should match type of CurrentHealth and MaxHealth.)</typeparam>
     /// <param name="healAmount">The amount of damage this pawn will take.</param>
     public void ReceiveHealing<T>(T healAmount)
     {

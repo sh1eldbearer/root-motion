@@ -12,12 +12,6 @@ public class PawnData : MonoBehaviour
 
     #pragma warning disable CS0649
 
-    [Header("Health Settings")]
-    [Tooltip("The current health value of this pawn."),
-        SerializeField] private float _currentHealth = 100;
-    [Tooltip("The maximum health value of this pawn."),
-        SerializeField] private float _maxHealth = 100;
-
     [Header("Movement Settings")]
     [Tooltip("The movement speed of this pawn."),
         SerializeField] private float _moveSpeed = 7f;
@@ -52,6 +46,8 @@ public class PawnData : MonoBehaviour
         SerializeField] private AgentController _controller;
     [Tooltip("This pawn's InventoryManager."),
         SerializeField] private InventoryManager _inventoryMgr;
+    [Tooltip("This pawn's HealthManager."),
+        SerializeField] private HealthManager _healthMgr;
     [Tooltip("This pawn's Transform component."),
         SerializeField] private Transform _pawnTransform;
     [Tooltip("This pawn's Animator component."),
@@ -73,18 +69,18 @@ public class PawnData : MonoBehaviour
              "model's skin color when the game starts. Auto-populated at run-time."),
         SerializeField] private List<SkinnedMeshRenderer> _eyeSpecRenderers = new List<SkinnedMeshRenderer>();
 
-    #pragma warning restore CS0649
+#pragma warning restore CS0649
 
     #endregion
 
     #region Public Properties
-    
+
     /// <summary>
     /// The current health value of this pawn.
     /// </summary>
     public float CurrentHealth
     {
-        get { return _currentHealth; }
+        get { return _healthMgr.CurrentHealth; }
     }
 
     /// <summary>
@@ -92,7 +88,7 @@ public class PawnData : MonoBehaviour
     /// </summary>
     public float MaxHealth
     {
-        get { return _maxHealth; }
+        get { return _healthMgr.MaxHealth; }
     }
 
     /// <summary>
@@ -194,6 +190,14 @@ public class PawnData : MonoBehaviour
     }
 
     /// <summary>
+    /// This Pawn's HealthManager.
+    /// </summary>
+    public HealthManager HealthMgr
+    {
+        get { return _healthMgr; }
+    }
+
+    /// <summary>
     /// This agent's Transform component.
     /// </summary>
     public Transform PawnTransform
@@ -265,6 +269,10 @@ public class PawnData : MonoBehaviour
         if (_inventoryMgr == null)
         {
             _inventoryMgr = this.gameObject.GetComponent<InventoryManager>();
+        }
+        if (_healthMgr == null)
+        {
+            _healthMgr = this.gameObject.GetComponent<HealthManager>();
         }
         if (_pawnTransform == null)
         {
