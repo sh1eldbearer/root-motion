@@ -47,7 +47,7 @@ public class PauseManager : MonoBehaviour
     /// <summary>
     /// Adds multiple listeners to the OnPause event.
     /// </summary>
-    /// <param name="calls">The names of the functions to add from the OnPause invoke array.</param>
+    /// <param name="calls">The names of the functions to call when OnPause is invoked.</param>
     public void AddOnPauseListeners(params UnityAction[] calls)
     {
         foreach (UnityAction call in calls)
