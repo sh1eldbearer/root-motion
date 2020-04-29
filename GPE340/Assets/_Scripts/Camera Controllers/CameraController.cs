@@ -97,14 +97,20 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-
+        StartCameraZoomCoroutine();
     }
 
+    /// <summary>
+    /// Starts the camera zoom coroutine.
+    /// </summary>
     private void StartCameraZoomCoroutine()
     {
         StartCoroutine(AdjustCameraZoom());
     }
 
+    /// <summary>
+    /// Stops the camera zoom coroutine.
+    /// </summary>
     private void StopCameraZoomCoroutine()
     {
         StopCoroutine(AdjustCameraZoom());
