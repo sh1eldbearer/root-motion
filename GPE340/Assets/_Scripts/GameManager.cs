@@ -33,8 +33,14 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("The amount of health an enemy pawn starts with."),
         Space(5f), SerializeField] private float _initialEnemyHealth = 50f;
-    
-    
+
+    [Tooltip("The speed at which pickups will spin."),
+      Space, SerializeField] private float _pickupSpinSpeed = 2.5f;
+    [Tooltip("The height a pickup will bounce up and down from its initial position."),
+     SerializeField] private float _pickupBounceHeight = 1f;
+    [Tooltip("The speed at which a pickup will bounce up and down."),
+     SerializeField] private float _pickupBounceSpeed = 0.25f;
+
 
     [Header("UI Settings")]
     [Tooltip("The length of time, in seconds, the loading screen will take to fade in and out."),
@@ -107,6 +113,30 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// The speed at which pickups will spin.
+    /// </summary>
+    public float PickupSpinSpeed
+    {
+        get { return _pickupSpinSpeed; }
+    }
+
+    /// <summary>
+    /// The height a pickup will bounce up and down from its initial position.
+    /// </summary>
+    public float PickupBounceHeight
+    {
+        get { return _pickupBounceHeight; }
+    }
+
+    /// <summary>
+    /// The speed at which a pickup will bounce up and down.
+    /// </summary>
+    public float PickupBounceSpeed
+    {
+        get { return _pickupBounceSpeed; }
+    }
+
+    /// <summary>
     /// The length of time, in seconds, the loading screen will take to fade in and out.
     /// </summary>
     public float LoadScreenFadeTime
@@ -137,7 +167,6 @@ public class GameManager : MonoBehaviour
     {
         get { return _zeroHealthColor; }
     }
-
     #endregion
 
     // Awake is called before Start

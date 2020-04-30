@@ -155,6 +155,12 @@ Transform:
   m_Father: {fileID: 159323627}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &47726132 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2259129343007277303, guid: 531055cfc90b05a46965e15d9c9642e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 500949801958469916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &58011392
 Mesh:
   m_ObjectHideFlags: 0
@@ -323,12 +329,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Uncommon Pickup (3)
+      value: Test Uncommon Sniper Pickup (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -348,17 +354,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -368,7 +374,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -409,18 +415,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f23310d50b272341bf1cc987d8af147, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!43 &134280838
@@ -1343,6 +1394,7 @@ Transform:
   - {fileID: 2085116671}
   - {fileID: 2049028764}
   - {fileID: 1619824120}
+  - {fileID: 1010038948}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2048,6 +2100,12 @@ Transform:
   m_Father: {fileID: 297501513}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 225, z: 0}
+--- !u!4 &205093568 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 690885004}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &247351565
 Mesh:
   m_ObjectHideFlags: 0
@@ -2997,12 +3055,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Base Pickup (2)
+      value: Test Base AutoRifle Pickup (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3022,17 +3080,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3042,7 +3100,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3068,17 +3126,57 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
@@ -3275,17 +3373,23 @@ Transform:
   m_Father: {fileID: 41897604}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &430048818 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1960207845}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &459389925
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Legendary Pickup (2)
+      value: Test Legendary AutoRifle Pickup (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3305,17 +3409,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3325,7 +3429,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3366,18 +3470,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c21bd16f0af20a4cbf8121b42b82d89, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!43 &475110923
@@ -3639,6 +3788,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 481736694}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &482100424 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1336186198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &526236217
 GameObject:
   m_ObjectHideFlags: 0
@@ -3674,12 +3829,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Legendary Pickup (1)
+      value: Test Legendary BurstRifle Pickup (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3699,17 +3854,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3719,7 +3874,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3760,18 +3915,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c21bd16f0af20a4cbf8121b42b82d89, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!1001 &555597497
@@ -3779,12 +3979,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Base Pickup (3)
+      value: Test Base Sniper Pickup (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3804,17 +4004,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3824,7 +4024,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -3850,17 +4050,57 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
@@ -5148,41 +5388,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633712239}
   m_Mesh: {fileID: 134280838}
---- !u!1 &638397736 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6364761501985798939, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
+--- !u!4 &639068303 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
     type: 3}
-  m_PrefabInstance: {fileID: 3169416566994596354}
+  m_PrefabInstance: {fileID: 402733331}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &638397737
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638397736}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &638397740
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638397736}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.09952231, y: 0.30368966, z: 0.9805007}
-  m_Center: {x: -0.00032322854, y: 0.049439803, z: -0.01884234}
 --- !u!1001 &643592969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5284,12 +5495,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Rare Pickup (2)
+      value: Test Rare AutoRifle Pickup (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -5309,17 +5520,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -5329,7 +5540,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -5370,18 +5581,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7275942294c32b4195cda172c1487ad, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!1 &669002561
@@ -6550,12 +6806,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Epic Pickup (2)
+      value: Test Epic AutoRifle Pickup (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -6575,17 +6831,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -6595,7 +6851,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -6636,18 +6892,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 40a23dd2b8d9f674ca1b9c4d9a7f112c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!43 &697433150
@@ -6839,15 +7140,15 @@ Light:
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
   serializedVersion: 9
-  m_Type: 1
+  m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -6883,10 +7184,10 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
+  m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.2e-44, y: 1.2812931e-21, z: 8.28e-43, w: 7.3e-44}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -7409,12 +7710,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Rare Pickup (1)
+      value: Test Rare BurstRifle Pickup (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -7434,17 +7735,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -7454,7 +7755,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -7495,18 +7796,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7275942294c32b4195cda172c1487ad, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!43 &746445327
@@ -8498,6 +8844,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &781771234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1849203853935296022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &800377325
 GameObject:
   m_ObjectHideFlags: 0
@@ -8620,6 +8972,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800377325}
   m_CullTransparentMesh: 0
+--- !u!4 &803218124 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 555597497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &804822062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804822063}
+  - component: {fileID: 804822066}
+  - component: {fileID: 804822065}
+  - component: {fileID: 804822064}
+  m_Layer: 0
+  m_Name: Test Health Pickup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &804822063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804822062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9, y: 1, z: -12}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 1010038948}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &804822064
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804822062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &804822065
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804822062}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c695483a82483c94dadd00f144891a74, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &804822066
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804822062}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &841669488
 GameObject:
   m_ObjectHideFlags: 0
@@ -10336,6 +10786,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977624745}
   m_CullTransparentMesh: 0
+--- !u!4 &977726133 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 72474493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &979702819
 GameObject:
   m_ObjectHideFlags: 0
@@ -10678,6 +11134,69 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989213922}
   m_Mesh: {fileID: 410232392}
+--- !u!4 &994732517 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 527742918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &995334722 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 730388360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1010038947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1010038948}
+  m_Layer: 0
+  m_Name: '[TEST] Pickups'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1010038948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010038947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 781771234}
+  - {fileID: 47726132}
+  - {fileID: 1874487038}
+  - {fileID: 1499171231}
+  - {fileID: 1355415068}
+  - {fileID: 1510594638}
+  - {fileID: 1452281701}
+  - {fileID: 995334722}
+  - {fileID: 1675499473}
+  - {fileID: 994732517}
+  - {fileID: 639068303}
+  - {fileID: 482100424}
+  - {fileID: 1971961281}
+  - {fileID: 205093568}
+  - {fileID: 1399958120}
+  - {fileID: 803218124}
+  - {fileID: 977726133}
+  - {fileID: 430048818}
+  - {fileID: 1614873475}
+  - {fileID: 1365987958}
+  - {fileID: 804822063}
+  m_Father: {fileID: 159323627}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1015235515
 GameObject:
   m_ObjectHideFlags: 0
@@ -11024,12 +11543,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Base Pickup (1)
+      value: Test Base BurstRifle Pickup (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -11049,17 +11568,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -11069,7 +11588,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -11095,17 +11614,57 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
@@ -12071,41 +12630,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1238243520 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8645846079793766395, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 3169416566994596354}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1238243524
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238243520}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &1238243525
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238243520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.037398305, y: 0.17397998, z: 0.23295537}
-  m_Center: {x: -0.0024838394, y: 0.03968839, z: 0.021003107}
 --- !u!43 &1254836828
 Mesh:
   m_ObjectHideFlags: 0
@@ -13008,12 +13532,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Uncommon Pickup (2)
+      value: Test Uncommon AutoRifle Pickup (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -13033,17 +13557,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -13053,7 +13577,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -13094,18 +13618,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f23310d50b272341bf1cc987d8af147, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!1 &1349505085
@@ -13417,6 +13986,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349505085}
   m_Mesh: {fileID: 247351565}
+--- !u!4 &1355415068 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6566616037650803655, guid: bd8123039ab5066438f6449bd118b952,
+    type: 3}
+  m_PrefabInstance: {fileID: 4794362613973370574}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1365987958 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1455918233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1377161476
 GameObject:
   m_ObjectHideFlags: 0
@@ -14260,6 +14841,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &1399958120 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 459389925}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1400202409
 GameObject:
   m_ObjectHideFlags: 0
@@ -15260,17 +15847,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428096442}
   m_Mesh: {fileID: 1905395483}
+--- !u!4 &1452281701 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2034207322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1455918233
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Legendary Pickup (3)
+      value: Test Legendary Sniper Pickup (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -15290,17 +15883,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -15310,7 +15903,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -15351,18 +15944,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c21bd16f0af20a4cbf8121b42b82d89, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!1 &1483273242
@@ -15402,6 +16040,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &1499171231 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3984235453854188545, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
+    type: 3}
+  m_PrefabInstance: {fileID: 3378658575977454091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1510594638 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1091314726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1513575012
 Mesh:
   m_ObjectHideFlags: 0
@@ -15976,41 +16626,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1593348699 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5917793491281084469, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 3169416566994596354}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1593348700
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593348699}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &1593348703
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593348699}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.05436395, y: 0.25459242, z: 0.6085089}
-  m_Center: {x: 0.002460342, y: 0.019418715, z: -0.00028499955}
 --- !u!1 &1596773675
 GameObject:
   m_ObjectHideFlags: 0
@@ -16049,12 +16664,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Epic Pickup (3)
+      value: Test Epic Sniper Pickup (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -16074,17 +16689,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -16094,7 +16709,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -16135,20 +16750,71 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 40a23dd2b8d9f674ca1b9c4d9a7f112c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
+--- !u!4 &1614873475 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1614090879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1619824116
 GameObject:
   m_ObjectHideFlags: 0
@@ -16389,7 +17055,7 @@ PrefabInstance:
     - target: {fileID: 2991597396998628886, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2991597396998628883, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
         type: 3}
@@ -16456,11 +17122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1372768973, guid: 80aa1e5129cdcd04895bc82d7675a0c6, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1372768973, guid: 80aa1e5129cdcd04895bc82d7675a0c6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80aa1e5129cdcd04895bc82d7675a0c6, type: 3}
@@ -16469,6 +17135,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2991597396998628886, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
     type: 3}
   m_PrefabInstance: {fileID: 1667149985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1675499473 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1761652555}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &1699876786
 Mesh:
@@ -16633,41 +17305,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1704272088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5750422104959595985, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 3169416566994596354}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1704272089
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1704272088}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &1704272092
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1704272088}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.12260264, y: 0.3226478, z: 1.0080705}
-  m_Center: {x: -0.004214227, y: 0.036606714, z: -0.078011274}
 --- !u!1001 &1707279186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17334,12 +17971,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Epic Pickup (1)
+      value: Test Epic BurstRifle Pickup (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -17359,17 +17996,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -17379,7 +18016,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -17420,18 +18057,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 40a23dd2b8d9f674ca1b9c4d9a7f112c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!43 &1773324923
@@ -18507,6 +19189,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &1874487038 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8771726136449504933, guid: 27b400a99884daf40aa3fdc07f7f9735,
+    type: 3}
+  m_PrefabInstance: {fileID: 6922841222852915560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1881517681
 Mesh:
   m_ObjectHideFlags: 0
@@ -19849,12 +20537,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Rare Pickup (3)
+      value: Test Rare Sniper Pickup (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -19874,17 +20562,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -19894,7 +20582,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -19935,18 +20623,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7275942294c32b4195cda172c1487ad, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!43 &1969031677
@@ -20112,17 +20845,23 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &1971961281 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 662390510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2034207322
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Uncommon Pickup (1)
+      value: Test Uncommon BurstRifle Pickup (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -20142,17 +20881,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -20162,7 +20901,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -20203,18 +20942,63 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743244, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f23310d50b272341bf1cc987d8af147, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
 --- !u!1 &2040305465
@@ -22562,27 +23346,67 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 2259129343007277310, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
       propertyPath: m_Name
-      value: Test Uncommon Pickup
+      value: Test Uncommon Pistol Pickup
       objectReference: {fileID: 0}
     - target: {fileID: 2259129343007277309, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
     - target: {fileID: 2259129343007277308, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2259129343007277308, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259129343007277308, guid: 531055cfc90b05a46965e15d9c9642e0,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259129343007277308, guid: 531055cfc90b05a46965e15d9c9642e0,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259129343007277308, guid: 531055cfc90b05a46965e15d9c9642e0,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259129343007277308, guid: 531055cfc90b05a46965e15d9c9642e0,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259129343007277308, guid: 531055cfc90b05a46965e15d9c9642e0,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259129343007277308, guid: 531055cfc90b05a46965e15d9c9642e0,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259129343007277308, guid: 531055cfc90b05a46965e15d9c9642e0,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2259129343007277308, guid: 531055cfc90b05a46965e15d9c9642e0,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2259129343007277303, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
@@ -22602,17 +23426,17 @@ PrefabInstance:
     - target: {fileID: 2259129343007277303, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2259129343007277303, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2259129343007277303, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2259129343007277303, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
@@ -22622,7 +23446,7 @@ PrefabInstance:
     - target: {fileID: 2259129343007277303, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2259129343007277303, guid: 531055cfc90b05a46965e15d9c9642e0,
         type: 3}
@@ -22646,12 +23470,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 1849203855426743235, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_Name
-      value: Test Base Pickup
+      value: Test Base Pistol Pickup
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -22671,17 +23495,17 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -22691,7 +23515,7 @@ PrefabInstance:
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743242, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
@@ -22711,17 +23535,57 @@ PrefabInstance:
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849203855426743233, guid: 53fd762da926b5e488104b59898f4e0b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1849203855426743232, guid: 53fd762da926b5e488104b59898f4e0b,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fd762da926b5e488104b59898f4e0b, type: 3}
@@ -22737,21 +23601,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5917793491281084469, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
+    - target: {fileID: 3316539731185222317, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8645846079793766395, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5750422104959595985, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: _weaponInventory.Array.data[0]._weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: f717402d582c8054e922e0fe94af0c2f,
+        type: 2}
     - target: {fileID: 2991597396998628883, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22815,11 +23670,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6364761501985798939, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80aa1e5129cdcd04895bc82d7675a0c6, type: 3}
 --- !u!1001 &3378658575977454091
@@ -22827,7 +23677,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 3984235453854188552, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
@@ -22837,17 +23687,57 @@ PrefabInstance:
     - target: {fileID: 3984235453854188555, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
     - target: {fileID: 3984235453854188554, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3984235453854188554, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984235453854188554, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984235453854188554, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984235453854188554, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984235453854188554, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984235453854188554, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984235453854188554, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984235453854188554, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984235453854188554, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3984235453854188545, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
@@ -22867,17 +23757,17 @@ PrefabInstance:
     - target: {fileID: 3984235453854188545, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3984235453854188545, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3984235453854188545, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3984235453854188545, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
@@ -22887,7 +23777,7 @@ PrefabInstance:
     - target: {fileID: 3984235453854188545, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3984235453854188545, guid: 5a8db3b673a22c74d9bdcc3d5c253c45,
         type: 3}
@@ -22911,27 +23801,67 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 6566616037650803662, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
       propertyPath: m_Name
-      value: Test Legendary Pickup
+      value: Test Legendary Pistol Pickup
       objectReference: {fileID: 0}
     - target: {fileID: 6566616037650803661, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
     - target: {fileID: 6566616037650803660, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6566616037650803660, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566616037650803660, guid: bd8123039ab5066438f6449bd118b952,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566616037650803660, guid: bd8123039ab5066438f6449bd118b952,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566616037650803660, guid: bd8123039ab5066438f6449bd118b952,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566616037650803660, guid: bd8123039ab5066438f6449bd118b952,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566616037650803660, guid: bd8123039ab5066438f6449bd118b952,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566616037650803660, guid: bd8123039ab5066438f6449bd118b952,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566616037650803660, guid: bd8123039ab5066438f6449bd118b952,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566616037650803660, guid: bd8123039ab5066438f6449bd118b952,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6566616037650803655, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
@@ -22951,17 +23881,17 @@ PrefabInstance:
     - target: {fileID: 6566616037650803655, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6566616037650803655, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6566616037650803655, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6566616037650803655, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
@@ -22971,7 +23901,7 @@ PrefabInstance:
     - target: {fileID: 6566616037650803655, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6566616037650803655, guid: bd8123039ab5066438f6449bd118b952,
         type: 3}
@@ -23237,6 +24167,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
       propertyPath: _healthSliderUpdateTime
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _playerRespawnTimer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _pickupSpinSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _pickupBounceSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _pickupBounceHeight
       value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3256744351341716515, guid: 6fec9a87164869f47a793466bba5991d,
@@ -23301,27 +24247,67 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1010038948}
     m_Modifications:
     - target: {fileID: 8771726136449504940, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}
       propertyPath: m_Name
-      value: Test Rare Pickup
+      value: Test Rare Pistol Pickup
       objectReference: {fileID: 0}
     - target: {fileID: 8771726136449504943, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}
       propertyPath: m_MaxParticleSize
-      value: 0.025
+      value: 0.0075
       objectReference: {fileID: 0}
     - target: {fileID: 8771726136449504942, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8771726136449504942, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771726136449504942, guid: 27b400a99884daf40aa3fdc07f7f9735,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771726136449504942, guid: 27b400a99884daf40aa3fdc07f7f9735,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771726136449504942, guid: 27b400a99884daf40aa3fdc07f7f9735,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771726136449504942, guid: 27b400a99884daf40aa3fdc07f7f9735,
+        type: 3}
+      propertyPath: ClampVelocityModule.multiplyDragByParticleVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771726136449504942, guid: 27b400a99884daf40aa3fdc07f7f9735,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771726136449504942, guid: 27b400a99884daf40aa3fdc07f7f9735,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771726136449504942, guid: 27b400a99884daf40aa3fdc07f7f9735,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.minScalar
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771726136449504942, guid: 27b400a99884daf40aa3fdc07f7f9735,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8771726136449504933, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}
@@ -23341,17 +24327,17 @@ PrefabInstance:
     - target: {fileID: 8771726136449504933, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8771726136449504933, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8771726136449504933, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8771726136449504933, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}
@@ -23361,7 +24347,7 @@ PrefabInstance:
     - target: {fileID: 8771726136449504933, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8771726136449504933, guid: 27b400a99884daf40aa3fdc07f7f9735,
         type: 3}

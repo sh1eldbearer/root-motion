@@ -10,28 +10,34 @@ public abstract class Pickup : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
-    private Collider _pickupCollider;
-    private Rigidbody _pickupRb;
+    [Header("Game Components")]
+    [Tooltip("The Collider component for this pickup object."),
+    SerializeField] private Collider _pickupCollider;
+    [Tooltip("The Rigidbody component for this pickup object."),
+     SerializeField] private Rigidbody _pickupRb;
+    [Tooltip("The Transform component for this pickup object."),
+     SerializeField] private Transform _pickupTransform;
+
+
+    private Vector3 _initialPosition; // The initial Transform.position of this pickup
 #pragma warning restore CS0649
     #endregion
 
     #region Public Properties
     /// <summary>
-    /// The Collider component for this weapon pickup
+    /// The Collider component for this pickup object.
     /// </summary>
     public Collider PickupCollider
     {
         get { return _pickupCollider; }
-        protected set { _pickupCollider = value; }
     }
 
     /// <summary>
-    /// The Rigidbody component for this weapon pickup
+    /// The Rigidbody component for this pickup object.
     /// </summary>
     public Rigidbody PickupRb
     {
         get { return _pickupRb; }
-        protected set { _pickupRb = value; }
     }
 
     #endregion
@@ -48,6 +54,13 @@ public abstract class Pickup : MonoBehaviour
         {
             _pickupRb = this.gameObject.GetComponent<Rigidbody>();
         }
+        if (_pickupTransform == null)
+        {
+            _pickupTransform = this.gameObject.transform;
+        }
+
+        // Stores the initial position of the pickup
+        _initialPosition = _pickupTransform.position;
     }
 
     // Start is called before the first frame update
@@ -64,5 +77,77 @@ public abstract class Pickup : MonoBehaviour
     public virtual void Update()
     {
 
+    }
+
+    private void OnEnable()
+    {
+        // Register listeners with pause manager
+        PauseManager.pauseMgr.AddOnPauseListener(StopSpinCoroutine, StopBounceCoroutine);
+        PauseManager.pauseMgr.AddOnUnpauseListener(StartSpinCoroutine, StartBounceCoroutine);
+
+        StartAllCoroutines();
+    }
+
+    private void OnDisable()
+    {
+        // Unregister listeners with pause manager
+        PauseManager.pauseMgr.RemoveOnPauseListener(StopSpinCoroutine, StopBounceCoroutine);
+        PauseManager.pauseMgr.RemoveOnUnpauseListener(StartSpinCoroutine, StartBounceCoroutine);
+
+        StopAllCoroutines();
+    }
+
+    private void StartAllCoroutines()
+    {
+        StartSpinCoroutine();
+        StartBounceCoroutine();
+    }
+
+    private void StartSpinCoroutine()
+    {
+        StartCoroutine(Spin(Vector3.up));
+    }
+
+    private void StopSpinCoroutine()
+    {
+        StopCoroutine(Spin(Vector3.up));
+    }
+
+    private void StartBounceCoroutine()
+    {
+        StartCoroutine(Bounce());
+    }
+
+    private void StopBounceCoroutine()
+    {
+        StopCoroutine(Bounce());
+    }
+
+    /// <summary>
+    /// Rotates the pickup object around the specified axis.
+    /// </summary>
+    /// <returns>Coroutine.</returns>
+    private IEnumerator Spin(Vector3 axis)
+    {
+        while (true)
+        {
+            _pickupTransform.Rotate(axis, Time.deltaTime * GameManager.gm.PickupSpinSpeed);
+            yield return null;
+        }
+    }
+
+    /// <summary>
+    /// Bounces the pickup object up and down.
+    /// </summary>
+    /// <returns>Coroutine.</returns>
+    private IEnumerator Bounce()
+    {
+        while (true)
+        {
+            _pickupTransform.position = _initialPosition + new Vector3(0f,
+                                            Mathf.Sin(Time.time * GameManager.gm.PickupBounceSpeed) *
+                                            GameManager.gm.PickupBounceHeight, 0f);
+            yield return null;
+        }
     }
 }

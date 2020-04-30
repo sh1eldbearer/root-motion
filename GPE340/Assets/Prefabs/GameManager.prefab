@@ -66,9 +66,13 @@ MonoBehaviour:
     _pawnData: {fileID: 0}
     _skinColorIndex: -1
   _initialPlayerHealth: 100
+  _playerRespawnTimer: 8
   _initialEnemyHealth: 50
+  _pickupSpinSpeed: 50
+  _pickupBounceHeight: 0.01
+  _pickupBounceSpeed: 1
   _loadScreenFadeTime: 0.75
-  _healthSliderUpdateTime: 0.15
+  _healthSliderUpdateTime: 0.35
   _fullHealthColor: {r: 0, g: 0.5471698, b: 0.09515994, a: 0.6}
   _zeroHealthColor: {r: 0.54901963, g: 0, b: 0.010536381, a: 0.6}
 --- !u!114 &8774724078017790371
