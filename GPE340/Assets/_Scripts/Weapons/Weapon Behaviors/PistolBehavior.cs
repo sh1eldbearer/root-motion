@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using Utility.Enums;
-
-public class PistolBehavior : WeaponBehavior
+﻿public class PistolBehavior : WeaponBehavior
 { 
     /// <summary>
     /// Fires this weapon.

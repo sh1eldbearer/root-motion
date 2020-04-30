@@ -49,6 +49,9 @@ public abstract class AgentController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Start all coroutines used by this class.
+    /// </summary>
     public virtual void StartAllCoroutines()
     {
         StartMoveCoroutine();

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Utility.Enums;
+﻿using Utility.Enums;
 using UnityEngine;
 
 public class IKAdjuster : MonoBehaviour

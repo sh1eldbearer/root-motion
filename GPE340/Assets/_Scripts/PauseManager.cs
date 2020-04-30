@@ -31,7 +31,7 @@ public class PauseManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds multiple listeners to the OnPause event.
+    /// Adds one or more listeners to the OnPause event.
     /// </summary>
     /// <param name="calls">The names of the functions to call when OnPause is invoked.</param>
     public void AddOnPauseListener(params UnityAction[] calls)
@@ -48,7 +48,7 @@ public class PauseManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Removes multiple listeners from the OnPause event.
+    /// Removes one or more listeners from the OnPause event.
     /// </summary>
     /// <param name="calls">The names of the functions to remove from the OnPause invoke array.</param>
     public void RemoveOnPauseListener(params UnityAction[] calls)
@@ -65,7 +65,7 @@ public class PauseManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds multiple listeners to the OnUnpause event.
+    /// Adds one or more listeners to the OnUnpause event.
     /// </summary>
     /// <param name="calls">The names of the functions to call when OnUnpause is invoked.</param>
     public void AddOnUnpauseListener(params UnityAction[] calls)
@@ -82,7 +82,7 @@ public class PauseManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Removes multiple listeners from the OnUnpause event.
+    /// Removes one or more listeners from the OnUnpause event.
     /// </summary>
     /// <param name="calls">The names of the functions to remove from the OnUnpause invoke array.</param>
     public void RemoveOnUnpauseListener(params UnityAction[] calls)

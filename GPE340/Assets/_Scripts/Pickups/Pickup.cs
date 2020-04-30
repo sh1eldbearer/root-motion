@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -17,8 +15,7 @@ public abstract class Pickup : MonoBehaviour
      SerializeField] private Rigidbody _pickupRb;
     [Tooltip("The Transform component for this pickup object."),
      SerializeField] private Transform _pickupTransform;
-
-
+    
     private Vector3 _initialPosition; // The initial Transform.position of this pickup
 #pragma warning restore CS0649
     #endregion
@@ -97,27 +94,42 @@ public abstract class Pickup : MonoBehaviour
         StopAllCoroutines();
     }
 
+    /// <summary>
+    /// Start all coroutines used by this class.
+    /// </summary>
     private void StartAllCoroutines()
     {
         StartSpinCoroutine();
         StartBounceCoroutine();
     }
 
+    /// <summary>
+    /// Starts the Spin coroutine for this agent.
+    /// </summary>
     private void StartSpinCoroutine()
     {
         StartCoroutine(Spin(Vector3.up));
     }
 
+    /// <summary>
+    /// Stops the Spin coroutine for this agent.
+    /// </summary>
     private void StopSpinCoroutine()
     {
         StopCoroutine(Spin(Vector3.up));
     }
 
+    /// <summary>
+    /// Starts the Bounce coroutine for this agent.
+    /// </summary>
     private void StartBounceCoroutine()
     {
         StartCoroutine(Bounce());
     }
 
+    /// <summary>
+    /// Stops the Bounce coroutine for this agent.
+    /// </summary>
     private void StopBounceCoroutine()
     {
         StopCoroutine(Bounce());

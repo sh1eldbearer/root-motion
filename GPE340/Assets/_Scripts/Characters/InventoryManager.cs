@@ -23,6 +23,9 @@ public class InventoryManager : MonoBehaviour
         get { return _equippedWeaponIndex; }
     }
 
+    /// <summary>
+    /// The WeaponModelData component of the currently equipped weapon.
+    /// </summary>
     public WeaponModelData EquippedWeaponModelData
     {
         get { return GetEquippedWeapon().WeaponModelData; }
@@ -102,18 +105,6 @@ public class InventoryManager : MonoBehaviour
         get { return GetEquippedWeapon().WeaponData.BurstDuration; }
     }
     #endregion
-
-    // Awake is called before Start
-    private void Awake()
-	{
-		
-	}
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     private void Update()
