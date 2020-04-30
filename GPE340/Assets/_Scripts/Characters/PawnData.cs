@@ -35,13 +35,13 @@ public class PawnData : MonoBehaviour
         SerializeField] private Transform _pawnCanvasTransform;
     [Tooltip("The target rotation for this pawn's canvas."), 
         SerializeField] private Vector3 _pawnCanvasRotation;
-    [Tooltip("The health slider for this pawn." +
-             "(Public accessor will return the Slider component."),
-        SerializeField] private GameObject _healthSlider;
+    [Tooltip("The health slider for this pawn."),
+        SerializeField] private Slider _healthSlider;
+    [Tooltip("The fill image for the health slider for this pawn."),
+        SerializeField] private Image _healthFillImage;
     [Tooltip("The player indicator ring displayed at the pawn's feet. (If this pawn is not a player, " +
-             "this can be left empty/null." +
-             "(Public accessor will return the Image component."),
-        SerializeField] private GameObject _playerIndicatorImage;
+             "this can be left empty/null.)"),
+        SerializeField] private Image _playerIndicatorImage;
 
     [Header("Game Components")]
     [Tooltip("This pawn's controller."),
@@ -179,16 +179,24 @@ public class PawnData : MonoBehaviour
     /// </summary>
     public Slider HealthSlider
     {
-        get { return _healthSlider.GetComponent<Slider>(); }
+        get { return _healthSlider; }
+    }
+
+    /// <summary>
+    /// The fill image for the health slider for this pawn.
+    /// </summary>
+    public Image HealthFillImage
+    {
+        get { return _healthFillImage; }
     }
 
     /// <summary>
     /// The player indicator ring displayed at the pawn's feet. (If this pawn is not a player,
-    /// this can be left blank.
+    /// this will be null.)
     /// </summary>
     public Image PlayerIndicatorImage
     {
-        get { return _playerIndicatorImage.GetComponent<Image>(); }
+        get { return _playerIndicatorImage; }
     }
 
     /// <summary>

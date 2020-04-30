@@ -45,17 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e234ebefc9cba8549ac04f8e2d45b6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isGameRunning: 0
   _gameCamera: {fileID: 0}
   _gameCameraController: {fileID: 0}
   _currentRoomData: {fileID: 0}
   _playerInfo:
   - _playerNumber: 0
-    _playerStatus: 3
+    _playerStatus: -2
     _pawnData: {fileID: 0}
     _skinColorIndex: -1
   - _playerNumber: 1
-    _playerStatus: 1
+    _playerStatus: -2
     _pawnData: {fileID: 0}
     _skinColorIndex: -1
   - _playerNumber: 2
@@ -67,6 +66,9 @@ MonoBehaviour:
     _pawnData: {fileID: 0}
     _skinColorIndex: -1
   _loadScreenFadeTime: 0.75
+  _healthSliderUpdateTime: 0.15
+  _fullHealthColor: {r: 0, g: 0.5471698, b: 0.09515994, a: 0.6}
+  _zeroHealthColor: {r: 0.54901963, g: 0, b: 0.010536381, a: 0.6}
 --- !u!114 &8774724078017790371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,12 +81,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2251011e3d2d3ca4db3df9d41eb7c8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseEvent:
+  _onPause:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _unpauseEvent:
+  _onUnpause:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,

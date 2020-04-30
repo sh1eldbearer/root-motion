@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
         Space, SerializeField, Range(0.1f, 2f)] private float _loadScreenFadeTime = 0.5f;
     [Tooltip("The time, in seconds, that pawn health UIs will take to update their slider values."),
         SerializeField, Range(0.01f, 1f)] private float _healthSliderUpdateTime = 0.15f;
+    [Tooltip("The color health bars should display when they are at full health."),
+        SerializeField] private Color _fullHealthColor;
+    [Tooltip("The color health bars should display when they are low or zero health."),
+        SerializeField] private Color _zeroHealthColor;
 #pragma warning restore CS0649
     #endregion
 
@@ -81,6 +85,22 @@ public class GameManager : MonoBehaviour
     public float HealthSliderUpdateTime
     {
         get { return _healthSliderUpdateTime; }
+    }
+
+    /// <summary>
+    /// The color health bars should display when they are at full health.
+    /// </summary>
+    public Color FullHealthColor
+    {
+        get { return _fullHealthColor; }
+    }
+
+    /// <summary>
+    /// The color health bars should display when they are low or zero health.
+    /// </summary>
+    public Color ZeroHealthColor
+    {
+        get { return _zeroHealthColor; }
     }
 
     #endregion
