@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockCanvasRotation : StateMachineBehaviour
+public class LockPawnCanvasRotation : StateMachineBehaviour
 {
     #region Private Properties
     [Tooltip("This agent's data component."),
