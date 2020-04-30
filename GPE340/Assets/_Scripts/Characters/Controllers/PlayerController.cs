@@ -7,21 +7,21 @@ public class PlayerController : AgentController
     protected override void OnEnable()
     {
         // Register listeners with the pause manager
-        PauseManager.pauseMgr.AddOnUnpauseListener(StartMoveCoroutine, StartRotationCoroutine);
-        PauseManager.pauseMgr.AddOnPauseListener(StopMoveCoroutine, StopRotationCoroutine);
+        PauseManager.pauseMgr.AddOnUnpauseListener(StartMoveCoroutine, StartRotationCoroutine, StartFireInputCoroutine);
+        PauseManager.pauseMgr.AddOnPauseListener(StopMoveCoroutine, StopRotationCoroutine, StopFireInputCoroutine);
     }
 
     protected override void OnDisable()
     {
         // Unregister listeners with the pause manager
-        PauseManager.pauseMgr.RemoveOnUnpauseListener(StartMoveCoroutine, StartRotationCoroutine);
-        PauseManager.pauseMgr.RemoveOnPauseListener(StopMoveCoroutine, StopRotationCoroutine);
+        PauseManager.pauseMgr.RemoveOnUnpauseListener(StartMoveCoroutine, StartRotationCoroutine, StartFireInputCoroutine);
+        PauseManager.pauseMgr.RemoveOnPauseListener(StopMoveCoroutine, StopRotationCoroutine, StopFireInputCoroutine);
     }
 
     /// <summary>
     /// Moves the agent, relative to local space.
     /// </summary>
-    /// <returns>A co-routine enumerator.</returns>
+    /// <returns>Coroutine.</returns>
     protected override IEnumerator Move()
     {
         while (true)
@@ -61,6 +61,7 @@ public class PlayerController : AgentController
     /// Rotates the agent to face where the mouse is pointing, relative to local space.
     /// </summary>
     /// <param name="activeCamera">The currently active camera in the game scene.</param>
+    /// <returns>Coroutine.</returns>
     protected override IEnumerator Rotate()
     {
         while (true)
@@ -89,6 +90,10 @@ public class PlayerController : AgentController
         }
     }
 
+    /// <summary>
+    /// Fires the currently equipped weapon.
+    /// </summary>
+    /// <returns>Coroutine.</returns>
     protected override IEnumerator WaitForFireWeaponInput()
     {
         while (true)

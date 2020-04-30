@@ -83,6 +83,22 @@ public abstract class AgentController : MonoBehaviour
     }
 
     /// <summary>
+    /// Starts the WaitForFireWeaponInput coroutine for this agent.
+    /// </summary>
+    protected void StartFireInputCoroutine()
+    {
+        StartCoroutine(WaitForFireWeaponInput());
+    }
+
+    /// <summary>
+    /// Stops the WaitForFireWeaponInput coroutine for this agent.
+    /// </summary>
+    protected void StopFireInputCoroutine()
+    {
+        StopCoroutine(WaitForFireWeaponInput());
+    }
+
+    /// <summary>
     /// Moves the agent relative to local space.
     /// </summary>
     /// <returns>Coroutine.</returns>
