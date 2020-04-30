@@ -4400,6 +4400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5750422104959625713}
   - component: {fileID: 1692196434820285459}
+  - component: {fileID: 4970594417727559914}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -4462,6 +4463,18 @@ MonoBehaviour:
   _weaponTransform: {fileID: 5750422104959625713}
   _raycastOriginTransform: {fileID: 1565899710}
   _muzzleFlash: {fileID: 4503144016289247036}
+--- !u!114 &4970594417727559914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750422104959595985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31413c6538ede994b9ae7cfc63d49639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5750422104959595987
 GameObject:
   m_ObjectHideFlags: 0
@@ -5283,6 +5296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5917793491280862229}
   - component: {fileID: 2171134616934262586}
+  - component: {fileID: 995094247216945899}
   m_Layer: 0
   m_Name: BurstRifle
   m_TagString: Untagged
@@ -5342,6 +5356,18 @@ MonoBehaviour:
   _weaponTransform: {fileID: 5917793491280862229}
   _raycastOriginTransform: {fileID: 824648780}
   _muzzleFlash: {fileID: 7243130619964976811}
+--- !u!114 &995094247216945899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5917793491281084469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea64494ad752e743b1f354140b0403e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5943982305424892126
 GameObject:
   m_ObjectHideFlags: 0
@@ -5966,6 +5992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6364761501986088763}
   - component: {fileID: 1626060378344821398}
+  - component: {fileID: 6532398126969705813}
   m_Layer: 0
   m_Name: AutoRifle
   m_TagString: Untagged
@@ -6024,6 +6051,18 @@ MonoBehaviour:
   _weaponTransform: {fileID: 6364761501986088763}
   _raycastOriginTransform: {fileID: 824648780}
   _muzzleFlash: {fileID: 8120596418116266979}
+--- !u!114 &6532398126969705813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364761501985798939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8833aea93132641b5865fe55c43b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6364761501985798941
 GameObject:
   m_ObjectHideFlags: 0
@@ -8696,15 +8735,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
---- !u!4 &4373386417710308978 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-    type: 3}
-  m_PrefabInstance: {fileID: 4376976059944612454}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &4503144016289247036 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4376976059944612454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4373386417710308978 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
     type: 3}
   m_PrefabInstance: {fileID: 4376976059944612454}
   m_PrefabAsset: {fileID: 0}
