@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Utility.Enums;
 using UnityEngine;
 
-public class WeaponPickup : Pickup, IPlayerPickup
+public class HealthPickup : Pickup, IPlayerPickup, IEnemyPickup
 {
     #region Private Properties
 #pragma warning disable CS0649
-    [Tooltip("The data about the weapon this pickup represents."),
-        SerializeField] private WeaponData _weaponData;
+    [Tooltip("The amount of health to restore to a pawn when this powerup is picked up."),
+        SerializeField] private float _healAmount = 25f;
 #pragma warning restore CS0649
     #endregion
 
@@ -30,9 +29,14 @@ public class WeaponPickup : Pickup, IPlayerPickup
             OnPlayerPickup(collider);
             Destroy(this.gameObject);
         }
+        else if (collider.tag == "Enemy")
+        {
+            OnEnemyPickup(collider);
+            Destroy(this.gameObject);
+        }
         else
         {
-            // Re-enables the trigger collider, enemies won't use weapon pickups
+            // Re-enables the trigger collider
             PickupCollider.isTrigger = true;
         }
     }
@@ -52,6 +56,24 @@ public class WeaponPickup : Pickup, IPlayerPickup
     /// <param name="playerPawnData">The PawnData component of the object that collided with this object.</param>
     public void OnPlayerPickup(PawnData playerPawnData)
     {
-        playerPawnData.InventoryMgr.AddWeaponToInventory(_weaponData);
+        playerPawnData.HealthMgr.ReceiveHealing(_healAmount);
+    }
+
+    /// <summary>
+    /// Further defines pickup behavior when this object is picked up by an enemy pawn.
+    /// </summary>
+    /// <param name="collider">The collider of the object that collided with this object.</param>
+    public void OnEnemyPickup(Collider collider)
+    {
+        OnEnemyPickup(collider.GetComponent<PawnData>());
+    }
+
+    /// <summary>
+    /// Further defines pickup behavior when this object is picked up by an enemy pawn.
+    /// </summary>
+    /// <param name="playerPawnData">The PawnData component of the object that collided with this object.</param>
+    public void OnEnemyPickup(PawnData enemyPawnaData)
+    {
+        enemyPawnaData.HealthMgr.ReceiveHealing(_healAmount);
     }
 }
