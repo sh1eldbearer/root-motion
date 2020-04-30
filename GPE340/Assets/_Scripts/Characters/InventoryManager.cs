@@ -198,8 +198,8 @@ public class InventoryManager : MonoBehaviour
             // Checks to make sure the index is within a valid range
             if (nextIndex < 0)
             {
-                // If not, resets the index to the first index
-                nextIndex = _weaponInventory.Count;
+                // If not, resets the index to the last index
+                nextIndex = _weaponInventory.Count - 1;
             }
 
             // If the element being checked is the same as when we started, terminate the method
