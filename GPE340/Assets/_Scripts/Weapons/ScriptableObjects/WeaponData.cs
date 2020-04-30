@@ -1,10 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Utility.Enums;
-using UnityEditor;
+﻿using Utility.Enums;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "New WeaponData", menuName = "New Weapon Data (ScriptableObject)", order = 230)]
 public class WeaponData : ScriptableObject
@@ -23,6 +18,8 @@ public class WeaponData : ScriptableObject
         SerializeField] private int _baseClipSize = 6;
     [Tooltip("The firing behavior of this weapon."),
         SerializeField] private FireMode _firingMode = FireMode.SingleShot;
+    [Tooltip("The effective range of this weapon."),
+        SerializeField] private float _baseRange = 50f;
 
     [Header("Burst Settings (Ignored if not using BurstFire mode)")]
     [Tooltip("How many bullets should be fired per trigger pull in burst mode. (Will be ignored if " +
@@ -77,6 +74,14 @@ public class WeaponData : ScriptableObject
     }
 
     /// <summary>
+    /// The effective range of this weapon.
+    /// </summary>
+    public float BaseRange
+    {
+        get { return _baseRange; }
+    }
+
+    /// <summary>
     /// The firing behavior of this weapon.
     /// </summary>
     public FireMode FiringMode
@@ -101,5 +106,6 @@ public class WeaponData : ScriptableObject
     {
         get { return _burstDelay; }
     }
+
     #endregion
 }
