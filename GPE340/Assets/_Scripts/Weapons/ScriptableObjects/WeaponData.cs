@@ -12,8 +12,8 @@ public class WeaponData : ScriptableObject
         SerializeField] private WeaponQuality _weaponQuality = WeaponQuality.Base;
     [Tooltip("The amount of damage dealt per shot by this weapon."),
         SerializeField] private float _baseDamage = 10;
-    [Tooltip("The delay between effective pulls of the trigger for this weapon (in seconds)."),
-        SerializeField] private float _baseFireRate = 0.75f; // TODO: Implement a range after initial testing
+    [Tooltip("The number of bullets per second this weapon can fire."),
+        SerializeField] private float _baseFireRate = 0.75f; // TODO: Implement a range after initial testing?
     [Tooltip("The clip size of this weapon."),
         SerializeField] private int _baseClipSize = 6;
     [Tooltip("The firing behavior of this weapon."),
@@ -25,9 +25,9 @@ public class WeaponData : ScriptableObject
     [Tooltip("How many bullets should be fired per trigger pull in burst mode. (Will be ignored if " +
              "the weapon is not configured to use BurstFire mode.)"),
         SerializeField] private int _burstSize = 1;
-    [Tooltip("The delay between shots when the weapon is in burst mode. (Will be ignored if the " +
-             "weapon is not configured to use BurstFire mode."),
-        SerializeField] private float _burstDelay = 0.25f; // TODO: Implement a range after initial testing
+    [Tooltip("The length of time it takes for a burst to be fired. (Will be ignored if the " +
+             "weapon is not configured to use BurstFire mode.)"),
+        SerializeField] private float _burstDuration = 0.25f; // TODO: Implement a range after initial testing?
 #pragma warning restore CS0649
     #endregion
 
@@ -58,7 +58,7 @@ public class WeaponData : ScriptableObject
     }
 
     /// <summary>
-    /// The delay between effective pulls of the trigger for this weapon (in seconds). 
+    /// The number of bullets per second this weapon can fire. 
     /// </summary>
     public float BaseFireRate
     {
@@ -99,12 +99,12 @@ public class WeaponData : ScriptableObject
     }
 
     /// <summary>
-    /// The delay between shots when the weapon is in burst mode. (Will be ignored if the
-    /// weapon is not configured to use BurstFire mode.
+    /// The length of time it takes for a burst to be fired. (Will be ignored if the
+    /// weapon is not configured to use BurstFire mode.)
     /// </summary>
-    public float BurstDelay
+    public float BurstDuration
     {
-        get { return _burstDelay; }
+        get { return _burstDuration; }
     }
 
     #endregion

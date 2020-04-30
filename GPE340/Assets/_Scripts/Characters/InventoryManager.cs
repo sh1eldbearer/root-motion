@@ -53,7 +53,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     /// <summary>
-    /// The delay between effective pulls of the trigger for the currently equipped weapon (in seconds). 
+    /// The number of bullets per second this weapon can fire. 
     /// </summary>
     public float EquippedWeaponFireRate
     {
@@ -94,12 +94,12 @@ public class InventoryManager : MonoBehaviour
     }
 
     /// <summary>
-    /// The delay between shots when the currently weapon is in burst mode. (Will be ignored if the
-    /// weapon is not configured to use BurstFire mode.
+    /// The length of time it takes for a burst to be fired. (Will be ignored if the
+    /// weapon is not configured to use BurstFire mode.)
     /// </summary>
-    public float EquippedWeaponBurstDelay
+    public float EquippedWeaponBurstDuration
     {
-        get { return GetEquippedWeapon().WeaponData.BurstDelay; }
+        get { return GetEquippedWeapon().WeaponData.BurstDuration; }
     }
     #endregion
 
