@@ -201,9 +201,18 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
     /// </summary>
     /// <typeparam name="T">The data type of the damage value (should match type of CurrentHealth and MaxHealth.)</typeparam>
     /// <param name="incomingDmg">The amount of damage this pawn will take.</param>
-    public void TakeDamage<T> (T dmgAmount)
+    public void TakeDamage(float dmgAmount)
     {
         // TODO: Damage functionality (mostly just reduce current health and a death check)
+
+        // Subtracts the damage amount from the pawn's current health (won't let the health go below zero)
+        _currentHealth = Mathf.Clamp(_currentHealth - dmgAmount, 0f, _maxHealth);
+
+        // If the pawn has zero health, kill it
+        if (_currentHealth <= 0f)
+        {
+            KillMe();
+        }
 
         // Notifies all listeners that this pawn's health has changed
         _currentHealthChanged.Invoke();
@@ -214,9 +223,12 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
     /// </summary>
     /// <typeparam name="T">The data type of the damage value (should match type of CurrentHealth and MaxHealth.)</typeparam>
     /// <param name="healAmount">The amount of damage this pawn will take.</param>
-    public void ReceiveHealing<T>(T healAmount)
+    public void ReceiveHealing(float healAmount)
     {
         // TODO: Heal functionality (mostly just increase current health)
+
+        // Adds the heal amount to the pawn's current health
+        _currentHealth = Mathf.Clamp(_currentHealth + healAmount, 0f, _maxHealth);
 
         // Notifies all listeners that this pawn's health has changed
         _currentHealthChanged.Invoke();
@@ -228,5 +240,6 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
     public void KillMe()
     {
         // TODO: Death functionality
+        Debug.Log("Blarg I am ded");
     }
 }
