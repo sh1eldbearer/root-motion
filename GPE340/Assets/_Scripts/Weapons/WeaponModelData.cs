@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -10,11 +10,7 @@ public class WeaponModelData : MonoBehaviour
 {
     #region Private Properties
 #pragma warning disable CS0649
-    [Header("Weapon Stats")]
-    //[Tooltip(""), SerializeField] private WeaponData _weaponData;
-    [SerializeField] private WeaponQuality _weaponQuality = WeaponQuality.Base;
-
-    [Header("Weapon Skins"), Tooltip("The skins to use for each quality tier of the weapon.")]
+    [Header("Weapon Materials"), Tooltip("The materials to use for each quality tier of the weapon.")]
     [SerializeField] private Material _baseMat;
     [SerializeField] private Material _uncommonMat;
     [SerializeField] private Material _rareMat;
@@ -109,38 +105,6 @@ public class WeaponModelData : MonoBehaviour
     }
 
     /// <summary>
-    /// Decreases the quality of the weapon to the next lowest-tier.
-    /// </summary>
-    private void DegradeWeapon()
-    {
-        if (_weaponQuality != WeaponQuality.Base)
-        {
-            _weaponQuality--;
-            ChangeSkin(_weaponQuality);
-        }
-        else
-        {
-            return;
-        }
-    }
-
-    /// <summary>
-    /// Increases the quality of the weapon to the next highest-tier.
-    /// </summary>
-    private void UpgradeWeapon()
-    {
-        if (_weaponQuality != WeaponQuality.Legendary)
-        {
-            _weaponQuality++;
-            ChangeSkin(_weaponQuality);
-        }
-        else
-        {
-            return;
-        }
-    }
-
-    /// <summary>
     /// Changes the weapon's materials based on the weapon quality.
     /// </summary>
     /// <param name="weaponQuality">The quality of the weapon used to determine which
@@ -217,8 +181,7 @@ public class WeaponModelData : MonoBehaviour
         // Lets me know if I forget to set a material (not that a bright pink material isn't obvious enough)
         if (newMaterial == null)
         {
-            Debug.Log($"{this.gameObject.name} does not have a material set for the {_weaponQuality.ToString()} " +
-                      $"quality!");
+            Debug.Log($"{this.gameObject.name} does not have a material set for the chosen weapon quality!");
         }
 #endif
 
