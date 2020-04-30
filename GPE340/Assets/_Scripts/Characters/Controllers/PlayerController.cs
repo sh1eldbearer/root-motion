@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using UnityEditor.Animations;
 using UnityEngine;
 using Utility.Enums;
 
@@ -79,6 +78,12 @@ public class PlayerController : AgentController
             if (GameManager.gm.GameCameraController.FollowTf == ThisPawn.PawnData.PawnTransform)
             {
                 GameManager.gm.GameCameraController.UpdateCameraPosition();
+            }
+
+            // TODO: comments
+            if (Input.GetAxis("Fire1") > 0f)
+            {
+                ThisPawn.PawnData.InventoryMgr.ShootEquippedWeapon();
             }
 
             yield return null;

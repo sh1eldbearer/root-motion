@@ -121,12 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 355e475152cd26841a5559e42e000821, type: 2}
---- !u!224 &11103077 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2900215578914138990, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 3169416566994596354}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &41897603
 GameObject:
   m_ObjectHideFlags: 0
@@ -22658,16 +22652,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1714909858679315984, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
-        type: 3}
-      propertyPath: _pawnCanvasRotation.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1714909858679315984, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
-        type: 3}
-      propertyPath: _pawnCanvasTransform
-      value: 
-      objectReference: {fileID: 11103077}
     - target: {fileID: 1372768973, guid: 80aa1e5129cdcd04895bc82d7675a0c6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

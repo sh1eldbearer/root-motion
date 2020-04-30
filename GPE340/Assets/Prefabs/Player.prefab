@@ -2162,6 +2162,7 @@ GameObject:
   - component: {fileID: 2991597396998628883}
   - component: {fileID: 1714909858679315984}
   - component: {fileID: -5050434134849316571}
+  - component: {fileID: 6151923897677818171}
   - component: {fileID: 2478015284733781260}
   - component: {fileID: 8652560125920750360}
   - component: {fileID: 4604697025485225838}
@@ -2241,7 +2242,7 @@ MonoBehaviour:
   _equippedWeaponIndex: 0
   _weaponInventory:
   - _weaponType: 1
-    _weaponData: {fileID: 0}
+    _weaponData: {fileID: 11400000, guid: 7c183fa6558ab0c469a22196e8e0ec40, type: 2}
     _weaponModelData: {fileID: 2962739872172852709}
     _currentAmmo: 120
     _maxAmmo: 120
@@ -2260,6 +2261,26 @@ MonoBehaviour:
     _weaponModelData: {fileID: 1692196434820285459}
     _currentAmmo: 0
     _maxAmmo: 80
+--- !u!114 &6151923897677818171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991597396998628886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8fb50ee707d8d4780c6635c9d2a3c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHealth: 100
+  _maxHealth: 100
+  _healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _pawnData: {fileID: 0}
 --- !u!114 &2478015284733781260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7898,6 +7919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8645846079793267675}
   - component: {fileID: 2962739872172852709}
+  - component: {fileID: 1238243523}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -7956,6 +7978,18 @@ MonoBehaviour:
   _rElbowIKTransform: {fileID: 5372000786804509806}
   _weaponTransform: {fileID: 8645846079793267675}
   _raycastOriginTransform: {fileID: 1348908464}
+--- !u!114 &1238243523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645846079793766395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d9d5f51f7274a4a885db83e191cf32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8731180090533646425
 GameObject:
   m_ObjectHideFlags: 0
