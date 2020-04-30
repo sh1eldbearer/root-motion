@@ -95,14 +95,14 @@ public class CameraController : MonoBehaviour
 
     private void OnEnable()
     {
-        // Register coroutines with the pause manager
+        // Register listeners with the pause manager
         PauseManager.pauseMgr.AddOnUnpauseListener(StartCameraZoomCoroutine);
         PauseManager.pauseMgr.AddOnPauseListener(StopCameraZoomCoroutine);
     }
 
     private void OnDisable()
     {
-        // Unregister coroutines with the pause manager
+        // Unregister listeners with the pause manager
         PauseManager.pauseMgr.RemoveOnUnpauseListener(StartCameraZoomCoroutine);
         PauseManager.pauseMgr.RemoveOnPauseListener(StopCameraZoomCoroutine);
     }

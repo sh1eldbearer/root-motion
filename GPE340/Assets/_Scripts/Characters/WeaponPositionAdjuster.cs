@@ -28,14 +28,14 @@ public class WeaponPositionAdjuster : MonoBehaviour
 
     private void OnEnable()
     {
-        // Register coroutines with the pause manager
+        // Register listeners with the pause manager
         PauseManager.pauseMgr.AddOnUnpauseListener(StartPositionCoroutine);
         PauseManager.pauseMgr.AddOnPauseListener(StopPositionCoroutine);
     }
 
     private void OnDisable()
     {
-        // Unregister coroutines with the pause manager
+        // Unregister listeners with the pause manager
         PauseManager.pauseMgr.RemoveOnUnpauseListener(StartPositionCoroutine);
         PauseManager.pauseMgr.RemoveOnPauseListener(StopPositionCoroutine);
     }

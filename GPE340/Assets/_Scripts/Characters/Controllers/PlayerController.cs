@@ -12,14 +12,14 @@ public class PlayerController : AgentController
 
     protected override void OnEnable()
     {
-        // Register coroutines with the pause manager
+        // Register listeners with the pause manager
         PauseManager.pauseMgr.AddOnUnpauseListeners(StartMoveCoroutine, StartRotationCoroutine);
         PauseManager.pauseMgr.AddOnPauseListeners(StopMoveCoroutine, StopRotationCoroutine);
     }
 
     protected override void OnDisable()
     {
-        // Unregister coroutines with the pause manager
+        // Unregister listeners with the pause manager
         PauseManager.pauseMgr.RemoveOnUnpauseListeners(StartMoveCoroutine, StartRotationCoroutine);
         PauseManager.pauseMgr.RemoveOnPauseListeners(StopMoveCoroutine, StopRotationCoroutine);
     }
