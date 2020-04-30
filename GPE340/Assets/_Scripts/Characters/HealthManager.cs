@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -64,7 +64,34 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
     // Update is called once per frame
     private void Update()
     {
-        
+        // TODO: remove later
+        if (Input.GetKeyDown(KeyCode.Equals))
+        {
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                _maxHealth += 50;
+                _maxHealthChanged.Invoke();
+            }
+            else
+            {
+                _currentHealth = Mathf.Clamp(_currentHealth + 10, 0f, _maxHealth);
+                _currentHealthChanged.Invoke();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                _maxHealth = Mathf.Clamp(_maxHealth - 50, 50f, float.MaxValue);
+                _maxHealthChanged.Invoke();
+            }
+            else
+            {
+                _currentHealth = Mathf.Clamp(_currentHealth - 10, 1f, _maxHealth);
+                _currentHealthChanged.Invoke();
+            }
+        }
     }
 
     /// <summary>
