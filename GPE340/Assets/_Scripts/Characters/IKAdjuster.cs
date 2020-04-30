@@ -50,7 +50,7 @@ public class IKAdjuster : MonoBehaviour
     {
         // Checks the weapon type to see which animations it should use
         // TODO: Could be optimized to not run every IK pass
-        if (_pawnData.InventoryMgr.GetEquippedWeapon().WeaponType == WeaponType.Pistol)
+        if (_pawnData.InventoryMgr.EquippedWeaponType == WeaponType.Pistol)
         {
             UsePistolAnimation();
         }
@@ -60,35 +60,35 @@ public class IKAdjuster : MonoBehaviour
         }
 
         // Adjusts the position and rotation of the avatar's hands and elbows based on the provided weights
-        if (_pawnData.InventoryMgr.GetEquippedWeapon().WeaponModelData.LHandIKTransform != null) // Left hand
+        if (_pawnData.InventoryMgr.EquippedWeaponModelData.LHandIKTransform != null) // Left hand
         {
             SetIKTransforms(AvatarIKGoal.LeftHand,
-                _pawnData.InventoryMgr.GetEquippedWeapon().WeaponModelData.LHandIKTransform.position,
+                _pawnData.InventoryMgr.EquippedWeaponModelData.LHandIKTransform.position,
                 _lHandPositionWeight,
-                _pawnData.InventoryMgr.GetEquippedWeapon().WeaponModelData.LHandIKTransform.rotation,
+                _pawnData.InventoryMgr.EquippedWeaponModelData.LHandIKTransform.rotation,
                 _lHandRotationWeight);
         }
 
-        if (_pawnData.InventoryMgr.GetEquippedWeapon().WeaponModelData.LElbowIKTransform != null) // Left elbow
+        if (_pawnData.InventoryMgr.EquippedWeaponModelData.LElbowIKTransform != null) // Left elbow
         {
             SetIKHintTransforms(AvatarIKHint.LeftElbow,
-                _pawnData.InventoryMgr.GetEquippedWeapon().WeaponModelData.LElbowIKTransform.position,
+                _pawnData.InventoryMgr.EquippedWeaponModelData.LElbowIKTransform.position,
                 _lElbowPositionWeight);
         }
 
-        if (_pawnData.InventoryMgr.GetEquippedWeapon().WeaponModelData.RHandIKTransform != null) // Right hand
+        if (_pawnData.InventoryMgr.EquippedWeaponModelData.RHandIKTransform != null) // Right hand
         {
             SetIKTransforms(AvatarIKGoal.RightHand,
-                _pawnData.InventoryMgr.GetEquippedWeapon().WeaponModelData.RHandIKTransform.position,
+                _pawnData.InventoryMgr.EquippedWeaponModelData.RHandIKTransform.position,
                 _rHandPositionWeight,
-                _pawnData.InventoryMgr.GetEquippedWeapon().WeaponModelData.RHandIKTransform.rotation,
+                _pawnData.InventoryMgr.EquippedWeaponModelData.RHandIKTransform.rotation,
                 _rHandRotationWeight);
         }
 
-        if (_pawnData.InventoryMgr.GetEquippedWeapon().WeaponModelData.RElbowIKTransform != null) // Right elbow
+        if (_pawnData.InventoryMgr.EquippedWeaponModelData.RElbowIKTransform != null) // Right elbow
         {
             SetIKHintTransforms(AvatarIKHint.RightElbow,
-                _pawnData.InventoryMgr.GetEquippedWeapon().WeaponModelData.RElbowIKTransform.position,
+                _pawnData.InventoryMgr.EquippedWeaponModelData.RElbowIKTransform.position,
                 _rElbowPositionWeight);
         }
 
