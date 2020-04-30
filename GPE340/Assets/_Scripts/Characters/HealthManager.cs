@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor.Events;
 
-public class HealthManager : MonoBehaviour, IDamageable, IHealable
+public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
 {
     #region Private Properties
 #pragma warning disable CS0649
@@ -14,7 +14,10 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable
     [Tooltip("The maximum health value of this pawn."),
         SerializeField] private float _maxHealth = 100;
 
-    [Space, SerializeField] private UnityEvent _healthChanged;
+    [Tooltip("An event that notifies listeners when this pawn's health has changed."),
+        Space, SerializeField] private UnityEvent _healthChanged;
+    [Tooltip("An event that notifies listeners when this pawn has been killed."),
+        SerializeField] private UnityEvent _onKilled;
 
     [Header("Game Components")]
     [Tooltip("The PawnData component for this Pawn."), 
@@ -115,6 +118,58 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable
     }
 
     /// <summary>
+    /// Adds a listener to the OnKilled event.
+    /// </summary>
+    /// <param name="call">The name of the function to call when OnKilled is invoked.</param>
+    public void AddOnKilledListener(UnityAction call)
+    {
+        // Adding a persistent listener allows me to visualize when events have been added
+        #if UNITY_EDITOR
+            UnityEventTools.AddPersistentListener(_onKilled, call);
+        #else
+            _healthChanged.AddListener(call);
+        #endif
+    }
+
+    /// <summary>
+    /// Adds multiple listeners to the OnKilled event.
+    /// </summary>
+    /// <param name="calls">The names of the functions to call when OnKilled is invoked.</param>
+    public void AddOnKilledListeners(params UnityAction[] calls)
+    {
+        foreach (UnityAction call in calls)
+        {
+            AddOnKilledListener(call);
+        }
+    }
+
+    /// <summary>
+    /// Removes a listener from the OnKilled event.
+    /// </summary>
+    /// <param name="call">The name of the function to remove from the OnKilled invoke array.</param>
+    public void RemoveOnKilledListener(UnityAction call)
+    {
+        // Removing a persistent listener allows me to visualize when events have been removed
+        #if UNITY_EDITOR
+            UnityEventTools.RemovePersistentListener(_onKilled, call);
+        #else
+            _healthChanged.AddListener(call);
+        #endif
+    }
+
+    /// <summary>
+    /// Removes multiple listeners from the OnKilled event.
+    /// </summary>
+    /// <param name="calls">The names of the functions to remove from the OnKilled invoke array.</param>
+    public void RemoveOnKilledisteners(params UnityAction[] calls)
+    {
+        foreach (UnityAction call in calls)
+        {
+            RemoveOnKilledListener(call);
+        }
+    }
+
+    /// <summary>
     /// Takes a specified amount of damage, and alerts all listeners that the health of this pawn has changed.
     /// </summary>
     /// <typeparam name="T">The data type of the damage value (should match type of CurrentHealth and MaxHealth.)</typeparam>
@@ -138,5 +193,13 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable
 
         // Notifies all listeners that this pawn's health has changed
         _healthChanged.Invoke();
+    }
+
+    /// <summary>
+    /// Kills this pawn when its health reaches zero.
+    /// </summary>
+    public void KillMe()
+    {
+        // TODO: Death functionality
     }
 }
