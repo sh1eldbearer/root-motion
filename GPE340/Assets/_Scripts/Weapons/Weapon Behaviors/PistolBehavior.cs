@@ -3,9 +3,11 @@ using Utility.Enums;
 
 public class PistolBehavior : MonoBehaviour, IWeapon, IShootable
 {
+    // TODO: commenting pass
     #region Private Properties
 #pragma warning disable CS0649
-    private PawnData _pawnData;
+    [Tooltip("The PawnData component for this pawn."),
+        SerializeField] private PawnData _pawnData;
     private WeaponModelData _weaponModelData;
 #pragma warning restore CS0649
     #endregion
@@ -48,10 +50,12 @@ public class PistolBehavior : MonoBehaviour, IWeapon, IShootable
         if (Physics.Raycast(_weaponModelData.RaycastOriginTransform.position,
             _weaponModelData.RaycastOriginTransform.forward, out hitInfo, _pawnData.InventoryMgr.EquippedWeaponRange))
         {
-            IDamageable damageable = hitInfo.collider.GetComponent<IDamageable>();
+            IDamageable damageable = hitInfo.collider.GetComponentInChildren<IDamageable>();
 
             if (damageable != null)
             {
+                Debug.Log($"{_pawnData.gameObject.name} shot {hitInfo.collider.name} with a {WeaponType.Pistol.ToString()} " +
+                          $"for {_pawnData.InventoryMgr.EquippedWeaponDamage} damage.");
                 damageable.TakeDamage(_pawnData.InventoryMgr.EquippedWeaponDamage);
             }
         }
