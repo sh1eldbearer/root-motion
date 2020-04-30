@@ -48,11 +48,11 @@ public class PistolBehavior : MonoBehaviour, IWeapon, IShootable
         if (Physics.Raycast(_weaponModelData.RaycastOriginTransform.position,
             _weaponModelData.RaycastOriginTransform.forward, out hitInfo, _pawnData.InventoryMgr.EquippedWeaponRange))
         {
-            IDamageable damagable = hitInfo.collider.GetComponent<IDamageable>();
+            IDamageable damageable = hitInfo.collider.GetComponent<IDamageable>();
 
-            if (damagable != null)
+            if (damageable != null)
             {
-                damagable.TakeDamage(_pawnData.InventoryMgr.EquippedWeaponDamage);
+                damageable.TakeDamage(_pawnData.InventoryMgr.EquippedWeaponDamage);
             }
         }
     }
