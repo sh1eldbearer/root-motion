@@ -1,10 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 using Utility.Enums;
 
 public abstract class AgentController : MonoBehaviour
