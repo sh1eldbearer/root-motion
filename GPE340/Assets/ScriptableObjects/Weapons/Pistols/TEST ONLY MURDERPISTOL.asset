@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb013bf149adc14cbda729d0938a5ac, type: 3}
   m_Name: TEST ONLY MURDERPISTOL
   m_EditorClassIdentifier: 
-  _weaponType: 0
-  _weaponQuality: 0
-  _baseDamage: 10
+  _weaponType: 1
+  _weaponQuality: 4
+  _baseDamage: 1000
   _baseFireRate: 0.75
   _baseClipSize: 6
   _firingMode: 1
