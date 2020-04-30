@@ -102,6 +102,8 @@ public class PlayerController : AgentController
             {
                 ThisPawn.PawnData.InventoryMgr.ShootEquippedWeapon();
             }
+
+            yield return null;
         }
     }
 }
