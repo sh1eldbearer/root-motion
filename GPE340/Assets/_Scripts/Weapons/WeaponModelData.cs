@@ -29,11 +29,14 @@ public class WeaponModelData : MonoBehaviour
     [Space, SerializeField] private Transform _rHandIKTransform;
     [SerializeField] private Transform _rElbowIKTransform;
 
+    [Header("Weapon Components")]
     [Tooltip("The Transform component for the weapon's root GameObject (the Transform component" +
              "this script is residing on.)"),
         Space, SerializeField] private Transform _weaponTransform;
     [Tooltip("The transform component of the raycast origin object attached to the weapon model."),
         SerializeField] private Transform _raycastOriginTransform;
+    [Tooltip("The muzzle flash particle effect attached to this weapon."),
+        SerializeField] private ParticleSystem _muzzleFlash;
     [Tooltip("The IShootable component for this weapon."),
         SerializeField] private IShootable _weaponBehavior;
 #pragma warning restore CS0649
@@ -96,7 +99,6 @@ public class WeaponModelData : MonoBehaviour
     {
         get { return _weaponBehavior; }
     }
-
     #endregion
 
     // Awake is called before Start
@@ -214,5 +216,13 @@ public class WeaponModelData : MonoBehaviour
         {
             part.material = newMaterial;
         }
+    }
+
+    /// <summary>
+    /// Plays this weapon's muzzle flash particle effect.
+    /// </summary>
+    public void PlayMuzzleFlash()
+    {
+        _muzzleFlash.Play();
     }
 }
