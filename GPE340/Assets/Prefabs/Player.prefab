@@ -2289,6 +2289,7 @@ MonoBehaviour:
   _pawnTransform: {fileID: 2991597396998628883}
   _pawnAnimator: {fileID: 5574581402221683709}
   _pawnCollider: {fileID: 5043264499658602175}
+  _ikAdjuster: {fileID: 0}
   _bodyRenderers: []
   _browsRenderers: []
   _eyeRenderers: []
@@ -4402,6 +4403,8 @@ GameObject:
   - component: {fileID: 5750422104959625713}
   - component: {fileID: 1692196434820285459}
   - component: {fileID: 4970594417727559914}
+  - component: {fileID: 1704272092}
+  - component: {fileID: 1704272089}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -4462,8 +4465,12 @@ MonoBehaviour:
   _rHandIKTransform: {fileID: 3739442231618750429}
   _rElbowIKTransform: {fileID: 1208227942808379368}
   _weaponTransform: {fileID: 5750422104959625713}
+  _weaponCollider: {fileID: 0}
+  _weaponRigidbody: {fileID: 0}
   _raycastOriginTransform: {fileID: 1565899710}
   _muzzleFlash: {fileID: 4503144016289247036}
+  _initialLocalPosition: {x: 0, y: 0, z: 0}
+  _initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &4970594417727559914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4476,6 +4483,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31413c6538ede994b9ae7cfc63d49639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1704272092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750422104959595985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12260264, y: 0.3226478, z: 1.0080705}
+  m_Center: {x: -0.004214227, y: 0.036606714, z: -0.078011274}
+--- !u!54 &1704272089
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750422104959595985}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5750422104959595987
 GameObject:
   m_ObjectHideFlags: 0
@@ -5298,6 +5334,8 @@ GameObject:
   - component: {fileID: 5917793491280862229}
   - component: {fileID: 2171134616934262586}
   - component: {fileID: 995094247216945899}
+  - component: {fileID: 1593348703}
+  - component: {fileID: 1593348700}
   m_Layer: 0
   m_Name: BurstRifle
   m_TagString: Untagged
@@ -5355,8 +5393,12 @@ MonoBehaviour:
   _rHandIKTransform: {fileID: 9214432008742494943}
   _rElbowIKTransform: {fileID: 6936515942947010570}
   _weaponTransform: {fileID: 5917793491280862229}
+  _weaponCollider: {fileID: 0}
+  _weaponRigidbody: {fileID: 0}
   _raycastOriginTransform: {fileID: 824648780}
   _muzzleFlash: {fileID: 7243130619964976811}
+  _initialLocalPosition: {x: 0, y: 0, z: 0}
+  _initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &995094247216945899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5369,6 +5411,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea64494ad752e743b1f354140b0403e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1593348703
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5917793491281084469}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05436395, y: 0.25459242, z: 0.6085089}
+  m_Center: {x: 0.002460342, y: 0.019418715, z: -0.00028499955}
+--- !u!54 &1593348700
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5917793491281084469}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5943982305424892126
 GameObject:
   m_ObjectHideFlags: 0
@@ -5994,6 +6065,8 @@ GameObject:
   - component: {fileID: 6364761501986088763}
   - component: {fileID: 1626060378344821398}
   - component: {fileID: 6532398126969705813}
+  - component: {fileID: 638397740}
+  - component: {fileID: 638397737}
   m_Layer: 0
   m_Name: AutoRifle
   m_TagString: Untagged
@@ -6050,8 +6123,12 @@ MonoBehaviour:
   _rHandIKTransform: {fileID: 1513897767002477892}
   _rElbowIKTransform: {fileID: 5758033534064217207}
   _weaponTransform: {fileID: 6364761501986088763}
+  _weaponCollider: {fileID: 0}
+  _weaponRigidbody: {fileID: 0}
   _raycastOriginTransform: {fileID: 824648780}
   _muzzleFlash: {fileID: 8120596418116266979}
+  _initialLocalPosition: {x: 0, y: 0, z: 0}
+  _initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &6532398126969705813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6064,6 +6141,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8833aea93132641b5865fe55c43b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &638397740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364761501985798939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.09952231, y: 0.30368966, z: 0.9805007}
+  m_Center: {x: -0.00032322854, y: 0.049439803, z: -0.01884234}
+--- !u!54 &638397737
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364761501985798939}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6364761501985798941
 GameObject:
   m_ObjectHideFlags: 0
@@ -8049,6 +8155,8 @@ GameObject:
   - component: {fileID: 8645846079793267675}
   - component: {fileID: 2962739872172852709}
   - component: {fileID: 1238243523}
+  - component: {fileID: 1238243524}
+  - component: {fileID: 1238243525}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -8106,8 +8214,12 @@ MonoBehaviour:
   _rHandIKTransform: {fileID: 2348582488562946689}
   _rElbowIKTransform: {fileID: 5372000786804509806}
   _weaponTransform: {fileID: 8645846079793267675}
+  _weaponCollider: {fileID: 0}
+  _weaponRigidbody: {fileID: 0}
   _raycastOriginTransform: {fileID: 1348908464}
   _muzzleFlash: {fileID: 8056779758783627662}
+  _initialLocalPosition: {x: 0, y: 0, z: 0}
+  _initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &1238243523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8123,6 +8235,35 @@ MonoBehaviour:
   _pawnData: {fileID: 0}
   _weaponModelData: {fileID: 0}
   _fireCooldownTimer: 0
+--- !u!54 &1238243524
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645846079793766395}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1238243525
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645846079793766395}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.037398305, y: 0.17397998, z: 0.23295537}
+  m_Center: {x: -0.0024838394, y: 0.03968839, z: 0.021003107}
 --- !u!1 &8731180090533646425
 GameObject:
   m_ObjectHideFlags: 0
@@ -8694,6 +8835,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 199409127382122440, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: m_Flip.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
       propertyPath: looping
@@ -8709,16 +8855,6 @@ PrefabInstance:
       propertyPath: UVModule.flipV
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
-      propertyPath: UVModule.flipU
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
-      propertyPath: UVModule.flipV
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 199338666435788112, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
       propertyPath: m_Flip.x
@@ -8729,22 +8865,27 @@ PrefabInstance:
       propertyPath: m_Flip.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 199409127382122440, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
-      propertyPath: m_Flip.y
-      value: 0.5
+      propertyPath: UVModule.flipU
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: UVModule.flipV
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
---- !u!198 &4503144016289247036 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-    type: 3}
-  m_PrefabInstance: {fileID: 4376976059944612454}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4373386417710308978 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4376976059944612454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4503144016289247036 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
     type: 3}
   m_PrefabInstance: {fileID: 4376976059944612454}
   m_PrefabAsset: {fileID: 0}
@@ -8815,6 +8956,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 199409127382122440, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: m_Flip.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
       propertyPath: looping
@@ -8830,16 +8976,6 @@ PrefabInstance:
       propertyPath: UVModule.flipV
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
-      propertyPath: UVModule.flipU
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
-      propertyPath: UVModule.flipV
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 199338666435788112, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
       propertyPath: m_Flip.x
@@ -8850,10 +8986,15 @@ PrefabInstance:
       propertyPath: m_Flip.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 199409127382122440, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
-      propertyPath: m_Flip.y
-      value: 0.5
+      propertyPath: UVModule.flipU
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: UVModule.flipV
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
@@ -8936,6 +9077,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 199409127382122440, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: m_Flip.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
       propertyPath: looping
@@ -8951,6 +9097,16 @@ PrefabInstance:
       propertyPath: UVModule.flipV
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 199338666435788112, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: m_Flip.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199338666435788112, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: m_Flip.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
       propertyPath: playOnAwake
@@ -8965,21 +9121,6 @@ PrefabInstance:
         type: 3}
       propertyPath: UVModule.flipV
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 199338666435788112, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
-      propertyPath: m_Flip.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 199338666435788112, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
-      propertyPath: m_Flip.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 199409127382122440, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
-      propertyPath: m_Flip.y
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
@@ -9062,6 +9203,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 199409127382122440, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: m_Flip.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
       propertyPath: looping
@@ -9077,16 +9223,6 @@ PrefabInstance:
       propertyPath: UVModule.flipV
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
-      propertyPath: UVModule.flipU
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
-      propertyPath: UVModule.flipV
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 199338666435788112, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
       propertyPath: m_Flip.x
@@ -9097,22 +9233,27 @@ PrefabInstance:
       propertyPath: m_Flip.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 199409127382122440, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
         type: 3}
-      propertyPath: m_Flip.y
-      value: 0.5
+      propertyPath: UVModule.flipU
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+        type: 3}
+      propertyPath: UVModule.flipV
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
---- !u!198 &8120596418116266979 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-    type: 3}
-  m_PrefabInstance: {fileID: 8246762154231510713}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8249790996345100973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 8246762154231510713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8120596418116266979 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
     type: 3}
   m_PrefabInstance: {fileID: 8246762154231510713}
   m_PrefabAsset: {fileID: 0}

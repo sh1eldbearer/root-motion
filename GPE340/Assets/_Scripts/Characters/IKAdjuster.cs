@@ -30,6 +30,7 @@ public class IKAdjuster : MonoBehaviour
         SerializeField, Range(0.0f, 1.0f)] private float _rHandRotationWeight = 1.0f;
     [Tooltip("The weight to apply to the position of the avatar's right elbow for inverse kinematics."),
         SerializeField, Range(0.0f, 1.0f)] private float _rElbowPositionWeight = 1.0f;
+
     [Tooltip("The weight to apply to the position of the avatar's head for inverse kinematics."),
         Space, SerializeField, Range(0.0f, 1.0f)] private float _headPositionWeight = 1.0f;
 #pragma warning restore CS0649
@@ -48,68 +49,75 @@ public class IKAdjuster : MonoBehaviour
 
     private void OnAnimatorIK()
     {
-        // Checks the weapon type to see which animations it should use
-        // TODO: Could be optimized to not run every IK pass
-        if (_pawnData.InventoryMgr.EquippedWeaponType == WeaponType.Pistol)
+        if (_pawnData.PawnAnimator.GetBool("isDead"))
         {
-            UsePistolAnimation();
+            DisableAllIKWeights();
         }
         else
         {
-            UseRifleAnimation();
-        }
-
-        // Adjusts the position and rotation of the avatar's hands and elbows based on the provided weights
-        if (_pawnData.InventoryMgr.EquippedWeaponModelData.LHandIKTransform != null) // Left hand
-        {
-            SetIKTransforms(AvatarIKGoal.LeftHand,
-                _pawnData.InventoryMgr.EquippedWeaponModelData.LHandIKTransform.position,
-                _lHandPositionWeight,
-                _pawnData.InventoryMgr.EquippedWeaponModelData.LHandIKTransform.rotation,
-                _lHandRotationWeight);
-        }
-
-        if (_pawnData.InventoryMgr.EquippedWeaponModelData.LElbowIKTransform != null) // Left elbow
-        {
-            SetIKHintTransforms(AvatarIKHint.LeftElbow,
-                _pawnData.InventoryMgr.EquippedWeaponModelData.LElbowIKTransform.position,
-                _lElbowPositionWeight);
-        }
-
-        if (_pawnData.InventoryMgr.EquippedWeaponModelData.RHandIKTransform != null) // Right hand
-        {
-            SetIKTransforms(AvatarIKGoal.RightHand,
-                _pawnData.InventoryMgr.EquippedWeaponModelData.RHandIKTransform.position,
-                _rHandPositionWeight,
-                _pawnData.InventoryMgr.EquippedWeaponModelData.RHandIKTransform.rotation,
-                _rHandRotationWeight);
-        }
-
-        if (_pawnData.InventoryMgr.EquippedWeaponModelData.RElbowIKTransform != null) // Right elbow
-        {
-            SetIKHintTransforms(AvatarIKHint.RightElbow,
-                _pawnData.InventoryMgr.EquippedWeaponModelData.RElbowIKTransform.position,
-                _rElbowPositionWeight);
-        }
-
-        // Adjusts the rotation of the character's head so they always look where the mouse is pointing
-        if (_headTransform != null)
-        {
-            // Creates an imaginary plane at the position of the model's head
-            Plane headPlane = new Plane(_headTransform.up, _headTransform.position);
-
-            // Gets a ray from the mouse's position through the camera's view direction
-            Ray mouseRay = GameManager.gm.GameCamera.ScreenPointToRay(Input.mousePosition);
-
-            float intersectDistance;
-
-            // If the mouse ray collides with the plane, have the avatar's head look at the mouse's position
-            if (headPlane.Raycast(mouseRay, out intersectDistance))
+            // Checks the weapon type to see which animations it should use
+            // TODO: Could be optimized to not run every IK pass
+            if (_pawnData.InventoryMgr.EquippedWeaponType == WeaponType.Pistol)
             {
-                Vector3 intersectPoint = mouseRay.GetPoint(intersectDistance);
+                UsePistolAnimation();
+            }
+            else
+            {
+                UseRifleAnimation();
+            }
 
-                _pawnData.PawnAnimator.SetLookAtPosition(intersectPoint);
-                _pawnData.PawnAnimator.SetLookAtWeight(_headPositionWeight);
+            // Adjusts the position and rotation of the avatar's hands and elbows based on the provided weights
+            if (_pawnData.InventoryMgr.EquippedWeaponModelData.LHandIKTransform != null) // Left hand
+            {
+                SetIKTransforms(AvatarIKGoal.LeftHand,
+                    _pawnData.InventoryMgr.EquippedWeaponModelData.LHandIKTransform.position,
+                    _lHandPositionWeight,
+                    _pawnData.InventoryMgr.EquippedWeaponModelData.LHandIKTransform.rotation,
+                    _lHandRotationWeight);
+            }
+
+            if (_pawnData.InventoryMgr.EquippedWeaponModelData.LElbowIKTransform != null) // Left elbow
+            {
+                SetIKHintTransforms(AvatarIKHint.LeftElbow,
+                    _pawnData.InventoryMgr.EquippedWeaponModelData.LElbowIKTransform.position,
+                    _lElbowPositionWeight);
+            }
+
+            if (_pawnData.InventoryMgr.EquippedWeaponModelData.RHandIKTransform != null) // Right hand
+            {
+                SetIKTransforms(AvatarIKGoal.RightHand,
+                    _pawnData.InventoryMgr.EquippedWeaponModelData.RHandIKTransform.position,
+                    _rHandPositionWeight,
+                    _pawnData.InventoryMgr.EquippedWeaponModelData.RHandIKTransform.rotation,
+                    _rHandRotationWeight);
+            }
+
+            if (_pawnData.InventoryMgr.EquippedWeaponModelData.RElbowIKTransform != null) // Right elbow
+            {
+                SetIKHintTransforms(AvatarIKHint.RightElbow,
+                    _pawnData.InventoryMgr.EquippedWeaponModelData.RElbowIKTransform.position,
+                    _rElbowPositionWeight);
+            }
+
+            // Adjusts the rotation of the character's head so they always look where the mouse is pointing
+            if (_headTransform != null)
+            {
+                // Creates an imaginary plane at the position of the model's head
+                Plane headPlane = new Plane(_headTransform.up, _headTransform.position);
+
+                // Gets a ray from the mouse's position through the camera's view direction
+                Ray mouseRay = GameManager.gm.GameCamera.ScreenPointToRay(Input.mousePosition);
+
+                float intersectDistance;
+
+                // If the mouse ray collides with the plane, have the avatar's head look at the mouse's position
+                if (headPlane.Raycast(mouseRay, out intersectDistance))
+                {
+                    Vector3 intersectPoint = mouseRay.GetPoint(intersectDistance);
+
+                    _pawnData.PawnAnimator.SetLookAtPosition(intersectPoint);
+                    _pawnData.PawnAnimator.SetLookAtWeight(_headPositionWeight);
+                }
             }
         }
     }
@@ -160,5 +168,19 @@ public class IKAdjuster : MonoBehaviour
     {
         _pawnData.PawnAnimator.SetIKHintPosition(ikHint, hintPosition);
         _pawnData.PawnAnimator.SetIKHintPositionWeight(ikHint, positionWeight);
+    }
+
+    /// <summary>
+    /// Sets all IK weights to zero.
+    /// </summary>
+    public void DisableAllIKWeights()
+    {
+        _pawnData.PawnAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
+        _pawnData.PawnAnimator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0);
+        _pawnData.PawnAnimator.SetIKHintPositionWeight(AvatarIKHint.LeftElbow, 0);
+        _pawnData.PawnAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
+        _pawnData.PawnAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0);
+        _pawnData.PawnAnimator.SetIKHintPositionWeight(AvatarIKHint.RightElbow, 0);
+        _pawnData.PawnAnimator.SetLookAtWeight(0);
     }
 }

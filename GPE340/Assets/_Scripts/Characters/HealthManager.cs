@@ -51,7 +51,7 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
         // Component reference assignments
         if (_pawnData == null)
         {
-            _pawnData = this.gameObject.GetComponent<PawnData>();
+            _pawnData = this.gameObject.GetComponentInParent<PawnData>();
         }
     }
 
@@ -221,6 +221,21 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
     public void KillMe()
     {
         // TODO: Death functionality
-        Debug.Log("Blarg I am ded");
+        _pawnData.Controller.StopAllCoroutines();
+        _pawnData.PawnAnimator.SetTrigger("Dead");
+        _pawnData.InventoryMgr.EquippedWeaponModelData.DropWeapon();
+
+
+        StartCoroutine(Respawn());
+    }
+
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(GameManager.gm.PlayerRespawnTimer);
+
+        _pawnData.Controller.StartAllCoroutines();
+        _pawnData.PawnAnimator.SetTrigger("Dead");
+        _pawnData.InventoryMgr.EquippedWeaponModelData.ResetWeaponPosition();
+        _pawnData.HealthMgr.InitializeHealthValues(GameManager.gm.InitialPlayerHealth);
     }
 }

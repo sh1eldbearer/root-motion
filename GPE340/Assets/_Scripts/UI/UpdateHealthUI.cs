@@ -67,7 +67,7 @@ public class UpdateHealthUI : MonoBehaviour
         while (_pawnData.HealthSlider.value != _pawnData.CurrentHealth)
         {
             _pawnData.HealthSlider.value = Mathf.Lerp(_pawnData.HealthSlider.value, _pawnData.CurrentHealth,
-                Time.smoothDeltaTime * GameManager.gm.HealthSliderUpdateTime);
+                Time.unscaledDeltaTime / GameManager.gm.HealthSliderUpdateTime);
             UpdateSliderColor();
             yield return null;
         }

@@ -56,6 +56,8 @@ public class PawnData : MonoBehaviour
         SerializeField] private Animator _pawnAnimator;
     [Tooltip("The Capsule Collider attached to this pawn."),
         SerializeField] private CapsuleCollider _pawnCollider;
+    [Tooltip("The IK Adjuster component for this pawn."),
+        SerializeField] private IKAdjuster _ikAdjuster;
 
     [Header("Skinned Mesh Renderers")]
     [Tooltip("The parts of the character mesh that use the Body_MAT material. Used for for changing the player " +
@@ -200,6 +202,14 @@ public class PawnData : MonoBehaviour
     }
 
     /// <summary>
+    /// This pawn's controller.
+    /// </summary>
+    public AgentController Controller
+    {
+        get { return _controller; }
+    }
+
+    /// <summary>
     /// This Pawn's InventoryManager.
     /// </summary>
     public InventoryManager InventoryMgr
@@ -240,6 +250,14 @@ public class PawnData : MonoBehaviour
     }
 
     /// <summary>
+    /// The IK Adjuster component for this pawn.
+    /// </summary>
+    public IKAdjuster IKAdjuster
+    {
+        get { return _ikAdjuster; }
+    }
+
+    /// <summary>
     /// The parts of the character mesh that use the Body_MAT material. Used for for changing the player
     /// model's skin color when the game starts. Auto-populated at run-time.
     /// </summary>
@@ -274,7 +292,6 @@ public class PawnData : MonoBehaviour
     {
         get { return _eyeSpecRenderers; }
     }
-
     #endregion
 
     // Awake is called before Start
@@ -304,6 +321,10 @@ public class PawnData : MonoBehaviour
         if (_pawnCollider == null)
         {
             _pawnCollider = this.gameObject.GetComponentInChildren<CapsuleCollider>();
+        }
+        if (_ikAdjuster == null)
+        {
+            _ikAdjuster = this.gameObject.GetComponent<IKAdjuster>();
         }
 
         // Gets the initial rotation of the pawn's canvas, if one was not provided

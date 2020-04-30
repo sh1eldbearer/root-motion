@@ -15,7 +15,7 @@ MonoBehaviour:
   _weaponType: 1
   _weaponQuality: 0
   _baseDamage: 10
-  _baseFireRate: 0.5
+  _baseFireRate: 1
   _baseClipSize: 6
   _firingMode: 1
   _baseRange: 50

@@ -25,11 +25,16 @@ public class GameManager : MonoBehaviour
 
     // [Header("Prefabs")]
 
-    [Header("Game Initialization Settings")]
+    [Header("Game Settings")]
     [Tooltip("The amount of health a player pawn starts with."),
         SerializeField] private float _initialPlayerHealth = 100f;
+    [Tooltip("The length of time, in seconds, it takes for a player to respawn after death."),
+        SerializeField] private float _playerRespawnTimer = 5f;
+
     [Tooltip("The amount of health an enemy pawn starts with."),
-        SerializeField] private float _initialEnemyHealth = 50f;
+        Space(5f), SerializeField] private float _initialEnemyHealth = 50f;
+    
+    
 
     [Header("UI Settings")]
     [Tooltip("The length of time, in seconds, the loading screen will take to fade in and out."),
@@ -83,6 +88,14 @@ public class GameManager : MonoBehaviour
     public float InitialPlayerHealth
     {
         get { return _initialPlayerHealth; }
+    }
+
+    /// <summary>
+    /// The length of time, in seconds, it takes for a player to respawn after death.
+    /// </summary>
+    public float PlayerRespawnTimer
+    {
+        get { return _playerRespawnTimer; }
     }
 
     /// <summary>

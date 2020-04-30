@@ -49,6 +49,13 @@ public abstract class AgentController : MonoBehaviour
 
     }
 
+    public virtual void StartAllCoroutines()
+    {
+        StartMoveCoroutine();
+        StartRotationCoroutine();
+        StartFireInputCoroutine();
+    }
+
     /// <summary>
     /// Starts the Move coroutine for this agent.
     /// </summary>

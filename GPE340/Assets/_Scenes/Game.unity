@@ -5148,6 +5148,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633712239}
   m_Mesh: {fileID: 134280838}
+--- !u!1 &638397736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6364761501985798939, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3169416566994596354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &638397737
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638397736}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &638397740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638397736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.09952231, y: 0.30368966, z: 0.9805007}
+  m_Center: {x: -0.00032322854, y: 0.049439803, z: -0.01884234}
 --- !u!1001 &643592969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12036,6 +12071,41 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1238243520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8645846079793766395, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3169416566994596354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1238243524
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238243520}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1238243525
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238243520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.037398305, y: 0.17397998, z: 0.23295537}
+  m_Center: {x: -0.0024838394, y: 0.03968839, z: 0.021003107}
 --- !u!43 &1254836828
 Mesh:
   m_ObjectHideFlags: 0
@@ -15906,6 +15976,41 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1593348699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5917793491281084469, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3169416566994596354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1593348700
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593348699}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1593348703
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593348699}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05436395, y: 0.25459242, z: 0.6085089}
+  m_Center: {x: 0.002460342, y: 0.019418715, z: -0.00028499955}
 --- !u!1 &1596773675
 GameObject:
   m_ObjectHideFlags: 0
@@ -16528,6 +16633,41 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1704272088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5750422104959595985, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3169416566994596354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1704272089
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704272088}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1704272092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704272088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12260264, y: 0.3226478, z: 1.0080705}
+  m_Center: {x: -0.004214227, y: 0.036606714, z: -0.078011274}
 --- !u!1001 &1707279186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22597,6 +22737,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5917793491281084469, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645846079793766395, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750422104959595985, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2991597396998628883, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22658,6 +22813,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1372768973, guid: 80aa1e5129cdcd04895bc82d7675a0c6, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364761501985798939, guid: 80aa1e5129cdcd04895bc82d7675a0c6,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -23074,6 +23234,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299789970, guid: 6fec9a87164869f47a793466bba5991d, type: 3}
+      propertyPath: _healthSliderUpdateTime
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3256744351341716515, guid: 6fec9a87164869f47a793466bba5991d,
         type: 3}

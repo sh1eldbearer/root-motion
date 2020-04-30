@@ -9,6 +9,10 @@ public class PlayerController : AgentController
         // Register listeners with the pause manager
         PauseManager.pauseMgr.AddOnUnpauseListener(StartMoveCoroutine, StartRotationCoroutine, StartFireInputCoroutine);
         PauseManager.pauseMgr.AddOnPauseListener(StopMoveCoroutine, StopRotationCoroutine, StopFireInputCoroutine);
+        
+        StartMoveCoroutine();
+        StartRotationCoroutine();
+        StartFireInputCoroutine();
     }
 
     protected override void OnDisable()
@@ -16,6 +20,8 @@ public class PlayerController : AgentController
         // Unregister listeners with the pause manager
         PauseManager.pauseMgr.RemoveOnUnpauseListener(StartMoveCoroutine, StartRotationCoroutine, StartFireInputCoroutine);
         PauseManager.pauseMgr.RemoveOnPauseListener(StopMoveCoroutine, StopRotationCoroutine, StopFireInputCoroutine);
+
+        StopAllCoroutines();
     }
 
     /// <summary>

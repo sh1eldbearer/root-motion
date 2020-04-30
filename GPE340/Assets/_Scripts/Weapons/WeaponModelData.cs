@@ -33,12 +33,21 @@ public class WeaponModelData : MonoBehaviour
     [Tooltip("The Transform component for the weapon's root GameObject (the Transform component" +
              "this script is residing on.)"),
         Space, SerializeField] private Transform _weaponTransform;
+    [Tooltip("The Collider component for this weapon."),
+        SerializeField] private Collider _weaponCollider;
+    [Tooltip("The Rigidbody component for this weapon."),
+        SerializeField] private Rigidbody _weaponRigidbody;
     [Tooltip("The transform component of the raycast origin object attached to the weapon model."),
         SerializeField] private Transform _raycastOriginTransform;
     [Tooltip("The muzzle flash particle effect attached to this weapon."),
         SerializeField] private ParticleSystem _muzzleFlash;
     [Tooltip("The IShootable component for this weapon."),
         SerializeField] private IShootable _weaponBehavior;
+    
+    [Tooltip("The initial local position for this weapon."),
+        Space, SerializeField] private Vector3 _initialLocalPosition;
+    [Tooltip("The initial local rotation for this weapon."),
+        SerializeField] private Quaternion _initialLocalRotation;
 #pragma warning restore CS0649
     #endregion
 
@@ -85,6 +94,22 @@ public class WeaponModelData : MonoBehaviour
     }
 
     /// <summary>
+    /// The Collider component for this weapon.
+    /// </summary>
+    public Collider WeaponCollider
+    {
+        get { return _weaponCollider; }
+    }
+
+    /// <summary>
+    /// The Rigidbody component for this weapon.
+    /// </summary>
+    public Rigidbody WeaponRigidbody
+    {
+        get { return _weaponRigidbody; }
+    }
+
+    /// <summary>
     /// The transform component of the raycast origin object attached to the weapon model.
     /// </summary>
     public Transform RaycastOriginTransform
@@ -99,6 +124,23 @@ public class WeaponModelData : MonoBehaviour
     {
         get { return _weaponBehavior; }
     }
+
+    /// <summary>
+    /// The initial local position for this weapon.
+    /// </summary>
+    public Vector3 InitialLocalPosition
+    {
+        get { return _initialLocalPosition; }
+    }
+
+    /// <summary>
+    /// The initial local rotation for this weapon.
+    /// </summary>
+    public Quaternion InitialLocalRotation
+    {
+        get { return _initialLocalRotation; }
+    }
+
     #endregion
 
     // Awake is called before Start
@@ -109,25 +151,25 @@ public class WeaponModelData : MonoBehaviour
         {
             _weaponTransform = this.gameObject.GetComponent<Transform>();
         }
+        if (_weaponCollider == null)
+        {
+            _weaponCollider = this.gameObject.GetComponent<Collider>();
+        }
+        if (_weaponRigidbody == null)
+        {
+            _weaponRigidbody = this.gameObject.GetComponent<Rigidbody>();
+        }
         if (_weaponBehavior == null)
         {
             _weaponBehavior = this.gameObject.GetComponent<IShootable>();
         }
 
+        // Get the weapon's initial local position and rotation
+        _initialLocalPosition = _weaponTransform.localPosition;
+        _initialLocalRotation = _weaponTransform.localRotation;
+
         // Stores the MeshRenderers of each part of the weapon so we can modify their materials
         _partMeshes = this.gameObject.GetComponentsInChildren<MeshRenderer>().ToList();
-    }
-
-    // Start is called before the first frame update
-    protected virtual void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-
     }
 
     /// <summary>
@@ -224,5 +266,31 @@ public class WeaponModelData : MonoBehaviour
     public void PlayMuzzleFlash()
     {
         _muzzleFlash.Play();
+    }
+
+    /// <summary>
+    /// Resets the local position and rotation of this weapon to their initial values, and enables the correct
+    /// collider and rigidbody settings. Used when the pawn respawns after death.
+    /// </summary>
+    public void ResetWeaponPosition()
+    {
+        _weaponTransform.localPosition = _initialLocalPosition;
+        _weaponTransform.localRotation = _initialLocalRotation;
+
+        _weaponCollider.isTrigger = true;
+
+        _weaponRigidbody.useGravity = false;
+        _weaponRigidbody.isKinematic = true;
+    }
+
+    /// <summary>
+    /// Drops the weapon from the pawn's grip (used when the death animation is triggered).
+    /// </summary>
+    public void DropWeapon()
+    {
+        _weaponCollider.isTrigger = false;
+
+        _weaponRigidbody.useGravity = true;
+        _weaponRigidbody.isKinematic = false;
     }
 }
