@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
 
     // [Header("Prefabs")]
 
+    [Header("Game Initialization Settings")]
+    [Tooltip("The amount of health a player pawn starts with."),
+        SerializeField] private float _initialPlayerHealth = 100f;
+    [Tooltip("The amount of health an enemy pawn starts with."),
+        SerializeField] private float _initialEnemyHealth = 50f;
+
     [Header("UI Settings")]
     [Tooltip("The length of time, in seconds, the loading screen will take to fade in and out."),
         Space, SerializeField, Range(0.1f, 2f)] private float _loadScreenFadeTime = 0.5f;
@@ -69,6 +75,22 @@ public class GameManager : MonoBehaviour
     public PlayerTracking[] PlayerInfo
     {
         get { return _playerInfo; }
+    }
+
+    /// <summary>
+    /// The amount of health a player pawn starts with.
+    /// </summary>
+    public float InitialPlayerHealth
+    {
+        get { return _initialPlayerHealth; }
+    }
+
+    /// <summary>
+    /// The amount of health an enemy pawn starts with.
+    /// </summary>
+    public float InitialEnemyHealth
+    {
+        get { return _initialEnemyHealth; }
     }
 
     /// <summary>

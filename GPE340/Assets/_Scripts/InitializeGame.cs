@@ -33,6 +33,7 @@ public class InitializeGame : MonoBehaviour
 
             // Assigns the test player's PawnData to the game manager and camera
             GameManager.gm.PlayerInfo[0].SetPawnData(_testPlayerObject.GetComponent<PawnData>());
+            GameManager.gm.PlayerInfo[0].PawnData.HealthMgr.InitializeHealthValues(GameManager.gm.InitialPlayerHealth);
             GameManager.gm.GameCameraController.SetFollowTarget(_testPlayerObject);
 
             // Sets the player indicator of the test player to a random color
@@ -60,6 +61,9 @@ public class InitializeGame : MonoBehaviour
         }
 
         PauseManager.pauseMgr.UnpauseGame();
+
+        // Destroys this object after a few seconds
+        Destroy(this.gameObject, 2f);
     }
 
     /// <summary>
@@ -96,6 +100,8 @@ public class InitializeGame : MonoBehaviour
         playerObject.SetActive(true);
         // Assigns the new character's agent data component to the player info array
         player.SetPawnData(playerObject.GetComponent<PawnData>());
+        // Initializes the player's health
+        GameManager.gm.PlayerInfo[0].PawnData.HealthMgr.InitializeHealthValues(GameManager.gm.InitialPlayerHealth);
         // Assigns the selected skin color materials to the player object
         SkinManager.skinMgr.AssignMaterials(player.SkinColorIndex, player.PawnData);
         // Assigns the chosen player color to the player indicator

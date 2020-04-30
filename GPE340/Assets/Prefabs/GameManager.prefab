@@ -65,6 +65,8 @@ MonoBehaviour:
     _playerStatus: -2
     _pawnData: {fileID: 0}
     _skinColorIndex: -1
+  _initialPlayerHealth: 100
+  _initialEnemyHealth: 50
   _loadScreenFadeTime: 0.75
   _healthSliderUpdateTime: 0.15
   _fullHealthColor: {r: 0, g: 0.5471698, b: 0.09515994, a: 0.6}
