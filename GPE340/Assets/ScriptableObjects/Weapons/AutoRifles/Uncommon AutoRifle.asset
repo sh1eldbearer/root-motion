@@ -15,8 +15,9 @@ MonoBehaviour:
   _weaponType: 3
   _weaponQuality: 1
   _baseDamage: 10
-  _baseFireRate: 0.75
+  _baseFireRate: 4
   _baseClipSize: 6
-  _firingMode: 1
+  _firingMode: 3
+  _baseRange: 50
   _burstSize: 1
-  _burstDelay: 0.25
+  _burstDuration: 0.25
