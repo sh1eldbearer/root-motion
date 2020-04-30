@@ -438,7 +438,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 0.75
   m_FillClockwise: 0
-  m_FillOrigin: 3
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1565899709
@@ -2284,7 +2284,7 @@ MonoBehaviour:
   _playerIndicatorImage: {fileID: 348452193}
   _controller: {fileID: 2478015284733781260}
   _inventoryMgr: {fileID: 3316539731185222317}
-  _healthMgr: {fileID: 698006258104893207}
+  _healthMgr: {fileID: 0}
   _pawnTransform: {fileID: 2991597396998628883}
   _pawnAnimator: {fileID: 5574581402221683709}
   _pawnCollider: {fileID: 5043264499658602175}
@@ -6942,6 +6942,7 @@ GameObject:
   - component: {fileID: 4881449187935147886}
   - component: {fileID: 1253871350297778966}
   - component: {fileID: 11103081}
+  - component: {fileID: 11103082}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7049,6 +7050,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &11103082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909498979423817382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 128592cbc5a2e824180727202c2a3803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pawnData: {fileID: 0}
 --- !u!1 &7951619443694211579
 GameObject:
   m_ObjectHideFlags: 0
