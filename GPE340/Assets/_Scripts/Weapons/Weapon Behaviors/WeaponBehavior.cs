@@ -10,7 +10,6 @@ public abstract class WeaponBehavior : MonoBehaviour, IShootable
 #pragma warning disable CS0649
     [Tooltip("The PawnData component for this pawn."),
         SerializeField] protected PawnData _pawnData;
-
     [Tooltip("The WeaaponModelComponent for this weapon."),
         SerializeField] protected WeaponModelData _weaponModelData;
 

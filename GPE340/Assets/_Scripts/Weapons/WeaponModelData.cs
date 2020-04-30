@@ -40,7 +40,7 @@ public class WeaponModelData : MonoBehaviour
     [Tooltip("The transform component of the raycast origin object attached to the weapon model."),
         SerializeField] private Transform _raycastOriginTransform;
     [Tooltip("The muzzle flash particle effect attached to this weapon."),
-        SerializeField] private ParticleSystem _muzzleFlash;
+        SerializeField] private ParticleSystem[] _muzzleFlashes;
     [Tooltip("The IShootable component for this weapon."),
         SerializeField] private IShootable _weaponBehavior;
     
@@ -265,7 +265,10 @@ public class WeaponModelData : MonoBehaviour
     /// </summary>
     public void PlayMuzzleFlash()
     {
-        _muzzleFlash.Play();
+        foreach (ParticleSystem particle in _muzzleFlashes)
+        {
+            particle.Play();
+        }
     }
 
     /// <summary>

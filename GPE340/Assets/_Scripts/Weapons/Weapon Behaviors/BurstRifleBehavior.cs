@@ -2,33 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BurstRifleBehavior : MonoBehaviour
+public class BurstRifleBehavior : WeaponBehavior
 {
-    #region Private Properties
-#pragma warning disable CS0649
-
-#pragma warning restore CS0649
-    #endregion
-
-    #region Public Properties
-
-    #endregion
-	
-	// Awake is called before Start
-	private void Awake()
-	{
-		
-	}
-
-    // Start is called before the first frame update
-    private void Start()
+    /// <summary>
+    /// Fires this weapon.
+    /// </summary>
+    public override void Shoot()
     {
-        
+        // If the weapon is on cooldown, it won't fire
+        if (_fireCooldownTimer <= 0f)
+        {
+            StartCoroutine(BurstFire());
+
+            // Starts the weapon's cooldown timer
+            StartCoroutine(CooldownTimer());
+        }
     }
 
-    // Update is called once per frame
-    private void Update()
+    /// <summary>
+    /// Fires multiple shots from this weapon within a short window
+    /// </summary>
+    /// <returns>Coroutine.</returns>
+    public IEnumerator BurstFire()
     {
-        
+        float burstTimer = _pawnData.InventoryMgr.EquippedWeaponBurstDuration /
+                           _pawnData.InventoryMgr.EquippedWeaponBurstSize;
+
+        for (int burstCount = 0; burstCount <= _pawnData.InventoryMgr.EquippedWeaponBurstSize; burstCount++)
+        {
+            base.Shoot();
+            yield return new WaitForSeconds(burstTimer);
+        }
     }
 }

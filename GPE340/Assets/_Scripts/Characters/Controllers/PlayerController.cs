@@ -4,6 +4,10 @@ using Utility.Enums;
 
 public class PlayerController : AgentController
 {
+    #region Private Properties
+    [Tooltip("Indicates whether or not the player has released the fire button since the last attempt to shoot."),
+        Space, SerializeField] protected bool _fireButtonReleased = true;
+    #endregion
     protected override void OnEnable()
     {
         // Register listeners with the pause manager
@@ -104,9 +108,19 @@ public class PlayerController : AgentController
     {
         while (true)
         {
-            if (Input.GetAxis("Fire1") > 0f)
+            if (Input.GetAxis("Fire1") > 0f && _fireButtonReleased)
             {
+                if (ThisPawn.PawnData.InventoryMgr.EquippedWeaponFiringMode != FireMode.FullAuto)
+                {
+                    _fireButtonReleased = false;
+                }
+
                 ThisPawn.PawnData.InventoryMgr.ShootEquippedWeapon();
+            }
+
+            if (Input.GetAxis("Fire1") == 0)
+            {
+                _fireButtonReleased = true;
             }
 
             yield return null;
