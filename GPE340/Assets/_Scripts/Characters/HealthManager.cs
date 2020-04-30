@@ -55,23 +55,24 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
         }
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-
-    }
-
+    /// <summary>
+    /// Set the health values of the pawn to the specified initial values.
+    /// </summary>
+    /// <param name="initialValue">The value to initialize the pawn's health to.</param>
     public void InitializeHealthValues(float initialValue)
     {
         _maxHealth = initialValue;
         _maxHealthChanged.Invoke();
         _currentHealth = initialValue;
+        _currentHealthChanged.Invoke();
+    }
+
+    /// <summary>
+    /// Resets the current health value to the max value.
+    /// </summary>
+    public void ResetCurrentHealth()
+    {
+        _currentHealth = _maxHealth;
         _currentHealthChanged.Invoke();
     }
 
@@ -220,22 +221,29 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
     /// </summary>
     public void KillMe()
     {
-        // TODO: Death functionality
+        // Stop all coroutines on the agent controller (we don't want spinning corpses!)
         _pawnData.Controller.StopAllCoroutines();
+        // Play death animations
         _pawnData.PawnAnimator.SetTrigger("Dead");
+        // "Drop" the weapon model to the ground
         _pawnData.InventoryMgr.EquippedWeaponModelData.DropWeapon();
-
-
-        StartCoroutine(Respawn());
+        
+        // Respawns the pawn after a fixed amount of time
+        Invoke("Respawn", GameManager.gm.PlayerRespawnTimer);
     }
 
-    private IEnumerator Respawn()
+    /// <summary>
+    /// Reconfigures the pawn back to a functional state after death.
+    /// </summary>
+    private void Respawn()
     {
-        yield return new WaitForSeconds(GameManager.gm.PlayerRespawnTimer);
-
+        // Restarts the coroutines on the agent controller
         _pawnData.Controller.StartAllCoroutines();
+        // Stop playing death animations
         _pawnData.PawnAnimator.SetTrigger("Dead");
+        // Resets the weapon model position to its original position
         _pawnData.InventoryMgr.EquippedWeaponModelData.ResetWeaponPosition();
-        _pawnData.HealthMgr.InitializeHealthValues(GameManager.gm.InitialPlayerHealth);
+        // Reset the health values of the pawn
+        _pawnData.HealthMgr.ResetCurrentHealth();
     }
 }

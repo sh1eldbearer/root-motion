@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Utility.Enums;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SkinManager : MonoBehaviour
 {

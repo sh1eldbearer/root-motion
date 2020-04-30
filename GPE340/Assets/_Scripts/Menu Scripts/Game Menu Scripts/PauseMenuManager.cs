@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenuManager : MenuManager
@@ -26,7 +25,7 @@ public class PauseMenuManager : MenuManager
     /// <returns>Null.</returns>
     private IEnumerator WaitForMenuKey()
     {
-        // TODO: Could be rebuilt as an event for cleaning debugging?
+        // TODO: Could be rebuilt as an event for cleaner debugging?
 
         while (true)
         {

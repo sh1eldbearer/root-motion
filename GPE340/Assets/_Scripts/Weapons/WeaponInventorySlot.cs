@@ -5,46 +5,78 @@ using Utility.Enums;
 [System.Serializable]
 public class WeaponInventorySlot
 {
-    // TODO: Needs tooltips/summary tags
     #region Private Properties
 #pragma warning disable CS0649
-    [Tooltip(""), SerializeField] private WeaponType _weaponType;
-    [Tooltip(""), SerializeField] private WeaponData _weaponData;
-    [Tooltip(""), SerializeField] private WeaponModelData _weaponModelData;
-    [Tooltip(""), SerializeField] private int _currentAmmo;
-    [Tooltip(""), SerializeField] private int _maxAmmo;
+    [Tooltip("The type of weapon to be stored in this inventory slot."), 
+        SerializeField] private WeaponType _weaponType;
+    [Tooltip("The WeaponData ScriptableObject stored in this inventory slot."), 
+        SerializeField] private WeaponData _weaponData;
+    [Tooltip("The WeaponModelData component associated with the weapon stored in this inventory slot."), 
+        SerializeField] private WeaponModelData _weaponModelData;
+    [Tooltip("Whether or not this weapon should ignore ammo counts when firing."),
+        SerializeField] private bool _hasInfiniteAmmo;
+    [Tooltip("The amount of ammo the pawn currently has for this weapon."), 
+        SerializeField] private int _currentAmmo;
+    [Tooltip("The maximum amount of ammo the pawn can carry for this weapon."), 
+        SerializeField] private int _maxAmmo;
 
 #pragma warning restore CS0649
     #endregion
 
     #region Public Properties
+    /// <summary>
+    /// The type of weapon to be stored in this inventory slot.
+    /// </summary>
     public WeaponType WeaponType
     {
         get { return _weaponType; }
     }
 
+    /// <summary>
+    /// The WeaponData ScriptableObject stored in this inventory slot.
+    /// </summary>
     public WeaponData WeaponData
     {
         get { return _weaponData; }
     }
 
+    /// <summary>
+    /// The WeaponModelData component associated with the weapon stored in this inventory slot.
+    /// </summary>
     public WeaponModelData WeaponModelData
     {
         get { return _weaponModelData; }
     }
 
+    /// <summary>
+    /// Whether or not this weapon should ignore ammo counts when firing.
+    /// </summary>
+    public bool HasInfiniteAmmo
+    {
+        get { return _hasInfiniteAmmo; }
+    }
+
+    /// <summary>
+    /// The amount of ammo the pawn currently has for this weapon.
+    /// </summary>
     public int CurrentAmmo
     {
         get { return _currentAmmo; }
     }
 
+    /// <summary>
+    /// The maximum amount of ammo the pawn can carry for this weapon.
+    /// </summary>
     public int MaxAmmo
     {
         get { return _maxAmmo; }
     }
-
     #endregion
 
+    /// <summary>
+    /// Changes the WeaponData stored in this inventory slot.
+    /// </summary>
+    /// <param name="newInfo">The new WeaponData component to be stored in this inventory slot.</param>
     public void SetNewWeaponInfo(WeaponData newInfo)
     {
         _weaponData = newInfo;

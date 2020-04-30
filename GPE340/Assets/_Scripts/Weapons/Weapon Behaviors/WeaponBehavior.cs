@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Utility.Enums;
 
 public abstract class WeaponBehavior : MonoBehaviour, IShootable
 {
@@ -67,11 +65,6 @@ public abstract class WeaponBehavior : MonoBehaviour, IShootable
 
             if (damageable != null)
             {
-                // TODO: Remove debug.log later
-                Debug.Log(
-                    $"{_pawnData.gameObject.name} shot {hitInfo.collider.name} with a {WeaponType.Pistol.ToString()} " +
-                    $"for {_pawnData.InventoryMgr.EquippedWeaponDamage} damage.");
-
                 // Has the other object take damage
                 damageable.TakeDamage(_pawnData.InventoryMgr.EquippedWeaponDamage);
             }
