@@ -42,7 +42,6 @@ public abstract class AgentController : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-
     }
 
     protected virtual void OnDisable()
@@ -51,34 +50,76 @@ public abstract class AgentController : MonoBehaviour
     }
 
     /// <summary>
+    /// Starts the Move coroutine for this agent.
+    /// </summary>
+    protected void StartMoveCoroutine()
+    {
+        StartCoroutine(Move());
+    }
+
+    /// <summary>
+    /// Stops the Move coroutine for this agent.
+    /// </summary>
+    protected void StopMoveCoroutine()
+    {
+        StopCoroutine(Move());
+
+    }
+
+    /// <summary>
+    /// Starts the Rotate coroutine for this agent.
+    /// </summary>
+    protected void StartRotationCoroutine()
+    {
+        StartCoroutine(Rotate());
+    }
+
+    /// <summary>
+    /// Stops the Rotate coroutine for this agent.
+    /// </summary>
+    protected void StopRotationCoroutine()
+    {
+        StopCoroutine(Rotate());
+    }
+
+    /// <summary>
     /// Moves the agent relative to local space.
     /// </summary>
-    /// <returns>Vector3.negativeInfinity as a placeholder value.</returns>
+    /// <returns>Coroutine.</returns>
     protected virtual IEnumerator Move()
     {
         // TODO: Determine base functionality once AI controllers are set up
-        yield return Vector3.negativeInfinity;
+        yield return null;
     }
 
     /// <summary>
     /// Rotates the agent relative to local space.
     /// </summary>
-    /// <returns>Vector3.negativeInfinity as a placeholder value.</returns>
-    protected virtual IEnumerator HandleRotation()
+    /// <returns>Coroutine.</returns>
+    protected virtual IEnumerator Rotate()
     {
         // TODO: Determine base functionality once AI controllers are set up
-        yield return Vector3.negativeInfinity;
+        yield return null;
     }
 
     /// <summary>
     /// Rotates the agent relative to world space.
     /// </summary>
     /// <param name="activeCamera"></param>
-    /// <returns>Vector3.negativeInfinity as a placeholder value.</returns>
-    protected virtual IEnumerator HandleRotation(CameraController activeCamera)
+    /// <returns>Coroutine.</returns>
+    protected virtual IEnumerator Rotate(CameraController activeCamera)
     {
         // TODO: Determine base functionality once AI controllers are set up
-        yield return Vector3.negativeInfinity;
+        yield return null;
+    }
+
+    /// <summary>
+    /// Fires the currently equipped weapon.
+    /// </summary>
+    /// <returns>Coroutine.</returns>
+    protected virtual IEnumerator WaitForFireWeaponInput()
+    {
+        yield return null;
     }
 
     /// <summary>

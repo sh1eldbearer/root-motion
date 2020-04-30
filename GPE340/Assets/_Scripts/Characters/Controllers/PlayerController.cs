@@ -1,48 +1,21 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using Utility.Enums;
 
 public class PlayerController : AgentController
 {
-    // Start is called before the first frame update
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     protected override void OnEnable()
     {
         // Register listeners with the pause manager
-        PauseManager.pauseMgr.AddOnUnpauseListeners(StartMoveCoroutine, StartRotationCoroutine);
-        PauseManager.pauseMgr.AddOnPauseListeners(StopMoveCoroutine, StopRotationCoroutine);
+        PauseManager.pauseMgr.AddOnUnpauseListener(StartMoveCoroutine, StartRotationCoroutine);
+        PauseManager.pauseMgr.AddOnPauseListener(StopMoveCoroutine, StopRotationCoroutine);
     }
 
     protected override void OnDisable()
     {
         // Unregister listeners with the pause manager
-        PauseManager.pauseMgr.RemoveOnUnpauseListeners(StartMoveCoroutine, StartRotationCoroutine);
-        PauseManager.pauseMgr.RemoveOnPauseListeners(StopMoveCoroutine, StopRotationCoroutine);
-    }
-
-    private void StartMoveCoroutine()
-    {
-        StartCoroutine(Move());
-    }
-
-    private void StopMoveCoroutine()
-    {
-        StopCoroutine(Move());
-
-    }
-
-    private void StartRotationCoroutine()
-    {
-        StartCoroutine(HandleRotation());
-    }
-
-    private void StopRotationCoroutine()
-    {
-        StopCoroutine(HandleRotation());
+        PauseManager.pauseMgr.RemoveOnUnpauseListener(StartMoveCoroutine, StartRotationCoroutine);
+        PauseManager.pauseMgr.RemoveOnPauseListener(StopMoveCoroutine, StopRotationCoroutine);
     }
 
     /// <summary>
@@ -80,12 +53,6 @@ public class PlayerController : AgentController
                 GameManager.gm.GameCameraController.UpdateCameraPosition();
             }
 
-            // TODO: comments
-            if (Input.GetAxis("Fire1") > 0f)
-            {
-                ThisPawn.PawnData.InventoryMgr.ShootEquippedWeapon();
-            }
-
             yield return null;
         }
     }
@@ -94,7 +61,7 @@ public class PlayerController : AgentController
     /// Rotates the agent to face where the mouse is pointing, relative to local space.
     /// </summary>
     /// <param name="activeCamera">The currently active camera in the game scene.</param>
-    protected override IEnumerator HandleRotation()
+    protected override IEnumerator Rotate()
     {
         while (true)
         {
@@ -119,6 +86,17 @@ public class PlayerController : AgentController
             }
 
             yield return null;
+        }
+    }
+
+    protected override IEnumerator WaitForFireWeaponInput()
+    {
+        while (true)
+        {
+            if (Input.GetAxis("Fire1") > 0f)
+            {
+                ThisPawn.PawnData.InventoryMgr.ShootEquippedWeapon();
+            }
         }
     }
 }
