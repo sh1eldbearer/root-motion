@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using Utility.Enums;
 
@@ -12,7 +9,7 @@ public class WeaponInventorySlot
     #region Private Properties
 #pragma warning disable CS0649
     [Tooltip(""), SerializeField] private WeaponType _weaponType;
-    [Tooltip(""), SerializeField] private WeaponData _weaponInfo;
+    [Tooltip(""), SerializeField] private WeaponData _weaponData;
     [Tooltip(""), SerializeField] private WeaponModelData _weaponModelData;
     [Tooltip(""), SerializeField] private int _currentAmmo;
     [Tooltip(""), SerializeField] private int _maxAmmo;
@@ -26,9 +23,9 @@ public class WeaponInventorySlot
         get { return _weaponType; }
     }
 
-    public WeaponData WeaponInfo
+    public WeaponData WeaponData
     {
-        get { return _weaponInfo; }
+        get { return _weaponData; }
     }
 
     public WeaponModelData WeaponModelData
@@ -50,7 +47,7 @@ public class WeaponInventorySlot
 
     public void SetNewWeaponInfo(WeaponData newInfo)
     {
-        _weaponInfo = newInfo;
+        _weaponData = newInfo;
     }
 
     /// <summary>
