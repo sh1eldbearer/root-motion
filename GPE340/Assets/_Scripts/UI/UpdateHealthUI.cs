@@ -8,9 +8,6 @@ public class UpdateHealthUI : MonoBehaviour
 #pragma warning disable CS0649
     [Tooltip("The PawnData component for this pawn."),
         SerializeField] private PawnData _pawnData;
-
-    // TODO: move to GM
-    [SerializeField] private float _uiUpdateTime = 0.25f;
 #pragma warning restore CS0649
     #endregion
 
@@ -68,7 +65,7 @@ public class UpdateHealthUI : MonoBehaviour
         while (_pawnData.HealthSlider.value != _pawnData.CurrentHealth)
         {
             _pawnData.HealthSlider.value = Mathf.Lerp(_pawnData.HealthSlider.value, _pawnData.CurrentHealth,
-                Time.unscaledDeltaTime * _uiUpdateTime);
+                Time.unscaledDeltaTime * GameManager.gm.HealthSliderUpdateTime);
             yield return null;
         }
     }

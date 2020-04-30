@@ -27,7 +27,9 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Settings")]
     [Tooltip("The length of time, in seconds, the loading screen will take to fade in and out."),
-     Space, SerializeField, Range(0.1f, 2f)] private float _loadScreenFadeTime = 0.5f;
+        Space, SerializeField, Range(0.1f, 2f)] private float _loadScreenFadeTime = 0.5f;
+    [Tooltip("The time, in seconds, that pawn health UIs will take to update their slider values."),
+        SerializeField, Range(0.01f, 1f)] private float _healthSliderUpdateTime = 0.15f;
 #pragma warning restore CS0649
     #endregion
 
@@ -71,6 +73,14 @@ public class GameManager : MonoBehaviour
     public float LoadScreenFadeTime
     {
         get { return _loadScreenFadeTime; }
+    }
+
+    /// <summary>
+    /// The time, in seconds, that pawn health UIs will take to update their slider values.
+    /// </summary>
+    public float HealthSliderUpdateTime
+    {
+        get { return _healthSliderUpdateTime; }
     }
 
     #endregion
