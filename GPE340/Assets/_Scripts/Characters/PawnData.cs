@@ -275,15 +275,15 @@ public class PawnData : MonoBehaviour
         // Component reference assignments
         if (_controller == null)
         {
-            _controller = this.gameObject.GetComponentInParent<AgentController>();
+            _controller = this.gameObject.GetComponentInChildren<AgentController>();
         }
         if (_inventoryMgr == null)
         {
-            _inventoryMgr = this.gameObject.GetComponent<InventoryManager>();
+            _inventoryMgr = this.gameObject.GetComponentInChildren<InventoryManager>();
         }
         if (_healthMgr == null)
         {
-            _healthMgr = this.gameObject.GetComponent<HealthManager>();
+            _healthMgr = this.gameObject.GetComponentInChildren<HealthManager>();
         }
         if (_pawnTransform == null)
         {
