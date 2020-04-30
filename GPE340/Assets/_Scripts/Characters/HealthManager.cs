@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,8 +14,10 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
     [Tooltip("The maximum health value of this pawn."),
         SerializeField] private float _maxHealth = 100;
 
-    [Tooltip("An event that notifies listeners when this pawn's health has changed."),
-        Space, SerializeField] private UnityEvent _healthChanged;
+    [Tooltip("An event that notifies listeners when this pawn's current health has changed."),
+        Space, SerializeField] private UnityEvent _currentHealthChanged;
+    [Tooltip("An event that notifies listeners when this pawn's max health has changed."),
+        SerializeField] private UnityEvent _maxHealthChanged;
     [Tooltip("An event that notifies listeners when this pawn has been killed."),
         SerializeField] private UnityEvent _onKilled;
 
@@ -66,106 +68,104 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
     }
 
     /// <summary>
-    /// Adds a listener to the HealthChanged event.
+    /// Adds one or more listeners to the CurrentHealthChanged event.
     /// </summary>
-    /// <param name="call">The name of the function to call when HealthChanged is invoked.</param>
-    public void AddHealthChangedListener(UnityAction call)
-    {
-        // Adding a persistent listener allows me to visualize when events have been added
-        #if UNITY_EDITOR
-            UnityEventTools.AddPersistentListener(_healthChanged, call);
-        #else
-            _healthChanged.AddListener(call);
-        #endif
-    }
-
-    /// <summary>
-    /// Adds multiple listeners to the HealthChanged event.
-    /// </summary>
-    /// <param name="calls">The names of the functions to call when HealthChanged is invoked.</param>
-    public void AddHealthChangedListeners(params UnityAction[] calls)
+    /// <param name="calls">The names of the functions to call when CurrentHealthChanged is invoked.</param>
+    public void AddCurrentHealthChangedListener(params UnityAction[] calls)
     {
         foreach (UnityAction call in calls)
         {
-            AddHealthChangedListener(call);
+            // Adding a persistent listener allows me to visualize when events have been added
+            #if UNITY_EDITOR
+                UnityEventTools.AddPersistentListener(_currentHealthChanged, call);
+            #else
+                _currentHealthChanged.AddListener(call);
+            #endif
         }
     }
 
     /// <summary>
-    /// Removes a listener from the HealthChanged event.
+    /// Removes one or more listeners from the CurrentHealthChanged event.
     /// </summary>
-    /// <param name="call">The name of the function to remove from the HealthChanged invoke array.</param>
-    public void RemoveHealthChangedListener(UnityAction call)
-    {
-        // Removing a persistent listener allows me to visualize when events have been removed
-        #if UNITY_EDITOR
-            UnityEventTools.RemovePersistentListener(_healthChanged, call);
-        #else
-            _healthChanged.AddListener(call);
-        #endif
-    }
-
-    /// <summary>
-    /// Removes multiple listeners from the HealthChanged event.
-    /// </summary>
-    /// <param name="calls">The names of the functions to remove from the HealthChanged invoke array.</param>
-    public void RemoveHealthChangedListeners(params UnityAction[] calls)
+    /// <param name="calls">The names of the functions to remove from the CurrentHealthChanged invoke array.</param>
+    public void RemoveCurrentHealthChangedListener(params UnityAction[] calls)
     {
         foreach (UnityAction call in calls)
         {
-            RemoveHealthChangedListener(call);
+            // Removing a persistent listener allows me to visualize when events have been removed
+            #if UNITY_EDITOR
+                UnityEventTools.RemovePersistentListener(_currentHealthChanged, call);
+            #else
+                _currentHealthChanged.AddListener(call);
+            #endif
         }
     }
 
     /// <summary>
-    /// Adds a listener to the OnKilled event.
+    /// Adds one or more listeners to the MaxHealthChanged event.
     /// </summary>
-    /// <param name="call">The name of the function to call when OnKilled is invoked.</param>
-    public void AddOnKilledListener(UnityAction call)
+    /// <param name="calls">The names of the functions to call when MaxHealthChanged is invoked.</param>
+    public void AddMaxHealthChangedListener(params UnityAction[] calls)
     {
-        // Adding a persistent listener allows me to visualize when events have been added
-        #if UNITY_EDITOR
-            UnityEventTools.AddPersistentListener(_onKilled, call);
-        #else
-            _healthChanged.AddListener(call);
-        #endif
+        foreach (UnityAction call in calls)
+        {
+            // Adding a persistent listener allows me to visualize when events have been added
+            #if UNITY_EDITOR
+                UnityEventTools.AddPersistentListener(_maxHealthChanged, call);
+            #else
+                _maxHealthChanged.AddListener(call);
+            #endif
+        }
     }
 
     /// <summary>
-    /// Adds multiple listeners to the OnKilled event.
+    /// Removes one or more listeners from the MaxHealthChanged event.
+    /// </summary>
+    /// <param name="calls">The names of the functions to remove from the MaxHealthChanged invoke array.</param>
+    public void RemoveMaxHealthChangedListener(params UnityAction[] calls)
+    {
+        foreach (UnityAction call in calls)
+        {
+            // Removing a persistent listener allows me to visualize when events have been removed
+            #if UNITY_EDITOR
+                UnityEventTools.RemovePersistentListener(_maxHealthChanged, call);
+            #else
+                _maxHealthChanged.AddListener(call);
+            #endif
+        }
+    }
+
+    /// <summary>
+    /// Adds one or more listeners to the OnKilled event.
     /// </summary>
     /// <param name="calls">The names of the functions to call when OnKilled is invoked.</param>
-    public void AddOnKilledListeners(params UnityAction[] calls)
+    public void AddOnKilledListener(params UnityAction[] calls)
     {
         foreach (UnityAction call in calls)
         {
-            AddOnKilledListener(call);
+            // Adding a persistent listener allows me to visualize when events have been added
+            #if UNITY_EDITOR
+                UnityEventTools.AddPersistentListener(_onKilled, call);
+            #else
+                _currentHealthChanged.AddListener(call);
+            #endif
         }
     }
 
     /// <summary>
-    /// Removes a listener from the OnKilled event.
-    /// </summary>
-    /// <param name="call">The name of the function to remove from the OnKilled invoke array.</param>
-    public void RemoveOnKilledListener(UnityAction call)
-    {
-        // Removing a persistent listener allows me to visualize when events have been removed
-        #if UNITY_EDITOR
-            UnityEventTools.RemovePersistentListener(_onKilled, call);
-        #else
-            _healthChanged.AddListener(call);
-        #endif
-    }
-
-    /// <summary>
-    /// Removes multiple listeners from the OnKilled event.
+    /// Removes one or more listeners from the OnKilled event.
     /// </summary>
     /// <param name="calls">The names of the functions to remove from the OnKilled invoke array.</param>
-    public void RemoveOnKilledisteners(params UnityAction[] calls)
+    public void RemoveOnKilledListener(params UnityAction[] calls)
     {
         foreach (UnityAction call in calls)
         {
-            RemoveOnKilledListener(call);
+            // Removing a persistent listener allows me to visualize when events have been removed
+            #if UNITY_EDITOR
+                UnityEventTools.RemovePersistentListener(_onKilled, call);
+            #else
+                _currentHealthChanged.AddListener(call);
+            #endif
         }
     }
 
@@ -179,7 +179,7 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
         // TODO: Damage functionality (mostly just reduce current health and a death check)
 
         // Notifies all listeners that this pawn's health has changed
-        _healthChanged.Invoke();
+        _currentHealthChanged.Invoke();
     }
 
     /// <summary>
@@ -192,7 +192,7 @@ public class HealthManager : MonoBehaviour, IDamageable, IHealable, IKillable
         // TODO: Heal functionality (mostly just increase current health)
 
         // Notifies all listeners that this pawn's health has changed
-        _healthChanged.Invoke();
+        _currentHealthChanged.Invoke();
     }
 
     /// <summary>
