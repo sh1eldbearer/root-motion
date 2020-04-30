@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -32,6 +32,10 @@ public class WeaponModelData : MonoBehaviour
     [Tooltip("The Transform component for the weapon's root GameObject (the Transform component" +
              "this script is residing on.)"),
         Space, SerializeField] private Transform _weaponTransform;
+    [Tooltip("The transform component of the raycast origin object attached to the weapon model."),
+        SerializeField] private Transform _raycastOriginTransform;
+    [Tooltip("The IShootable component for this weapon."),
+        SerializeField] private IShootable _weaponBehavior;
 #pragma warning restore CS0649
     #endregion
 
@@ -77,6 +81,22 @@ public class WeaponModelData : MonoBehaviour
         get { return _weaponTransform; }
     }
 
+    /// <summary>
+    /// The transform component of the raycast origin object attached to the weapon model.
+    /// </summary>
+    public Transform RaycastOriginTransform
+    {
+        get { return _raycastOriginTransform; }
+    }
+
+    /// <summary>
+    /// The IShootable component for this weapon.
+    /// </summary>
+    public IShootable WeaponBehavior
+    {
+        get { return _weaponBehavior; }
+    }
+
     #endregion
 
     // Awake is called before Start
@@ -86,6 +106,10 @@ public class WeaponModelData : MonoBehaviour
         if (_weaponTransform == null)
         {
             _weaponTransform = this.gameObject.GetComponent<Transform>();
+        }
+        if (_weaponBehavior == null)
+        {
+            _weaponBehavior = this.gameObject.GetComponent<IShootable>();
         }
 
         // Stores the MeshRenderers of each part of the weapon so we can modify their materials
